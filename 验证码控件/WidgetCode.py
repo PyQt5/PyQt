@@ -12,45 +12,67 @@ Created on 2017年4月5日
 from random import sample
 import string
 
-from PyQt5.QtCore import Qt, qrand, QPointF, QPoint
-from PyQt5.QtGui import QPainter, QBrush, QFont, QPen, QFontDatabase
-from PyQt5.QtWidgets import QLabel, QLineEdit
+from PyQt5.QtCore import Qt, qrand, QPointF, QPoint, QBasicTimer
+from PyQt5.QtGui import QPainter, QBrush, QPen, QPalette, QFontMetrics
+from PyQt5.QtWidgets import QLabel
 
 
 __version__ = "0.0.1"
 
 DEF_NOISYPOINTCOUNT = 60  # 噪点数量
-COLORLIST = ("black", "gray", "red", "green", "blue", "cyan", "magenta")
-QTCOLORLIST = (Qt.darkGray, Qt.darkRed, Qt.darkGreen, Qt.darkBlue, Qt.darkCyan, Qt.darkMagenta)
+COLORLIST = ("black", "gray", "red", "green", "blue", "magenta")
+TCOLORLIST = (Qt.black, Qt.gray, Qt.red, Qt.green, Qt.blue, Qt.magenta)
+QTCOLORLIST = (Qt.darkGray, Qt.darkRed, Qt.darkGreen, Qt.darkBlue, Qt.darkMagenta)
 HTML = "<html><body>{html}</body></html>"
 FONT = "<font color=\"{color}\">{word}</font>"
 WORDS = list(string.ascii_letters + string.digits)
+SINETABLE = (0, 38, 71, 92, 100, 92, 71, 38, 0, -38, -71, -92, -100, -92, -71, -38)
 
 class WidgetCode(QLabel):
     
     def __init__(self, *args, **kwargs):
         super(WidgetCode, self).__init__(*args, **kwargs)
+        self._sensitive = False  # 是否大小写敏感
         self.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-        self.setFont(QFont("Jokerman", 16))
+        self.setBackgroundRole(QPalette.Midlight)
+        self.setAutoFillBackground(True)
+        # 字体
+        newFont = self.font()
+        newFont.setPointSize(16)
+        newFont.setFamily("Kristen ITC")
+        newFont.setBold(True)
+        self.setFont(newFont)
         self.reset()
+        # 定时器
+        self.step = 0
+        self.timer = QBasicTimer()
+        self.timer.start(60, self)
         
     def reset(self):
         self._code = "".join(sample(WORDS, 4))  # 随机4个字符
         self.setText(self._code)
     
     def check(self, code):
-        # 校验
-        print("check", self._code.lower(), str(code).lower())
-        return self._code.lower() == str(code).lower()
+        return self._code == str(code) if self._sensitive else self._code.lower() == str(code).lower()
     
-    def setText(self, text=""):
-        self._code = text
-        html = "".join([FONT.format(color=COLORLIST[qrand() % 7], word=t) for t in text])
-        super(WidgetCode, self).setText(HTML.format(html=html))
+    def setSensitive(self, sensitive):
+        self._sensitive = sensitive
+    
+#     def setText(self, text):
+#         text = text if (text and len(text) == 4) else "".join(sample(WORDS, 4))  # 随机4个字符
+#         self._code = str(text)
+#         html = "".join([FONT.format(color=COLORLIST[qrand() % 6], word=t) for t in text])
+#         super(WidgetCode, self).setText(HTML.format(html=html))
     
     def mouseReleaseEvent(self, event):
         super(WidgetCode, self).mouseReleaseEvent(event)
         self.reset()
+    
+    def timerEvent(self, event):
+        if event.timerId() == self.timer.timerId():
+            self.step += 1
+            return self.update()
+        return super(WidgetCode, self).timerEvent(event)
     
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -63,7 +85,7 @@ class WidgetCode(QLabel):
         painter.drawRect(self.rect())
         # 随机画条线
         for _ in range(3):
-            painter.setPen(QPen(QTCOLORLIST[qrand() % 6], 1, Qt.SolidLine))
+            painter.setPen(QPen(QTCOLORLIST[qrand() % 5], 1, Qt.SolidLine))
             painter.setBrush(Qt.NoBrush)
             painter.drawLine(QPoint(0, qrand() % self.height()),
                              QPoint(self.width(), qrand() % self.height()))
@@ -74,18 +96,29 @@ class WidgetCode(QLabel):
         painter.setBrush(Qt.NoBrush)
         for _ in range(self.width()):  # 绘制噪点
             painter.drawPoint(QPointF(qrand() % self.width(), qrand() % self.height()))
-        super(WidgetCode, self).paintEvent(event)  # 绘制文字
+        # super(WidgetCode, self).paintEvent(event)  # 绘制文字
+        # 绘制跳动文字
+        metrics = QFontMetrics(self.font())
+        x = (self.width() - metrics.width(self.text())) / 2
+        y = (self.height() + metrics.ascent() - metrics.descent()) / 2
+        for i, ch in enumerate(self.text()):
+            index = (self.step + i) % 16
+            painter.setPen(TCOLORLIST[qrand() % 6])
+            painter.drawText(x, y - ((SINETABLE[index] * metrics.height()) / 400), ch)
+            x += metrics.width(ch)
 
 if __name__ == "__main__":
     import sys
     from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout
+    from PyQt5.QtGui import QFontDatabase
+    from PyQt5.QtWidgets import QLineEdit
     app = QApplication(sys.argv)
     app.setApplicationName("Validate Code")
-    QFontDatabase.addApplicationFont("Jokerman.ttf")
+    QFontDatabase.addApplicationFont("itckrist.ttf")
     w = QWidget()
     layout = QHBoxLayout(w)
     
-    cwidget = WidgetCode(w, minimumHeight=48, minimumWidth=100)
+    cwidget = WidgetCode(w, minimumHeight=35, minimumWidth=80)
     layout.addWidget(cwidget)
     lineEdit = QLineEdit(w, maxLength=4, placeholderText="请输入验证码并按回车验证",
             returnPressed=lambda:print(cwidget.check(lineEdit.text())))
