@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file>tree.html</file>
+    <file>jquery.js</file>
+  </qresource>
+</RCC>
