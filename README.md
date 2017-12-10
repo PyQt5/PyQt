@@ -24,3 +24,5 @@
 ### 10.<a href="自定义QWidget的QSS样式">自定义QWidget的QSS样式</a><br />
 
 ### 11.<a href="浏览器获取Cookie">浏览器获取Cookie</a><br />
+
+### 12.<a href="截图画矩形">截图画矩形</a><br />
