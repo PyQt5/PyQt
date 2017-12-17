@@ -1,6 +1,6 @@
-# QGraphicsView练习
+# QGraphicsView练习例子
+<br />
 
-# 截图
-世界地图
-<img src="ScreenShot/1.png" />
-<img src="ScreenShot/2.png" />
+### [Python3.4.4 or Python3.5][PyQt5]
+
+### 1.<a href="世界地图">世界地图</a><br />

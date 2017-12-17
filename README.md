@@ -28,3 +28,5 @@
 ### 12.<a href="截图画矩形">截图画矩形</a><br />
 
 ### 13.<a href="全局热键">全局热键</a><br />
+
+### 14.<a href="QGraphicsView练习">QGraphicsView练习</a><br />
