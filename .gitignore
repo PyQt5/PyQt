@@ -1,3 +1,7 @@
-tmp
-tmp/*
+/tmp/
+/tmp/*
 *.pyc
+.setting
+tmp
+.project
+.pydevproject
