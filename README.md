@@ -25,8 +25,8 @@
 
 ### 11.<a href="浏览器获取Cookie">浏览器获取Cookie</a><br />
 
-### 12.<a href="截图画矩形">截图画矩形</a><br />
+### 12.<a href="全局热键">全局热键</a><br />
 
-### 13.<a href="全局热键">全局热键</a><br />
+### 13.<a href="QGraphicsView练习">QGraphicsView练习</a><br />
 
-### 14.<a href="QGraphicsView练习">QGraphicsView练习</a><br />
+### 14.<a href="PyQtDataVisualization练习">PyQtDataVisualization练习</a><br />
