@@ -7,3 +7,6 @@
 
 ### 2.<a href="添加QWidget">添加QWidget.py</a><br />
 <img src="ScreenShot/1.png" />
+
+### 3.<a href="QChart ToolTip">QChartToolTipTest.py</a><br />
+<img src="ScreenShot/2.gif" />
