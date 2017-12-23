@@ -1,0 +1,124 @@
+{
+    "title": {
+        "text": "折线图 Line Chart",
+        "color": "black",
+        "font": "",
+        "pointSize": -1,
+        "weight": -1,
+        "italic": false
+    },
+    "antialiasing": true,
+    "theme": 0,
+    "animation": {
+        "duration": 1000,
+        "curve": 10,
+        "options": 0
+    },
+    "background": {
+        "visible": true,
+        "color": "",
+        "style": 1,
+        "image": "",
+        "radius": 0,
+        "pen": {
+            "color": "",
+            "width": 1,
+            "style": 0,
+            "capStyle": 16,
+            "joinStyle": 64
+        },
+        "dropShadow": true
+    },
+    "margins": {
+        "left": 20,
+        "top": 20,
+        "right": 20,
+        "bottom": 20
+    },
+    "legend": {
+        "alignment": "top",
+        "showToolTips": true
+    },
+    "axisx": {
+        "type": "category",
+        "data": [
+            "周一",
+            "周二",
+            "周三",
+            "周四",
+            "周五",
+            "周六",
+            "周日"
+        ]
+    },
+    "axisy": {
+        "type": "value"
+    },
+    "series": [
+        {
+            "name": "邮件营销",
+            "type": "line",
+            "data": [
+                120,
+                132,
+                101,
+                134,
+                90,
+                230,
+                210
+            ]
+        },
+        {
+            "name": "联盟广告",
+            "type": "line",
+            "data": [
+                220,
+                182,
+                191,
+                234,
+                290,
+                330,
+                310
+            ]
+        },
+        {
+            "name": "视频广告",
+            "type": "line",
+            "data": [
+                150,
+                232,
+                201,
+                154,
+                190,
+                330,
+                410
+            ]
+        },
+        {
+            "name": "直接访问",
+            "type": "line",
+            "data": [
+                320,
+                332,
+                301,
+                334,
+                390,
+                330,
+                320
+            ]
+        },
+        {
+            "name": "搜索引擎",
+            "type": "line",
+            "data": [
+                820,
+                932,
+                901,
+                934,
+                1290,
+                1330,
+                1320
+            ]
+        }
+    ]
+}

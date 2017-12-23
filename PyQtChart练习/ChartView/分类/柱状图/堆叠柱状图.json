@@ -1,0 +1,46 @@
+{
+    "title": {
+        "text": "堆叠柱状图",
+        "color": "blue",
+        "font": "微软雅黑",
+        "pointSize": -1,
+        "weight": -1,
+        "italic": false
+    },
+    "antialiasing": true,
+    "theme": 0,
+    "animation": {
+        "duration": 1000,
+        "curve": 10,
+        "options": 2
+    },
+    "background": {
+        "visible": true,
+        "color": "",
+        "style": 1,
+        "image": "",
+        "radius": 0,
+        "pen": {
+            "color": "",
+            "width": 1,
+            "style": 0,
+            "capStyle": 16,
+            "joinStyle": 64
+        },
+        "dropShadow": true
+    },
+    "margins": {
+        "left": 20,
+        "top": 20,
+        "right": 20,
+        "bottom": 20
+    },
+    "legend": {
+        "alignment": "top",
+        "showToolTips": true
+    },
+    "axisx": {
+    },
+    "axisy": {
+    }
+}
