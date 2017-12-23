@@ -27,6 +27,6 @@
 
 ### 12.<a href="全局热键">全局热键</a><br />
 
-### 13.<a href="QGraphicsView练习">QGraphicsView练习</a><br />
+### 13.<a href="图片加载">图片加载</a><br />
 
-### 14.<a href="PyQtDataVisualization练习">PyQtDataVisualization练习</a><br />
+### 14.<a href="QGraphicsView练习">QGraphicsView练习</a><br />
