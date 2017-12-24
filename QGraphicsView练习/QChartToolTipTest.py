@@ -13,7 +13,7 @@ import random
 import sys
 
 from PyQt5.QtChart import QChartView, QChart, QLineSeries
-from PyQt5.QtCore import Qt, QRectF, QPoint
+from PyQt5.QtCore import Qt, QRectF, QPoint, QPointF
 from PyQt5.QtGui import QPainter, QCursor
 from PyQt5.QtWidgets import QApplication, QGraphicsProxyWidget, QLabel, \
     QWidget, QHBoxLayout, QVBoxLayout, QToolTip, QGraphicsLineItem
@@ -162,23 +162,20 @@ class ChartView(QChartView):
         self.lineItem.setZValue(998)
         self.lineItem.hide()
 
-        axisX, axisY = self._chart.axisX(), self._chart.axisY()
-        min_x, max_x = axisX.min(), axisX.max()
-        min_y, max_y = axisY.min(), axisY.max()
-        print(min_x, max_x, min_y, max_y)
-
     def mouseMoveEvent(self, event):
         super(ChartView, self).mouseMoveEvent(event)
         # 获取x和y轴的最小最大值
         axisX, axisY = self._chart.axisX(), self._chart.axisY()
         min_x, max_x = axisX.min(), axisX.max()
         min_y, max_y = axisY.min(), axisY.max()
+        print(self._chart.mapToPosition(QPointF(0,0)))
+        print(self._chart.mapToPosition(QPointF(0,max_y)))
         step_x = (max_x - min_x) / (axisX.tickCount() - 1)
         step_y = (max_y - min_y) / (axisY.tickCount() - 1)
         # 把鼠标位置所在点转换为对应的xy值
         x = self._chart.mapToValue(event.pos()).x()
         y = self._chart.mapToValue(event.pos()).y()
-        print(x, y, step_x, step_y, event.pos())
+#         print(x, y, step_x, step_y, event.pos())
         r_x = x / step_x
         r_y = y / step_y  # @UnusedVariable
         index = round(r_x) - 1  # 四舍五入
