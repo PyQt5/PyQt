@@ -14,10 +14,9 @@ import sys
 
 from PyQt5.QtChart import QChartView, QChart, QLineSeries
 from PyQt5.QtCore import Qt, QRectF, QPoint
-from PyQt5.QtGui import QPainter
-from PyQt5.QtWidgets import QApplication, QGraphicsWidget, QGraphicsGridLayout,\
-    QGraphicsProxyWidget, QLabel, QWidget, QHBoxLayout,\
-    QVBoxLayout
+from PyQt5.QtGui import QPainter, QCursor
+from PyQt5.QtWidgets import QApplication, QGraphicsProxyWidget, QLabel, \
+    QWidget, QHBoxLayout, QVBoxLayout, QToolTip, QGraphicsLineItem
 
 
 __Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
@@ -48,6 +47,7 @@ def generateRandomData(listCount, valueMax, valueCount):
 m_dataTable = generateRandomData(m_listCount, m_valueMax, m_valueCount)
 
 
+'''
 class CircleWidget(QGraphicsProxyWidget):
 
     def __init__(self, color, *args, **kwargs):
@@ -83,6 +83,7 @@ class GraphicsWidget(QGraphicsWidget):
         self.setGeometry(pos.x(), pos.y(), self.size().width(),
                          self.size().height())
         super(GraphicsWidget, self).show()
+'''
 
 
 class ToolTipItem(QWidget):
@@ -153,11 +154,18 @@ class ChartView(QChartView):
         self.resize(800, 600)
         self.setRenderHint(QPainter.Antialiasing)  # 抗锯齿
         self.initChart()
-#         self.toolTipWidget = GraphicsWidget(self._chart)
-#         self.scene().addItem(self.toolTipWidget)
 
         self.toolTipWidget = GraphicsProxyWidget(self._chart)
-        self.scene().addItem(self.toolTipWidget)
+
+        # line
+        self.lineItem = QGraphicsLineItem(self._chart)
+        self.lineItem.setZValue(998)
+        self.lineItem.hide()
+
+        axisX, axisY = self._chart.axisX(), self._chart.axisY()
+        min_x, max_x = axisX.min(), axisX.max()
+        min_y, max_y = axisY.min(), axisY.max()
+        print(min_x, max_x, min_y, max_y)
 
     def mouseMoveEvent(self, event):
         super(ChartView, self).mouseMoveEvent(event)
@@ -170,42 +178,59 @@ class ChartView(QChartView):
         # 把鼠标位置所在点转换为对应的xy值
         x = self._chart.mapToValue(event.pos()).x()
         y = self._chart.mapToValue(event.pos()).y()
-#         print(x, y, step_x, step_y, event.pos())
+        print(x, y, step_x, step_y, event.pos())
         r_x = x / step_x
-        r_y = y / step_y
+        r_y = y / step_y  # @UnusedVariable
         index = round(r_x) - 1  # 四舍五入
 #         print(r_x, r_y, index, step_x, step_y)
         # 得到在坐标系中的所有series的类型和点
         points = [(serie, serie.at(index))
                   for serie in self._chart.series() if min_x <= x <= max_x and min_y <= y <= max_y]
         if points:
+            #             print("****",self._chart.mapToScene(event.pos().x(),0))
+            #             print("****",self._chart.mapToScene(0,event.pos().y()))
+            #             print("****",event.pos().x(),0,event.pos().x(),self._chart.size().height())
+            self.lineItem.setLine(event.pos().x(), 0,
+                                  event.pos().x(), self._chart.size().height())
+            self.lineItem.show()
             self.toolTipWidget.show("", points, event.pos() + QPoint(20, 20))
         else:
             self.toolTipWidget.hide()
+            self.lineItem.hide()
+
+    def onSeriesHoverd(self, point, state):
+        if state:
+            try:
+                name = self.sender().name()
+            except:
+                name = ""
+            QToolTip.showText(QCursor.pos(), "%s\nx: %s\ny: %s" %
+                              (name, point.x(), point.y()))
 
     def initChart(self):
         self._chart = QChart(title="Line Chart")
+        self._chart.setAcceptHoverEvents(True)
         for i, data_list in enumerate(m_dataTable):
             series = QLineSeries(self._chart)
             for value, _ in data_list:
                 series.append(*value)
             series.setName("Series " + str(i))
+            series.setPointsVisible(True)  # 显示原点
+            series.hovered.connect(self.onSeriesHoverd)
             self._chart.addSeries(series)
         self._chart.createDefaultAxes()  # 创建默认的轴
-#         self._chart = QChart()
-#         self._chart.setTitle("Line Chart")
-#         for i in range(1, 3):
-#             series = QLineSeries(self._chart)
-#             for j in range(6):
-#                 series.append(j + i, j * 2 + 6)
-#             series.setName("Line" + str(i))
-#             self._chart.addSeries(series)
-#         self._chart.createDefaultAxes()  # 创建默认轴
         self.setChart(self._chart)
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setStyleSheet("""QToolTip {
+    border: none;
+    padding: 5px;
+    color: white;
+    background: rgb(50,50,50);
+    opacity: 100;
+}""")
     view = ChartView()
     view.show()
     sys.exit(app.exec_())
