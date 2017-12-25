@@ -182,6 +182,8 @@ class ChartView(QChartView):
         r_y = y / step_y  # @UnusedVariable
         index = round(r_x) - 1  # 四舍五入
 #         print(r_x, r_y, index, step_x, step_y)
+        a = min_x + (round((x + step_x) / step_x) - 1) * step_x
+        print(x, round((x + step_x) / step_x) - 1, a)
         # 得到在坐标系中的所有series的类型和点
         points = [(serie, serie.at(index))
                   for serie in self._chart.series() if min_x <= x <= max_x and min_y <= y <= max_y]
