@@ -168,8 +168,10 @@ class ChartView(QChartView):
         axisX, axisY = self._chart.axisX(), self._chart.axisY()
         min_x, max_x = axisX.min(), axisX.max()
         min_y, max_y = axisY.min(), axisY.max()
-        print(self._chart.mapToPosition(QPointF(0,0)))
-        print(self._chart.mapToPosition(QPointF(0,max_y)))
+        # 坐标系中左上角顶点
+        point_top = self._chart.mapToPosition(QPointF(min_x, max_y))
+        # 坐标原点坐标
+        point_bottom = self._chart.mapToPosition(QPointF(min_x, min_y))
         step_x = (max_x - min_x) / (axisX.tickCount() - 1)
         step_y = (max_y - min_y) / (axisY.tickCount() - 1)
         # 把鼠标位置所在点转换为对应的xy值
@@ -184,11 +186,9 @@ class ChartView(QChartView):
         points = [(serie, serie.at(index))
                   for serie in self._chart.series() if min_x <= x <= max_x and min_y <= y <= max_y]
         if points:
-            #             print("****",self._chart.mapToScene(event.pos().x(),0))
-            #             print("****",self._chart.mapToScene(0,event.pos().y()))
-            #             print("****",event.pos().x(),0,event.pos().x(),self._chart.size().height())
-            self.lineItem.setLine(event.pos().x(), 0,
-                                  event.pos().x(), self._chart.size().height())
+            # 跟随鼠标的黑线条
+            self.lineItem.setLine(event.pos().x(), point_top.y(),
+                                  event.pos().x(), point_bottom.y())
             self.lineItem.show()
             self.toolTipWidget.show("", points, event.pos() + QPoint(20, 20))
         else:
