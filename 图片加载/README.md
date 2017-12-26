@@ -1,5 +1,4 @@
 # 图片加载测试
-<br />
 
 ### [Python3.4.4 or Python3.5][PyQt5]
 
@@ -23,4 +22,4 @@
 5. 通过QMovie加载gif图片
 
 # 截图
-<img src="ScreenShot/1.gif" />
+![截图](ScreenShot/1.gif)

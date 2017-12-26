@@ -1,10 +1,9 @@
 # 验证码控件
-<br />
 
 ### [Python3.4.4 or Python3.5][PyQt5]
 
 # 截图
-<img src="ScreenShot/1.gif" />
+![截图](ScreenShot/1.gif)
 
 # 说明
 2.更新为paintEvent方式,采用上下跳动
