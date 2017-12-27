@@ -9,7 +9,6 @@ Created on 2017年12月23日
 @file: QChartToolTipTest
 @description: 
 '''
-import random
 import sys
 
 from PyQt5.QtChart import QChartView, QChart, QLineSeries
@@ -22,29 +21,6 @@ from PyQt5.QtWidgets import QApplication, QGraphicsProxyWidget, QLabel, \
 __Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
 __Copyright__ = "Copyright (c) 2017 Irony.\"[讽刺]"
 __Version__ = "Version 1.0"
-
-m_listCount = 3
-m_valueMax = 10
-m_valueCount = 7
-
-
-def generateRandomData(listCount, valueMax, valueCount):
-    random.seed()
-    dataTable = []
-    for i in range(listCount):
-        dataList = []
-        yValue = 0.0
-        f_valueCount = float(valueCount)
-        for j in range(valueCount):
-            yValue += random.uniform(0, valueMax) / f_valueCount
-            value = j + random.random() * m_valueMax / f_valueCount, yValue
-            label = "Slice " + str(i) + ":" + str(j)
-            dataList.append((value, label))
-        dataTable.append(dataList)
-    return dataTable
-
-
-m_dataTable = generateRandomData(m_listCount, m_valueMax, m_valueCount)
 
 
 '''
@@ -173,7 +149,7 @@ class ChartView(QChartView):
         # 坐标原点坐标
         point_bottom = self._chart.mapToPosition(QPointF(min_x, min_y))
         step_x = (max_x - min_x) / (axisX.tickCount() - 1)
-        step_y = (max_y - min_y) / (axisY.tickCount() - 1)
+#         step_y = (max_y - min_y) / (axisY.tickCount() - 1)
         # 把鼠标位置所在点转换为对应的xy值
         x = self._chart.mapToValue(event.pos()).x()
         y = self._chart.mapToValue(event.pos()).y()
@@ -244,15 +220,25 @@ class ChartView(QChartView):
     def initChart(self):
         self._chart = QChart(title="Line Chart")
         self._chart.setAcceptHoverEvents(True)
-        for i, data_list in enumerate(m_dataTable):
+        dataTable = [
+            [120, 132, 101, 134, 90, 230, 210],
+            [220, 182, 191, 234, 290, 330, 310],
+            [150, 232, 201, 154, 190, 330, 410],
+            [320, 332, 301, 334, 390, 330, 320],
+            [820, 932, 901, 934, 1290, 1330, 1320]
+        ]
+        for i, data_list in enumerate(dataTable):
             series = QLineSeries(self._chart)
-            for value, _ in data_list:
-                series.append(*value)
+            for j, v in enumerate(data_list):
+                series.append(j, v)
             series.setName("Series " + str(i))
             series.setPointsVisible(True)  # 显示原点
             series.hovered.connect(self.onSeriesHoverd)
             self._chart.addSeries(series)
         self._chart.createDefaultAxes()  # 创建默认的轴
+        self._chart.axisX().setTickCount(7)  # x轴设置7个刻度
+        self._chart.axisY().setTickCount(7)  # y轴设置7个刻度
+        self._chart.axisY().setRange(0, 1500)  # 设置y轴范围
         self.setChart(self._chart)
 
 
