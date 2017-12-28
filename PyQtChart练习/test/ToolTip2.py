@@ -137,16 +137,18 @@ class ChartView(QChartView):
         self.lineItem = QGraphicsLineItem(self._chart)
         self.lineItem.setZValue(998)
         self.lineItem.hide()
-        
+
         # 一些固定计算，减少mouseMoveEvent中的计算量
         # 获取x和y轴的最小最大值
         axisX, axisY = self._chart.axisX(), self._chart.axisY()
         self.min_x, self.max_x = axisX.min(), axisX.max()
         self.min_y, self.max_y = axisY.min(), axisY.max()
         # 坐标系中左上角顶点
-        self.point_top = self._chart.mapToPosition(QPointF(self.min_x, self.max_y))
+        self.point_top = self._chart.mapToPosition(
+            QPointF(self.min_x, self.max_y))
         # 坐标原点坐标
-        self.point_bottom = self._chart.mapToPosition(QPointF(self.min_x, self.min_y))
+        self.point_bottom = self._chart.mapToPosition(
+            QPointF(self.min_x, self.min_y))
         self.step_x = (self.max_x - self.min_x) / (axisX.tickCount() - 1)
 #         self.step_y = (self.max_y - self.min_y) / (axisY.tickCount() - 1)
 
@@ -176,7 +178,7 @@ class ChartView(QChartView):
                 name = self.sender().name()
             except:
                 name = ""
-            QToolTip.showText(QCursor.pos(), "%s\nx: %s\ny: %s" % 
+            QToolTip.showText(QCursor.pos(), "%s\nx: %s\ny: %s" %
                               (name, point.x(), point.y()))
 
     def initChart(self):
