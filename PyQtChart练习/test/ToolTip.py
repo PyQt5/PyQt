@@ -137,33 +137,35 @@ class ChartView(QChartView):
         self.lineItem = QGraphicsLineItem(self._chart)
         self.lineItem.setZValue(998)
         self.lineItem.hide()
+        
+        # 一些固定计算，减少mouseMoveEvent中的计算量
+        # 获取x和y轴的最小最大值
+        axisX, axisY = self._chart.axisX(), self._chart.axisY()
+        self.min_x, self.max_x = axisX.min(), axisX.max()
+        self.min_y, self.max_y = axisY.min(), axisY.max()
+        # 坐标系中左上角顶点
+        self.point_top = self._chart.mapToPosition(QPointF(self.min_x, self.max_y))
+        # 坐标原点坐标
+        self.point_bottom = self._chart.mapToPosition(QPointF(self.min_x, self.min_y))
+        self.step_x = (self.max_x - self.min_x) / (axisX.tickCount() - 1)
+#         self.step_y = (self.max_y - self.min_y) / (axisY.tickCount() - 1)
 
     def mouseMoveEvent(self, event):
         super(ChartView, self).mouseMoveEvent(event)
-        # 获取x和y轴的最小最大值
-        axisX, axisY = self._chart.axisX(), self._chart.axisY()
-        min_x, max_x = axisX.min(), axisX.max()
-        min_y, max_y = axisY.min(), axisY.max()
-        # 坐标系中左上角顶点
-        point_top = self._chart.mapToPosition(QPointF(min_x, max_y))
-        # 坐标原点坐标
-        point_bottom = self._chart.mapToPosition(QPointF(min_x, min_y))
-        step_x = (max_x - min_x) / (axisX.tickCount() - 1)
-#         step_y = (max_y - min_y) / (axisY.tickCount() - 1)
         # 把鼠标位置所在点转换为对应的xy值
         x = self._chart.mapToValue(event.pos()).x()
         y = self._chart.mapToValue(event.pos()).y()
-        index = round((x - min_x) / step_x)
+        index = round((x - self.min_x) / self.step_x)
         pos_x = self._chart.mapToPosition(
-            QPointF(index * step_x + min_x, min_y))
-#         print(x, pos_x, index, index * step_x + min_x)
+            QPointF(index * self.step_x + self.min_x, self.min_y))
+#         print(x, pos_x, index, index * self.step_x + self.min_x)
         # 得到在坐标系中的所有series的类型和点
         points = [(serie, serie.at(index))
-                  for serie in self._chart.series() if min_x <= x <= max_x and min_y <= y <= max_y]
+                  for serie in self._chart.series() if self.min_x <= x <= self.max_x and self.min_y <= y <= self.max_y]
         if points:
             # 永远在轴上的黑线条
-            self.lineItem.setLine(pos_x.x(), point_top.y(),
-                                  pos_x.x(), point_bottom.y())
+            self.lineItem.setLine(pos_x.x(), self.point_top.y(),
+                                  pos_x.x(), self.point_bottom.y())
             self.lineItem.show()
             self.toolTipWidget.show("", points, event.pos() + QPoint(20, 20))
         else:
@@ -176,7 +178,7 @@ class ChartView(QChartView):
                 name = self.sender().name()
             except:
                 name = ""
-            QToolTip.showText(QCursor.pos(), "%s\nx: %s\ny: %s" %
+            QToolTip.showText(QCursor.pos(), "%s\nx: %s\ny: %s" % 
                               (name, point.x(), point.y()))
 
     def initChart(self):
