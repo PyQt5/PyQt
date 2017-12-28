@@ -5,4 +5,4 @@
 ### [Python3.5 or latter][PyQt5 PyQtChart]
 
 ### [1.折线图](line/)
- - [1.折线图堆叠](line/LineStack.py)
+ - [1.1 折线图堆叠](line/LineStack.py)
