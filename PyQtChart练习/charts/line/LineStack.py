@@ -69,6 +69,8 @@ class ToolTipWidget(QWidget):
             else:
                 self.Cache[serie].setText(
                     (serie.name() or "-") + ":" + str(point.y()))
+            self.Cache[serie].setVisible(serie.isVisible())  # 隐藏那些不可用的项
+        self.adjustSize()  # 调整大小
 
 
 class GraphicsProxyWidget(QGraphicsProxyWidget):
@@ -118,13 +120,18 @@ class ChartView(QChartView):
         axisX, axisY = self._chart.axisX(), self._chart.axisY()
         self.min_x, self.max_x = axisX.min(), axisX.max()
         self.min_y, self.max_y = axisY.min(), axisY.max()
+
+    def resizeEvent(self, event):
+        super(ChartView, self).resizeEvent(event)
+        # 当窗口大小改变时需要重新计算
         # 坐标系中左上角顶点
         self.point_top = self._chart.mapToPosition(
             QPointF(self.min_x, self.max_y))
         # 坐标原点坐标
         self.point_bottom = self._chart.mapToPosition(
             QPointF(self.min_x, self.min_y))
-        self.step_x = (self.max_x - self.min_x) / (axisX.tickCount() - 1)
+        self.step_x = (self.max_x - self.min_x) / \
+            (self._chart.axisX().tickCount() - 1)
 
     def mouseMoveEvent(self, event):
         super(ChartView, self).mouseMoveEvent(event)
@@ -133,9 +140,11 @@ class ChartView(QChartView):
         x = self._chart.mapToValue(pos).x()
         y = self._chart.mapToValue(pos).y()
         index = round((x - self.min_x) / self.step_x)
-        # 得到在坐标系中的所有series的类型和点
+        # 得到在坐标系中的所有正常显示的series的类型和点
         points = [(serie, serie.at(index))
-                  for serie in self._chart.series() if self.min_x <= x <= self.max_x and self.min_y <= y <= self.max_y]
+                  for serie in self._chart.series()
+                  if self.min_x <= x <= self.max_x and
+                  self.min_y <= y <= self.max_y]
         if points:
             pos_x = self._chart.mapToPosition(
                 QPointF(index * self.step_x + self.min_x, self.min_y))
