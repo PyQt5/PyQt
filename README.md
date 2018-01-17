@@ -16,7 +16,7 @@
  - [1.11 浏览器获取Cookie](浏览器获取Cookie/)
  - [1.12 全局热键](全局热键/)
  - [1.13 图片加载](图片加载/)
- - [1.4 窗口重启](窗口重启/)
+ - [1.14 窗口重启](窗口重启/)
 
 ### [2.QGraphicsView练习](QGraphicsView练习/)
  - [2.1 世界地图](QGraphicsView练习/世界地图)
@@ -26,3 +26,6 @@
 ### [3.PyQtChart练习](PyQtChart练习/)
  - [3.1 charts](PyQtChart练习/charts)
  - [3.2 test](PyQtChart练习/test)
+
+### [4.界面美化](界面美化/)
+ - [4.1 QMessageBox样式](界面美化/QMessageBox样式)
