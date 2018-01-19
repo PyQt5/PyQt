@@ -29,3 +29,4 @@
 
 ### [4.界面美化](界面美化/)
  - [4.1 QMessageBox样式](界面美化/QMessageBox样式)
+ - [4.2 QScrollBar滚动条样式](界面美化/QScrollBar滚动条样式)
