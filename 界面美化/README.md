@@ -5,3 +5,5 @@
  - [1.2 方案二](QMessageBox样式/方案二)
 
 ### [2.QScrollBar滚动条样式](QScrollBar滚动条样式/)
+
+### [3.QLabel圆形头像](QLabel圆形头像/)
