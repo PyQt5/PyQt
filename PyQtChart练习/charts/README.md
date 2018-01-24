@@ -6,3 +6,6 @@
 
 ### [1.折线图](line/)
  - [1.1 折线图堆叠](line/LineStack.py)
+
+### [2.柱状图](bar/)
+ - [2.1 柱状图堆叠](bar/BarStack.py)

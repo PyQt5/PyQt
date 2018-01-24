@@ -11,3 +11,4 @@ like [百度 echarts](http://echarts.baidu.com/demo.htmlhttp://echarts.baidu.com
 
 ### [2.charts](charts/)
  - [2.1 折线图](charts/line)
+ - [2.2 柱状图](charts/bar)
