@@ -4,7 +4,7 @@
 
 通过重写QFileIconProvider的icon方法来决定返回什么样的图标
 
-见需求 [Issues#2](issues/2)
+见需求 [Issues#2](https://github.com/892768447/PyQt/issues/2)
 
 截图
 
