@@ -7,3 +7,5 @@
 ### [2.QScrollBar滚动条样式](QScrollBar滚动条样式/)
 
 ### [3.QLabel圆形头像](QLabel圆形头像/)
+
+### [4.QFileSystemModel图标](QFileSystemModel图标/)
