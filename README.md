@@ -32,4 +32,8 @@
  - [4.2 QScrollBar滚动条样式](界面美化/QScrollBar滚动条样式)
  - [4.3 QLabel圆形头像](界面美化/QLabel圆形头像)
 
+# QQ群
+ - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)
+ - [PyQt学习互助](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
+
 # [Donate](Donate/)
