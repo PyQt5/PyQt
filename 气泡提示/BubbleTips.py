@@ -12,9 +12,10 @@ Created on 2018年1月27日
 import sys
 
 from PyQt5.QtCore import QRectF, Qt, QPropertyAnimation, pyqtProperty, \
-    QPoint, QParallelAnimationGroup
+    QPoint, QParallelAnimationGroup, QEasingCurve
 from PyQt5.QtGui import QPainter, QPainterPath, QColor, QPen
-from PyQt5.QtWidgets import QLabel, QWidget, QVBoxLayout, QApplication
+from PyQt5.QtWidgets import QLabel, QWidget, QVBoxLayout, QApplication,\
+    QLineEdit, QPushButton
 
 
 __Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
@@ -32,7 +33,7 @@ class BubbleLabel(QWidget):
         super(BubbleLabel, self).__init__(*args, **kwargs)
         # 设置无边框置顶
         self.setWindowFlags(
-            Qt.Window | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+            Qt.Window | Qt.Tool | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.X11BypassWindowManagerHint)
         # 设置最小宽度和高度
         self.setMinimumWidth(200)
         self.setMinimumHeight(48)
@@ -51,6 +52,11 @@ class BubbleLabel(QWidget):
 
     def text(self):
         return self.label.text()
+
+    def stop(self):
+        self.hide()
+        self.animationGroup.stop()
+        self.close()
 
     def show(self):
         super(BubbleLabel, self).show()
@@ -71,11 +77,14 @@ class BubbleLabel(QWidget):
         opacityAnimation = QPropertyAnimation(self, b"opacity")
         opacityAnimation.setStartValue(1.0)
         opacityAnimation.setEndValue(0.0)
+        # 设置动画曲线
+        opacityAnimation.setEasingCurve(QEasingCurve.InQuad)
         opacityAnimation.setDuration(4000)  # 在4秒的时间内完成
         # 往上移动动画
         moveAnimation = QPropertyAnimation(self, b"pos")
         moveAnimation.setStartValue(startPos)
         moveAnimation.setEndValue(endPos)
+        moveAnimation.setEasingCurve(QEasingCurve.InQuad)
         moveAnimation.setDuration(5000)  # 在5秒的时间内完成
         # 并行动画组（目的是让上面的两个动画同时进行）
         self.animationGroup = QParallelAnimationGroup(self)
@@ -124,9 +133,31 @@ class BubbleLabel(QWidget):
     opacity = pyqtProperty(float, windowOpacity, setWindowOpacity)
 
 
+class TestWidget(QWidget):
+
+    def __init__(self, *args, **kwargs):
+        super(TestWidget, self).__init__(*args, **kwargs)
+        layout = QVBoxLayout(self)
+        self.msgEdit = QLineEdit(self, returnPressed=self.onMsgShow)
+        self.msgButton = QPushButton("显示内容", self, clicked=self.onMsgShow)
+        layout.addWidget(self.msgEdit)
+        layout.addWidget(self.msgButton)
+
+    def onMsgShow(self):
+        msg = self.msgEdit.text().strip()
+        if not msg:
+            return
+        if hasattr(self, "_blabel"):
+            self._blabel.stop()
+            self._blabel.deleteLater()
+            del self._blabel
+        self._blabel = BubbleLabel()
+        self._blabel.setText(msg)
+        self._blabel.show()
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    w = BubbleLabel()
-    w.setText("hello")
+    w = TestWidget()
     w.show()
     sys.exit(app.exec_())
