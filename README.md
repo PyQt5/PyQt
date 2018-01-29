@@ -32,9 +32,11 @@
  - [3.2 test](PyQtChart练习/test)
 
 ### [4.界面美化](界面美化/)
- - [4.1 QMessageBox样式](界面美化/QMessageBox样式)
- - [4.2 QScrollBar滚动条样式](界面美化/QScrollBar滚动条样式)
- - [4.3 QLabel圆形头像](界面美化/QLabel圆形头像)
+ - [4.1 QSS美化例子](界面美化/QSS美化例子)
+ - [4.2 QMessageBox样式](界面美化/QMessageBox样式)
+ - [4.3 QScrollBar滚动条样式](界面美化/QScrollBar滚动条样式)
+ - [4.4 QLabel圆形头像](界面美化/QLabel圆形头像)
+ - [4.5 QFileSystemModel图标](界面美化/QFileSystemModel图标)
 
 # QQ群
  - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)
