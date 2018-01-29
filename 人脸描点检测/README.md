@@ -1,6 +1,7 @@
 # Opencv 人脸描点检测
 
-简单联系PyQt 结合 Opencv 进行人脸检测
+简单联系PyQt 结合 Opencv 进行人脸检测；
+由于直接在主线程中进行特征点获取，效率比较低
 
 ### 依赖文件
  - [opencv](https://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv)
