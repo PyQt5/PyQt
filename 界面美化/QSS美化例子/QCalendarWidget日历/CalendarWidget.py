@@ -62,17 +62,17 @@ StyleSheet = '''
 }
 
 
-/*年份选择*/
-CalendarWidget QSpinBox {
+/*年份输入框*/
+#qt_calendar_yearedit {
     min-width: 50px;
     color: white;
     background: transparent;/*让输入框背景透明*/
 }
-CalendarWidget QSpinBox::up-button { /*往上的按钮*/
+#qt_calendar_yearedit::up-button { /*往上的按钮*/
     width: 20px;
     subcontrol-position: right;/*移动到右边*/
 }
-CalendarWidget QSpinBox::down-button { /*往下的按钮*/
+#qt_calendar_yearedit::down-button { /*往下的按钮*/
     width: 20px;
     subcontrol-position: left; /*移动到左边去*/
 }
