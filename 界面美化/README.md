@@ -3,6 +3,7 @@
 ### [1.QSS美化例子](QSS美化例子/)
  - [1.1 QPushButton按钮](QSS美化例子/QPushButton按钮/)
  - [1.2 QCalendarWidget日历](QSS美化例子/QCalendarWidget日历/)
+ - [1.3 QProgressBar进度条样式](QSS美化例子/QProgressBar进度条样式/)
 
 ### [2.QMessageBox样式](QMessageBox样式/)
  - [2.1 方案一](QMessageBox样式/方案一)

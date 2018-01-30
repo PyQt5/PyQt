@@ -5,3 +5,6 @@
 
 ### [2.QCalendarWidget](QCalendarWidget日历/)
  - [2.1 QCalendarWidget日历样式](QCalendarWidget日历/CalendarWidget.py)
+
+### [3.QProgressBar](QProgressBar进度条样式/)
+ - [3.1 QProgressBar进度条样式](QProgressBar进度条样式/ProgressBar.py)
