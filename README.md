@@ -37,6 +37,7 @@
  - [4.3 QScrollBar滚动条样式](界面美化/QScrollBar滚动条样式)
  - [4.4 QLabel圆形头像](界面美化/QLabel圆形头像)
  - [4.5 QFileSystemModel图标](界面美化/QFileSystemModel图标)
+ - [4.6 QPushButton进度动画](界面美化/QPushButton进度动画)
 
 # QQ群
  - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)

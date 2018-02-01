@@ -14,3 +14,5 @@
 ### [4.QLabel圆形头像](QLabel圆形头像/)
 
 ### [5.QFileSystemModel图标](QFileSystemModel图标/)
+
+### [6.QPushButton进度动画](QPushButton进度动画/)
