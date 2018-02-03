@@ -12,7 +12,7 @@ Created on 2018年2月3日
 from PyQt5.QtCore import QObject
 from PyQt5.QtGui import QColor, QFont
 
-from .Colors import _Color, Colors  # @UnresolvedImport
+from Material.Utils.Colors import _Color, Colors  # @UnresolvedImport
 
 
 __Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"

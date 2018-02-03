@@ -12,8 +12,8 @@ Created on 2018年2月3日
 from PyQt5.QtGui import QPainter, QPen
 from PyQt5.QtWidgets import QLineEdit, QFrame
 
-from Effect.LineEffect import LineEffect  # @UnresolvedImport
-from Utils.MaterialProperty import MaterialProperty  # @UnresolvedImport
+from Material.Effect.LineEffect import LineEffect  # @UnresolvedImport
+from Material.Utils.MaterialProperty import MaterialProperty  # @UnresolvedImport
 
 
 __Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"

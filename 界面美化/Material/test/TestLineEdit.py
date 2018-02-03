@@ -10,13 +10,13 @@ Created on 2018年2月3日
 @description: 
 '''
 import sys
-sys.path.insert(0, "../")
+sys.path.insert(0, "../../")
 print(sys.path)
 
 from PyQt5.QtWidgets import QWidget, QApplication, QGridLayout, QLabel
 
-from Utils import Colors  # @UnresolvedImport
-from Widget.LineEdit import LineEdit  # @UnresolvedImport
+from Material.Utils import Colors  # @UnresolvedImport
+from Material.Widget.LineEdit import LineEdit  # @UnresolvedImport
 
 
 class Window(QWidget):
