@@ -228,10 +228,6 @@ class GridWidget(QWidget):
         self._parseHtml(html)
         self.loadStarted.emit(False)
 
-    def splist(self, src, length):
-        # 等分列表
-        return (src[i:i + length] for i in range(len(src)) if i % length == 0)
-
     def _parseHtml(self, html):
         #         encoding = chardet.detect(html) or {}
         #         html = html.decode(encoding.get("encoding","utf-8"))

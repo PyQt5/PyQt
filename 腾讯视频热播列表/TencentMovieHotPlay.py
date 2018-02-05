@@ -78,8 +78,6 @@ class CoverLabel(QLabel):
 
     def __init__(self, cover_path, cover_title, video_url, *args, **kwargs):
         super(CoverLabel, self).__init__(*args, **kwargs)
-#         super(CoverLabel, self).__init__(
-#             '<html><head/><body><img src="{0}"/></body></html>'.format(os.path.abspath(cover_path)), *args, **kwargs)
         self.setCursor(Qt.PointingHandCursor)
         self.setScaledContents(True)
         self.setMinimumSize(220, 308)
