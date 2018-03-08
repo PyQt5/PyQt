@@ -5,8 +5,7 @@
  - [1.2 QCalendarWidget日历](QSS美化例子/QCalendarWidget日历/)
  - [1.3 QProgressBar进度条样式](QSS美化例子/QProgressBar进度条样式/)
 
-### [2.Material样式](Material/)
- - [2.1 LineEdit](Material/test/TestLineEdit.py)
+### [2.Material样式](https://github.com/892768447/QMaterial)
 
 ### [3.QMessageBox样式](QMessageBox样式/)
  - [3.1 方案一](QMessageBox样式/方案一)
