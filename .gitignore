@@ -1,5 +1,7 @@
 /tmp/
 /tmp/*
+/tmp/Material
+/tmp/Material/*
 *.pyc
 .setting
 .setting/
