@@ -69,12 +69,16 @@ class Window(QWidget):
         self.suspendButton.setEnabled(True)
 
     def onSuspendThread(self):
+        if self._thread.handle == -1:
+            return print('handle is wrong')
         ret = SuspendThread(self._thread.handle)
         print('挂起线程', self._thread.handle, ret)
         self.suspendButton.setEnabled(False)
         self.resumeButton.setEnabled(True)
 
     def onResumeThread(self):
+        if self._thread.handle == -1:
+            return print('handle is wrong')
         ret = ResumeThread(self._thread.handle)
         print('恢复线程', self._thread.handle, ret)
         self.suspendButton.setEnabled(True)
