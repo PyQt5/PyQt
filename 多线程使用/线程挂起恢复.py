@@ -53,6 +53,9 @@ class Window(QWidget):
         self.resumeButton = QPushButton(
             '恢复线程', self, clicked=self.onResumeThread, enabled=False)
         layout.addWidget(self.resumeButton)
+        self.stopButton = QPushButton(
+            '终止线程', self, clicked=self.onStopThread, enabled=False)
+        layout.addWidget(self.stopButton)
 
         # 当前线程id
         print('main id', int(QThread.currentThreadId()))
@@ -67,6 +70,7 @@ class Window(QWidget):
         self._thread.start()  # 启动线程
         self.startButton.setEnabled(False)
         self.suspendButton.setEnabled(True)
+        self.stopButton.setEnabled(True)
 
     def onSuspendThread(self):
         if self._thread.handle == -1:
@@ -83,6 +87,15 @@ class Window(QWidget):
         print('恢复线程', self._thread.handle, ret)
         self.suspendButton.setEnabled(True)
         self.resumeButton.setEnabled(False)
+
+    def onStopThread(self):
+        self.startButton.setEnabled(False)
+        self.suspendButton.setEnabled(False)
+        self.resumeButton.setEnabled(False)
+        ret = ctypes.windll.kernel32.TerminateThread(  # @UndefinedVariable
+            self._thread.handle, 0)
+        print('终止线程', self._thread.handle, ret)
+        self.stopButton.setEnabled(False)
 
     def closeEvent(self, event):
         if self._thread.isRunning():
