@@ -24,6 +24,7 @@
  - [1.17 下拉选择联动](下拉选择联动/)
  - [1.18 人脸描点检测](人脸描点检测/)
  - [1.19 腾讯视频热播列表](腾讯视频热播列表/)
+ - [1.20 exec()动态生成控件](partner_625781186/1.exec动态生成控件/)
 
 ### [2.QGraphicsView练习](QGraphicsView练习/)
  - [2.1 世界地图](QGraphicsView练习/世界地图)
@@ -42,6 +43,7 @@
  - [4.5 QLabel圆形头像](界面美化/QLabel圆形头像)
  - [4.6 QFileSystemModel图标](界面美化/QFileSystemModel图标)
  - [4.7 QPushButton进度动画](界面美化/QPushButton进度动画)
+ - [4.8 折叠动画效果](partner_625781186/2.折叠控件/)
 
 # QQ群
  - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)
