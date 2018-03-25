@@ -10,8 +10,9 @@ Created on 2018年3月24日
 @description: 图片查看
 """
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QCursor
 from PyQt5.QtWidgets import QMainWindow, QToolBar
-from QGraphicsView练习.简单图像处理.SimpleImageView import SimpleImageView
+from SimpleImageView import SimpleImageView  # @UnresolvedImport
 
 
 __Author__ = """By: Irony
@@ -42,7 +43,7 @@ class MainWindow(QMainWindow):
         """菜单栏"""
         menuBar = self.menuBar()
         menu = menuBar.addMenu('文件')
-        menu.addAction('打开',self._imageView.loadImage)
+        menu.addAction('打开', self._imageView.loadImage)
         menu.addAction('关闭')
         menu.addAction('退出')
 
@@ -50,7 +51,7 @@ class MainWindow(QMainWindow):
         """工具条"""
         toolBar = QToolBar('工具栏', self)
         self.addToolBar(Qt.LeftToolBarArea, toolBar)
-        toolBar.addAction('灰度')
+        toolBar.addAction('灰度', self._imageView._greyScale)
         toolBar.addAction('亮度')
         toolBar.addAction('暖色调')
         toolBar.addAction('冷色调')
@@ -59,11 +60,14 @@ class MainWindow(QMainWindow):
         toolBar.addAction('锐化', self._ruihua)
 
     def _ruihua(self):
-        print(self.sender())
+        # 得到按钮的大概位置
+        print(self.mapFromGlobal(QCursor.pos()))
 
 
 if __name__ == '__main__':
     import sys
+    import os
+    print('pid:', os.getpid())
     from PyQt5.QtWidgets import QApplication
     app = QApplication(sys.argv)
     app.setApplicationDisplayName('简单图片处理')

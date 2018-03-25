@@ -9,8 +9,10 @@ Created on 2018年3月24日
 @file: SimpleImageView
 @description: 图片视图
 """
+from time import time
+
 from PyQt5.QtCore import QStandardPaths, Qt
-from PyQt5.QtGui import QColor, QPainter, QPixmap
+from PyQt5.QtGui import QColor, QPainter, QPixmap, QImage, qRgb
 from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QFileDialog, \
     QGraphicsItem
 try:
@@ -55,6 +57,7 @@ class SimpleImageView(QGraphicsView):
 
         # 图片item
         self._itemImage = None
+        self._itemImageNew = None
 
     def keyReleaseEvent(self, event):
         """按键处理事件"""
@@ -65,6 +68,7 @@ class SimpleImageView(QGraphicsView):
         """窗口关闭时清空场景中的所有item"""
         self._scene.clear()
         self._itemImage = None
+        self._itemImageNew = None
         super(SimpleImageView, self).closeEvent(event)
 
     def _scaleImage(self, event):
@@ -88,10 +92,15 @@ class SimpleImageView(QGraphicsView):
             self, '请选择图片', QStandardPaths.writableLocation(QStandardPaths.DesktopLocation), '图片文件(*.jpg *.png)')
         if not path:
             return
+        if self._itemImageNew:
+            self._scene.removeItem(self._itemImageNew)
+            del self._itemImageNew
+            self._itemImageNew = None
         if self._itemImage:
             # 删除以前的item
             self._scene.removeItem(self._itemImage)
             del self._itemImage
+            self._itemImage = None
         self._itemImage = self._scene.addPixmap(QPixmap(path))
         self._itemImage.setFlag(QGraphicsItem.ItemIsMovable)
         self._itemImage.setScale(0.1)  # 默认加载比例
@@ -102,6 +111,33 @@ class SimpleImageView(QGraphicsView):
             -size.width() * self._itemImage.scale() / 2,
             -size.height() * self._itemImage.scale() / 2
         )
+
+    def _greyScale(self):
+        if not self._itemImage:
+            return
+        if self._itemImageNew:
+            self._scene.removeItem(self._itemImageNew)
+            del self._itemImageNew
+            self._itemImageNew = None
+        t = time()
+        image = self._itemImage.pixmap().toImage()
+        for y in range(image.height()):
+            line = image.scanLine(y)
+            print(dir(line))
+            print(y,list(line.asarray(y)))
+#             for x in range(image.width()):
+#                 print()
+#                 print(list(line.asarray(3)))
+#         for x in range(image.width()):
+#             for y in range(image.height()):
+#                 color = QColor(image.pixel(x, y))
+#                 average = (color.red() + color.green() + color.blue()) / 3
+#                 image.setPixel(x, y, average)
+#         self._itemImageNew = self._scene.addPixmap(QPixmap.fromImage(image))
+#         self._itemImageNew.setFlag(QGraphicsItem.ItemIsMovable)
+#         self._itemImageNew.setScale(self._itemImage.scale())  # 默认加载比例
+        print(time() - t)
+
 
 if __name__ == '__main__':
     import sys
