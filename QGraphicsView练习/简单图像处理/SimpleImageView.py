@@ -9,12 +9,20 @@ Created on 2018年3月24日
 @file: SimpleImageView
 @description: 图片视图
 """
+import struct
 from time import time
 
+from PIL import Image
+from PIL.Image import fromarray
+from PIL.ImageQt import fromqpixmap
 from PyQt5.QtCore import QStandardPaths, Qt
-from PyQt5.QtGui import QColor, QPainter, QPixmap, QImage, qRgb
+from PyQt5.QtGui import QColor, QPainter, QPixmap, QImage, qRgb, qRed, qGreen,\
+    qBlue, QCursor
 from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QFileDialog, \
     QGraphicsItem
+import numpy
+
+
 try:
     from PyQt5.QtOpenGL import QGLFormat  # , QGL, QGLWidget
     hasOpenGL = True
@@ -73,19 +81,24 @@ class SimpleImageView(QGraphicsView):
 
     def _scaleImage(self, event):
         """缩放图片操作"""
-        if not self._itemImage:
-            return
-        scale = self._itemImage.scale()
+        item = self._scene.focusItem()
+        if not item:
+            item = self._scene.items()
+            if not item:
+                return
+            item = item[0]
+        # 获取item的缩放度
+        scale = item.scale()
         if event.key() == Qt.Key_Plus:
             # 放大
             if scale >= 0.91:
                 return
-            self._itemImage.setScale(scale + 0.1)
+            item.setScale(scale + 0.1)
         elif event.key() == Qt.Key_Minus:
             # 缩小
             if scale <= 0.11:
                 return
-            self._itemImage.setScale(scale - 0.1)
+            item.setScale(scale - 0.1)
 
     def loadImage(self):
         path, _ = QFileDialog.getOpenFileName(
@@ -103,7 +116,10 @@ class SimpleImageView(QGraphicsView):
             self._itemImage = None
         self._itemImage = self._scene.addPixmap(QPixmap(path))
         self._itemImage.setFlag(QGraphicsItem.ItemIsMovable)
+        self._itemImage.setFlag(QGraphicsItem.ItemIsFocusable)
         self._itemImage.setScale(0.1)  # 默认加载比例
+        self._scene.setFocusItem(self._itemImage)
+        print(self._itemImage.zValue())
 
         size = self._itemImage.pixmap().size()
         # 调整图片在中间
@@ -120,22 +136,15 @@ class SimpleImageView(QGraphicsView):
             del self._itemImageNew
             self._itemImageNew = None
         t = time()
-        image = self._itemImage.pixmap().toImage()
-        for y in range(image.height()):
-            line = image.scanLine(y)
-            print(dir(line))
-            print(y,list(line.asarray(y)))
-#             for x in range(image.width()):
-#                 print()
-#                 print(list(line.asarray(3)))
-#         for x in range(image.width()):
-#             for y in range(image.height()):
-#                 color = QColor(image.pixel(x, y))
-#                 average = (color.red() + color.green() + color.blue()) / 3
-#                 image.setPixel(x, y, average)
-#         self._itemImageNew = self._scene.addPixmap(QPixmap.fromImage(image))
-#         self._itemImageNew.setFlag(QGraphicsItem.ItemIsMovable)
-#         self._itemImageNew.setScale(self._itemImage.scale())  # 默认加载比例
+        # QPixmap 转 PIL Image 转 numpy array
+        image = numpy.array(fromqpixmap(self._itemImage.pixmap()).convert('L'))
+        image = fromarray(image).toqpixmap()
+        self._itemImageNew = self._scene.addPixmap(image)
+        self._itemImageNew.setFlag(QGraphicsItem.ItemIsFocusable)
+        self._itemImageNew.setFlag(QGraphicsItem.ItemIsMovable)
+        self._itemImageNew.setScale(self._itemImage.scale())  # 默认加载比例
+        self._scene.setFocusItem(self._itemImageNew)
+        print(self._itemImageNew.zValue())
         print(time() - t)
 
 
