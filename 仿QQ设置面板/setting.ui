@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1022</width>
-    <height>821</height>
+    <width>565</width>
+    <height>535</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -103,13 +103,6 @@
    </item>
    <item>
     <widget class="QScrollArea" name="scrollArea">
-     <property name="styleSheet">
-      <string notr="true">#titleLabel1,#titleLabel2,#titleLabel3,#titleLabel4,#titleLabel5,#titleLabel6,#titleLabel7,#titleLabel8 {
-    min-width: 100px;
-    max-width: 100px;
-    background-color: red;
-}</string>
-     </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
@@ -123,7 +116,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-700</y>
+        <y>-60</y>
         <width>613</width>
         <height>1521</height>
        </rect>
