@@ -1,0 +1,26 @@
+/*左侧*/
+#listWidget {
+    outline: 0px;
+    max-width: 165px;
+    background-color: rgb(240, 240, 240);
+}
+
+#listWidget::item {
+    min-height: 45px;
+}
+
+#listWidget::item:hover {
+    background-color: rgb(225, 230, 235);
+}
+
+#listWidget::item:selected {
+    color: black;
+    background-color: rgb(255, 255, 255);
+}
+
+/*右侧*/
+#titleLabel1,#titleLabel2,#titleLabel3,#titleLabel4,#titleLabel5,#titleLabel6,#titleLabel7,#titleLabel8 {
+    min-width: 75px;
+    max-width: 75px;
+    background-color: red;
+}
