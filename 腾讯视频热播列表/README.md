@@ -21,3 +21,9 @@
 
 使用自定义布局FlowLayout 自动列数效果图
 ![截图2](ScreenShot/2.gif)
+
+使用QListWidget 配合setFlow(QListWidget.LeftToRight)和
+setWrapping(True)和
+setResizeMode(QListWidget.Adjust)达到类似FlowLayout的效果
+
+![截图3](ScreenShot/3.gif)
