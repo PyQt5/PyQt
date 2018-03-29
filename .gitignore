@@ -11,3 +11,5 @@
 tmp
 .project
 .pydevproject
+.README.md.html
+README.md.html
