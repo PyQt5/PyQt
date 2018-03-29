@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>565</width>
-    <height>535</height>
+    <width>498</width>
+    <height>498</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,6 +33,15 @@
     <widget class="QListWidget" name="listWidget">
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="currentRow">
+      <number>0</number>
      </property>
      <item>
       <property name="text">
@@ -116,9 +125,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-60</y>
-        <width>613</width>
-        <height>1521</height>
+        <y>-810</y>
+        <width>460</width>
+        <height>1308</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -138,7 +147,7 @@
         <number>20</number>
        </property>
        <item>
-        <widget class="QWidget" name="widget" native="true">
+        <widget class="QWidget" name="widget_0" native="true">
          <layout class="QFormLayout" name="formLayout">
           <property name="leftMargin">
            <number>0</number>
@@ -218,7 +227,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_7" native="true">
+        <widget class="QWidget" name="widget_1" native="true">
          <layout class="QFormLayout" name="formLayout_8">
           <property name="leftMargin">
            <number>0</number>
@@ -309,7 +318,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_8" native="true">
+        <widget class="QWidget" name="widget_2" native="true">
          <layout class="QFormLayout" name="formLayout_9">
           <property name="leftMargin">
            <number>0</number>
@@ -373,6 +382,19 @@
               </item>
              </widget>
             </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
            </layout>
           </item>
           <item row="1" column="1">
@@ -412,13 +434,26 @@
               </property>
              </widget>
             </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
            </layout>
           </item>
          </layout>
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_2" native="true">
+        <widget class="QWidget" name="widget_3" native="true">
          <layout class="QFormLayout" name="formLayout_2">
           <property name="leftMargin">
            <number>0</number>
@@ -537,7 +572,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_3" native="true">
+        <widget class="QWidget" name="widget_4" native="true">
          <layout class="QFormLayout" name="formLayout_3">
           <property name="leftMargin">
            <number>0</number>
@@ -602,7 +637,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_4" native="true">
+        <widget class="QWidget" name="widget_5" native="true">
          <layout class="QFormLayout" name="formLayout_4">
           <property name="leftMargin">
            <number>0</number>
@@ -706,7 +741,7 @@
           <item row="11" column="1">
            <layout class="QFormLayout" name="formLayout_5">
             <item row="0" column="0">
-             <widget class="QListWidget" name="listWidget_2">
+             <widget class="QListWidget" name="listWidgetUser">
               <property name="frameShape">
                <enum>QFrame::NoFrame</enum>
               </property>
@@ -725,7 +760,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_5" native="true">
+        <widget class="QWidget" name="widget_6" native="true">
          <layout class="QFormLayout" name="formLayout_6">
           <property name="leftMargin">
            <number>0</number>
@@ -764,7 +799,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_6" native="true">
+        <widget class="QWidget" name="widget_7" native="true">
          <layout class="QFormLayout" name="formLayout_7">
           <property name="leftMargin">
            <number>0</number>
@@ -808,6 +843,55 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>listWidget</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>CheckBox</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>checkBox_2</tabstop>
+  <tabstop>checkBox_3</tabstop>
+  <tabstop>checkBox_4</tabstop>
+  <tabstop>checkBox_5</tabstop>
+  <tabstop>checkBox_6</tabstop>
+  <tabstop>checkBox_26</tabstop>
+  <tabstop>checkBox_27</tabstop>
+  <tabstop>checkBox_28</tabstop>
+  <tabstop>checkBox_29</tabstop>
+  <tabstop>right1</tabstop>
+  <tabstop>right2</tabstop>
+  <tabstop>right3</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>checkBox_30</tabstop>
+  <tabstop>checkBox_31</tabstop>
+  <tabstop>pushButton_5</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>CheckBox_2</tabstop>
+  <tabstop>checkBox_7</tabstop>
+  <tabstop>checkBox_8</tabstop>
+  <tabstop>checkBox_9</tabstop>
+  <tabstop>checkBox_10</tabstop>
+  <tabstop>checkBox_11</tabstop>
+  <tabstop>checkBox_12</tabstop>
+  <tabstop>checkBox_13</tabstop>
+  <tabstop>checkBox_14</tabstop>
+  <tabstop>checkBox_15</tabstop>
+  <tabstop>checkBox_16</tabstop>
+  <tabstop>checkBox_17</tabstop>
+  <tabstop>checkBox_18</tabstop>
+  <tabstop>checkBox_19</tabstop>
+  <tabstop>checkBox_20</tabstop>
+  <tabstop>checkBox_21</tabstop>
+  <tabstop>checkBox_22</tabstop>
+  <tabstop>checkBox_23</tabstop>
+  <tabstop>checkBox_24</tabstop>
+  <tabstop>radioButton</tabstop>
+  <tabstop>radioButton_2</tabstop>
+  <tabstop>radioButton_3</tabstop>
+  <tabstop>listWidgetUser</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>checkBox_25</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
