@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from PyQt5.QtWidgets import QWidget
-from 仿QQ设置面板.SettingUi import Ui_Setting
+
+from SettingUi import Ui_Setting  # @UnresolvedImport
+
 
 # Created on 2018年3月28日
 # author: Irony
@@ -9,7 +11,6 @@ from 仿QQ设置面板.SettingUi import Ui_Setting
 # email: 892768447@qq.com
 # file: 仿QQ设置面板.Window
 # description:
-
 __Author__ = """By: Irony
 QQ: 892768447
 Email: 892768447@qq.com"""
@@ -26,7 +27,8 @@ class Window(QWidget, Ui_Setting):
         self._blockSignals = False
 
         # 绑定滚动条和左侧item事件
-        self.scrollArea.verticalScrollBar().valueChanged.connect(self.onValueChanged)
+        self.scrollArea.verticalScrollBar().valueChanged.connect(
+            self.onValueChanged)
         self.listWidget.itemClicked.connect(self.onItemClicked)
 
     def onValueChanged(self, value):
@@ -36,7 +38,8 @@ class Window(QWidget, Ui_Setting):
             return
         for i in range(8):  # 因为这里右侧有8个widget
             widget = getattr(self, 'widget_%d' % i, None)
-            if widget and not widget.visibleRegion().isEmpty():  # widget不为空且在可视范围内
+            # widget不为空且在可视范围内
+            if widget and not widget.visibleRegion().isEmpty():
                 self.listWidget.setCurrentRow(i)  # 设置item的选中
                 return
 
