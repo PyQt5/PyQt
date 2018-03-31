@@ -15,13 +15,15 @@ __Copyright__ = 'Copyright (c) 2018 Irony'
 __Version__ = 1.0
 
 
-from ProgressBar import ProgressBar  # @UnresolvedImport
+from random import randint
+
 from PyQt5.Qt import QSpinBox
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtWidgets import QWidget, QFormLayout, QRadioButton, QPushButton,\
     QColorDialog
-from random import randint
+
+from ProgressBar import ProgressBar  # @UnresolvedImport
 
 
 class Window(QWidget):
