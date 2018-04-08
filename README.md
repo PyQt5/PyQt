@@ -52,4 +52,7 @@
  - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)
  - [PyQt学习互助](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
 
-# [Donate](Donate/)
+# [Donate-打赏](Donate/)
+
+# Wiki
+ - [一些Qt写的三方APP](https://github.com/892768447/PyQt/wiki/3rd-party-applications)
