@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//ActiveX\u7A97\u53E3/AxWidget.py=utf-8
+encoding//Json\u751F\u6210QTreeWidget/json\u751F\u6210\u6811\u5F62\u7ED3\u6784.py=utf-8
 encoding//PyQtChart\u7EC3\u4E60/ChartView/ChartView.py=utf-8
 encoding//PyQtChart\u7EC3\u4E60/ChartView/ChatWidget.py=utf-8
 encoding//PyQtChart\u7EC3\u4E60/charts/bar/BarStack.py=utf-8
@@ -14,7 +15,6 @@ encoding//QGraphicsView\u7EC3\u4E60/\u6DFB\u52A0QWidget.py=utf-8
 encoding//QGraphicsView\u7EC3\u4E60/\u7B80\u5355\u56FE\u50CF\u5904\u7406/SimpleImagePs.py=utf-8
 encoding//QGraphicsView\u7EC3\u4E60/\u7B80\u5355\u56FE\u50CF\u5904\u7406/SimpleImageThread.py=utf-8
 encoding//QGraphicsView\u7EC3\u4E60/\u7B80\u5355\u56FE\u50CF\u5904\u7406/SimpleImageView.py=utf-8
-encoding//json\u751F\u6210QTreeWidget/json\u751F\u6210\u6811\u5F62\u7ED3\u6784.py=utf-8
 encoding//tmp/LocalClient.py=utf-8
 encoding//tmp/Material/Effect/LineEffect.py=utf-8
 encoding//tmp/Material/Utils/Colors.py=utf-8
