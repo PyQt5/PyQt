@@ -17,4 +17,6 @@
 
 ### [6.QFileSystemModel图标](QFileSystemModel图标/)
 
-### [6.QPushButton进度动画](QPushButton进度动画/)
+### [7.QPushButton进度动画](QPushButton进度动画/)
+
+### [7.水波纹进度条](水波纹进度条/)

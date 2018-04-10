@@ -25,6 +25,9 @@
  - [1.18 人脸描点检测](人脸描点检测/)
  - [1.19 腾讯视频热播列表](腾讯视频热播列表/)
  - [1.20 exec()动态生成控件](partner_625781186/1.exec动态生成控件/)
+ - [1.21 仿QQ设置面板](仿QQ设置面板/)
+ - [1.22 Json生成QTreeWidget](Json生成QTreeWidget/)
+
 
 ### [2.QGraphicsView练习](QGraphicsView练习/)
  - [2.1 世界地图](QGraphicsView练习/世界地图)
@@ -44,9 +47,13 @@
  - [4.6 QFileSystemModel图标](界面美化/QFileSystemModel图标)
  - [4.7 QPushButton进度动画](界面美化/QPushButton进度动画)
  - [4.8 折叠动画效果](partner_625781186/2.折叠控件/)
+ - [4.9 水波纹进度条](界面美化/水波纹进度条)
 
 # QQ群
  - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)
  - [PyQt学习互助](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
 
-# [Donate](Donate/)
+# [Donate-打赏](Donate/)
+
+# Wiki
+ - [一些Qt写的三方APP](https://github.com/892768447/PyQt/wiki/3rd-party-applications)
