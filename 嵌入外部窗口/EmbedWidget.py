@@ -44,23 +44,30 @@ class Window(QWidget):
             # 如果数量等于4说明之前已经嵌入了一个窗口，现在需要把它释放出来
             self.restore()
         hwnd, phwnd = int(hwnd), int(phwnd)
+        # 嵌入之前的属性
+        style = win32gui.GetWindowLong(hwnd, win32con.GWL_STYLE)
+        exstyle = win32gui.GetWindowLong(hwnd, win32con.GWL_EXSTYLE)
+        print('save', hwnd, style, exstyle)
+
         widget = QWidget.createWindowContainer(QWindow.fromWinId(hwnd))
         widget.hwnd = hwnd  # 窗口句柄
         widget.phwnd = phwnd  # 父窗口句柄
-        widget.style = win32gui.GetWindowLong(hwnd, win32con.GWL_STYLE)  # 窗口样式
-        widget.exstyle = win32gui.GetWindowLong(
-            hwnd, win32con.GWL_EXSTYLE)  # 窗口额外样式
+        widget.style = style  # 窗口样式
+        widget.exstyle = exstyle  # 窗口额外样式
         self.layout().addWidget(widget)
 
     def restore(self):
         """归还窗口"""
+        # 有bug，归还后窗口没有了WS_VISIBLE样式，不可见
         widget = self.layout().itemAt(3).widget()
+        print('restore', widget.hwnd, widget.style, widget.exstyle)
         win32gui.SetParent(widget.hwnd, widget.phwnd)  # 让它返回它的父窗口
         win32gui.SetWindowLong(
-            widget.hwnd, win32con.GWL_STYLE, widget.style)  # 恢复样式
+            widget.hwnd, win32con.GWL_STYLE, widget.style | win32con.WS_VISIBLE)  # 恢复样式
         win32gui.SetWindowLong(
             widget.hwnd, win32con.GWL_EXSTYLE, widget.exstyle)  # 恢复样式
-        win32gui.ShowWindow(widget.hwnd, win32con.SW_SHOW)  # 显示窗口OF
+        win32gui.ShowWindow(
+            widget.hwnd, win32con.SW_SHOW)  # 显示窗口
         widget.close()
         self.layout().removeWidget(widget)  # 从布局中移出
         widget.deleteLater()
