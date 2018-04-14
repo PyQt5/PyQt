@@ -27,6 +27,7 @@
  - [1.20 exec()动态生成控件](partner_625781186/1.exec动态生成控件/)
  - [1.21 仿QQ设置面板](仿QQ设置面板/)
  - [1.22 Json生成QTreeWidget](Json生成QTreeWidget/)
+ - [1.23 嵌入外部窗口](嵌入外部窗口/)
 
 
 ### [2.QGraphicsView练习](QGraphicsView练习/)
