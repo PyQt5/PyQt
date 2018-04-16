@@ -25,8 +25,8 @@
  - [1.18 人脸描点检测](人脸描点检测/)
  - [1.19 腾讯视频热播列表](腾讯视频热播列表/)
  - 1.20 exec()动态生成控件
-    - [1. 动态控件基础例子 - 动态生成按钮](partner_625781186\1.exec动态生成控件\dynamic_button)
-    - [2. 动态控件基础例子 - 动态生成菜单](partner_625781186\1.exec动态生成控件\dynamic_Menu)
+    - [1. 动态控件基础例子 - 动态生成按钮](partner_625781186/1.exec动态生成控件/dynamic_button)
+    - [2. 动态控件基础例子 - 动态生成菜单](partner_625781186/1.exec动态生成控件/dynamic_Menu)
     - [3. 配合setting记录模型类型](partner_625781186/1.exec动态生成控件/)
  - [1.21 仿QQ设置面板](仿QQ设置面板/)
  - [1.22 Json生成QTreeWidget](Json生成QTreeWidget/)
