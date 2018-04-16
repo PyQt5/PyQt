@@ -54,9 +54,20 @@
  - [4.8 折叠动画效果](partner_625781186/2.折叠控件/)
  - [4.9 水波纹进度条](界面美化/水波纹进度条)
 
+
+### [5.QML](partner_625781186/QML_QtQuick_PY)
+- [python_QML调用基础](partner_625781186\QML_QtQuick_PY\python_QML调用基础)
+- QWidget窗体中嵌入qml界面
+    - [QDialog中嵌入qml窗体并缩放](partner_625781186\QML_QtQuick_PY\QDialog中嵌入qml窗体并缩放)
+    - [QQmlApplicationEngine之qml嵌入qtwidget_qt5.8以上](partner_625781186\QML_QtQuick_PY\QQmlApplicationEngine之qml嵌入qtwidget_qt5.8以上)
+
+
 # QQ群
  - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)
  - [PyQt学习互助](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
+ - [PyQt5小组](https://jq.qq.com/?_wv=1027&k=5cI3oRz)
+
+
 
 # [Donate-打赏](Donate/)
 
