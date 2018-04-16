@@ -28,6 +28,7 @@
  - [1.21 仿QQ设置面板](仿QQ设置面板/)
  - [1.22 Json生成QTreeWidget](Json生成QTreeWidget/)
  - [1.23 嵌入外部窗口](嵌入外部窗口/)
+ - [1.24 必应壁纸](https://github.com/892768447/BingWallpaper)
 
 
 ### [2.QGraphicsView练习](QGraphicsView练习/)
