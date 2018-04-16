@@ -56,10 +56,10 @@
 
 
 ### [5.QML](partner_625781186/QML_QtQuick_PY)
-- [python_QML调用基础](partner_625781186\QML_QtQuick_PY\python_QML调用基础)
+- [python_QML调用基础](partner_625781186/QML_QtQuick_PY/python_QML调用基础)
 - QWidget窗体中嵌入qml界面
-    - [QDialog中嵌入qml窗体并缩放](partner_625781186\QML_QtQuick_PY\QDialog中嵌入qml窗体并缩放)
-    - [QQmlApplicationEngine之qml嵌入qtwidget_qt5.8以上](partner_625781186\QML_QtQuick_PY\QQmlApplicationEngine之qml嵌入qtwidget_qt5.8以上)
+    - [QDialog中嵌入qml窗体并缩放](partner_625781186/QML_QtQuick_PY/QDialog中嵌入qml窗体并缩放)
+    - [QQmlApplicationEngine之qml嵌入qtwidget_qt5.8以上](partner_625781186/QML_QtQuick_PY/QQmlApplicationEngine之qml嵌入qtwidget_qt5.8以上)
 
 
 # QQ群
