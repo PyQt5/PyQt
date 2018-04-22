@@ -11,7 +11,7 @@ Created on 2017年12月11日
 '''
 import sys
 
-from PyQt5.QtCore import QTimer, pyqtSignal, Qt
+from PyQt5.QtCore import pyqtSignal, Qt
 from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QTextBrowser, QPushButton,\
     QMessageBox
 import keyboard
