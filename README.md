@@ -32,6 +32,7 @@
  - [1.22 Json生成QTreeWidget](Json生成QTreeWidget/)
  - [1.23 嵌入外部窗口](嵌入外部窗口/)
  - [1.24 必应壁纸](https://github.com/892768447/BingWallpaper)
+ - [1.25 网络操作](网络操作/)
 
 
 ### [2.QGraphicsView练习](QGraphicsView练习/)
