@@ -37,6 +37,7 @@ class TitleBar(QWidget):
         # 支持qss设置背景
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.mPos = None
+        self.iconSize = 20  # 图标的默认大小
         # 设置默认背景颜色,否则由于受到父窗口的影响导致透明
         self.setAutoFillBackground(True)
         palette = self.palette()
@@ -47,10 +48,11 @@ class TitleBar(QWidget):
         layout.setContentsMargins(0, 0, 0, 0)
         # 窗口图标
         self.iconLabel = QLabel(self)
-        self.iconLabel.setScaledContents(True)
+#         self.iconLabel.setScaledContents(True)
         layout.addWidget(self.iconLabel)
         # 窗口标题
         self.titleLabel = QLabel(self)
+        self.titleLabel.setMargin(2)
         layout.addWidget(self.titleLabel)
         # 中间伸缩条
         layout.addSpacerItem(QSpacerItem(
@@ -100,7 +102,11 @@ class TitleBar(QWidget):
 
     def setIcon(self, icon):
         """设置图标"""
-        self.iconLabel.setPixmap(icon.pixmap(16, 16))
+        self.iconLabel.setPixmap(icon.pixmap(self.iconSize, self.iconSize))
+
+    def setIconSize(self, size):
+        """设置图标大小"""
+        self.iconSize = size
 
     def enterEvent(self, event):
         self.setCursor(Qt.ArrowCursor)
@@ -166,6 +172,10 @@ class FramelessWindow(QWidget):
     def setTitleBarHeight(self, height=38):
         """设置标题栏高度"""
         self.titleBar.setHeight(height)
+
+    def setIconSize(self, size):
+        """设置图标的大小"""
+        self.titleBar.setIconSize(size)
 
     def setWidget(self, widget):
         """设置自己的控件"""
