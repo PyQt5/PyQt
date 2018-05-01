@@ -34,6 +34,7 @@
  - [1.24 必应壁纸](https://github.com/892768447/BingWallpaper)
  - [1.25 网络操作](网络操作/)
  - [1.26 无边框自定义标题栏窗口](无边框自定义标题栏窗口/)
+ - [1.27 QRC资源文件使用](QRC资源文件使用/)
 
 
 ### [2.QGraphicsView练习](QGraphicsView练习/)
