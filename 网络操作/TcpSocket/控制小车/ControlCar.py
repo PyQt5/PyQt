@@ -22,14 +22,12 @@ __Version__ = 1.0
 
 class ControlCar(QWidget):
 
-    HOST = "127.0.0.1"
-    PORT_CAR = 8888  # 控制小车的端口
-    PORT_IMAGE = 8899  # 获取图片的端口
+    HOST = '127.0.0.1'
+    PORT = 8888
 
     def __init__(self, *args, **kwargs):
         super(ControlCar, self).__init__(*args, **kwargs)
-        self._connCar = None  # 控制小车的连接
-        self._connImage = None  # 获取图片的连接
+        self._connCar = None
         # 加载UI文件
         uic.loadUi('carui.ui', self)
         self.resize(800, 600)
@@ -56,11 +54,6 @@ class ControlCar(QWidget):
             self._connCar.deleteLater()
             del self._connCar
             self._connCar = None
-        if self._connImage:
-            self._connImage.close()
-            self._connImage.deleteLater()
-            del self._connImage
-            self._connImage = None
 
     def closeEvent(self, event):
         """窗口关闭事件"""
@@ -71,6 +64,7 @@ class ControlCar(QWidget):
     def doConnect(self):
         """连接服务器"""
         self.buttonConnect.setEnabled(False)
+        self._timer.stop()
         self._clearConn()
         self.browserResult.append('正在连接服务器')
         # 连接控制小车的服务器
@@ -79,18 +73,7 @@ class ControlCar(QWidget):
         self._connCar.disconnected.connect(self.onDisconnected)  # 绑定连接丢失信号
         self._connCar.readyRead.connect(self.onReadyRead)  # 准备读取信号
         self._connCar.error.connect(self.onError)  # 连接错误信号
-        self._connCar.connectToHost(self.HOST, self.PORT_CAR)
-        # 连接获取图片的服务器
-        self._connImage = QTcpSocket(self)
-        # 200毫秒,无闪烁
-        self._connImage.connected.connect(
-            lambda: self._timer.start(200) and self.browserResult.append('图片服务器连接成功'))
-        self._connImage.disconnected.connect(
-            lambda: self._timer.stop() and self.browserResult.append('图片服务器连丢失连接'))
-        self._connImage.error.connect(lambda _: self._timer.stop() and self.browserResult.append(
-            '连接图片服务器错误: ' + self._connImage.errorString()))
-        self._connImage.readyRead.connect(self.onImageReadyRead)
-        self._connImage.connectToHost(self.HOST, self.PORT_IMAGE)
+        self._connCar.connectToHost(self.HOST, self.PORT)
 
     def onConnected(self):
         """连接成功"""
@@ -101,9 +84,12 @@ class ControlCar(QWidget):
         self.sliderLeft.setEnabled(True)
         self.sliderRight.setEnabled(True)
         self.browserResult.append('连接成功')  # 记录日志
+        # 开启获取摄像头图片定时器
+        self._timer.start(200)
 
     def onDisconnected(self):
         """丢失连接"""
+        self._timer.stop()
         self.buttonConnect.setEnabled(True)  # 按钮可用
         # 设置初始拉动条不可用
         self.sliderForward.setEnabled(False)
@@ -122,23 +108,17 @@ class ControlCar(QWidget):
         while self._connCar.bytesAvailable() > 0:
             try:
                 data = self._connCar.readAll().data()
-                self.browserResult.append('接收到数据: ' + data.decode())
+                if data and data.find(b'JFIF') > -1:
+                    self.qlabel.setPixmap(  # 图片
+                        QPixmap.fromImage(QImage.fromData(data)))
+                else:
+                    self.browserResult.append('接收到数据: ' + data.decode())
             except Exception as e:
                 self.browserResult.append('解析数据错误: ' + str(e))
 
-    def onImageReadyRead(self):
-        """返回的图片数据"""
-        while self._connImage.bytesAvailable() > 0:
-            try:
-                data = self._connImage.readAll().data()
-                if data and data.find(b'JFIF') > -1:
-                    self.qlabel.setPixmap(
-                        QPixmap.fromImage(QImage.fromData(data)))
-            except Exception as e:
-                self.browserResult.append('解析图片数据错误: ' + str(e))
-
     def onError(self, _):
         """连接报错"""
+        self._timer.stop()
         self.buttonConnect.setEnabled(True)  # 按钮可用
         self.browserResult.append('连接服务器错误: ' + self._connCar.errorString())
 
@@ -164,18 +144,12 @@ class ControlCar(QWidget):
 
     def doGetImage(self):
         # 请求图片
-        if not self._connImage or not self._connImage.isWritable():
-            return self.browserResult.append('图片服务器未连接或不可写入数据')
-        self._connImage.write(b'getimage\n')
+        self.sendData('getimage', '')
 
     def sendData(self, ver, data):
         """发送数据"""
         if not self._connCar or not self._connCar.isWritable():
             return self.browserResult.append('服务器未连接或不可写入数据')
-#         self._connCar.write(ver.encode() + str(data).encode())
-        # time.sleep(0.05)
-
-        # 我的服务器需要接收以\n结尾的数据
         self._connCar.write(ver.encode() + str(data).encode() + b'\n')
 
 
