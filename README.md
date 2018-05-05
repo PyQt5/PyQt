@@ -38,6 +38,7 @@
  - [1.28 C和C++扩展](C和C++扩展/)
      - [1.28.1 pyx和c++](C和C++扩展/pyx和c++/)
      - [1.28.2 py转pyd](C和C++扩展/py转pyd/)
+     - [1.28.3 pydext](C和C++扩展/pydext/)
 
 
 ### [2.QGraphicsView练习](QGraphicsView练习/)

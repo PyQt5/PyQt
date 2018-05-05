@@ -1,0 +1,7 @@
+﻿F:\Python\Github\PyQt\C和C++扩展\pydext\pydext\pydext.vcxproj(201,5): warning : Python debug symbols are not installed. Installing the symbols through the Python installer is strongly recommended.
+  pydext.c
+    正在创建库 F:\Python\Github\PyQt\C和C++扩展\pydext\Release\pydext.lib 和对象 F:\Python\Github\PyQt\C和C++扩展\pydext\Release\pydext.exp
+  正在生成代码
+  All 5 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  pydext.vcxproj -> F:\Python\Github\PyQt\C和C++扩展\pydext\Release\pydext.pyd
