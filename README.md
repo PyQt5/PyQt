@@ -61,6 +61,7 @@
  - [4.7 QPushButton进度动画](界面美化/QPushButton进度动画)
  - [4.8 折叠动画效果](partner_625781186/2.折叠控件/)
  - [4.9 水波纹进度条](界面美化/水波纹进度条)
+ - [4.10 QSlider美化](界面美化/QSlider美化)
 
 # QQ群
  - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)

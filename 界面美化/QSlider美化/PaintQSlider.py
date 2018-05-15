@@ -28,16 +28,30 @@ class SliderStyle(QProxyStyle):
         rect = super(SliderStyle, self).subControlRect(
             control, option, subControl, widget)
         if subControl == QStyle.SC_SliderHandle:
-            if int(option.state) == 74113:
-                radius = 30
-                x = min(rect.x() - 10, widget.width() - radius)
-                x = x if x >= 0 else 0
+            if option.orientation == Qt.Horizontal:
+                # 高度1/3
+                radius = int(widget.height() / 3)
+                offset = int(radius / 3)
+                if option.state & QStyle.State_MouseOver:
+                    x = min(rect.x() - offset, widget.width() - radius)
+                    x = x if x >= 0 else 0
+                else:
+                    radius = offset
+                    x = min(rect.x(), widget.width() - radius)
+                rect = QRect(x, int((rect.height() - radius) / 2),
+                             radius, radius)
             else:
-                radius = 10
-                x = min(rect.x(), widget.width() - radius)
-
-            rect = QRect(x,
-                         int((rect.height() - radius) / 2), radius, radius)
+                # 宽度1/3
+                radius = int(widget.width() / 3)
+                offset = int(radius / 3)
+                if option.state & QStyle.State_MouseOver:
+                    y = min(rect.y() - offset, widget.height() - radius)
+                    y = y if y >= 0 else 0
+                else:
+                    radius = offset
+                    y = min(rect.y(), widget.height() - radius)
+                rect = QRect(int((rect.width() - radius) / 2),
+                             y, radius, radius)
             return rect
         return rect
 
@@ -56,19 +70,22 @@ class PaintQSlider(QSlider):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
 
-        # 画中间白色线条
-        painter.setPen(Qt.white)
-        painter.setBrush(Qt.white)
-        y = self.height() / 2
-        painter.drawLine(QPointF(0, y), QPointF(self.width(), y))
-
         # 中间圆圈的位置
         rect = self.style().subControlRect(
             QStyle.CC_Slider, option, QStyle.SC_SliderHandle, self)
-        painter.setPen(Qt.NoPen)
 
-        # 这里是判断鼠标在handle上面,由于未找到变量比较,故使用具体数字(可能会改变)
-        if int(option.state) == 74113:  # 双重圆
+        # 画中间白色线条
+        painter.setPen(Qt.white)
+        painter.setBrush(Qt.white)
+        if self.orientation() == Qt.Horizontal:
+            y = self.height() / 2
+            painter.drawLine(QPointF(0, y), QPointF(self.width(), y))
+        else:
+            x = self.width() / 2
+            painter.drawLine(QPointF(x, 0), QPointF(x, self.height()))
+        # 画圆
+        painter.setPen(Qt.NoPen)
+        if option.state & QStyle.State_MouseOver:  # 双重圆
             # 半透明大圆
             r = rect.height() / 2
             painter.setBrush(QColor(255, 255, 255, 100))
@@ -80,11 +97,12 @@ class PaintQSlider(QSlider):
             painter.drawRoundedRect(rect, r, r)
             # 绘制文字
             painter.setPen(Qt.white)
+            if self.orientation() == Qt.Horizontal:  # 在上方绘制文字
+                x, y = rect.x(), rect.y() - rect.height() - 2
+            else:  # 在左侧绘制文字
+                x, y = rect.x() - rect.width() - 2, rect.y()
             painter.drawText(
-                rect.x(),
-                rect.y() - rect.height() - 2,
-                rect.width(),
-                rect.height(),
+                x, y, rect.width(), rect.height(),
                 Qt.AlignCenter, str(self.value())
             )
         else:  # 实心圆
