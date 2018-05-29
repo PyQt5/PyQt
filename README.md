@@ -40,6 +40,7 @@
      - [1.28.2 py转pyd](C和C++扩展/py转pyd/)
      - [1.28.3 pydext](C和C++扩展/pydext/)
  - [1.29 数据库查询显示表格](数据库查询显示表格/)
+ - [1.30 左侧选项卡](左侧选项卡/)
 
 
 ### [2.QGraphicsView练习](QGraphicsView练习/)
