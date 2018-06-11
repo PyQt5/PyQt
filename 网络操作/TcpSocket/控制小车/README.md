@@ -13,6 +13,7 @@
  - 这里只用了UI文件做界面，并没有转换为python代码
  - server.py只是做个本地echo服务器用来测试命令是否正常，依赖tornado库，可以通过pip install tornado来安装
  - 另外需要做粘包处理，以（\n）作为粘包符
+ - 由于wifi能力不行,发送图片要尽量小
 
 说明：
 
@@ -22,4 +23,4 @@
  - QTcpSocket.error        连接报错触发该信号（连接超时、服务器断开等等）
 
 ## 截图
-![截图](ScreenShot/car.gif)
+![截图](ScreenShot/1.png)

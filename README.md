@@ -32,6 +32,16 @@
  - [1.22 Json生成QTreeWidget](Json生成QTreeWidget/)
  - [1.23 嵌入外部窗口](嵌入外部窗口/)
  - [1.24 必应壁纸](https://github.com/892768447/BingWallpaper)
+ - [1.25 网络操作](网络操作/)
+ - [1.26 无边框自定义标题栏窗口](无边框自定义标题栏窗口/)
+ - [1.27 QRC资源文件使用](QRC资源文件使用/)
+ - [1.28 C和C++扩展](C和C++扩展/)
+     - [1.28.1 pyx和c++](C和C++扩展/pyx和c++/)
+     - [1.28.2 py转pyd](C和C++扩展/py转pyd/)
+     - [1.28.3 pydext](C和C++扩展/pydext/)
+ - [1.29 数据库查询显示表格](数据库查询显示表格/)
+ - [1.30 左侧选项卡](左侧选项卡/)
+ - [1.40 探测窗口和放大截图](探测窗口和放大截图/)
 
 
 ### [2.QGraphicsView练习](QGraphicsView练习/)
@@ -53,7 +63,7 @@
  - [4.7 QPushButton进度动画](界面美化/QPushButton进度动画)
  - [4.8 折叠动画效果](partner_625781186/2.折叠控件/)
  - [4.9 水波纹进度条](界面美化/水波纹进度条)
-
+ - [4.10 QSlider美化](界面美化/QSlider美化)
 
 ### [5.QML](partner_625781186/QML_QtQuick_PY)
 - [python_QML调用基础](partner_625781186/QML_QtQuick_PY/python_QML调用基础)

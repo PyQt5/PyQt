@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from PyQt5 import uic
+from PyQt5.QtCore import QTimer
+from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtNetwork import QTcpSocket
 from PyQt5.QtWidgets import QWidget
 
@@ -20,12 +22,12 @@ __Version__ = 1.0
 
 class ControlCar(QWidget):
 
-    HOST = "127.0.0.1"
+    HOST = '127.0.0.1'
     PORT = 8888
 
     def __init__(self, *args, **kwargs):
         super(ControlCar, self).__init__(*args, **kwargs)
-        self._conn = None
+        self._connCar = None
         # 加载UI文件
         uic.loadUi('carui.ui', self)
         self.resize(800, 600)
@@ -42,30 +44,36 @@ class ControlCar(QWidget):
         self.sliderLeft.setEnabled(False)
         self.sliderRight.setEnabled(False)
 
+        # 定时器定时向图片服务器发送请求
+        self._timer = QTimer(self, timeout=self.doGetImage)
+
+    def _clearConn(self):
+        """清理连接"""
+        if self._connCar:
+            self._connCar.close()
+            self._connCar.deleteLater()
+            del self._connCar
+            self._connCar = None
+
     def closeEvent(self, event):
         """窗口关闭事件"""
-        if self._conn:
-            self._conn.close()
-            self._conn.deleteLater()
-            del self._conn
-            self._conn = None
+        self._timer.stop()
+        self._clearConn()
         super(ControlCar, self).closeEvent(event)
 
     def doConnect(self):
         """连接服务器"""
         self.buttonConnect.setEnabled(False)
-        if self._conn:
-            self._conn.close()
-            self._conn.deleteLater()
-            del self._conn
-            self._conn = None
+        self._timer.stop()
+        self._clearConn()
         self.browserResult.append('正在连接服务器')
-        self._conn = QTcpSocket(self)
-        self._conn.connected.connect(self.onConnected)  # 绑定连接成功信号
-        self._conn.disconnected.connect(self.onDisconnected)  # 绑定连接丢失信号
-        self._conn.readyRead.connect(self.onReadyRead)  # 准备读取信号
-        self._conn.error.connect(self.onError)  # 连接错误信号
-        self._conn.connectToHost(self.HOST, self.PORT)
+        # 连接控制小车的服务器
+        self._connCar = QTcpSocket(self)
+        self._connCar.connected.connect(self.onConnected)  # 绑定连接成功信号
+        self._connCar.disconnected.connect(self.onDisconnected)  # 绑定连接丢失信号
+        self._connCar.readyRead.connect(self.onReadyRead)  # 准备读取信号
+        self._connCar.error.connect(self.onError)  # 连接错误信号
+        self._connCar.connectToHost(self.HOST, self.PORT)
 
     def onConnected(self):
         """连接成功"""
@@ -76,9 +84,12 @@ class ControlCar(QWidget):
         self.sliderLeft.setEnabled(True)
         self.sliderRight.setEnabled(True)
         self.browserResult.append('连接成功')  # 记录日志
+        # 开启获取摄像头图片定时器
+        self._timer.start(200)
 
     def onDisconnected(self):
         """丢失连接"""
+        self._timer.stop()
         self.buttonConnect.setEnabled(True)  # 按钮可用
         # 设置初始拉动条不可用
         self.sliderForward.setEnabled(False)
@@ -94,17 +105,22 @@ class ControlCar(QWidget):
 
     def onReadyRead(self):
         """接收到数据"""
-        while self._conn.bytesAvailable() > 0:
+        while self._connCar.bytesAvailable() > 0:
             try:
-                data = self._conn.readAll().data()
-                self.browserResult.append('接收到数据: ' + data.decode())
+                data = self._connCar.readAll().data()
+                if data and data.find(b'JFIF') > -1:
+                    self.qlabel.setPixmap(  # 图片
+                        QPixmap.fromImage(QImage.fromData(data)))
+                else:
+                    self.browserResult.append('接收到数据: ' + data.decode())
             except Exception as e:
                 self.browserResult.append('解析数据错误: ' + str(e))
 
     def onError(self, _):
         """连接报错"""
+        self._timer.stop()
         self.buttonConnect.setEnabled(True)  # 按钮可用
-        self.browserResult.append('连接服务器错误: ' + self._conn.errorString())
+        self.browserResult.append('连接服务器错误: ' + self._connCar.errorString())
 
     def doForward(self, value):
         """向前"""
@@ -126,14 +142,15 @@ class ControlCar(QWidget):
         # 发送的内容为  R:1 类似的
         self.sendData('R:', str(value))
 
+    def doGetImage(self):
+        # 请求图片
+        self.sendData('getimage', '')
+
     def sendData(self, ver, data):
         """发送数据"""
-        if not self._conn or not self._conn.isWritable():
+        if not self._connCar or not self._connCar.isWritable():
             return self.browserResult.append('服务器未连接或不可写入数据')
-#         self._conn.write(ver.encode() + str(data).encode())
-
-        # 我的服务器需要接收以\n结尾的数据
-        self._conn.write(ver.encode() + str(data).encode() + b'\n')
+        self._connCar.write(ver.encode() + str(data).encode() + b'\n')
 
 
 if __name__ == '__main__':

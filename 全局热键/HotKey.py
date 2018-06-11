@@ -11,7 +11,9 @@ Created on 2017年12月11日
 '''
 import sys
 
-from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QTextBrowser, QPushButton
+from PyQt5.QtCore import pyqtSignal, Qt
+from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QTextBrowser, QPushButton,\
+    QMessageBox
 import keyboard
 
 
@@ -22,9 +24,12 @@ __Version__ = "Version 1.0"
 
 class Window(QWidget):
 
+    dialogShow = pyqtSignal()
+
     def __init__(self, *args, **kwargs):
         super(Window, self).__init__(*args, **kwargs)
         layout = QVBoxLayout(self)
+        self.dialogShow.connect(self.onShowDialog, type=Qt.QueuedConnection)
         self.logView = QTextBrowser(self)
         self.logView.append("点击右上角关闭按钮会隐藏窗口,通过热键Alt+S来显示")
         self.logView.append("等待热键中")
@@ -53,6 +58,10 @@ class Window(QWidget):
         self.logView.append('按下alt+s')
         self.show()
         self.showNormal()
+        self.dialogShow.emit()
+
+    def onShowDialog(self):
+        QMessageBox.information(self, '对话框', '按下alt+s键')
 
     def onHide(self):
         """隐藏"""
