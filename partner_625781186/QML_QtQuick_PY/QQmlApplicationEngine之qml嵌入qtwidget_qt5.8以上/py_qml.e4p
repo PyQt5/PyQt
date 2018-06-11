@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project py_qml -->
-<!-- Saved: 2018-04-16, 21:55:09 -->
+<!-- Saved: 2018-04-17, 01:40:55 -->
 <!-- Copyright (C) 2018 ,  -->
 <Project version="5.1">
   <Language>en_US</Language>
@@ -17,10 +17,13 @@
     <Source>__init__.py</Source>
     <Source>py_mqltest.qml</Source>
     <Source>py_qml.py</Source>
+    <Source>qml_rc.py</Source>
   </Sources>
   <Forms/>
   <Translations/>
-  <Resources/>
+  <Resources>
+    <Resource>qml.qrc</Resource>
+  </Resources>
   <Interfaces/>
   <Others/>
   <Vcs>

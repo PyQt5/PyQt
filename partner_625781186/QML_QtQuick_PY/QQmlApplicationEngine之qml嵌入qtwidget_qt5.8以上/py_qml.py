@@ -13,7 +13,7 @@ from PyQt5.QtQml import *
 from PyQt5.QtQuick import QQuickView
 
 from Ui_py_qml import Ui_MainWindow
-
+import qml_rc
 
 class Dialog(QMainWindow, Ui_MainWindow):
 
@@ -42,7 +42,7 @@ class Dialog(QMainWindow, Ui_MainWindow):
         self.verticalLayout.addWidget(self.container)  
         
     def myengine(self):    
-        self.engine = QQmlApplicationEngine(QUrl("py_mqltest.qml")) ;
+        self.engine = QQmlApplicationEngine(QUrl("qrc:/py_mqltest.qml")) ;
         print(self.engine.rootObjects(),"==",self.engine.rootObjects())
         self.qmlWindow = self.engine.rootObjects()[0]
 
