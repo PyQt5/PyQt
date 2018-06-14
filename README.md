@@ -65,6 +65,9 @@
  - [4.9 水波纹进度条](界面美化/水波纹进度条)
  - [4.10 QSlider美化](界面美化/QSlider美化)
 
+### [5.动画特效](动画特效/)
+ - [5.1 淡入淡出](动画特效/淡入淡出.py)
+
 # QQ群
  - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)
  - [PyQt学习互助](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
