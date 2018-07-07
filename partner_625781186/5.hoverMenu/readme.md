@@ -2,4 +2,4 @@
 
 ![截图2](ScreenShot/2.gif)
 
-[文档](Documentation/)
+[文档](Documentation/index.html)
