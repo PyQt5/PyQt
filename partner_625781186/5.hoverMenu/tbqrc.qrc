@@ -1,0 +1,24 @@
+<RCC>
+  <qresource>
+    <file>static/background.jpg</file>
+    <file>static/competitiveProductAnalysis.png</file>
+    <file>static/download.jpg</file>
+    <file>static/drillTools.png</file>
+    <file>static/exit.png</file>
+    <file>static/finance.png</file>
+    <file>static/icon.ico</file>
+    <file>static/information.png</file>
+    <file>static/login.jpg</file>
+    <file>static/marketAnalysis.png</file>
+    <file>static/microAmoy.png</file>
+    <file>static/password.png</file>
+    <file>static/qr_main.png</file>
+    <file>static/register.jpg</file>
+    <file>static/search.png</file>
+    <file>static/store_data.png</file>
+    <file>static/taobaoLogin.png</file>
+    <file>static/taobaoLogin_title.png</file>
+    <file>static/throughTrain.png</file>
+    <file>static/username_headers.png</file>
+  </qresource>
+</RCC>
