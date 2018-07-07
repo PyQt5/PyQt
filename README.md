@@ -42,9 +42,9 @@
  - [1.29 数据库查询显示表格](数据库查询显示表格/)
  - [1.30 左侧选项卡](左侧选项卡/)
  - [1.40 探测窗口和放大截图](探测窗口和放大截图/)
- - 1.41 悬浮下拉菜单
+ - [1.41 消息对话框倒计时关闭](消息对话框倒计时关闭/)
+ - 1.42 悬浮下拉菜单
     - [1. tableWidget形式](partner_625781186/5.hoverMenu) 
-
 ### [2.QGraphicsView练习](QGraphicsView练习/)
  - [2.1 世界地图](QGraphicsView练习/世界地图)
  - [2.2 添加QWidget](QGraphicsView练习/添加QWidget.py)
@@ -66,12 +66,17 @@
  - [4.9 水波纹进度条](界面美化/水波纹进度条)
  - [4.10 QSlider美化](界面美化/QSlider美化)
 
+
 ### [5.QML](partner_625781186/QML_QtQuick_PY)
 - [python_QML调用基础](partner_625781186/QML_QtQuick_PY/python_QML调用基础)
 - QWidget窗体中嵌入qml界面
     - [QDialog中嵌入qml窗体并缩放](partner_625781186/QML_QtQuick_PY/QDialog中嵌入qml窗体并缩放)
     - [QQmlApplicationEngine之qml嵌入qtwidget_qt5.8以上](partner_625781186/QML_QtQuick_PY/QQmlApplicationEngine之qml嵌入qtwidget_qt5.8以上)
 
+
+### [5.动画特效](动画特效/)
+ - [5.1 淡入淡出](动画特效/淡入淡出.py)
+>>>>>>> iron/master
 
 # QQ群
  - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)
