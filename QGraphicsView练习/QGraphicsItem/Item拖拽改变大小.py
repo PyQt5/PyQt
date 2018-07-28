@@ -27,9 +27,9 @@ class MoveableItem(QGraphicsRectItem):
     def __init__(self, *args, **kwargs):
         super(MoveableItem, self).__init__(*args, **kwargs)
         self.setPos(0, 0)
-        # 可移动,可选择,有焦点
-        self.setFlags(self.ItemIsMovable |
-                      self.ItemIsSelectable | self.ItemIsFocusable)
+        # 可移动,可选择,有焦点,发送大小位置改变事件
+        self.setFlags(self.ItemIsMovable | self.ItemIsSelectable |
+                      self.ItemIsFocusable | self.ItemSendsGeometryChanges)
         # 设置接收悬停事件
         self.setAcceptHoverEvents(True)
         self.setBrush(QColor(247, 160, 57))  # 设置背景颜色
@@ -83,18 +83,18 @@ class MoveableItem(QGraphicsRectItem):
         super(MoveableItem, self).mouseReleaseEvent(event)
         if event.button() == Qt.LeftButton and self.isResizing:
             self.isResizing = False
-            self.prePos =None
+            self.prePos = None
 
     def mouseMoveEvent(self, event):
         # 鼠标移动
         if self.isResizing and self.prePos:
             rect = self.boundingRect()
-            pos = event.pos()-self.prePos
+            pos = event.pos() - self.prePos
             w = pos.x()
             h = pos.y()
-            x = -4 if w>0 else 4
-            y = -4 if h>0 else 4
-            print(x, y, -x, -y,pos)
+            x = -4 if w > 0 else 4
+            y = -4 if h > 0 else 4
+            print(x, y, -x, -y, pos)
             self.setRect(rect.adjusted(x, y, -x, -y))
             self.prepareGeometryChange()
         else:
