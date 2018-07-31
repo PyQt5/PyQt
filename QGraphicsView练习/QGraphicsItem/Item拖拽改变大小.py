@@ -36,7 +36,8 @@ class MoveableItem(QGraphicsRectItem):
 
         # 是否在调整大小的状态
         self.isResizing = False
-        self.prePos = None
+        self.mousePressPos = None
+        self.mousePressRect = None
 
     def paint(self, painter, option, widget):
         super(MoveableItem, self).paint(painter, option, widget)
@@ -47,7 +48,8 @@ class MoveableItem(QGraphicsRectItem):
             x, y, w, h = rect.x(), rect.y(), rect.width(), rect.height()
             if option.state & QStyle.State_HasFocus:  # 有焦点
                 painter.setPen(QPen(Qt.red, 3))  # 设置红色画笔
-                painter.drawLines(  # 在左上、左下、右上、右下画8条小线段
+                # 在左上、左下、右上、右下、以及四条边上画小线段
+                painter.drawLines(
                     QLineF(x, y, x + 10, y),  # 左上顶点向右
                     QLineF(x, y, x, y + 10),  # 左上顶点向下
 
@@ -63,7 +65,7 @@ class MoveableItem(QGraphicsRectItem):
 
     def hoverMoveEvent(self, event):
         super(MoveableItem, self).hoverMoveEvent(event)
-        # 鼠标悬停事件
+        # 鼠标悬停事件,用于检测鼠标位置并改变鼠标形态
         cursor = self.isInResizeArea(event.pos())
         if self.isResizing or (cursor and self.isSelected()):
             # 正在调整中或者鼠标在可调整区域范围内并且是选中
@@ -71,25 +73,33 @@ class MoveableItem(QGraphicsRectItem):
         else:
             self.setCursor(Qt.ArrowCursor)
 
+    def hoverLeaveEvent(self, event):
+        """鼠标悬停离开事件恢复鼠标样式"""
+        super(MoveableItem, self).hoverLeaveEvent(event)
+        self.setCursor(Qt.ArrowCursor)
+
     def mousePressEvent(self, event):
         # 鼠标按下
         super(MoveableItem, self).mousePressEvent(event)
         if event.button() == Qt.LeftButton and self.isInResizeArea(event.pos()):
             self.isResizing = True
-            self.prePos = event.pos()
+            self.mousePressPos = event.pos()
+            self.mousePressRect = self.boundingRect()
 
     def mouseReleaseEvent(self, event):
         # 鼠标释放开
         super(MoveableItem, self).mouseReleaseEvent(event)
         if event.button() == Qt.LeftButton and self.isResizing:
             self.isResizing = False
-            self.prePos = None
+            self.mousePressPos = None
+            self.mousePressRect = None
+            self.update()
 
     def mouseMoveEvent(self, event):
         # 鼠标移动
-        if self.isResizing and self.prePos:
+        if self.isResizing and self.mousePressPos:
             rect = self.boundingRect()
-            pos = event.pos() - self.prePos
+            pos = event.pos() - self.mousePressPos
             w = pos.x()
             h = pos.y()
             x = -4 if w > 0 else 4
@@ -115,6 +125,12 @@ class MoveableItem(QGraphicsRectItem):
         # 右上角和左下角
         if (rx and ty) or (lx and by):
             return Qt.SizeBDiagCursor
+        # 上、下
+        if ty or by:
+            return Qt.SizeVerCursor
+        if lx or rx:
+            return Qt.SizeHorCursor
+        # 左、右
         return 0
 
 
