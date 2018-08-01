@@ -83,6 +83,6 @@ if __name__ == '__main__':
 ## 截图
 ![截图](ScreenShot/1.jpg)
 
-![截图](ScreenShot/1.jpg)
+![截图](ScreenShot/2.jpg)
 
 ![截图](ScreenShot/3.gif)
