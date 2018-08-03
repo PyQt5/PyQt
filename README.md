@@ -45,6 +45,7 @@
  - [1.41 消息对话框倒计时关闭](消息对话框倒计时关闭/)
  - 1.42 悬浮下拉菜单
     - [1. tableWidget形式](partner_625781186/5.hoverMenu) 
+ - [1.43 QListView](QListView/)
     
 ### [2.QGraphicsView练习](QGraphicsView练习/)
  - [2.1 世界地图](QGraphicsView练习/世界地图)
