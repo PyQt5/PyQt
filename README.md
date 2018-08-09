@@ -15,7 +15,9 @@
  - [1.8 自定义属性测试](自定义属性测试/)
  - [1.9 自动更新](自动更新/)
  - [1.10 自定义QWidget的QSS样式](自定义QWidget的QSS样式/)
- - [1.11 浏览器获取Cookie](浏览器获取Cookie/)
+ - 1.11 浏览器QWebEngine模块例子
+    - [1.11 浏览器获取Cookie](浏览器获取Cookie/)
+    - [1.12 浏览器下载功能](partner_625781186/6.QWebEngineView下载文件)
  - [1.12 全局热键](全局热键/)
  - [1.13 图片加载](图片加载/)
  - [1.14 窗口重启](窗口重启/)
@@ -44,8 +46,9 @@
  - [1.40 探测窗口和放大截图](探测窗口和放大截图/)
  - [1.41 消息对话框倒计时关闭](消息对话框倒计时关闭/)
  - 1.42 悬浮下拉菜单
-    - [1. tableWidget形式](partner_625781186/5.hoverMenu) 
+    - [1. tableWidget形式](partner_625781186/5.hoverMenu)
  - [1.43 QListView](QListView/)
+ - [1.44 QSplitter 分割条重写 来添加按钮](分割窗口的分割条重写/)
     
 ### [2.QGraphicsView练习](QGraphicsView练习/)
  - [2.1 世界地图](QGraphicsView练习/世界地图)

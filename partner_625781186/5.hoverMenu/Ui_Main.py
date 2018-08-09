@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\pyPro\hoverMenu\Main.ui'
+# Form implementation generated from reading ui file 'D:\QGroup_432987409\WoHowLearn\0.M_I_pyqt\partner_625781186\5.hoverMenu\Main.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
@@ -159,8 +159,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_15.setText(_translate("MainWindow", "店铺数据"))
         self.label_16.setText(_translate("MainWindow", "竞品分析"))
-        self.label_19.setText(_translate("MainWindow", "直通工具"))
-        self.label_14.setText(_translate("MainWindow", "直通工具"))
+        self.label_19.setText(_translate("MainWindow", "直通车工具工具工具"))
+        self.label_14.setText(_translate("MainWindow", "直通"))
         self.label_17.setText(_translate("MainWindow", "个人中心"))
         self.label_18.setText(_translate("MainWindow", "退出登录"))
         self.action1.setText(_translate("MainWindow", "1"))
