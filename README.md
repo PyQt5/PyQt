@@ -47,7 +47,8 @@
  - [1.41 消息对话框倒计时关闭](消息对话框倒计时关闭/)
  - 1.42 悬浮下拉菜单
     - [1. tableWidget形式](partner_625781186/5.hoverMenu)
- - [1.43 QSplitter 分割条重写 来添加按钮](分割窗口的分割条重写/)
+ - [1.43 QListView](QListView/)
+ - [1.44 QSplitter 分割条重写 来添加按钮](分割窗口的分割条重写/)
     
 ### [2.QGraphicsView练习](QGraphicsView练习/)
  - [2.1 世界地图](QGraphicsView练习/世界地图)

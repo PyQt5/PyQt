@@ -68,5 +68,21 @@ if __name__ == '__main__':
 
 ```
 
-# 截图
+## 截图
 ![截图](ScreenShot/1.gif)
+
+
+
+# 利用windows api
+
+原理说明:
+
+ - 使用win32gui设置薄边框
+ - 重写nativeEvent事件拦截边框的系统边框的显示，并返回各个方向
+
+## 截图
+![截图](ScreenShot/1.jpg)
+
+![截图](ScreenShot/2.jpg)
+
+![截图](ScreenShot/3.gif)
