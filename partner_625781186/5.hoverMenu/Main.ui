@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>648</width>
-    <height>493</height>
+    <width>797</width>
+    <height>536</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -239,7 +239,7 @@
              <item row="1" column="1">
               <widget class="QLabel" name="label_19">
                <property name="text">
-                <string>直通工具</string>
+                <string>直通车工具工具工具</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -309,7 +309,7 @@
              <item row="1" column="1">
               <widget class="QLabel" name="label_14">
                <property name="text">
-                <string>直通工具</string>
+                <string>直通</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>

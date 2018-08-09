@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project hoverMenu -->
-<!-- Saved: 2018-07-07, 14:22:08 -->
+<!-- Saved: 2018-07-07, 19:07:43 -->
 <!-- Copyright (C) 2018 ,  -->
 <Project version="5.1">
   <Language></Language>
@@ -44,7 +44,10 @@
     <Resource>tbqrc.qrc</Resource>
   </Resources>
   <Interfaces/>
-  <Others/>
+  <Others>
+    <Other>Documentation</Other>
+    <Other>/Documentation</Other>
+  </Others>
   <Vcs>
     <VcsType>None</VcsType>
   </Vcs>
@@ -65,4 +68,44 @@
     <FiletypeAssociation pattern="README" type="OTHERS"/>
     <FiletypeAssociation pattern="README.*" type="OTHERS"/>
   </FiletypeAssociations>
+  <Documentation>
+    <DocumentationParams>
+      <dict>
+        <key>
+          <string>ERIC4DOC</string>
+        </key>
+        <value>
+          <dict>
+            <key>
+              <string>cssFile</string>
+            </key>
+            <value>
+              <string>%PYTHON%/eric6/CSSs/default.css</string>
+            </value>
+            <key>
+              <string>ignoreFilePatterns</string>
+            </key>
+            <value>
+              <list>
+                <string>tbqrc_rc.py</string>
+                <string>Ui_Main.py</string>
+              </list>
+            </value>
+            <key>
+              <string>outputDirectory</string>
+            </key>
+            <value>
+              <string>Documentation</string>
+            </value>
+            <key>
+              <string>qtHelpEnabled</string>
+            </key>
+            <value>
+              <bool>False</bool>
+            </value>
+          </dict>
+        </value>
+      </dict>
+    </DocumentationParams>
+  </Documentation>
 </Project>
