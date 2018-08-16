@@ -5,6 +5,7 @@ import ctypes.wintypes
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWinExtras import QtWin
 import win32api
 import win32con
 import win32gui
@@ -52,6 +53,12 @@ class Window(QWidget):
         style = win32gui.GetWindowLong(int(self.winId()), win32con.GWL_STYLE)
         win32gui.SetWindowLong(
             int(self.winId()), win32con.GWL_STYLE, style | win32con.WS_THICKFRAME)
+
+        if QtWin.isCompositionEnabled():
+            # 加上 Aero 边框阴影
+            QtWin.extendFrameIntoClientArea(self, -1, -1, -1, -1)
+        else:
+            QtWin.resetExtendedFrame(self)
 
     def nativeEvent(self, eventType, message):
         retval, result = super(Window, self).nativeEvent(eventType, message)
