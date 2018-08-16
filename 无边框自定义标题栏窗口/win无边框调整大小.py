@@ -1,5 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from ctypes.wintypes import POINT
+import ctypes.wintypes
+
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QWidget
+import win32api
+import win32con
+import win32gui
+
 
 # Created on 2018年8月2日
 # author: Irony
@@ -14,13 +23,14 @@ __Copyright__ = 'Copyright (c) 2018 Irony'
 __Version__ = 1.0
 
 
-import ctypes.wintypes
-
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget
-import win32api
-import win32con
-import win32gui
+class MINMAXINFO(ctypes.Structure):
+    _fields_ = [
+        ("ptReserved",      POINT),
+        ("ptMaxSize",       POINT),
+        ("ptMaxPosition",   POINT),
+        ("ptMinTrackSize",  POINT),
+        ("ptMaxTrackSize",  POINT),
+    ]
 
 
 class Window(QWidget):
@@ -29,6 +39,8 @@ class Window(QWidget):
 
     def __init__(self, *args, **kwargs):
         super(Window, self).__init__(*args, **kwargs)
+        # 主屏幕的可用大小（去掉任务栏）
+        self._rect = QApplication.instance().desktop().availableGeometry(self)
         self.resize(800, 600)
         self.setWindowFlags(Qt.Window
                             | Qt.FramelessWindowHint
@@ -48,6 +60,15 @@ class Window(QWidget):
             if msg.message == win32con.WM_NCCALCSIZE:
                 # 拦截不显示顶部的系统自带的边框
                 return True, 0
+            if msg.message == win32con.WM_GETMINMAXINFO:
+                # 当窗口位置改变或者大小改变时会触发该消息
+                info = ctypes.cast(
+                    msg.lParam, ctypes.POINTER(MINMAXINFO)).contents
+                # 修改最大化的窗口大小为主屏幕的可用大小
+                info.ptMaxSize.x = self._rect.width()
+                info.ptMaxSize.y = self._rect.height()
+                # 修改放置点的x,y坐标为0,0
+                info.ptMaxPosition.x, info.ptMaxPosition.y = 0, 0
             if msg.message == win32con.WM_NCHITTEST:
                 # 获取鼠标移动经过时的坐标
                 x = win32api.LOWORD(msg.lParam) - self.frameGeometry().x()
