@@ -7,10 +7,13 @@
 
 [客户端动画界面](https://github.com/892768447/PyQtClient)
 
+[桌面悬浮异形窗体](https://github.com/892768447/Lolita)
+
 [必应壁纸](https://github.com/892768447/BingWallpaper)
 
 [腾讯视频热播列表](腾讯视频热播列表/)
 
+[ QWebView 与 python 通过js交互 特效 - 已失效 未更新](https://github.com/892768447/PhotoEffects)
 ### II、功能型
 
 #### 2.1 常用例子
@@ -51,11 +54,12 @@
     - [ QSqlTableModel + QTableView 数据库查询显示表格](数据库查询显示表格/)
 
 
-
  -  浏览器QWebEngine模块例子
     - [ 浏览器获取Cookie](浏览器获取Cookie/)
     - [ 浏览器下载功能](partner_625781186/QWebEngineView下载文件)
     - [ 梦幻树 QWebView - 已失效 未更新](梦幻树/)
+    - [ QWebView 与 python 通过js交互 特效 - 已失效 未更新](https://github.com/892768447/PhotoEffects)
+    
 
  #### 2.2 框架
 - [ 无边框自定义标题栏窗口](无边框自定义标题栏窗口/)
