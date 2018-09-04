@@ -11,7 +11,7 @@ Created on 2018年9月4日
 """
 from PyQt5.QtCore import QSize, pyqtProperty, QTimer, Qt
 from PyQt5.QtGui import QColor, QPainter
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QHBoxLayout
 
 
 __Author__ = """By: Irony
@@ -27,9 +27,12 @@ class CircleProgressBar(QWidget):
     Clockwise = True  # 顺时针还是逆时针
     Delta = 36
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, color=None, clockwise=True, **kwargs):
         super(CircleProgressBar, self).__init__(*args, **kwargs)
         self.angle = 0
+        self.Clockwise = clockwise
+        if color:
+            self.Color = color
         self._timer = QTimer(self, timeout=self.update)
         self._timer.start(100)
 
@@ -87,10 +90,23 @@ class CircleProgressBar(QWidget):
         return QSize(100, 100)
 
 
+class Window(QWidget):
+
+    def __init__(self, *args, **kwargs):
+        super(Window, self).__init__(*args, **kwargs)
+        layout = QHBoxLayout(self)
+        layout.addWidget(CircleProgressBar(self))
+        layout.addWidget(CircleProgressBar(
+            self, color=QColor(255, 0, 0), clockwise=False))
+        layout.addWidget(CircleProgressBar(self, styleSheet="""
+            qproperty-color: rgb(0, 255, 0);
+        """))
+
+
 if __name__ == '__main__':
     import sys
     from PyQt5.QtWidgets import QApplication
     app = QApplication(sys.argv)
-    w = CircleProgressBar()
+    w = Window()
     w.show()
     sys.exit(app.exec_())
