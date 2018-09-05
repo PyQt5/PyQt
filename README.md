@@ -44,6 +44,7 @@
     1. - [ QActiveX窗口 加载本地word/pdf](ActiveX窗口/)
     
  - win 32
+ 
     1. - [ 线程的挂起与恢复](多线程使用/)
     1. - [ 嵌入外部窗口](嵌入外部窗口/)
     1. - [ 截图dll (只能用32位python)](调用截图dll(只能用32位)/)
@@ -51,19 +52,20 @@
 
  - Model & View
  
-    1. - [ QTabWidget 左侧标签 正字方法](左侧选项卡/)
-    1. - [ QTabWidget 表格复制 与 黏贴](表格复制/)
-
     1. - [ QListView 加按钮和 排序](QListView/)
+    
     1. - [ Json生成QTreeWidget](Json生成QTreeWidget/)
     1. - [ treeWidget 节点可拖拽](https://github.com/AshotS/glowing-disco)
     1. - [ treeWidget 支持拖拽 并改变图标样式](12.1拖拽显示为图片/)
-    1. - [ QSqlTableModel + QTableView 数据库查询显示表格](数据库查询显示表格/)
-
+    
+    1. - [ QTabWidget 左侧标签 正字方法](左侧选项卡/)
+    1. - [ QTabWidget 表格复制 与 黏贴](表格复制/)
+    1. - [ QSqlTableModel + QTableView 数据库查询显示表格](数据库查询显示表格/)   
 
  -  浏览器QWebEngine模块例子
+ 
     1. - [ 浏览器获取Cookie](浏览器获取Cookie/)
-    1. - [ 浏览器下载功能](partner_625781186/QWebEngineView下载文件)
+    1. - [ 浏览器下载功能](partner_625781186/6.QWebEngineView下载文件)
     1. - [ 浏览器开启调试工具](partner_625781186/14.多进程爬虫)
 
     1. - [ 梦幻树 QWebView - QWebEngine需要改代码](梦幻树/)
@@ -75,7 +77,7 @@
 1. - [ 简单的窗口贴边隐藏](简单的窗口贴边隐藏/)
 1. - [ 验证码控件](验证码控件/)
 1. -  悬浮下拉菜单
-       - [ tableWidget形式](partner_625781186/hoverMenu)
+       - [ tableWidget形式](partner_625781186/5.hoverMenu)
     
 #### 2.3 其他案例
 - [ 人脸描点检测](人脸描点检测/)
@@ -105,9 +107,9 @@
 #### 3.2 [动画型](动画特效/)
 
 1. - [ 气泡提示 上升渐隐](气泡提示/)
-1. - [ 折叠动画效果](partner_625781186/折叠控件/)
-1. - [ 淡入淡出](动画特效/淡入淡出.py)
-1. - [ 右键菜单动画](动画特效/右键菜单动画.py)
+1. - [ 折叠动画效果](partner_625781186/2.折叠控件/)
+1. - [ 淡入淡出](动画特效/)
+1. - [ 右键菜单动画](动画特效/)
 1. - [ 水波纹进度条](界面美化/水波纹进度条)
 
 ### IIII、图表型
