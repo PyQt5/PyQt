@@ -58,6 +58,7 @@
     1. - [ QListView 加按钮和 排序](QListView/)
     1. - [ Json生成QTreeWidget](Json生成QTreeWidget/)
     1. - [ treeWidget 节点可拖拽](https://github.com/AshotS/glowing-disco)
+    1. - [ treeWidget 支持拖拽 并改变图标样式](12.1拖拽显示为图片/)
     1. - [ QSqlTableModel + QTableView 数据库查询显示表格](数据库查询显示表格/)
 
 
