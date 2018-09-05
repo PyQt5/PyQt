@@ -13,7 +13,7 @@
 
 [腾讯视频热播列表](腾讯视频热播列表/)
 
-[ QWebView 与 python 通过js交互 特效 - 已失效 未更新](https://github.com/892768447/PhotoEffects)
+[ QWebView 与 python 通过js交互 特效 - QWebEngine需要改代码](https://github.com/892768447/PhotoEffects)
 
 ### II、功能型
 
@@ -65,8 +65,10 @@
  -  浏览器QWebEngine模块例子
     1. - [ 浏览器获取Cookie](浏览器获取Cookie/)
     1. - [ 浏览器下载功能](partner_625781186/QWebEngineView下载文件)
-    1. - [ 梦幻树 QWebView - 已失效 未更新](梦幻树/)
-    1. - [ QWebView 与 python 通过js交互 特效 - 已失效 未更新](https://github.com/892768447/PhotoEffects)
+    1. - [ 浏览器开启调试工具](partner_625781186/14.多进程爬虫)
+
+    1. - [ 梦幻树 QWebView - QWebEngine需要改代码](梦幻树/)
+    1. - [ QWebView 与 python 通过js交互 特效 - QWebEngine需要改代码](https://github.com/892768447/PhotoEffects)
     
 
  #### 2.2 框架
