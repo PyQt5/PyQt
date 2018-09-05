@@ -7,3 +7,7 @@
 ### [2.PercentProgressBar](各类进度条/PercentProgressBar.py)
 
 ![PercentProgressBar](ScreenShot/2.gif)
+
+### [3.MetroLineProgress](各类进度条/MetroLineProgress.py)
+
+![MetroLineProgress](ScreenShot/3.gif)
