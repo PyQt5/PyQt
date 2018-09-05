@@ -112,7 +112,7 @@
 1. - [ 右键菜单动画](动画特效/)
 1. - [ 水波纹进度条](界面美化/水波纹进度条)
 
-### IIII、图表型
+### IV、图表型
 #### 4.1 [ QGraphicsView练习](QGraphicsView练习/)
  - [ 世界地图](QGraphicsView练习/世界地图)
  - [ 添加QWidget](QGraphicsView练习/添加QWidget.py)
@@ -123,7 +123,7 @@
  - [ test](PyQtChart练习/test)
 
 
-### IV、[QML](partner_625781186/QML_QtQuick_PY)
+### V、[QML](partner_625781186/QML_QtQuick_PY)
 - [python_QML调用基础](partner_625781186/QML_QtQuick_PY/python_QML调用基础)
 - QWidget窗体中嵌入qml界面
     - [QDialog中嵌入qml窗体并缩放](partner_625781186/QML_QtQuick_PY/QDialog中嵌入qml窗体并缩放)
