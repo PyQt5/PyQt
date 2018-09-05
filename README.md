@@ -14,6 +14,7 @@
 [腾讯视频热播列表](腾讯视频热播列表/)
 
 [ QWebView 与 python 通过js交互 特效 - 已失效 未更新](https://github.com/892768447/PhotoEffects)
+
 ### II、功能型
 
 #### 2.1 常用例子
@@ -28,7 +29,7 @@
  -   python 的exec( ) 动态生成控件
         - [1. 动态控件基础例子 - 动态生成按钮](partner_625781186/exec动态生成控件/dynamic_button)
         - [2. 动态控件基础例子 - 动态生成菜单](partner_625781186/exec动态生成控件/dynamic_Menu)
-        - [3.配合setting记录模型类型](partner_625781186/exec动态生成控件/)
+        - [3. 配合setting记录模型类型](partner_625781186/exec动态生成控件/)
 - 小部件
  
     - [ ☆！ QSplitter 分割条重写 来添加按钮](分割窗口的分割条重写/)
@@ -40,6 +41,7 @@
     - [ 右下角弹出框](右下角弹出框/)
     - [ 消息对话框倒计时关闭](消息对话框倒计时关闭/)
 
+    - [QTextEdit 文本高亮](文本高亮/)
  - win 32
     - [ 嵌入外部窗口](嵌入外部窗口/)
     - [ 探测窗口和 放大镜](探测窗口和放大截图/) 
@@ -51,6 +53,7 @@
 
     - [ QListView 加按钮和 排序](QListView/)
     - [ Json生成QTreeWidget](Json生成QTreeWidget/)
+    - [ treeWidget 节点可拖拽](https://github.com/AshotS/glowing-disco)
     - [ QSqlTableModel + QTableView 数据库查询显示表格](数据库查询显示表格/)
 
 
