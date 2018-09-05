@@ -27,8 +27,8 @@
 1.  - [ 程序重启](程序重启/)
 1.  - [ 窗口重启](窗口重启/)
 1.  -   python 的exec( ) 动态生成控件
-        - [1. 动态控件基础例子 - 动态生成按钮](partner_625781186/exec动态生成控件/dynamic_button)
-        - [2. 动态控件基础例子 - 动态生成菜单](partner_625781186/exec动态生成控件/dynamic_Menu)
+        - [1. 动态控件基础例子 - 动态生成按钮](partner_625781186/1.exec动态生成控件/dynamic_button)
+        - [2. 动态控件基础例子 - 动态生成菜单](partner_625781186/1.exec动态生成控件/dynamic_Menu)
         - [3. 配合setting记录模型类型](partner_625781186/13.combo_listwidget)
 
 - 小部件
