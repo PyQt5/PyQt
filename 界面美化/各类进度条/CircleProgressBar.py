@@ -46,7 +46,7 @@ class CircleProgressBar(QWidget):
         painter.rotate(self.angle)
         painter.save()
         painter.setPen(Qt.NoPen)
-        color = self.Color
+        color = self.Color.toRgb()
         for i in range(11):
             color.setAlphaF(1.0 * i / 10)
             painter.setBrush(color)
