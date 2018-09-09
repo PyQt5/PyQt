@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE Project SYSTEM "Project-5.1.dtd">
+<!DOCTYPE Project SYSTEM "Project-6.0.dtd">
 <!-- eric project file for project hoverMenu -->
-<!-- Saved: 2018-07-07, 19:07:43 -->
+<!-- Saved: 2018-09-09, 22:34:07 -->
 <!-- Copyright (C) 2018 ,  -->
-<Project version="5.1">
+<Project version="6.0">
   <Language></Language>
   <Hash>873d0c0fade67dd54262d1b6954d5edfac966911</Hash>
   <ProgLanguage mixed="0">Python3</ProgLanguage>
@@ -13,40 +13,34 @@
   <Email></Email>
   <Eol index="0"/>
   <Sources>
-    <Source>BaseElement.py</Source>
-    <Source>CommonHelper.py</Source>
     <Source>Main.py</Source>
-    <Source>Menu.py</Source>
-    <Source>UCompetitiveProduct2/SKU_Widget.py</Source>
-    <Source>UCompetitiveProduct2/Ui_L2.py</Source>
-    <Source>UCompetitiveProduct2/Ui_SKU_Widget.py</Source>
-    <Source>UMarketAnalysis3/Ui_L3.py</Source>
-    <Source>UStoreData1/Ui_L1.py</Source>
-    <Source>UThroughTrain4/GeographicAnalysis_Widget.py</Source>
-    <Source>UThroughTrain4/Ui_GeographicAnalysis_Widget.py</Source>
-    <Source>UThroughTrain4/Ui_L4.py</Source>
+    <Source>Tools/CommonHelper.py</Source>
+    <Source>Tools/__init__.py</Source>
+    <Source>Tools/qmf_showError.py</Source>
+    <Source>Tools/style.css</Source>
+    <Source>U_FuncWidget/BaseElement.py</Source>
+    <Source>U_FuncWidget/Menu.py</Source>
+    <Source>U_FuncWidget/UCompetitiveProduct2/SKU_Widget.py</Source>
+    <Source>U_FuncWidget/UCompetitiveProduct2/Ui_SKU_Widget.py</Source>
+    <Source>U_FuncWidget/UCompetitiveProduct2/__init__.py</Source>
+    <Source>U_FuncWidget/UStoreData1/Ui_L1.py</Source>
+    <Source>U_FuncWidget/UThroughTrain4/GeographicAnalysis_Widget.py</Source>
+    <Source>U_FuncWidget/UThroughTrain4/Ui_GeographicAnalysis_Widget.py</Source>
+    <Source>U_FuncWidget/UThroughTrain4/__init__.py</Source>
     <Source>Ui_Main.py</Source>
-    <Source>__init__.py</Source>
     <Source>tbqrc_rc.py</Source>
   </Sources>
   <Forms>
     <Form>Main.ui</Form>
-    <Form>UCompetitiveProduct2/L2.ui</Form>
-    <Form>UCompetitiveProduct2/SKU_Widget.ui</Form>
-    <Form>UMarketAnalysis3/L3.ui</Form>
-    <Form>UStoreData1/L1.ui</Form>
-    <Form>UThroughTrain4/GeographicAnalysis_Widget.ui</Form>
-    <Form>UThroughTrain4/GeographicAnalysis_Widget.ui</Form>
-    <Form>UThroughTrain4/L4.ui</Form>
+    <Form>U_FuncWidget/UCompetitiveProduct2/SKU_Widget.ui</Form>
+    <Form>U_FuncWidget/UStoreData1/L1.ui</Form>
+    <Form>U_FuncWidget/UThroughTrain4/GeographicAnalysis_Widget.ui</Form>
   </Forms>
-  <Translations/>
   <Resources>
     <Resource>tbqrc.qrc</Resource>
   </Resources>
-  <Interfaces/>
   <Others>
     <Other>Documentation</Other>
-    <Other>/Documentation</Other>
   </Others>
   <Vcs>
     <VcsType>None</VcsType>
@@ -87,8 +81,8 @@
             </key>
             <value>
               <list>
-                <string>tbqrc_rc.py</string>
-                <string>Ui_Main.py</string>
+                <string>Ui_*.py</string>
+                <string>*_rc.py</string>
               </list>
             </value>
             <key>
@@ -102,6 +96,12 @@
             </key>
             <value>
               <bool>False</bool>
+            </value>
+            <key>
+              <string>useRecursion</string>
+            </key>
+            <value>
+              <bool>True</bool>
             </value>
           </dict>
         </value>
