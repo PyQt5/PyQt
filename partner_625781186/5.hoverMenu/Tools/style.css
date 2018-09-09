@@ -1,5 +1,5 @@
     /*background-color: #3daee9; */
-    #topWidget , TestWidget
+    #topWidget
     {
         color: #eff0f1;
         background-color: #3daee9;
@@ -9,14 +9,10 @@
         border-image: none;
         border: 0px transparent black;
         outline: 0;
-    
     }
-TestWidget > QPushButton{
-    border-width: 1px;
-    
-}    
+   
 
-    #buttomWidget
+    #bottomWidget
     {
         border-image: url(:/static/background.jpg);
     }
@@ -36,10 +32,10 @@ TestWidget > QPushButton{
      color: #eff0f1;
  }
  
- /* QWidget:item:selected
+  QWidget:item:selected
  {
      background-color: #18465d;
- } */
+ } 
  
   
  QWidget:disabled
@@ -312,7 +308,23 @@ TestWidget > QPushButton{
  {
      border: 1px transparent black;
  }
+ 
+ BaseMenuWidget{
 
+     border:1px solid rgb(17, 66, 116);
+ }
+ 
+ QPushButton[M_Action='isTrue']
+{
+    border:none ; 
+    border-radius:0px;
+ }
+ QPushButton[M_Action='isTrue']:pressed
+{
+     background-color: #3daee9;
+     color: #eff0f1;
+ }
+ 
  /* --------------------------------------- QPushButton  -----------------------------------*/
  QPushButton
  {
@@ -351,11 +363,9 @@ TestWidget > QPushButton{
      padding-bottom: -17px;
  }
  
-
- 
  QPushButton:checked{
-     background-color: #76797C;
-     border-color: #6A6969;
+     background-color: #287399;
+     border-color: #287399;
  }
  
 
@@ -534,10 +544,7 @@ TestWidget > QPushButton{
      left: 8px;
  }
  
- BaseMenuWidget{
 
-     border:1px solid rgb(17, 66, 116);
- }
 
  QTableView
  {

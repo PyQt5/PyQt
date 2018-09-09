@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import *
 from .Ui_SKU_Widget import Ui_Form
 
 
-class SKU_Form(QWidget, Ui_Form):
+class Form(QWidget, Ui_Form):
     """
     Class documentation goes here.
     """
@@ -23,8 +23,9 @@ class SKU_Form(QWidget, Ui_Form):
         @param parent reference to the parent widget
         @type QWidget
         """
-        super(SKU_Form, self).__init__(parent)
+        super(Form, self).__init__(parent)
         self.setupUi(self)
+        
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

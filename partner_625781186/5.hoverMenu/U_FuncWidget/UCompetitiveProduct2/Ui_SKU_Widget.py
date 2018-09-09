@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\pyPro\hoverMenu\UCompetitiveProduct2\SKU_Widget.ui'
+# Form implementation generated from reading ui file 'D:\QGroup_432987409\WoHowLearn\0.M_I_pyqt\partner_625781186\5.hoverMenu\U_FuncWidget\UCompetitiveProduct2\SKU_Widget.ui'
 #
-# Created by: PyQt5 UI code generator 5.9
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
