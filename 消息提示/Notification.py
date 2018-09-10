@@ -61,10 +61,10 @@ class NotificationItem(QWidget):
         self.callback = callback
         layout = QHBoxLayout(self, spacing=0)
         layout.setContentsMargins(0, 0, 0, 0)
-        bgWidget = QWidget(self)
-        layout.addWidget(bgWidget)
+        self.bgWidget = QWidget(self)  # 背景控件, 用于支持动画效果
+        layout.addWidget(self.bgWidget)
 
-        layout = QGridLayout(bgWidget)
+        layout = QGridLayout(self.bgWidget)
         layout.setHorizontalSpacing(15)
         layout.setVerticalSpacing(10)
 
@@ -85,10 +85,11 @@ class NotificationItem(QWidget):
 
         # 消息内容
         self.labelMessage = QLabel(
-            message, self, wordWrap=True, alignment=Qt.AlignLeft | Qt.AlignTop)
+            message, self, cursor=Qt.PointingHandCursor, wordWrap=True, alignment=Qt.AlignLeft | Qt.AlignTop)
         font = self.labelMessage.font()
         font.setPixelSize(20)
         self.labelMessage.setFont(font)
+        self.labelMessage.adjustSize()
 
         # 添加到布局
         layout.addWidget(self.labelTitle, 0, 1)
@@ -104,6 +105,8 @@ class NotificationItem(QWidget):
         effect.setOffset(0, 2)
         self.setGraphicsEffect(effect)
 
+        self.adjustSize()
+
         # 5秒自动关闭
         self._timer = QTimer(self, timeout=self.doClose)
         self._timer.setSingleShot(True)  # 只触发一次
@@ -116,8 +119,13 @@ class NotificationItem(QWidget):
         except:
             pass
 
-    def sizeHint(self):
-        return QSize(392, 96)
+    def showAnimation(self, width):
+        # 显示动画
+        pass
+
+    def closeAnimation(self):
+        # 关闭动画
+        pass
 
     def mousePressEvent(self, event):
         super(NotificationItem, self).mousePressEvent(event)
@@ -194,7 +202,8 @@ class NotificationWindow(QListWidget):
         w = NotificationItem(title, message, item, cls._instance,
                              ntype=NotificationIcon.Info, callback=callback)
         w.closed.connect(cls._instance.removeItem)
-        item.setSizeHint(w.sizeHint())
+        item.setSizeHint(QSize(cls._instance.width() -
+                               cls._instance.spacing(), w.height()))
         cls._instance.setItemWidget(item, w)
 
     @classmethod
@@ -204,7 +213,8 @@ class NotificationWindow(QListWidget):
         w = NotificationItem(title, message, item, cls._instance,
                              ntype=NotificationIcon.Success, callback=callback)
         w.closed.connect(cls._instance.removeItem)
-        item.setSizeHint(w.sizeHint())
+        item.setSizeHint(QSize(cls._instance.width() -
+                               cls._instance.spacing(), w.height()))
         cls._instance.setItemWidget(item, w)
 
     @classmethod
@@ -214,7 +224,8 @@ class NotificationWindow(QListWidget):
         w = NotificationItem(title, message, item, cls._instance,
                              ntype=NotificationIcon.Warning, callback=callback)
         w.closed.connect(cls._instance.removeItem)
-        item.setSizeHint(w.sizeHint())
+        item.setSizeHint(QSize(cls._instance.width() -
+                               cls._instance.spacing(), w.height()))
         cls._instance.setItemWidget(item, w)
 
     @classmethod
@@ -224,7 +235,8 @@ class NotificationWindow(QListWidget):
         w = NotificationItem(title, message, item,
                              ntype=NotificationIcon.Error, callback=callback)
         w.closed.connect(cls._instance.removeItem)
-        item.setSizeHint(w.sizeHint())
+        width = cls._instance.width() - cls._instance.spacing()
+        item.setSizeHint(QSize(width, w.height()))
         cls._instance.setItemWidget(item, w)
 
 
@@ -236,18 +248,29 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = QWidget()
     layout = QHBoxLayout(w)
+
+    def callback():
+        print('回调点击')
+
     layout.addWidget(QPushButton(
-        'Info', w, clicked=lambda: NotificationWindow.info('提示', '这是一条会自动关闭的消息')))
+        'Info', w, clicked=lambda: NotificationWindow.info('提示', '这是一条会自动关闭的消息', callback=callback)))
     layout.addWidget(QPushButton(
-        'Success', w, clicked=lambda: NotificationWindow.success('提示', '这是一条会自动关闭的消息')))
+        'Success', w, clicked=lambda: NotificationWindow.success('提示', '这是一条会自动关闭的消息', callback=callback)))
     layout.addWidget(QPushButton(
-        'Warning', w, clicked=lambda: NotificationWindow.warning('提示', '这是一条会自动关闭的消息')))
+        'Warning', w, clicked=lambda: NotificationWindow.warning(
+            '提示',
+            '这是提示文案这是提示文案这是提示文案这是提示文案。',
+            callback=callback)))
     layout.addWidget(QPushButton(
-        'Error', w, clicked=lambda: NotificationWindow.error('提示', '<html><head/><body><p><span style=" font-style:italic; color:teal;">这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案</span></p></body></html>')))
+        'Error', w, clicked=lambda: NotificationWindow.error(
+            '提示',
+            '<html><head/><body><p><span style=" font-style:italic; color:teal;">这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案</span></p></body></html>',
+            callback=callback)))
     w.show()
 
 #     NotificationIcon.init()
 #     ww = NotificationItem('提示', '<html><head/><body><p><span style=" font-style:italic; color:teal;">这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案</span></p></body></html>', None,
-#                              ntype=NotificationIcon.Error)
+#                           ntype=NotificationIcon.Error)
+#     ww.bgWidget.setVisible(True)
 #     ww.show()
     sys.exit(app.exec_())
