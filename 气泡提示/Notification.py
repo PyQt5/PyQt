@@ -86,7 +86,6 @@ class NotificationItem(QWidget):
         # 消息内容
         self.labelMessage = QLabel(
             message, self, wordWrap=True, alignment=Qt.AlignLeft | Qt.AlignTop)
-        self.labelMessage.adjustSize()
         font = self.labelMessage.font()
         font.setPixelSize(20)
         self.labelMessage.setFont(font)
@@ -104,8 +103,6 @@ class NotificationItem(QWidget):
         effect.setColor(QColor(0, 0, 0, 25))
         effect.setOffset(0, 2)
         self.setGraphicsEffect(effect)
-
-        self.adjustSize()
 
         # 5秒自动关闭
         self._timer = QTimer(self, timeout=self.doClose)
@@ -224,7 +221,7 @@ class NotificationWindow(QListWidget):
     def error(cls, title, message, callback=None):
         cls._createInstance()
         item = QListWidgetItem(cls._instance)
-        w = NotificationItem(title, message, item, cls._instance,
+        w = NotificationItem(title, message, item,
                              ntype=NotificationIcon.Error, callback=callback)
         w.closed.connect(cls._instance.removeItem)
         item.setSizeHint(w.sizeHint())
@@ -248,4 +245,9 @@ if __name__ == '__main__':
     layout.addWidget(QPushButton(
         'Error', w, clicked=lambda: NotificationWindow.error('提示', '<html><head/><body><p><span style=" font-style:italic; color:teal;">这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案</span></p></body></html>')))
     w.show()
+
+#     NotificationIcon.init()
+#     ww = NotificationItem('提示', '<html><head/><body><p><span style=" font-style:italic; color:teal;">这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案</span></p></body></html>', None,
+#                              ntype=NotificationIcon.Error)
+#     ww.show()
     sys.exit(app.exec_())
