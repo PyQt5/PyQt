@@ -53,6 +53,7 @@
  - Model & View
  
     1. - [ QListView 加按钮和 排序](QListView/)
+    1. - [ QListWidget 自定义Item并拖拽](QListWidget自定义Item并拖拽/)
     
     1. - [ Json生成QTreeWidget](Json生成QTreeWidget/)
     1. - [ treeWidget 节点可拖拽](https://github.com/AshotS/glowing-disco)
