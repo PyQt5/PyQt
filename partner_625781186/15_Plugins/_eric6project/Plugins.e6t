@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
+<!-- eric6 tasks file for project Plugins -->
+<!-- Saved: 2018-09-18, 18:48:33 -->
+<Tasks version="6.0">
+  <ProjectScanFilter></ProjectScanFilter>
+  <Task priority="1" completed="False" type="1" uid="{3ce10e6a-abed-43de-aa30-d4f95cb4fde9}">
+    <Summary>TODO:</Summary>
+    <Description></Description>
+    <Created>2018-09-18, 18:48:30</Created>
+    <Resource>
+      <Filename>PluginManager/PluginStore.py</Filename>
+      <Linenumber>104</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{8fdbf1a1-be20-4074-8324-4bb5240bfb49}">
+    <Summary>TODO:</Summary>
+    <Description></Description>
+    <Created>2018-09-18, 18:48:30</Created>
+    <Resource>
+      <Filename>Tools/pmf_myjson.py</Filename>
+      <Linenumber>100</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{0b8bd1c5-bfaf-4017-8016-c31404a94114}">
+    <Summary>TODO:</Summary>
+    <Description></Description>
+    <Created>2018-09-18, 18:48:30</Created>
+    <Resource>
+      <Filename>Tools/pmf_myjson.py</Filename>
+      <Linenumber>112</Linenumber>
+    </Resource>
+  </Task>
+</Tasks>
