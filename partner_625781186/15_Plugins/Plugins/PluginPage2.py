@@ -20,10 +20,11 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from PyQt5.QtWidgets import QWidget
-try:
-    from Ui_PluginPage2 import Ui_Form
-except:
-    from .Ui_PluginPage2 import Ui_Form
+
+from Plugin..Ui_PluginPage2 import Ui_Form
+
+
+className = "Form"
 
 class Form(QWidget, Ui_Form):
     """

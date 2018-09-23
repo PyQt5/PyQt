@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\QGroup_432987409\WoHowLearn\0.M_I_pyqt\partner_625781186\15_Plugins\main.ui'
+# Form implementation generated from reading ui file 'D:\QGroup_432987409\WoHowLearn\0_M_I_pyqt\partner_625781186\15_Plugins\main.ui'
 #
 # Created by: PyQt5 UI code generator 5.10.1
 #
@@ -20,6 +20,14 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.tab)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.pushButton = QtWidgets.QPushButton(self.tab)
+        self.pushButton.setObjectName("pushButton")
+        self.verticalLayout.addWidget(self.pushButton)
+        self.pushButton_3 = QtWidgets.QPushButton(self.tab)
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.verticalLayout.addWidget(self.pushButton_3)
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
@@ -47,6 +55,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.pushButton.setText(_translate("MainWindow", "modulePath"))
+        self.pushButton_3.setText(_translate("MainWindow", "replace"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Tab 1"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))

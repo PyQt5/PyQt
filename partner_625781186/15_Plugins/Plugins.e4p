@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-6.0.dtd">
 <!-- eric project file for project Plugins -->
-<!-- Saved: 2018-09-18, 18:48:56 -->
+<!-- Saved: 2018-09-21, 22:53:13 -->
 <!-- Copyright (C) 2018 ,  -->
 <Project version="6.0">
   <Language></Language>
@@ -14,11 +14,13 @@
   <Eol index="0"/>
   <Sources>
     <Source>PluginManager/PluginManager.py</Source>
-    <Source>PluginManager/PluginStore.py</Source>
-    <Source>PluginManager/Ui_PluginStore.py</Source>
+    <Source>PluginManager/PluginStore/PluginStore.py</Source>
+    <Source>PluginManager/PluginStore/StoreModel.py</Source>
+    <Source>PluginManager/PluginStore/Ui_PluginStore.py</Source>
     <Source>PluginManager/__init__.py</Source>
     <Source>Plugins/PluginPage1.py</Source>
     <Source>Plugins/PluginPage2.py</Source>
+    <Source>Plugins/Pluginmmm.py</Source>
     <Source>Plugins/__init__.py</Source>
     <Source>Plugins/page1/Ui_PluginPage1.py</Source>
     <Source>Plugins/page1/__init__.py</Source>
@@ -31,7 +33,7 @@
     <Source>main.py</Source>
   </Sources>
   <Forms>
-    <Form>PluginManager/PluginStore.ui</Form>
+    <Form>PluginManager/PluginStore/PluginStore.ui</Form>
     <Form>Plugins/page1/PluginPage1.ui</Form>
     <Form>Plugins/page2/PluginPage2.ui</Form>
     <Form>main.ui</Form>

@@ -14,8 +14,6 @@ site: https://github.com/625781186 <br>
 视频教程: https://space.bilibili.com/1863103/#/ <br>
 """
 
-
-
 from PyQt5 import  QtGui, QtWidgets, QtCore
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -26,9 +24,24 @@ try:
     from Ui_PluginPage1 import Ui_Form
 except:
     from Plugins.page1.Ui_PluginPage1 import Ui_Form
-
+# Start-Of-Header
+name = "Jedi Code Completion Plug-in"
+author = "Detlev Offenbach <detlev@die-offenbachs.de>"
+autoactivate = True
+deactivateable = True
+version = "2.3.1"
 className = "Form"
-
+packageName = "CompletionJedi"
+shortDescription = "Provide completions and calltips using Jedi"
+longDescription = (
+    """This plug-in provides code completions and calltips"""
+    """ using the Jedi package."""
+)
+needsRestart = False
+pyqtApi = 2
+python2Compatible = True
+# End-Of-Header
+Testdata = 2
 class Form(QWidget, Ui_Form):
     """
     Class documentation goes here.
@@ -42,26 +55,21 @@ class Form(QWidget, Ui_Form):
         """
         super(Form, self).__init__(parent)
         self.setupUi(self)
-        mw = parent
-        mw.verticalLayout.addWidget(self)
-        
-    def __del__(self):
-        print("die")
         
     @pyqtSlot()
     def on_pushButton_clicked(self):
 
-        print(2)
+        print(Testdata)
         pass        
     @pyqtSlot()
     def on_pushButton_2_clicked(self):
 
-        print(2)
+        print(className)
         pass        
     @pyqtSlot()
     def on_pushButton_3_clicked(self):
 
-        print(3)
+        print(className)
         pass        
 
 if __name__ == "__main__":

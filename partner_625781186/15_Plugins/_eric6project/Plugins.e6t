@@ -1,34 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
 <!-- eric6 tasks file for project Plugins -->
-<!-- Saved: 2018-09-18, 18:48:33 -->
+<!-- Saved: 2018-09-23, 17:03:13 -->
 <Tasks version="6.0">
   <ProjectScanFilter></ProjectScanFilter>
-  <Task priority="1" completed="False" type="1" uid="{3ce10e6a-abed-43de-aa30-d4f95cb4fde9}">
+  <Task priority="1" completed="False" type="1" uid="{c81f3ca2-0ed8-4b3e-b688-634740039588}">
     <Summary>TODO:</Summary>
     <Description></Description>
-    <Created>2018-09-18, 18:48:30</Created>
-    <Resource>
-      <Filename>PluginManager/PluginStore.py</Filename>
-      <Linenumber>104</Linenumber>
-    </Resource>
-  </Task>
-  <Task priority="1" completed="False" type="1" uid="{8fdbf1a1-be20-4074-8324-4bb5240bfb49}">
-    <Summary>TODO:</Summary>
-    <Description></Description>
-    <Created>2018-09-18, 18:48:30</Created>
+    <Created>2018-09-23, 16:24:31</Created>
     <Resource>
       <Filename>Tools/pmf_myjson.py</Filename>
       <Linenumber>100</Linenumber>
     </Resource>
   </Task>
-  <Task priority="1" completed="False" type="1" uid="{0b8bd1c5-bfaf-4017-8016-c31404a94114}">
+  <Task priority="1" completed="False" type="1" uid="{b0ccef09-2b7c-4360-9a5f-1be59f96256c}">
     <Summary>TODO:</Summary>
     <Description></Description>
-    <Created>2018-09-18, 18:48:30</Created>
+    <Created>2018-09-23, 16:24:31</Created>
     <Resource>
       <Filename>Tools/pmf_myjson.py</Filename>
       <Linenumber>112</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{8df03846-c527-43f7-92f0-26a8c361910a}">
+    <Summary>TODO:其他接口</Summary>
+    <Description></Description>
+    <Created>2018-09-23, 16:54:51</Created>
+    <Resource>
+      <Filename>PluginManager/PluginManager.py</Filename>
+      <Linenumber>244</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{cd4e4068-3f9b-4534-95ee-34ae1b877f77}">
+    <Summary>TODO: 旧对象替换</Summary>
+    <Description></Description>
+    <Created>2018-09-23, 16:54:51</Created>
+    <Resource>
+      <Filename>PluginManager/PluginManager.py</Filename>
+      <Linenumber>252</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{261807b6-771c-4605-b9ef-c537e634dfb3}">
+    <Summary>TODO: #删除对象</Summary>
+    <Description></Description>
+    <Created>2018-09-23, 16:54:51</Created>
+    <Resource>
+      <Filename>PluginManager/PluginManager.py</Filename>
+      <Linenumber>264</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{c439b5e8-cb77-4338-b671-174c7b38ca47}">
+    <Summary>TODO:</Summary>
+    <Description></Description>
+    <Created>2018-09-23, 17:03:10</Created>
+    <Resource>
+      <Filename>PluginManager/PluginStore/PluginStore.py</Filename>
+      <Linenumber>137</Linenumber>
     </Resource>
   </Task>
 </Tasks>

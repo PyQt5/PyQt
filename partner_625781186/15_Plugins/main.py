@@ -13,6 +13,8 @@ site: https://github.com/625781186 <br>
 课件: https://github.com/625781186/WoHowLearn_PyQt5 <br>
 视频教程: https://space.bilibili.com/1863103/#/ <br>
 """
+import os, time, imp, sys
+
 
 from PyQt5 import  QtGui, QtWidgets, QtCore
 from PyQt5.QtCore import *
@@ -29,6 +31,8 @@ except:
 
 from PluginManager.PluginManager import PluginManager
 
+
+
 class MainWindow(QMainWindow, Ui_MainWindow):
     """
     Class documentation goes here.
@@ -39,14 +43,39 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
         self.pluginManager = PluginManager(self)  #初始化插件管理器
-        
-        
-        
+    
+    @pyqtSlot()
+    def on_pushButton_clicked(self):
+        """
+        Slot documentation goes here.
+        """
+        print(self.pluginManager.pluginsModule)
+        pass        
+  
+
+
 if __name__ == "__main__":
-    import sys
+    
+
+        
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle(QStyleFactory.create("Fusion"))
 
+#    def excepthook(type, value, trace):
+#        try:
+#            pass
+#        except :
+#            pass
+#        sys.__excepthook__(type, value, trace)
+        
+#    sys.excepthook = excepthook
+  
+    ui = MainWindow()
+
+    ui.show()
+    sys.exit(app.exec_())        
+    
+    
 #    自定义CSS样式
 #    from BasePack.CommonHelper import CommonHelper
 #    styleFile = 'BasePack/style.css'
@@ -57,8 +86,4 @@ if __name__ == "__main__":
 #    import qdarkstyle
 #    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
     
-    ui = MainWindow()
 
-    ui.show()
-    sys.exit(app.exec_())        
-    

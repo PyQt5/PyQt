@@ -74,7 +74,7 @@ def mfunc_initJson( setting_flie ,self=None)->"datas":
         finally:
             return datas
 
-def mfunc_writeJson( key_name ,  data , self=None):
+def mfunc_AKrCVJson( key_name ,  data , self=None):
     '''
     修改json。
     
@@ -130,7 +130,7 @@ def mfunc_writeJson( key_name ,  data , self=None):
 #        写入
         json.dump( datas, f ,  ensure_ascii=False, indent=1)
 
-def mfunc_afterDelJson(f , datas):
+def mfunc_reDumpJson(f , datas):
     f.seek(0)
     f.truncate()
 #        写入

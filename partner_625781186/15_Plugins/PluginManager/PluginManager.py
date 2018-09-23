@@ -1,241 +1,278 @@
- # -*- coding: utf-8 -*-
- 
-import os , time , imp
-from copy import deepcopy
-from importlib.machinery import SourceFileLoader
+# -*- coding: utf-8 -*-
 
+import os, time, sys , importlib
+#__file__ 为此文件路径 , 在ipython里是测不出来的
+pluginsManagerPath = os.path.dirname(os.path.abspath(__file__))
+#主脚本目录
+mainPath           = os.path.dirname(pluginsManagerPath)
+#自定义插件目录
+pluginsPath        =  os.path.join( mainPath, "Plugins")
+#以后可能会有其他插件目录
+AllPluginsPath     = {"customer":pluginsPath}
+#设置模块搜索路径
+for key in AllPluginsPath :
+    if AllPluginsPath[key] not in sys.path:
+        sys.path.insert(0, AllPluginsPath[key]) 
+
+from copy import deepcopy
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from PluginManager import PluginStore
+from PluginManager.PluginStore import PluginStore
+from PluginManager.PluginStore.StoreModel import FileModel
 
 from Tools.pmf_myjson import *
 
 "setting_flie -> From Tools.pmf_myjson , json写入的位置"
 
 class PluginManager(QObject):
-
-    def __init__(self, parent = None , *args, **kwargs):
-        super(PluginManager, self).__init__(parent  , *args, **kwargs)
+    startDelJson = pyqtSignal()
+    
+    def __init__(self, parent=None, *args, **kwargs):
+        super(PluginManager, self).__init__(parent, *args, **kwargs)
         self.__mw = parent
         self.__initUI()
-        
-        self.pluginDirs = {"pluginPath": os.path.join("./", "Plugins"),}
 
-        self.header = ["PlugName", 
-                       "Allow" , "CreateTime", "ModifyTime"]
-                       
-        self.changePlugin = {
-        "StartModule" :{}, 
-        "NewModule"   :None, 
-        "LoadSuccess" :set(), 
-        "LoadFaile"   :set(), 
-        "del"         :set(), 
-        "rename"      :[], 
+        self.startDelJson.connect(self.delJson)
+        self.palceBTN = QPushButton("哈哈")
+        self.pluginDirs = {"pluginFolder": os.path.join(
+        os.path.abspath("./"), 
+        "Plugins"), }
+
+        self.header = ["PlugName",
+                       "Allow", "CreateTime", "ModifyTime"]
+
+        self.pluginsInfo = {
+            "StartModule": {},
         }
-        # self.existPlugin   :{插件名:{header参数}}
-        # self.pluginsModule :{插件名:{path:插件路径}}
+        # self.jsonPlugin   :{插件名:{header参数}}
 
-        self.existPlugin, self.pluginsModule = None,  None
-        self.existPlugin, self.pluginsModule = \
-            self.getPluginModules(self.pluginDirs['pluginPath'])
-#        print("existPlugin:", self.existPlugin,"\n", 
-#              "pluginsModule:", self.pluginsModule)
+        self.jsonPlugin = None
 
-        #载入模块 
-        self.loadAll()
-        
-        # 文件监听器
-        self.watcher = QFileSystemWatcher(
-                        ["./Plugins"], 
-                        directoryChanged = self.m_directoryChanged 
-                        )
-
-    def m_directoryChanged(self):
-        self.existPlugin, self.pluginsModule = \
-            self.getPluginModules(self.pluginDirs['pluginPath'], True)
-            
-        del self.changePlugin["NewModule"] 
-        self.changePlugin["NewModule"] = deepcopy(self.pluginsModule)
-        
-        StartModuleLen  = len(self.changePlugin["StartModule"])
-        NewModuleLen    = len(self.changePlugin["NewModule"])
-        LoadSuccessLen  = len(self.changePlugin["LoadSuccess"])
-        LoadFaileLen    = len(self.changePlugin["LoadFaile"])
-
-        NewSucModuleLen = NewModuleLen   \
-                        - StartModuleLen \
-                        - LoadSuccessLen \
-                        - LoadFaileLen   \
-        
-        if  NewSucModuleLen>0:
-            
-            moduleSet   = set(self.changePlugin["NewModule"])  \
-                        - set(self.changePlugin["StartModule"])\
-                        - set(self.changePlugin["LoadSuccess"])\
-                        - set(self.changePlugin["LoadFaile"])
-                            
-            module = moduleSet.pop()
-            
-            if not self.load(module):
-                self.changePlugin["LoadFaile"].add(module)
-            else:
-                self.changePlugin["LoadSuccess"].add(module)
-                
-        elif NewSucModuleLen<0:
-            pass
-            
     def __initUI(self):
-        if self.__mw.findChild(QMenuBar, "menuBar"):
-            
-            self.__mw.menuPlugin = QAction("Plugin", self.__mw.menuBar, 
-                                        triggered = self.__createPluginStoreDialog) 
-            self.__mw.menuBar.addAction(self.__mw.menuPlugin) 
-            
+        mw = self.__mw
+        if mw.findChild(QMenuBar, "menuBar"):
+
+            mw.menuPlugin = QAction("Plugin", self.__mw.menuBar,
+                                    triggered=self.__createPluginStoreDialog)
+
+            mw.menuBar.addAction(self.__mw.menuPlugin)
+
         else:
-            QMessageBox.information(self.__mw, "", "主窗体没有菜单栏, 请先创建.")
-    
+            QMessageBox.information(mw, "", "主窗体没有菜单栏, 请先创建.")
+
+        # 文件监听器
+
+        self.model = FileModel(self)
+        self.model.setRootPath("./Plugins")
+        self.model.setFilter(QDir.Files)
+        self.model.setNameFilters(["Plugin*.py"])
+        self.model.setNameFilterDisables(False);
+        self.index = self.model.index("./Plugins")
+        
+        self.model.directoryLoaded.connect(self.start)
+        
+#        print(self.model.headerData(1, Qt.Horizontal))
+#        self.model.setHeaderData(4, Qt.Horizontal, "长江三角洲 ")
+        
     def __createPluginStoreDialog(self):
         """
         显示插件加载情况的 窗体.
         """
         dia = PluginStore.PluginStore(self, self.__mw)
-      
-        dia.exec_()
-    
-    def getPluginModules(self, pluginPath:"./Plugins" , CHANGE=False)->"FoJson":
+
+        dia.exec_()        
         
+    def m_rowsRemoved(self, index, first, last):
+        print("removeName:", self.model.index(first, 0, index).data(),first )
+        mod = (self.model.index(first, 0, index).data())[:-3]
+
+        self.pluginsInfo["StartModule"].pop(mod)
+        self.delJson({}, self.pluginsInfo["StartModule"])
+        self.unload(mod)
+
+    def m_rowsInserted(self, index, first, last):
+        print("insertName:", self.model.index(first, 0, index).data(), first)
+        f = self.model.index(first, 0, index).data()
+        mod = f[:-3]
+        fullPath = os.path.join(self.pluginDirs["pluginFolder"], f)
+        self.pluginsInfo["StartModule"][mod] = {"path": fullPath}
+        self.addJson(fullPath, mod)
+        self.load(mod)
+#        print("I---", self.pluginsInfo["StartModule"])
+        
+    def start(self):
         """
-        Public method to get a list of plugin modules.
+        self.model 异步加载完成之后开始调用 self.startGetPlugin.
+        """
+        self.jsonPlugin = self.startGetPlugin(self.pluginDirs['pluginFolder'])
+#        print("jsonPlugin:", self.jsonPlugin,"\n",
+#              "pluginsModule:", self.pluginsInfo)
+        self.loadAll()
+        
+        self.model.rowsAboutToBeRemoved.connect(self.m_rowsRemoved)
+        self.model.rowsInserted.connect(self.m_rowsInserted)        
+        self.model.directoryLoaded.disconnect(self.start)
+#        self.__createPluginStoreDialog()
+    def startGetPlugin(self, pluginFolder: "./Plugins", CHANGE=False) -> "FoJson":
+
+        """
+        程序启动加载模块.
         """
         try:
-            existPlugin = mfunc_readJson(setting_flie)
-            
+            jsonPlugin = mfunc_readJson(setting_flie)
+
         except:
-            existPlugin=None
-            
-        pluginFiles = {} if CHANGE is False else self.pluginsModule
-        
-        
-        for f in os.listdir(pluginPath):
-            # 插件名称的有效性检查
-            if f.endswith(".py") and f.startswith("Plugin"):
-                # 去掉后缀 , 加入模块
-                module = f[:-3]
-                
-                fullPath = os.path.join( pluginPath , f)
-                # 增删改的变化
-                if module not in self.changePlugin["StartModule"]:
-                    pluginFiles[module] = {"path" :fullPath}
-                
-                    if "active" not in pluginFiles[module]:
-                        pluginFiles[module]["active"] = False 
-                        print("---" , )
-                # 判断模块不在json文件中
-                if module not in existPlugin:
+            jsonPlugin = {}
+
+        pluginInfo = {}
+
+        rowCount = self.model.rowCount(self.index)
+
+        for row in range(rowCount):
+            index = self.model.index(row, 0, self.index)
+            # 文件名
+            f = index.data()
+            # 去掉后缀 , 加入模块
+            module = f[:-3]
+            fullPath = os.path.join(pluginFolder, f)
+
+            pluginInfo[module] = {"path": fullPath}
+            try:
+                if module not in jsonPlugin:
                     self.addJson(fullPath, module)
-                
-        self.delJson(existPlugin, pluginFiles)
-        
+            except:
+                self.addJson(fullPath, module)
+
         if CHANGE is False:
-            self.changePlugin["StartModule"] = deepcopy(pluginFiles)
+            self.pluginsInfo["StartModule"] = deepcopy(pluginInfo)
+
+        jsonPlugin = self.delJson(jsonPlugin, pluginInfo)
         
-        return existPlugin, pluginFiles
+#        print("jsonPlugin",jsonPlugin, "\n",  "pluginInfo",pluginInfo )
         
-    def addJson(self, fullPath , module )->"ToJson": 
+        return jsonPlugin
+
+    def addJson(self, fullPath, module) -> "ToJson":
         # 插件创建时间
-        _ctime = time.localtime(os.stat(fullPath).st_ctime) 
-        ctime = time.strftime("%Y-%m-%d-%H:%M:%S",_ctime)
+        _ctime = time.localtime(os.stat(fullPath).st_ctime)
+        ctime = time.strftime("%Y-%m-%d-%H:%M:%S", _ctime)
         # 插件修改时间
         _mtime = time.localtime(os.stat(fullPath).st_mtime)
-        mtime = time.strftime("%Y-%m-%d-%H:%M:%S",_mtime)
-        
+        mtime = time.strftime("%Y-%m-%d-%H:%M:%S", _mtime)
+
         # 写入配置
-        mfunc_AKrCVJson( module , 
-                       {
-                       self.header[1]: True, #allow
-                       self.header[2]: ctime,#cteateTime
-                       self.header[3]: mtime,#modifyTime
-                       } ,  
-                        self = self)
-        
-    def delJson(self , existPlugin,  pluginFiles)->"ToJson": 
+        mfunc_AKrCVJson(module,
+                        {
+                            self.header[1]: True,  # allow
+                            self.header[2]: ctime,  # cteateTime
+                            self.header[3]: mtime,  # modifyTime
+                        },
+                        self=self)
+
+    def delJson(self, jsonPlugin, pluginInfo) -> "ToJson":
 
         """
         删除插件 的json配置.
         """
-        # 获取最终json配置
-#        self.existPlugin = mfunc_readJson(setting_flie)  
         # 添加完重新加载一遍看是否有插件删除
-        if existPlugin==None:
-            existPlugin = mfunc_readJson(setting_flie)
+        if jsonPlugin == {}:
+            jsonPlugin = mfunc_readJson(setting_flie)
+
+        if len(jsonPlugin) - len(pluginInfo):
+            long, short = jsonPlugin, pluginInfo
+        else:
+            long, short = pluginInfo, jsonPlugin
+
+        with open(setting_flie, 'a+', encoding='utf-8') as f:
+            # 被删除的插件集合
+            delPlugin = set(long) - set(short)
+            for item in delPlugin:
+                jsonPlugin.pop(item)
+            # 写入配置
+            mfunc_reDumpJson(f, jsonPlugin)
             
-        if len(existPlugin)>len(pluginFiles):
-            with open( setting_flie ,'a+' , encoding='utf-8') as f:
-                # 被删除的插件集合
-                delPlugin = set(existPlugin)-set(pluginFiles)
-                for item in delPlugin:
-                    existPlugin.pop(item)
-                    self.changePlugin["del"]
-                # 写入配置
-                mfunc_reDumpJson(f, existPlugin)
-                
+        return jsonPlugin
     # 加载所有插件
     def loadAll(self):
-        for mod in self.existPlugin:
-            if self.existPlugin[mod]["Allow"] \
-                and not self.pluginsModule[mod]["active"]:
-                
+
+        for mod in self.jsonPlugin:
+            if self.jsonPlugin[mod]["Allow"]:
+
                 try:
                     self.load(mod)
                 except:
                     continue
-
+            else:
+                self.pluginsInfo["StartModule"][mod]["active"] = False
+        for obj in self.__mw.children():
+            if obj.objectName() == "Form":
+                
+                print(obj.objectName(), 
+                dir(obj), obj.__class__,  obj.__dict__)
+                print(self.__mw.__dict__)
     # 加载插件
-    def load(self , mod:"str"):
-        
+    def load(self, mod: "str"):
         try:
-            print(self.pluginsModule[mod]["path"])
-            # python内置函数, 把.py 当做模块载入
-            _pluginModule = SourceFileLoader( mod , 
-                self.pluginsModule[mod]["path"]).load_module()
-    #       _pluginModule=imp.load_source(mod, self.pluginsModule[mod]["path"])
+            # 动态载入模块
+            _pluginModule = importlib.import_module(mod)
+            
         except:
-#            QMessageBox.information(self.__mw, 
-#                                    "模块导入异常", 
+#            QMessageBox.information(self.__mw,
+#                                    "模块导入异常",
 #                                    "请在%s.py检查模块."%mod)
 
-            self.pluginsModule[mod]["active"] = False
-            return False
+            self.pluginsInfo["StartModule"][mod]["active"] = False
             
+            return False
+
         try:
             className   = getattr(_pluginModule, "className")
             pluginClass = getattr(_pluginModule,  className )
         except:
-            self.pluginsModule[mod]["active"] = False
-            QMessageBox.information(self.__mw, 
-                                    "插件加载错误", 
-                                    "请在%s.py全局指定className值."%mod)
+            self.pluginsInfo[mod]["active"] = False
+            QMessageBox.information(self.__mw,
+                                    "插件加载错误",
+                                    "请在%s.py全局指定className值." % mod)
             return False
         # 实例化类 
-        pluginObject = pluginClass()
+        pluginObject = pluginClass(self.__mw)
         pluginObject.setObjectName(className)
         
-        self.__mw.verticalLayout.addWidget(pluginObject)
-        self.pluginsModule[mod]["active"] = True
+        #TODO:其他接口
         
+        self.pluginsInfo["StartModule"][mod]["active"] = True
+
         return True
+    
+    def reload(self, mod):
+        if mod in sys.modules:
+            #TODO: 旧对象替换
+            importlib.reload(sys.modules[mod])
+        else:
+            self.load(mod)
+
     # 卸载插件
-    def unload(self,   mod:"str"):
-#        self.__mw.findchild()
-        print(sys.modules[mod], mod)
-        print(self.__mw.findChild(QWidget, mod))
-        #TODO:
-        return True
+    def unload(self, mod: "str"):
         
-     # 卸载所有插件
+        if mod in sys.modules:
+
+            self.pluginsInfo["StartModule"][mod]["active"] = False
+    
+            # TODO: #删除对象
+            sys.modules.pop(mod)
+
+        return True
+    def replace(self, mod):
+        self.__mw.findChild()
+#        self.__mw.varticalLayout.replaceWidget( ,self.placeBTN)
+        pass
+    # 卸载所有插件
     def unloadAll(self):
         pass
- 
+        
+    def PluginToInterFace(self):
+        pass
+    
