@@ -1,17 +1,17 @@
 {
- "Pluginmmm": {
-  "Allow": true,
-  "CreateTime": "2018-09-21-01:28:52",
-  "ModifyTime": "2018-09-20-01:04:51"
- },
  "PluginPage1": {
-  "Allow": true,
+  "Allow": false,
   "CreateTime": "2018-09-18-18:44:18",
-  "ModifyTime": "2018-09-20-01:04:51"
+  "ModifyTime": "2018-09-23-20:13:56"
  },
  "PluginPage2": {
-  "Allow": true,
+  "Allow": false,
   "CreateTime": "2018-09-18-18:45:14",
   "ModifyTime": "2018-09-19-18:16:08"
+ },
+ "Pluginmmm": {
+  "Allow": true,
+  "CreateTime": "2018-09-23-20:57:37",
+  "ModifyTime": "2018-09-23-20:13:56"
  }
 }

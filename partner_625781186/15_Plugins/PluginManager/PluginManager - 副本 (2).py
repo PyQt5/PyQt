@@ -1,24 +1,19 @@
 # -*- coding: utf-8 -*-
-"""
-管理插件的加载 , 卸载 , 监控文件的添加/删除.
-"""
+
 import os, time, sys , importlib, sip
-# ==添加插件的搜索路径==
+
 #__file__ 为此文件路径 , 在ipython里是测不出来的
 pluginsManagerPath = os.path.dirname(os.path.abspath(__file__))
 #主脚本目录
 mainPath           = os.path.dirname(pluginsManagerPath)
 #自定义插件目录
 pluginsPath        =  os.path.join( mainPath, "Plugins")
-pluginsPath2       =  os.path.join( os.path.dirname(sys.argv[0]), "Plugins")
 #以后可能会有其他插件目录
-AllPluginsPath     = {"customer":pluginsPath, 
-                   "afterPacket":pluginsPath2}
+AllPluginsPath     = {"customer":pluginsPath}
 #设置模块搜索路径
 for key in AllPluginsPath :
     if AllPluginsPath[key] not in sys.path:
         sys.path.insert(0, AllPluginsPath[key]) 
-# ==添加插件的搜索路径==
 
 from copy import deepcopy
 
@@ -35,7 +30,7 @@ from Tools.pmf_myjson import *
 
 class PluginManager(QObject):
     """
-    管理插件的加载 , 卸载 , 监控文件的添加/删除.
+    管理插件的加载 , 卸载 , 文件的添加/删除监控.
     """
     def __init__(self, parent=None, *args, **kwargs):
         super(PluginManager, self).__init__(parent, *args, **kwargs)
@@ -58,7 +53,9 @@ class PluginManager(QObject):
         self.jsonPlugin = None
 
     def __initUI(self):
-
+        """
+        
+        """
         mw = self.__mw
         if mw.findChild(QMenuBar, "menuBar"):
             # 插入到mainwindow的menuBar下 , 点击查看弹出插件加载情况窗体===
@@ -66,11 +63,12 @@ class PluginManager(QObject):
                                     triggered=self.__createPluginStoreDialog)
 
             mw.menuBar.addAction(self.__mw.menuPlugin)
-            
+            # 插入到mainwindow的menuBar下 , 点击查看弹出插件加载情况窗体===
         else:
             QMessageBox.information(mw, "", "主窗体没有菜单栏, 请先创建.")
 
         # 文件监听器
+
         self.model = FileModel(self)
         self.model.setRootPath("./Plugins")
         self.model.setFilter(QDir.Files)
@@ -89,7 +87,8 @@ class PluginManager(QObject):
 
         self.dia.show()
 
-    def __m_rowsRemoved(self, index, first, last):
+        
+    def m_rowsRemoved(self, index, first, last):
         """
         文件被删除或重命名时候被调用.
         """
@@ -103,7 +102,7 @@ class PluginManager(QObject):
         # pop的步骤u已经在deljson中执行
         # self.jsonPlugin.pop(mod)      
         
-    def __m_rowsInserted(self, index, first, last):
+    def m_rowsInserted(self, index, first, last):
         """
         文件增加或重命名时候被调用.
         """
@@ -128,8 +127,8 @@ class PluginManager(QObject):
 #              "pluginsModule:", self.pluginsInfo)
         self.loadAll()
         
-        self.model.rowsAboutToBeRemoved.connect(self.__m_rowsRemoved)
-        self.model.rowsInserted.connect(self.__m_rowsInserted)        
+        self.model.rowsAboutToBeRemoved.connect(self.m_rowsRemoved)
+        self.model.rowsInserted.connect(self.m_rowsInserted)        
         self.model.directoryLoaded.disconnect(self.start)
         self.__createPluginStoreDialog()
         
@@ -172,9 +171,7 @@ class PluginManager(QObject):
         return jsonPlugin
 
     def addJson(self, fullPath, module) -> "ToJson":
-        """
-        1.1写入插件 的json配置.
-        """
+        """1.1写入插件 的json配置."""
         # 插件创建时间
         _ctime = time.localtime(os.stat(fullPath).st_ctime)
         ctime = time.strftime("%Y-%m-%d-%H:%M:%S", _ctime)
@@ -238,12 +235,9 @@ class PluginManager(QObject):
             _pluginModule = importlib.import_module(mod)
             
         except:
-            import traceback
-            errmsg = traceback.format_exc()    
-            
             QMessageBox.information(self.__mw,
                                     "模块导入异常",
-                                    "%s,请在%s.py检查模块."%(errmsg,mod ))
+                                    "请在%s.py检查模块."%mod)
 
             self.pluginsInfo["StartModule"][mod]["active"] = False
             
@@ -255,10 +249,7 @@ class PluginManager(QObject):
             
     def instantiation(self , mod, moduleObj , NeedRplace = False):
         """
-        2.1.1    实例化类.
-        2.2.1.1  
-        3.1.1
-        实例化新对象来替换旧对象.
+        1.--实例化类.
         """
         try:
             className   = getattr(moduleObj, "className")
@@ -289,35 +280,45 @@ class PluginManager(QObject):
         else:
             self.pluginsInfo["StartModule"][mod]["new"] = pluginObject
             return pluginObject
-            
+    # 卸载插件
+    def unload(self, mod: "str"):
+        """
+        卸载插件 , 移除模块.
+        """
+        if mod in sys.modules:
+            self.pluginsInfo["StartModule"][mod]["active"] = False
+            #删除对象
+            objInfo  = self.findOldObj(mod)
+            oldObj, layout = objInfo["oldObj"], objInfo["layout"]
+            print(oldObj.objectName()+" be unload")
+
+            sip.delete(oldObj)
+
+#            layout.removeWidget(oldObj)
+            self.pluginsInfo["StartModule"][mod]["old"] = None
+            sys.modules.pop(mod)
+        
+        return True
+
     # 重载插件
     def reload(self, mod):
-        """
-        2.2 重载插件.
-        """
         if mod in sys.modules:
             #TODO: 旧对象替换
             print("reload")
-            importlib.reload(sys.modules[mod])
             moduleObj = sys.modules[mod]
+            button = QPushButton("哈哈")
+            objInfo = self.findOldObj(mod, moduleObj = moduleObj , needRplace = True)
+            oldObj, newObj, layout = objInfo["oldObj"], objInfo["newObj"], objInfo["layout"]
             
-            objInfo = self.findOldObj(mod, moduleObj  , True)
-            oldObj, newObj, layout = objInfo["oldObj"],\
-                                     objInfo["newObj"],\
-                                     objInfo["layout"]
-                                     
-            # 新对象替换旧对象 ， 并把地址赋值给旧对象
-            layout.replaceWidget(oldObj, newObj )
+            print(layout.replaceWidget(oldObj, newObj ))
             self.pluginsInfo["StartModule"][mod]["old"] = newObj
-            
+            print(self.pluginsInfo["StartModule"][mod])
             sip.delete(oldObj)
         else:
             self.load(mod)
     
     def findOldObj(self, mod, moduleObj=None,  needRplace = False):
         """
-        3.1
-        2.2.1
         找到需要删除或替换的对象.
         """
         oldObj       = self.pluginsInfo["StartModule"][mod]["old"]
@@ -334,32 +335,13 @@ class PluginManager(QObject):
         else:
             newObj = None
             
-        return {
-                "oldObj"      :oldObj , 
+        return {"oldObj"      :oldObj , 
                 "newObj"      :newObj ,  
                 "parentWidget":parentWidget, 
                 "layout"      :layout, 
                 "pluginClass" :pluginClass, 
                 }
             
-    # 卸载插件
-    def unload(self, mod: "str"):
-        """
-        3. 卸载插件 , 移除模块.
-        """
-        if mod in sys.modules:
-            self.pluginsInfo["StartModule"][mod]["active"] = False
-            #删除对象
-            objInfo = self.findOldObj(mod)
-            oldObj  = objInfo["oldObj"] 
-
-            sip.delete(oldObj)
-
-            self.pluginsInfo["StartModule"][mod]["old"] = None
-            sys.modules.pop(mod)
-        
-        return True
-        
     # 卸载所有插件
     def unloadAll(self):
         pass

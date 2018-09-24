@@ -25,7 +25,7 @@ from PyQt5.QtWidgets import QWidget
 try:
     from Ui_PluginPage1 import Ui_Form
 except:
-    from Plugins.page1.Ui_PluginPage1 import Ui_Form
+    from page1.Ui_PluginPage1 import Ui_Form
 
 className = "Form"
 
@@ -42,8 +42,11 @@ class Form(QWidget, Ui_Form):
         """
         super(Form, self).__init__(parent)
         self.setupUi(self)
-        mw = parent
-        mw.verticalLayout.addWidget(self)
+        self.__mw = parent
+        # layout = self.getParentLayout()
+        # layout.addWidget(self)
+    def getParentLayout(self):
+        return self.__mw.verticalLayout
         
     def __del__(self):
         print("die")
@@ -62,7 +65,8 @@ class Form(QWidget, Ui_Form):
     def on_pushButton_3_clicked(self):
 
         print(3)
-        pass        
+        pass 
+
 
 if __name__ == "__main__":
     import sys

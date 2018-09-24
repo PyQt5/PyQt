@@ -8,22 +8,21 @@ from PyQt5.QtWidgets import QMessageBox , QWidget , QApplication
 from PyQt5.QtCore import *
 
 from subprocess import  Popen
-import json ,   os , sys
+import json ,   os
 
-app = QApplication(sys.argv)
 
 setting_path = "./PluginManager"
 setting_Name = "plugin.json"
+# 配置文件的路径；
 setting_flie = os.path.join(setting_path,  setting_Name)
-
-del app
-
+# 不存在路径就创建文件夹；
 if not os.path.exists(setting_path):
     os.makedirs(setting_path)
     if not os.path.exists(setting_path):
         f1 = open(setting_flie, 'a+', encoding='utf-8')
         f1.close()
         
+#首次创建 ， 数据默认为name；
 name =  {
 
          }
@@ -67,16 +66,20 @@ def mfunc_initJson( setting_flie ,self=None)->"datas":
             try:
                 datas = mfunc_readJson(f)
             except:
-                QMessageBox.warning(self, '配置文件格式错误', 
-                                    '请严格按照JSON格式，\n解决不了请联系程序员：QQ62578186',
-                                    QMessageBox.Yes|QMessageBox.No, QMessageBox.No)
+                QMessageBox.warning(self, 
+                        '配置文件格式错误', 
+                        '请严格按照JSON格式，\
+                        \n解决不了请联系程序员：QQ62578186',
+                         QMessageBox.Yes|QMessageBox.No, 
+                         QMessageBox.No)
+                         
                 Popen(["write ", setting_flie])                  
         finally:
             return datas
 
 def mfunc_AKrCVJson( key_name ,  data , self=None):
     '''
-    修改json。
+    createKey or changeValue。
     
     @param key_name 要修改的json节点的键名
     @type str or list-str
@@ -101,9 +104,11 @@ def mfunc_AKrCVJson( key_name ,  data , self=None):
 #            不存在键
             if key_name[0] not in datas:
                                 
-                msg = QMessageBox.warning(self, '没有找到这个配置节点', 
-                "请检查参数格式。\n如果配置不来请清空配置文件。\n是否打开配置文件？",
-                       QMessageBox.Yes|QMessageBox.No, QMessageBox.No)
+                msg = QMessageBox.warning(self, 
+                '没有找到这个配置节点', 
+                "请检查参数格式。\
+                \n如果配置不来请清空配置文件。\n是否打开配置文件？",
+                QMessageBox.Yes|QMessageBox.No, QMessageBox.No)
                 
                 if msg==QMessageBox.Yes:
                     Popen(["write ", setting_flie])
@@ -121,17 +126,14 @@ def mfunc_AKrCVJson( key_name ,  data , self=None):
                     cmd_txt += (r'''["%s"]'''%key )
                     
                 cmd_txt+='=data'
-                # == == == 执行命令文本
+                # == == == 执行命令文本 datas[key]=data
                 exec(cmd_txt)
             
-#        清空原来的文件
-        f.seek(0)
-        f.truncate()
-#        写入
-        json.dump( datas, f ,  ensure_ascii=False, indent=1)
+        mfunc_reDumpJson(f, datas)
 
 def mfunc_reDumpJson(f , datas):
+    # 清空原来的文件
     f.seek(0)
     f.truncate()
-#        写入
+    # 写入
     json.dump( datas, f ,  ensure_ascii=False, indent=1)

@@ -28,10 +28,7 @@ try:
 except:
     from .Ui_main import Ui_MainWindow
 
-
 from PluginManager.PluginManager import PluginManager
-
-
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     """
@@ -49,15 +46,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        print(self.pluginManager.pluginsModule)
+        print(sys.path)
         pass        
   
-
-
 if __name__ == "__main__":
     
-
-        
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle(QStyleFactory.create("Fusion"))
 
@@ -75,7 +68,6 @@ if __name__ == "__main__":
     ui.show()
     sys.exit(app.exec_())        
     
-    
 #    自定义CSS样式
 #    from BasePack.CommonHelper import CommonHelper
 #    styleFile = 'BasePack/style.css'
@@ -85,5 +77,3 @@ if __name__ == "__main__":
 #    If you want to use this style, please pip install qdarkstyle.
 #    import qdarkstyle
 #    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
-    
-
