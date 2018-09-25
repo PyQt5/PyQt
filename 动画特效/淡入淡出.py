@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
 
 # Created on 2018年6月14日
 # author: Irony
-# site: https://github.com/892768447
+# site: https://pyqt5.com, https://github.com/892768447
 # email: 892768447@qq.com
 # file: 动画特效.淡入淡出
 # description:

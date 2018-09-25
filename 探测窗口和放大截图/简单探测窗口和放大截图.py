@@ -8,7 +8,7 @@ import win32gui
 
 # Created on 2018年6月8日
 # author: Irony
-# site: https://github.com/892768447
+# site: https://pyqt5.com, https://github.com/892768447
 # email: 892768447@qq.com
 # file: 简单探测窗口和放大截图
 # description:

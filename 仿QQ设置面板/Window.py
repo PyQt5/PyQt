@@ -7,7 +7,7 @@ from SettingUi import Ui_Setting  # @UnresolvedImport
 
 # Created on 2018年3月28日
 # author: Irony
-# site: https://github.com/892768447
+# site: https://pyqt5.com, https://github.com/892768447
 # email: 892768447@qq.com
 # file: 仿QQ设置面板.Window
 # description:

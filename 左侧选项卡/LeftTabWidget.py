@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QWidget, QListWidget, QStackedWidget, QHBoxLayout,\
 
 # Created on 2018年5月29日
 # author: Irony
-# site: https://github.com/892768447
+# site: https://pyqt5.com, https://github.com/892768447
 # email: 892768447@qq.com
 # file: LeftTabWidget
 # description:

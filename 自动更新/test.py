@@ -4,7 +4,7 @@
 '''
 Created on 2017年5月7日
 @author: Irony."[讽刺]
-@site: alyl.vip, orzorz.vip, irony.coding.me , irony.iask.in , mzone.iask.in
+@site: https://pyqt5.com, https://github.com/892768447
 @email: 892768447@qq.com
 @file: 自动更新.test
 @description: 

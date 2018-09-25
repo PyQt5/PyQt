@@ -13,7 +13,7 @@ import win32gui
 
 # Created on 2018年8月2日
 # author: Irony
-# site: https://github.com/892768447
+# site: https://pyqt5.com, https://github.com/892768447
 # email: 892768447@qq.com
 # file: win无边框调整大小
 # description:

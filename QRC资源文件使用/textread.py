@@ -8,7 +8,7 @@ import res_rc  # @UnresolvedImport @UnusedImport
 
 # Created on 2018年5月1日
 # author: Irony
-# site: https://github.com/892768447
+# site: https://pyqt5.com, https://github.com/892768447
 # email: 892768447@qq.com
 # file: QRC资源文件使用.textread
 # description:
