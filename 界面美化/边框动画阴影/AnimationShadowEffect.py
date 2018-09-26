@@ -33,13 +33,18 @@ class AnimationShadowEffect(QGraphicsDropShadowEffect):
         self.animation.setDuration(2000)  # 一次循环时间
         self.animation.setLoopCount(-1)  # 永久循环
         self.animation.setPropertyName(b'radius')
-        # 插入线行值
+        # 插入值
         self.animation.setKeyValueAt(0, 1)
         self.animation.setKeyValueAt(0.5, 30)
         self.animation.setKeyValueAt(1, 1)
 
     def start(self):
         self.animation.start()
+
+    def stop(self, r=0):
+        # 停止动画并修改半径值
+        self.animation.stop()
+        self.radius = r
 
     @pyqtProperty(int)
     def radius(self):

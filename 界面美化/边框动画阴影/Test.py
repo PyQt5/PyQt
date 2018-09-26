@@ -51,6 +51,7 @@ class Window(QWidget):
         aniButton = AnimationShadowEffect(Qt.blue, button)
         layout.addWidget(button)
         button.setGraphicsEffect(aniButton)
+        button.clicked.connect(aniButton.stop)  # 按下按钮停止动画
         aniButton.start()
 
         # 青色边框输入框
