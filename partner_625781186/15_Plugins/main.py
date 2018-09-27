@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Module implementing MainWindow.
+主函数入口.
 """
 
 """
@@ -13,7 +13,7 @@ site: https://github.com/625781186 <br>
 课件: https://github.com/625781186/WoHowLearn_PyQt5 <br>
 视频教程: https://space.bilibili.com/1863103/#/ <br>
 """
-import os, time, imp, sys
+import sys
 
 
 from PyQt5 import  QtGui, QtWidgets, QtCore
@@ -48,20 +48,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         print(sys.path)
         pass        
-  
+    def closeEvent(self, e):
+        self.pluginManager.dia.close()
 if __name__ == "__main__":
     
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle(QStyleFactory.create("Fusion"))
 
-#    def excepthook(type, value, trace):
-#        try:
-#            pass
-#        except :
-#            pass
-#        sys.__excepthook__(type, value, trace)
+    def excepthook(type, value, trace):
+        try:
+            pass
+        except :
+            pass
+        sys.__excepthook__(type, value, trace)
         
-#    sys.excepthook = excepthook
+    sys.excepthook = excepthook
   
     ui = MainWindow()
 

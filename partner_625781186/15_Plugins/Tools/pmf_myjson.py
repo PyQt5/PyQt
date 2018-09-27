@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-初始化json配置函数.
+增删改查建json.
 """
 from PyQt5.QtWidgets import *
 from PyQt5.QtWidgets import QMessageBox , QWidget , QApplication

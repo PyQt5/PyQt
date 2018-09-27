@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Module implementing Form.
+插件例子1.
 """
 
 """
@@ -14,8 +14,6 @@ site: https://github.com/625781186 <br>
 视频教程: https://space.bilibili.com/1863103/#/ <br>
 """
 
-
-
 from PyQt5 import  QtGui, QtWidgets, QtCore
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -26,7 +24,8 @@ try:
     from Ui_PluginPage1 import Ui_Form
 except:
     from page1.Ui_PluginPage1 import Ui_Form
-
+    
+# 实例化类名, 必须
 className = "Form"
 
 class Form(QWidget, Ui_Form):
@@ -35,15 +34,25 @@ class Form(QWidget, Ui_Form):
     """
     def __init__(self, parent=None):
         """
-        Constructor
         
-        @param parent reference to the parent widget
-        @type QWidget
         """
         super(Form, self).__init__(parent)
         self.setupUi(self)
         self.__mw = parent
-    
+        # layout = self.getParentLayout()
+        # layout.addWidget(self)
+    def getParentLayout(self):
+        """
+        布局函数,必须.
+        """
+        return self.__mw.verticalLayout
+        
+    def toInterface(self):
+        """
+        插入到界面,必须
+        """
+        layout = self.getParentLayout()
+        layout.addWidget(self) 
         
     def __del__(self):
         print("die")
@@ -51,20 +60,19 @@ class Form(QWidget, Ui_Form):
     @pyqtSlot()
     def on_pushButton_clicked(self):
 
-        print(15111)
+        print(2)
         pass        
     @pyqtSlot()
     def on_pushButton_2_clicked(self):
 
-        print(222)
+        print(2)
         pass        
     @pyqtSlot()
     def on_pushButton_3_clicked(self):
 
-        print(333)
+        print(3)
         pass 
-    def getParentLayout(self):
-        return self.__mw.verticalLayout
+
 
 if __name__ == "__main__":
     import sys

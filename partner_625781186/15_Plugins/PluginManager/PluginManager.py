@@ -2,7 +2,7 @@
 """
 管理插件的加载 , 卸载 , 监控文件的添加/删除.
 """
-import os, time, sys , importlib, sip
+import os, time, sys , importlib, sip, traceback
 # ==添加插件的搜索路径==
 #__file__ 为此文件路径 , 在ipython里是测不出来的
 pluginsManagerPath = os.path.dirname(os.path.abspath(__file__))
@@ -62,10 +62,10 @@ class PluginManager(QObject):
         mw = self.__mw
         if mw.findChild(QMenuBar, "menuBar"):
             # 插入到mainwindow的menuBar下 , 点击查看弹出插件加载情况窗体===
-            mw.menuPlugin = QAction("Plugin", self.__mw.menuBar,
+            mw.menuPlugin = QAction("Plugin", mw.menuBar,
                                     triggered=self.__createPluginStoreDialog)
 
-            mw.menuBar.addAction(self.__mw.menuPlugin)
+            mw.menuBar.addAction(mw.menuPlugin)
             
         else:
             QMessageBox.information(mw, "", "主窗体没有菜单栏, 请先创建.")
@@ -156,16 +156,16 @@ class PluginManager(QObject):
             fullPath = os.path.join(pluginFolder, f)
 
             pluginInfo[module] = {"path": fullPath}
-            try:
-                if module not in jsonPlugin:
-                    self.addJson(fullPath, module)
-            except:
-                self.addJson(fullPath, module)
+
+            if module not in jsonPlugin:
+                module, data = self.addJson(fullPath, module)
+                jsonPlugin[module]=data
+
 
         if CHANGE is False:
             self.pluginsInfo["StartModule"] = deepcopy(pluginInfo)
 
-        jsonPlugin = self.delJson(jsonPlugin, pluginInfo)
+        jsonPlugin = self.delJson({}, pluginInfo)
         
 #        print("jsonPlugin",jsonPlugin, "\n",  "pluginInfo",pluginInfo )
         
@@ -238,8 +238,8 @@ class PluginManager(QObject):
             _pluginModule = importlib.import_module(mod)
             
         except:
-            import traceback
-            errmsg = traceback.format_exc()    
+            
+            errmsg = traceback.format_exc()
             
             QMessageBox.information(self.__mw,
                                     "模块导入异常",
@@ -264,26 +264,34 @@ class PluginManager(QObject):
             className   = getattr(moduleObj, "className")
             pluginClass = getattr(moduleObj,  className )
         except:
-            self.pluginsInfo[mod]["active"] = False
+            self.pluginsInfo["StartModule"][mod]["active"]  = False
+            errmsg = traceback.format_exc()  
             QMessageBox.information(self.__mw,
                                     "插件加载错误",
-                                    "请在%s.py全局指定className值." % mod)
+                                    "%s ,请在%s.py全局指定className值." % (errmsg, mod))
             return False            
         # 如果是替换对象需求 ,和初始化
             
         # 实例化类 
-        pluginObject = pluginClass(self.__mw)
-        pluginObject.setObjectName(mod)
+        try:
+            pluginObject = pluginClass(self.__mw)
+            pluginObject.setObjectName(mod)
+    
+            self.pluginsInfo["StartModule"][mod]["active"]      = True
+            self.pluginsInfo["StartModule"][mod]["pluginClass"] = pluginClass
+            self.pluginsInfo["StartModule"][mod]["parent"]      = pluginObject.parent()
+        except:
 
-        self.pluginsInfo["StartModule"][mod]["active"]      = True
-        self.pluginsInfo["StartModule"][mod]["pluginClass"] = pluginClass
-        self.pluginsInfo["StartModule"][mod]["parent"]      = pluginObject.parent()
+            self.pluginsInfo["StartModule"][mod]["active"]  = False
+            errmsg = traceback.format_exc()  
+            QMessageBox.information(self.__mw,
+                                    "插件加载错误",
+                                    "%s ,请在%s.py全局指定className值." % (errmsg, mod))
         
         if  not NeedRplace:
             #TODO:其他接口
             layout = pluginObject.getParentLayout()
-            layout.addWidget(pluginObject)
-            
+            pluginObject.toInterface()
             self.pluginsInfo["StartModule"][mod]["layout"] = layout
             self.pluginsInfo["StartModule"][mod]["old"] = pluginObject
         else:
@@ -300,8 +308,15 @@ class PluginManager(QObject):
             print("reload")
             importlib.reload(sys.modules[mod])
             moduleObj = sys.modules[mod]
-            
-            objInfo = self.findOldObj(mod, moduleObj  , True)
+            try:
+                objInfo = self.findOldObj(mod, moduleObj , True)
+            except:
+                errmsg = traceback.format_exc()
+                
+                QMessageBox.information(self.__mw,
+                                        "模块导入异常",
+                                        "%s,请在%s.py检查模块."%(errmsg,mod ))
+                
             oldObj, newObj, layout = objInfo["oldObj"],\
                                      objInfo["newObj"],\
                                      objInfo["layout"]
@@ -309,7 +324,7 @@ class PluginManager(QObject):
             # 新对象替换旧对象 ， 并把地址赋值给旧对象
             layout.replaceWidget(oldObj, newObj )
             self.pluginsInfo["StartModule"][mod]["old"] = newObj
-            
+            oldObj.flag="reload"
             sip.delete(oldObj)
         else:
             self.load(mod)
@@ -352,7 +367,7 @@ class PluginManager(QObject):
             #删除对象
             objInfo = self.findOldObj(mod)
             oldObj  = objInfo["oldObj"] 
-
+            oldObj.flag="unload"
             sip.delete(oldObj)
 
             self.pluginsInfo["StartModule"][mod]["old"] = None

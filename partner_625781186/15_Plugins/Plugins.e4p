@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-6.0.dtd">
 <!-- eric project file for project Plugins -->
-<!-- Saved: 2018-09-21, 22:53:13 -->
+<!-- Saved: 2018-09-24, 21:05:10 -->
 <!-- Copyright (C) 2018 ,  -->
 <Project version="6.0">
   <Language></Language>
@@ -17,10 +17,14 @@
     <Source>PluginManager/PluginStore/PluginStore.py</Source>
     <Source>PluginManager/PluginStore/StoreModel.py</Source>
     <Source>PluginManager/PluginStore/Ui_PluginStore.py</Source>
+    <Source>PluginManager/PluginStore/__init__.py</Source>
     <Source>PluginManager/__init__.py</Source>
-    <Source>Plugins/PluginPage1.py</Source>
-    <Source>Plugins/PluginPage2.py</Source>
-    <Source>Plugins/Pluginmmm.py</Source>
+    <Source>Plugins/PluginPage0_inMainLayout.py</Source>
+    <Source>Plugins/PluginPage1_addTab3.py</Source>
+    <Source>Plugins/PluginPage1_addTab4.py</Source>
+    <Source>Plugins/PluginPage2_error.py</Source>
+    <Source>Plugins/PluginPage3_addAction1.py</Source>
+    <Source>Plugins/PluginPage3_addAction2.py</Source>
     <Source>Plugins/__init__.py</Source>
     <Source>Plugins/page1/Ui_PluginPage1.py</Source>
     <Source>Plugins/page1/__init__.py</Source>
@@ -38,6 +42,9 @@
     <Form>Plugins/page2/PluginPage2.ui</Form>
     <Form>main.ui</Form>
   </Forms>
+  <Others>
+    <Other>Documentation</Other>
+  </Others>
   <MainScript>main.py</MainScript>
   <Vcs>
     <VcsType>None</VcsType>
@@ -60,4 +67,59 @@
     <FiletypeAssociation pattern="README" type="OTHERS"/>
     <FiletypeAssociation pattern="README.*" type="OTHERS"/>
   </FiletypeAssociations>
+  <Documentation>
+    <DocumentationParams>
+      <dict>
+        <key>
+          <string>ERIC4DOC</string>
+        </key>
+        <value>
+          <dict>
+            <key>
+              <string>cssFile</string>
+            </key>
+            <value>
+              <string>%PYTHON%/eric6/CSSs/default.css</string>
+            </value>
+            <key>
+              <string>ignoreDirectories</string>
+            </key>
+            <value>
+              <list>
+                <string>page1</string>
+                <string>page2</string>
+              </list>
+            </value>
+            <key>
+              <string>ignoreFilePatterns</string>
+            </key>
+            <value>
+              <list>
+                <string>Ui*.py</string>
+                <string>Plugins\\*Page*.py</string>
+              </list>
+            </value>
+            <key>
+              <string>outputDirectory</string>
+            </key>
+            <value>
+              <string>Documentation</string>
+            </value>
+            <key>
+              <string>qtHelpEnabled</string>
+            </key>
+            <value>
+              <bool>False</bool>
+            </value>
+            <key>
+              <string>useRecursion</string>
+            </key>
+            <value>
+              <bool>True</bool>
+            </value>
+          </dict>
+        </value>
+      </dict>
+    </DocumentationParams>
+  </Documentation>
 </Project>

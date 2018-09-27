@@ -117,7 +117,6 @@ class PluginStore(QDialog, Ui_Dialog):
                 if msg==QMessageBox.Yes:
                     self.manager.unload(mod)
             else:
-                
                 self.manager.reload(mod) 
 
         # 右键菜单重载和卸载 , 默认的是选行的第0列

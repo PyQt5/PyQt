@@ -1,10 +1,4 @@
-
-#import sys, os
-#pluginsManagetPath = os.path.dirname(os.path.abspath(__file__))
-#mainPath = os.path.dirname(pluginsManagetPath)
-#pluginsPath =  os.path.join(pluginsManagetPath, "Plugins")
-#
-#for i in [pluginsPath]:
-#    print(mainPath, pluginsManagetPath,  pluginsPath)
-#    sys.path.insert(0, i)
-#    print("add")
+# -*- coding: utf-8 -*-
+"""
+插件的加载 , 重载 , 卸载模块 , 配置文件模块. 
+"""
