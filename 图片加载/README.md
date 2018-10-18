@@ -2,7 +2,7 @@
 
 ### [Python3.4.4 or Python3.5][PyQt5]
 
-### 分别通过3中情况加载图片文件和显示gif图片
+### 一、通过3种方式加载图片文件和显示gif图片
 
 1. 通过QPixmap("xxx.jpg")加载
 2. 通过pyrcc5转换res.qrc为res_rc.py文件，可以直接import加载
@@ -23,3 +23,10 @@
 
 # 截图
 ![截图](ScreenShot/1.gif)
+
+
+### 二、仿网页中的一个图片特效
+[SlippedImgWidget.py](SlippedImgWidget.py)
+
+# 截图
+![SlippedImgWidget](ScreenShot/2.gif)

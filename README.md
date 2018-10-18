@@ -37,6 +37,7 @@
  
     1. - [ ☆！ QSplitter 分割条重写 来添加按钮](分割窗口的分割条重写/)
     1. - [ QLabel 图片加载 gif动画](图片加载/)
+    1. - [ 一个图片显示小特效](图片加载/)
     1. - [ ComboBox 下拉选择级联--省、市、县 json 数据 ](下拉选择联动/)
     1. - [ ComboBox 自定义下拉 listitem ](partner_625781186/13.combo_listwidget/)
     1. - [ 仿QQ设置面板](仿QQ设置面板/)
