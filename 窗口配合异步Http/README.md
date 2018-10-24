@@ -2,10 +2,10 @@
 
 ### [Python3.5][PyQt5]
 
-依赖库：
-    quamash（对QT事件循环的封装替换）：https://github.com/harvimt/quamash
-    asyncio：https://docs.python.org/3/library/asyncio.html
-    aiohttp：https://aiohttp.readthedocs.io/en/stable/
+依赖库：<br/>
+    quamash（对QT事件循环的封装替换）：https://github.com/harvimt/quamash<br/>
+    asyncio：https://docs.python.org/3/library/asyncio.html<br/>
+    aiohttp：https://aiohttp.readthedocs.io/en/stable/<br/>
 
 1、在创建QApplication后随即设置替换事件循环loop
 ```python
