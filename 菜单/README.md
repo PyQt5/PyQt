@@ -18,6 +18,21 @@
 知识点：<br/>
 1、设置菜单项可勾选：通过QAction.setCheckable(True)方法实现<br/>
 2、设置菜单不可关闭：通过覆盖QMenu的鼠标释放mouseReleaseEvent方法（可直接替换或者通过installEventFilter安装事件过滤器实现）
+3、在菜单的鼠标释放事件中，当点击菜单项后是通过点击点坐标来查找是否有QAction，然后触发对应的QAction。
+4、故在没有QAction的地方则直接交还给QMenu自行处理逻辑，在有QAction的地方可以根据自己的需求进行处理（如上所提）
+
+核心代码：<br/>
+```python
+def _menu_mouseReleaseEvent(self, event):
+    action = self._menu.actionAt(event.pos())
+    if not action:
+        # 没有找到action就交给QMenu自己处理
+        return QMenu.mouseReleaseEvent(self._menu, event)
+    if action.property('canHide'):  # 如果有该属性则给菜单自己处理
+        return QMenu.mouseReleaseEvent(self._menu, event)
+    # 找到了QAction则只触发Action
+    action.activate(action.Trigger)
+```
 
 # 截图
 ![截图1](ScreenShot/1.gif)
