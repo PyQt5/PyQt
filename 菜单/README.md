@@ -6,7 +6,7 @@
 此时用QMenu会遇到点击一个菜单项就会自动关闭，当然可以通过其他方式实现该功能，
 不过这里就采用QMenu通过特殊的方式来实现该需求。
 
-要实现的效果：<br/>
+需求：<br/>
 菜单1<br/>
 菜单2<br/>
 菜单3<br/>
@@ -17,8 +17,8 @@
 
 知识点：<br/>
 1、设置菜单项可勾选：通过QAction.setCheckable(True)方法实现<br/>
-2、设置菜单不可关闭：通过覆盖QMenu的鼠标释放mouseReleaseEvent方法（可直接替换或者通过installEventFilter安装事件过滤器实现）
-3、在菜单的鼠标释放事件中，当点击菜单项后是通过点击点坐标来查找是否有QAction，然后触发对应的QAction。
+2、设置菜单不可关闭：通过覆盖QMenu的鼠标释放mouseReleaseEvent方法（可直接替换或者通过installEventFilter安装事件过滤器实现）<br/>
+3、在菜单的鼠标释放事件中，当点击菜单项后是通过点击点坐标来查找是否有QAction，然后触发对应的QAction。<br/>
 4、故在没有QAction的地方则直接交还给QMenu自行处理逻辑，在有QAction的地方可以根据自己的需求进行处理（如上所提）
 
 核心代码：<br/>
