@@ -29,4 +29,4 @@
 [SlippedImgWidget.py](SlippedImgWidget.py)
 
 # 截图
-![SlippedImgWidget](ScreenShot/2.gif)
+![SlippedImgWidget](ScreenShot/3.gif)
