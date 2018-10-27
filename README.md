@@ -5,7 +5,7 @@
 
 ## ActiveX
 
-### 一、QAxWidget控件
+### 1、QAxWidget控件
 
 1. [显示Word、Excel、Pdf文件](ActiveX/QAxWidget)
 
@@ -17,7 +17,22 @@
 
 ## 列表
 
+### 1、[QListWidget](列表/QListWidget)
+
+1. [自定义可拖拽Item](列表/QListWidget/自定义可拖拽Item.py)
+
+### 2、[QListView](列表/QListView)
+
+1. [自定义Widget](列表/QListView/显示自定义Widget.py)
+2. [自定义Widget并排序](列表/QListView/显示自定义Widget并排序.py)
+
 ## 树形
+
+### 1、[QTreeWidget](树结构/QTreeWidget)
+
+1. [Json生成QTreeWidget](树结构/QTreeWidget/Json生成QTreeWidget.py)
+
+### 2、[QTreeView](树结构/QTreeView)
 
 ## 表格
 
@@ -50,6 +65,12 @@
 ## 图形视图
 
 ## 其它
+
+### 1、[C和C++扩展](其它/C和C++扩展)
+
+1. [直接生成pyd](其它/C和C++扩展/pydext)
+2. [使用pyx和c++](其它/C和C++扩展/pyx和c++)
+3. [python转pyd](其它/C和C++扩展/py转pyd)
 
 ### I、 项目型
 [Qt皮肤生成器 - 持续更新中](https://github.com/892768447/QtSkin)
