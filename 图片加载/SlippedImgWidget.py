@@ -75,6 +75,6 @@ if __name__ == '__main__':
     import sys
     from PyQt5.QtWidgets import QApplication
     app = QApplication(sys.argv)
-    w = SlippedImgWidget('images/bg.png', 'images/fg.png')
+    w = SlippedImgWidget('images/bg1.jpg', 'images/fg1.png')
     w.show()
     sys.exit(app.exec_())
