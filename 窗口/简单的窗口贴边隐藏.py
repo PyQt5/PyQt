@@ -22,7 +22,7 @@ class WeltHideWindow(QWidget):
 
     def __init__(self, *args, **kwargs):
         super(WeltHideWindow, self).__init__(*args, **kwargs)
-        self.setWindowFlag(Qt.FramelessWindowHint, True)
+        self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
         self.resize(800, 600)
         self._width = QApplication.desktop().availableGeometry(self).width()
         layout = QVBoxLayout(self)
