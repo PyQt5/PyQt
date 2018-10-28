@@ -17,7 +17,7 @@ from sqlalchemy.orm.session import sessionmaker
 from sqlalchemy.sql.expression import and_
 from sqlalchemy.sql.schema import Column
 from sqlalchemy.sql.sqltypes import Integer, Text
-from 数据库查询显示表格.mainui import Ui_Form
+from mainui import Ui_Form
 
 __Author__ = """By: Irony
 QQ: 892768447

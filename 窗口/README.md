@@ -32,3 +32,17 @@
  - 1.mouseReleaseEvent，鼠标弹起事件，用于判断是否需要隐藏窗口
  - 1.enterEvent，鼠标进入事件，用于窗口隐藏后，是否需要暂时显示预览
  - 1.leaveEvent，鼠标离开事件，用于窗口暂时显示后自动隐藏效果
+
+ 
+ 
+ # 内嵌外部窗口
+
+### 原理思路：
+ - 1.使用SetParent函数设置外部窗口的parent为Qt的窗口
+ - 2.Qt使用QWidget.createWindowContainer(QWindow.fromWinId(窗口ID))生成QWidget
+ - 3.使用GetWindowLong得到原来窗口的样式属性（style = win32gui.GetWindowLong(hwnd, win32con.GWL_STYLE)和exstyle = win32gui.GetWindowLong(hwnd, win32con.GWL_EXSTYLE)）
+ - 4.这里还原窗口后不会显示，用spy++发现没有了WS_VISIBLE样式（未解决）
+
+截图
+
+![1](ScreenShot/嵌入外部窗口.gif)
