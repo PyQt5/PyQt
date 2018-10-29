@@ -173,7 +173,7 @@
 
 # QQ群
  - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)
- - [PyQt学习互助](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
+ - [PyQt 学习](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
  - [PyQt5小组](https://jq.qq.com/?_wv=1027&k=5cI3oRz)
 
 
