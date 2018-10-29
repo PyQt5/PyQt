@@ -131,6 +131,8 @@
 
     1. [获取Cookie](浏览器/QWebEngineView/获取Cookie)
 
+    1. [下载文件](partner_625781186/6.QWebEngineView下载文件)
+
 ## QML
 
 ## 图形视图
