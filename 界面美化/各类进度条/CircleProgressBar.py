@@ -4,7 +4,7 @@
 """
 Created on 2018年9月4日
 @author: Irony
-@site: https://github.com/892768447
+@site: https://pyqt5.com, https://github.com/892768447
 @email: 892768447@qq.com
 @file: 界面美化.圆形进度条.CircleProgressBar
 @description: 
@@ -46,7 +46,7 @@ class CircleProgressBar(QWidget):
         painter.rotate(self.angle)
         painter.save()
         painter.setPen(Qt.NoPen)
-        color = self.Color
+        color = self.Color.toRgb()
         for i in range(11):
             color.setAlphaF(1.0 * i / 10)
             painter.setBrush(color)
