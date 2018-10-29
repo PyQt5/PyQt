@@ -19,14 +19,19 @@
   "CreateTime": "2018-09-18-18:45:14",
   "ModifyTime": "2018-09-19-18:16:08"
  },
- "PluginPage3_addAction2": {
-  "Allow": true,
-  "CreateTime": "2018-09-24-20:54:48",
-  "ModifyTime": "2018-09-24-20:57:03"
- },
  "PluginPage3_addAction1": {
   "Allow": true,
   "CreateTime": "2018-09-24-18:26:10",
   "ModifyTime": "2018-09-24-20:50:02"
+ },
+ "PluginPage1": {
+  "Allow": true,
+  "CreateTime": "2018-09-27-16:46:40",
+  "ModifyTime": "2018-10-07-21:37:19"
+ },
+ "PluginPage2": {
+  "Allow": true,
+  "CreateTime": "2018-09-27-16:46:40",
+  "ModifyTime": "2018-09-27-16:47:19"
  }
 }

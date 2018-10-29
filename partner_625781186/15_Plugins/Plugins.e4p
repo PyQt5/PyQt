@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-6.0.dtd">
 <!-- eric project file for project Plugins -->
-<!-- Saved: 2018-09-24, 21:05:10 -->
+<!-- Saved: 2018-10-01, 18:41:58 -->
 <!-- Copyright (C) 2018 ,  -->
 <Project version="6.0">
   <Language></Language>
@@ -24,7 +24,6 @@
     <Source>Plugins/PluginPage1_addTab4.py</Source>
     <Source>Plugins/PluginPage2_error.py</Source>
     <Source>Plugins/PluginPage3_addAction1.py</Source>
-    <Source>Plugins/PluginPage3_addAction2.py</Source>
     <Source>Plugins/__init__.py</Source>
     <Source>Plugins/page1/Ui_PluginPage1.py</Source>
     <Source>Plugins/page1/__init__.py</Source>

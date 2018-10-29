@@ -132,8 +132,8 @@ class MyEngineView(QWebEngineView):
 
     def _downloadProgress(self , bytesReceived:"qint64", bytesTotal:"qint64"):
         # bytesReceived 当前下载值 ； bytesTotal 文件总大小值
-        self.bytesReceived = bytesReceived
-        self.bytesTotal = bytesTotal
+        # self.bytesReceived = bytesReceived
+        # self.bytesTotal = bytesTotal
         print(bytesReceived , bytesTotal )
 
     def _finished(self):
