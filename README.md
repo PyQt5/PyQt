@@ -7,7 +7,7 @@
 
 ### 1、QAxWidget控件
 
-1. [显示Word、Excel、Pdf文件](ActiveX/QAxWidget)
+1. [显示Word、Excel、Pdf文件](ActiveX/)
 
 ## 按钮
 
