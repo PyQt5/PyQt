@@ -149,7 +149,7 @@ class FramelessWindow(QWidget):
         # 背景透明
         self.setAttribute(Qt.WA_TranslucentBackground, True)
         # 无边框
-        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
         # 鼠标跟踪
         self.setMouseTracking(True)
         # 布局

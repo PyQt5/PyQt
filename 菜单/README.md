@@ -1,27 +1,24 @@
-# 菜单设置多选并且不关闭
+# 菜单 QMenu
 
-### [Python3.4.4 or Python3.5][PyQt5]
+## [1、菜单设置多选并且不关闭](菜单多选不关闭.py)
 
 有时候会遇到这种需求：在界面某个位置弹出一个菜单，其中里面的菜单项可以多选（类似配置选项），
 此时用QMenu会遇到点击一个菜单项就会自动关闭，当然可以通过其他方式实现该功能，
 不过这里就采用QMenu通过特殊的方式来实现该需求。
 
-需求：<br/>
-菜单1<br/>
-菜单2<br/>
-菜单3<br/>
-菜单4<br/>
-
-点击菜单1、2、3可以多选不关闭菜单<br/>
+需求：显示4个菜单（菜单1、菜单2、菜单3、菜单4），
+其中点击菜单1、2、3可以多选不关闭菜单，
 点击菜单4可以勾选，并且关闭菜单
 
-知识点：<br/>
-1、设置菜单项可勾选：通过QAction.setCheckable(True)方法实现<br/>
-2、设置菜单不可关闭：通过覆盖QMenu的鼠标释放mouseReleaseEvent方法（可直接替换或者通过installEventFilter安装事件过滤器实现）<br/>
-3、在菜单的鼠标释放事件中，当点击菜单项后是通过点击点坐标来查找是否有QAction，然后触发对应的QAction。<br/>
-4、故在没有QAction的地方则直接交还给QMenu自行处理逻辑，在有QAction的地方可以根据自己的需求进行处理（如上所提）
+原理：
 
-核心代码：<br/>
+1. 设置菜单项可勾选：通过QAction.setCheckable(True)方法实现
+1. 设置菜单不可关闭：通过覆盖QMenu的鼠标释放mouseReleaseEvent方法（可直接替换或者通过installEventFilter安装事件过滤器实现）
+1. 在菜单的鼠标释放事件中，当点击菜单项后是通过点击点坐标来查找是否有QAction，然后触发对应的QAction。<br/>
+1. 故在没有QAction的地方则直接交还给QMenu自行处理逻辑，在有QAction的地方可以根据自己的需求进行处理（如上所提）
+
+核心代码：
+
 ```python
 def _menu_mouseReleaseEvent(self, event):
     action = self._menu.actionAt(event.pos())
@@ -34,5 +31,6 @@ def _menu_mouseReleaseEvent(self, event):
     action.activate(action.Trigger)
 ```
 
-# 截图
-![截图1](ScreenShot/1.gif)
+效果图：
+
+![截图](ScreenShot/菜单多选不关闭.gif)
