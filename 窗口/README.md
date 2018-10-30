@@ -74,7 +74,7 @@
     1. `TitleBar`的最小化最大化关闭等按钮事件关联到父窗口里
     1. `TitleBar`中的鼠标按下移动事件得到坐标也传递到父窗口调用move方法进行窗口移动
 
-![截图](ScreenShot/无边框自定义标题栏窗口/无边框自定义标题栏窗口.gif)
+![截图](无边框自定义标题栏窗口/ScreenShot/无边框自定义标题栏窗口.gif)
 
 1. 方式二（windows api）
 
@@ -82,8 +82,8 @@
     1. 重写`nativeEvent`事件拦截边框的系统边框的显示，并返回各个方向
 
 ## 截图
-![截图](ScreenShot/无边框自定义标题栏窗口/win无边框调整大小1.jpg)
+![截图](无边框自定义标题栏窗口/ScreenShot/win无边框调整大小1.jpg)
 
-![截图](ScreenShot/无边框自定义标题栏窗口/win无边框调整大小2.jpg)
+![截图](无边框自定义标题栏窗口/ScreenShot/win无边框调整大小2.jpg)
 
-![截图](ScreenShot/无边框自定义标题栏窗口/win无边框调整大小3.gif)
+![截图](无边框自定义标题栏窗口/ScreenShot/win无边框调整大小3.gif)
