@@ -34,6 +34,7 @@ class Window(QWidget):
 
     def doShow(self):
         try:
+            # 尝试先取消动画完成后关闭窗口的信号
             self.animation.finished.disconnect(self.close)
         except:
             pass

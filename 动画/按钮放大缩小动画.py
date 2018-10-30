@@ -92,18 +92,18 @@ class TestWindow(QWidget):
         super(TestWindow, self).showEvent(event)
         # 更新按钮的位置
         self.button1.updatePos()
-        
+        # 针对不在控件中的按钮
         self.button2.move(self.width() - self.button2.width() - 15,
-                               self.height() - self.button2.height() - 10)
+                          self.height() - self.button2.height() - 10)
         self.button2.updatePos()
 
     def resizeEvent(self, event):
         super(TestWindow, self).resizeEvent(event)
         # 更新按钮的位置
         self.button1.updatePos()
-        
+        # 针对不在控件中的按钮
         self.button2.move(self.width() - self.button2.width() - 15,
-                               self.height() - self.button2.height() - 10)
+                          self.height() - self.button2.height() - 10)
         self.button2.updatePos()
 
 
