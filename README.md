@@ -1,6 +1,8 @@
 # 各种各样的PyQt测试和例子
 
-## [PyQt5 社区](https://pyqt5.com)
+[![Blog](https://img.shields.io/badge/blog-pyqt5-green.svg)](https://pyqt5.com)
+[![Gitter version](https://img.shields.io/gitter/room/gitterHQ/gitter.svg)](https://gitter.im/PyQt-5/Lobby)
+
 本社区是专门针对PyQt5学习和提升开设的博客网站，分析大家平时学习中记录的笔记和例子，以及对遇到的问题进行收集整理。
 
 ## ActiveX
