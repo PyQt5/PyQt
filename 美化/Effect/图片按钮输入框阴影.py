@@ -30,7 +30,7 @@ class Window(QWidget):
         layout = QHBoxLayout(self)
 
         # 绿色边框
-        labelGreen = QLabel(self, pixmap=QPixmap('1.jpg').scaled(100, 100))
+        labelGreen = QLabel(self, pixmap=QPixmap('Images/1.jpg').scaled(100, 100))
         layout.addWidget(labelGreen)
         aniGreen = AnimationShadowEffect(Qt.darkGreen, labelGreen)
         labelGreen.setGraphicsEffect(aniGreen)
@@ -40,7 +40,7 @@ class Window(QWidget):
         labelRed = QLabel(self)
         labelRed.setMinimumSize(100, 100)
         labelRed.setMaximumSize(100, 100)
-        labelRed.setStyleSheet('border-image: url(1.jpg);border-radius: 50px;')
+        labelRed.setStyleSheet('border-image: url(Images/1.jpg);border-radius: 50px;')
         layout.addWidget(labelRed)
         aniRed = AnimationShadowEffect(Qt.red, labelGreen)
         labelRed.setGraphicsEffect(aniRed)
