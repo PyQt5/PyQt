@@ -48,6 +48,4 @@ qt_path = 'D:/soft/Qt/Qt5.5.1/5.5/msvc2010'
 
 5、python configure.py
 
-# 截图
-
-![截图1](ScreenShot/1.gif)
+![截图](ScreenShot/1.gif)

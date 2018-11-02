@@ -23,10 +23,3 @@
 
 # 截图
 ![截图](ScreenShot/1.gif)
-
-
-### 二、仿网页中的一个图片特效
-[SlippedImgWidget.py](SlippedImgWidget.py)
-
-# 截图
-![SlippedImgWidget](ScreenShot/3.gif)
