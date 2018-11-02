@@ -7,14 +7,14 @@
 
 ## [ActiveX](ActiveX)
 
-1. [显示Word、Excel、Pdf文件](ActiveX/)
+1. [显示Word、Excel、Pdf文件](ActiveX/显示word_excel_pdf.py)
 
 ## [按钮](按钮)
 
 ## [输入框](输入框)
 
 1. [QTextEdit](输入框/QTextEdit)
-    1. [文本高亮](输入框/文本高亮)
+    1. [文本高亮](输入框/QTextEdit/简单查找文字并高亮.py)
 
 ## [菜单](菜单)
 
@@ -33,7 +33,7 @@
 ## [树结构](树结构)
 
 1. [QTreeWidget](树结构/QTreeWidget)
-    1. [Json生成QTreeWidget](树结构/QTreeWidget/Json生成QTreeWidget.py)
+    1. [Json生成QTreeWidget](树结构/QTreeWidget/Json生成QTreeWidget)
 
 1. [QTreeView](树结构/QTreeView)
 
