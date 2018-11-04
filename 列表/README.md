@@ -25,3 +25,11 @@
     2. 滚动条滑动到底部加载更多
 
 ![截图](QListWidget/腾讯视频热播列表/ScreenShot/1.gif)
+
+### 3. [删除自定义Item](QListWidget/删除自定义Item.py)
+1. 删除item时先要通过`QListWidget.indexFromItem(item).row()`得到它的行数
+2. 通过`takeItem`函数取出该Item并删除掉,`item = self.listWidget.takeItem(row)`
+3. 移除item对应的自定义控件`self.listWidget.removeItemWidget(item)`
+4. 如果是清空所有Item，可以通过循环删除，但是删除的时候行号一直是0即可，原因和删除list数组一样。
+
+![截图](QListWidget/ScreenShot/删除自定义Item.gif)
