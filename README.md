@@ -25,6 +25,7 @@
 1. [QListWidget](列表/QListWidget)
     1. [自定义可拖拽Item](列表/QListWidget/自定义可拖拽Item.py)
     1. [腾讯视频热播列表](列表/QListWidget/腾讯视频热播列表)
+    1. [删除自定义Item](列表/QListWidget/删除自定义Item.py)
 
 1. [QListView](列表/QListView)
     1. [自定义Widget](列表/QListView/显示自定义Widget.py)
