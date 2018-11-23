@@ -50,3 +50,77 @@ def resizeEvent(self, event):
 ```
 
 ![截图](ScreenShot/按钮放大缩小动画.gif)
+
+## [4、点阵特效](点阵特效.py)
+
+1. emmm,我也不知道这个动画叫啥名字,反正就是仿照网页做的
+1. 参考js源码,大概的原理就是:
+    1. 先根据窗口大小随机创建一些点
+    1. 遍历这些点找到跟它自己关联的点
+    1. 动画开始画圆点、画连线
+    1. 动画改变这些点的透明度, 用到了属性动画`QPropertyAnimation`
+1. 这里没有仔细去研究js里的算法优化,在浏览器里嗖嗖的就生成了,在py里好慢....
+1. 尽量在py里优化了循环操作,也简单的做了个cython加速也才提高了1s ? 1倍?...
+1. 不要为了xx用这玩意儿,和网页的效果一样,占CPU !!!!!!
+1. 如果有更好的优化算法请告知, 3Q
+1. PS: pyd是python3.4生成的,删掉pyd也能运行
+
+这部分是js的核心
+```js
+// for each point find the 5 closest points
+for(var i = 0; i < points.length; i++) {
+    var closest = [];
+    var p1 = points[i];
+    for(var j = 0; j < points.length; j++) {
+        var p2 = points[j]
+        if(!(p1 == p2)) {
+            var placed = false;
+            for(var k = 0; k < 5; k++) {
+                if(!placed) {
+                    if(closest[k] == undefined) {
+                        closest[k] = p2;
+                        placed = true;
+                    }
+                }
+            }
+
+            for(var k = 0; k < 5; k++) {
+                if(!placed) {
+                    if(getDistance(p1, p2) < getDistance(p1, closest[k])) {
+                        closest[k] = p2;
+                        placed = true;
+                    }
+                }
+            }
+        }
+    }
+    p1.closest = closest;
+}
+```
+
+这部分是py的核心
+```python
+def findClose(points):
+    plen = len(points)
+    for i in range(plen):
+        closest = [None, None, None, None, None]
+        p1 = points[i]
+        for j in range(plen):
+            p2 = points[j]
+            dte1 = getDistance(p1, p2)
+            if p1 != p2:
+                placed = False
+                for k in range(5):
+                    if not placed:
+                        if not closest[k]:
+                            closest[k] = p2
+                            placed = True
+                for k in range(5):
+                    if not placed:
+                        if dte1 < getDistance(p1, closest[k]):
+                            closest[k] = p2
+                            placed = True
+        p1.closest = closest
+```
+
+![截图](ScreenShot/点阵特效.gif)
