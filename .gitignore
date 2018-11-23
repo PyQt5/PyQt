@@ -114,6 +114,8 @@ build/*
 log.txt
 /tmp/
 /tmp/*
+/Tmps
+/Tmps/*
 /tmp/Material
 /tmp/Material/*
 *.pyc
