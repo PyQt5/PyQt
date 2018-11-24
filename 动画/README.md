@@ -131,4 +131,11 @@ def findClose(points):
 1. 主要代码参考http://qt.shoutwiki.com/wiki/Extending_QStackedWidget_for_sliding_page_animations_in_Qt
 1. 增加了自动切换函数
 
+函数调用:
+
+1. `slideInNext` 下一页
+1. `slideInPrev` 上一页
+1. `setCurrentIndex` 切换到指定页
+1. `autoStart(msec)`  轮播模式, 默认是3000毫秒
+
 ![截图](ScreenShot/图片轮播动画.gif)
