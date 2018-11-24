@@ -124,3 +124,11 @@ def findClose(points):
 ```
 
 ![截图](ScreenShot/点阵特效.gif)
+
+## [5、图片轮播动画](图片轮播动画.py)
+
+1. 使用`QPropertyAnimation`对`QStackedWidget`中的子控件进行pos位移操作实现动画切换特效
+1. 主要代码参考http://qt.shoutwiki.com/wiki/Extending_QStackedWidget_for_sliding_page_animations_in_Qt
+1. 增加了自动切换函数
+
+![截图](ScreenShot/图片轮播动画.gif)
