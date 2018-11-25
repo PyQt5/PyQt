@@ -17,3 +17,9 @@ PyQt多线程的简单使用例子
 `ctypes.windll.kernel32.TerminateThread`终止线程，不推荐
 
 ![截图](ScreenShot/线程挂起恢复.gif)
+
+## [4、线程休眠唤醒](线程休眠唤醒.py)
+
+使用`QWaitCondition`的wait和wakeAll方法
+
+![截图](ScreenShot/线程休眠唤醒.gif)

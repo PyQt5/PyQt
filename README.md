@@ -92,6 +92,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 ## [多线程](多线程)
 
 1. [线程挂起恢复](多线程/线程挂起恢复.py)
+1. [线程休眠唤醒](多线程/线程休眠唤醒.py)
 1. [继承QThread](多线程/继承QThread.py)
 1. [moveToThread](多线程/moveToThread.py)
 
