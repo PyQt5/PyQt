@@ -1,9 +1,9 @@
 eclipse.preferences.version=1
-encoding//ActiveX/\u663E\u793Aword_excel_pdf.py=utf-8
-encoding//Item\ Views/QTableView/CopyContent/CopyContent.py=utf-8
-encoding//Item\ Views/QTableView/CopyContent/__main__.py=utf-8
-encoding//Item\ Widgets/QTableWidget/SqlQuery/SqlQuery.py=utf-8
-encoding//Item\ Widgets/QTableWidget/SqlQuery/__main__.py=utf-8
+encoding//QAxWidget/\u663E\u793Aword_excel_pdf.py=utf-8
+encoding//QTableView/CopyContent/CopyContent.py=utf-8
+encoding//QTableView/CopyContent/__main__.py=utf-8
+encoding//QTableWidget/SqlQuery/SqlQuery.py=utf-8
+encoding//QTableWidget/SqlQuery/__main__.py=utf-8
 encoding//\u4E0B\u62C9\u6846/\u4E0B\u62C9\u9009\u62E9\u8054\u52A8/\u4E0B\u62C9\u9009\u62E9\u8054\u52A8.py=utf-8
 encoding//\u5176\u5B83/C\u548CC++\u6269\u5C55/py\u8F6Cpyd/pydmod.py=utf-8
 encoding//\u5176\u5B83/QRC\u8D44\u6E90\u6587\u4EF6\u4F7F\u7528/qrctest1.py=utf-8
