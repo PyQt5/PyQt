@@ -6,22 +6,22 @@ Created on 2018年2月4日
 @author: Irony."[讽刺]
 @site: http://alyl.vip, http://orzorz.vip, https://coding.net/u/892768447, https://github.com/892768447
 @email: 892768447@qq.com
-@file: TencentMovieHotPlay_ListWidget
+@file: TencentMovieHotPlay_Flow
 @description: 
 '''
 import os
 import sys
 import webbrowser
 
-from PyQt5.QtCore import QSize, Qt, QUrl, QTimer
+from PyQt5.QtCore import QSize, Qt, QUrl, QTimer, pyqtSignal
 from PyQt5.QtGui import QPainter, QFont, QLinearGradient, QGradient, QColor,\
     QBrush, QPaintEvent, QPixmap
 from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
 from PyQt5.QtSvg import QSvgWidget
 from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel,\
-    QHBoxLayout, QSpacerItem, QSizePolicy, QAbstractSlider,\
-    QListWidget, QListWidgetItem
+    QHBoxLayout, QSpacerItem, QSizePolicy, QScrollArea, QAbstractSlider
 
+from Lib.flowlayout import FlowLayout  # @UnresolvedImport
 from lxml.etree import HTML  # @UnresolvedImport
 
 
@@ -131,13 +131,12 @@ class CoverLabel(QLabel):
 class ItemWidget(QWidget):
 
     def __init__(self, cover_path, figure_info, figure_title,
-                 figure_score, figure_desc, figure_count, video_url, cover_url, img_path, manager, *args, **kwargs):
+                 figure_score, figure_desc, figure_count, video_url, cover_url, img_path, *args, **kwargs):
         super(ItemWidget, self).__init__(*args, **kwargs)
         self.setMaximumSize(220, 420)
         self.setMaximumSize(220, 420)
         self.img_path = img_path
         self.cover_url = cover_url
-        self._manager = manager
         layout = QVBoxLayout(self)
         layout.setContentsMargins(10, 20, 10, 0)
         # 图片label
@@ -184,30 +183,18 @@ class ItemWidget(QWidget):
                     # 设置两个自定义属性方便后期reply中处理
                     req.setAttribute(QNetworkRequest.User + 1, self)
                     req.setAttribute(QNetworkRequest.User + 2, self.img_path)
-                    self._manager.get(req)  # 调用父窗口中的下载器下载
+                    self.parentWidget()._manager.get(req)  # 调用父窗口中的下载器下载
         return super(ItemWidget, self).event(event)
 
 
-class Window(QListWidget):
+class GridWidget(QWidget):
 
     Page = 0
+    loadStarted = pyqtSignal(bool)
 
     def __init__(self, *args, **kwargs):
-        super(Window, self).__init__(*args, **kwargs)
-        self.resize(800, 600)
-        self.setFrameShape(self.NoFrame)  # 无边框
-        self.setFlow(self.LeftToRight)  # 从左到右
-        self.setWrapping(True)  # 这三个组合可以达到和FlowLayout一样的效果
-        self.setResizeMode(self.Adjust)
-
-        self._loadStart = False
-        # 连接竖着的滚动条滚动事件
-        self.verticalScrollBar().actionTriggered.connect(self.onActionTriggered)
-        # 进度条
-        self.loadWidget = QSvgWidget(
-            self, minimumHeight=120, minimumWidth=120, visible=False)
-        self.loadWidget.load(Svg_icon_loading)
-
+        super(GridWidget, self).__init__(*args, **kwargs)
+        self._layout = FlowLayout(self)  # 使用自定义流式布局
         # 异步网络下载管理器
         self._manager = QNetworkAccessManager(self)
         self._manager.finished.connect(self.onFinished)
@@ -215,8 +202,7 @@ class Window(QListWidget):
     def load(self):
         if self.Page == -1:
             return
-        self._loadStart = True
-        self.loadWidget.setVisible(True)
+        self.loadStarted.emit(True)
         # 延迟一秒后调用目的在于显示进度条
         QTimer.singleShot(1000, self._load)
 
@@ -240,8 +226,7 @@ class Window(QListWidget):
             return
         # 解析网页
         self._parseHtml(html)
-        self._loadStart = False
-        self.loadWidget.setVisible(False)
+        self.loadStarted.emit(False)
 
     def _parseHtml(self, html):
         #         encoding = chardet.detect(html) or {}
@@ -274,14 +259,37 @@ class Window(QListWidget):
                 li.xpath(".//div[@class='figure_count']/span/text()") or [""])[0]
             path = "cache/{0}.jpg".format(
                 os.path.splitext(os.path.basename(video_url))[0])
-            cover_path = "pic_v.png"
+            cover_path = "Data/pic_v.png"
             if os.path.isfile(path):
                 cover_path = path
             iwidget = ItemWidget(cover_path, figure_info, figure_title,
-                                 figure_score, figure_desc, figure_count, video_url, cover_url, path, self._manager, self)
-            item = QListWidgetItem(self)
-            item.setSizeHint(iwidget.sizeHint())
-            self.setItemWidget(item, iwidget)
+                                 figure_score, figure_desc, figure_count, video_url, cover_url, path, self)
+            self._layout.addWidget(iwidget)
+
+
+class Window(QScrollArea):
+
+    def __init__(self, *args, **kwargs):
+        super(Window, self).__init__(*args, **kwargs)
+        self.resize(800, 600)
+        self.setFrameShape(self.NoFrame)
+        self.setWidgetResizable(True)
+        self.setAlignment(Qt.AlignCenter)
+        self._loadStart = False
+        # 网格窗口
+        self._widget = GridWidget(self)
+        self._widget.loadStarted.connect(self.setLoadStarted)
+        self.setWidget(self._widget)
+        # 连接竖着的滚动条滚动事件
+        self.verticalScrollBar().actionTriggered.connect(self.onActionTriggered)
+        # 进度条
+        self.loadWidget = QSvgWidget(
+            self, minimumHeight=120, minimumWidth=120, visible=False)
+        self.loadWidget.load(Svg_icon_loading)
+
+    def setLoadStarted(self, started):
+        self._loadStart = started
+        self.loadWidget.setVisible(started)
 
     def onActionTriggered(self, action):
         # 这里要判断action=QAbstractSlider.SliderMove，可以避免窗口大小改变的问题
@@ -291,7 +299,7 @@ class Window(QListWidget):
         # 使用sliderPosition获取值可以同时满足鼠标滑动和拖动判断
         if self.verticalScrollBar().sliderPosition() == self.verticalScrollBar().maximum():
             # 可以下一页了
-            self.load()
+            self._widget.load()
 
     def resizeEvent(self, event):
         super(Window, self).resizeEvent(event)
@@ -308,5 +316,5 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     w = Window()
     w.show()
-    w.load()
+    w._widget.load()
     sys.exit(app.exec_())

@@ -6,7 +6,7 @@ Created on 2018年2月4日
 @author: Irony."[讽刺]
 @site: http://alyl.vip, http://orzorz.vip, https://coding.net/u/892768447, https://github.com/892768447
 @email: 892768447@qq.com
-@file: TencentMovieHotPlay_Flow
+@file: TencentMovieHotPlay
 @description: 
 '''
 import os
@@ -19,9 +19,9 @@ from PyQt5.QtGui import QPainter, QFont, QLinearGradient, QGradient, QColor,\
 from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
 from PyQt5.QtSvg import QSvgWidget
 from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel,\
-    QHBoxLayout, QSpacerItem, QSizePolicy, QScrollArea, QAbstractSlider
+    QHBoxLayout, QSpacerItem, QSizePolicy, QScrollArea, QGridLayout,\
+    QAbstractSlider
 
-from flowlayout import FlowLayout  # @UnresolvedImport
 from lxml.etree import HTML  # @UnresolvedImport
 
 
@@ -78,8 +78,6 @@ class CoverLabel(QLabel):
 
     def __init__(self, cover_path, cover_title, video_url, *args, **kwargs):
         super(CoverLabel, self).__init__(*args, **kwargs)
-#         super(CoverLabel, self).__init__(
-#             '<html><head/><body><img src="{0}"/></body></html>'.format(os.path.abspath(cover_path)), *args, **kwargs)
         self.setCursor(Qt.PointingHandCursor)
         self.setScaledContents(True)
         self.setMinimumSize(220, 308)
@@ -133,12 +131,12 @@ class ItemWidget(QWidget):
     def __init__(self, cover_path, figure_info, figure_title,
                  figure_score, figure_desc, figure_count, video_url, cover_url, img_path, *args, **kwargs):
         super(ItemWidget, self).__init__(*args, **kwargs)
-        self.setMaximumSize(220, 420)
-        self.setMaximumSize(220, 420)
+        self.setMaximumSize(220, 380)
+        self.setMaximumSize(220, 380)
         self.img_path = img_path
         self.cover_url = cover_url
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(10, 20, 10, 0)
+        layout.setContentsMargins(0, 0, 0, 0)
         # 图片label
         self.clabel = CoverLabel(cover_path, figure_info, video_url, self)
         layout.addWidget(self.clabel)
@@ -172,7 +170,7 @@ class ItemWidget(QWidget):
 
     def sizeHint(self):
         # 每个item控件的大小
-        return QSize(220, 420)
+        return QSize(220, 380)
 
     def event(self, event):
         if isinstance(event, QPaintEvent):
@@ -194,7 +192,8 @@ class GridWidget(QWidget):
 
     def __init__(self, *args, **kwargs):
         super(GridWidget, self).__init__(*args, **kwargs)
-        self._layout = FlowLayout(self)  # 使用自定义流式布局
+        self._layout = QGridLayout(self, spacing=20)
+        self._layout.setContentsMargins(20, 20, 20, 20)
         # 异步网络下载管理器
         self._manager = QNetworkAccessManager(self)
         self._manager.finished.connect(self.onFinished)
@@ -228,6 +227,10 @@ class GridWidget(QWidget):
         self._parseHtml(html)
         self.loadStarted.emit(False)
 
+    def splist(self, src, length):
+        # 等分列表
+        return (src[i:i + length] for i in range(len(src)) if i % length == 0)
+
     def _parseHtml(self, html):
         #         encoding = chardet.detect(html) or {}
         #         html = html.decode(encoding.get("encoding","utf-8"))
@@ -237,34 +240,47 @@ class GridWidget(QWidget):
         if not lis:
             self.Page = -1  # 后面没有页面了
             return
-        self.Page += 1
-        self._makeItem(lis)
+        lack_count = self._layout.count() % 30  # 获取布局中上次还缺几个5行*6列的标准
+        row_count = int(self._layout.count() / 6)  # 行数
+        print("lack_count:", lack_count)
+        self.Page += 1  # 自增+1
+        if lack_count != 0:  # 上一次没有满足一行6个,需要补齐
+            lack_li = lis[:lack_count]
+            lis = lis[lack_count:]
+            self._makeItem(lack_li, row_count)  # 补齐
+            if lack_li and lis:
+                row_count += 1
+                self._makeItem(lis, row_count)  # 完成剩下的
+        else:
+            self._makeItem(lis, row_count)
 
-    def _makeItem(self, lis):
-        for li in lis:
-            a = li.find("a")
-            video_url = a.get("href")  # 视频播放地址
-            img = a.find("img")
-            cover_url = "http:" + img.get("r-lazyload")  # 封面图片
-            figure_title = img.get("alt")  # 电影名
-            figure_info = a.find("div/span")
-            figure_info = "" if figure_info is None else figure_info.text  # 影片信息
-            figure_score = "".join(li.xpath(".//em/text()"))  # 评分
-            # 主演
-            figure_desc = "<span style=\"font-size: 12px;\">主演：</span>" + \
-                "".join([Actor.format(**dict(fd.items()))
-                         for fd in li.xpath(".//div[@class='figure_desc']/a")])
-            # 播放数
-            figure_count = (
-                li.xpath(".//div[@class='figure_count']/span/text()") or [""])[0]
-            path = "cache/{0}.jpg".format(
-                os.path.splitext(os.path.basename(video_url))[0])
-            cover_path = "pic_v.png"
-            if os.path.isfile(path):
-                cover_path = path
-            iwidget = ItemWidget(cover_path, figure_info, figure_title,
-                                 figure_score, figure_desc, figure_count, video_url, cover_url, path, self)
-            self._layout.addWidget(iwidget)
+    def _makeItem(self, li_s, row_count):
+        li_s = self.splist(li_s, 6)
+        for row, lis in enumerate(li_s):
+            for col, li in enumerate(lis):
+                a = li.find("a")
+                video_url = a.get("href")  # 视频播放地址
+                img = a.find("img")
+                cover_url = "http:" + img.get("r-lazyload")  # 封面图片
+                figure_title = img.get("alt")  # 电影名
+                figure_info = a.find("div/span")
+                figure_info = "" if figure_info is None else figure_info.text  # 影片信息
+                figure_score = "".join(li.xpath(".//em/text()"))  # 评分
+                # 主演
+                figure_desc = "<span style=\"font-size: 12px;\">主演：</span>" + \
+                    "".join([Actor.format(**dict(fd.items()))
+                             for fd in li.xpath(".//div[@class='figure_desc']/a")])
+                # 播放数
+                figure_count = (
+                    li.xpath(".//div[@class='figure_count']/span/text()") or [""])[0]
+                path = "cache/{0}.jpg".format(
+                    os.path.splitext(os.path.basename(video_url))[0])
+                cover_path = "Data/pic_v.png"
+                if os.path.isfile(path):
+                    cover_path = path
+                iwidget = ItemWidget(cover_path, figure_info, figure_title,
+                                     figure_score, figure_desc, figure_count, video_url, cover_url, path, self)
+                self._layout.addWidget(iwidget, row_count + row, col)
 
 
 class Window(QScrollArea):

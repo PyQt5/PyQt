@@ -6,21 +6,21 @@ Created on 2018年2月4日
 @author: Irony."[讽刺]
 @site: http://alyl.vip, http://orzorz.vip, https://coding.net/u/892768447, https://github.com/892768447
 @email: 892768447@qq.com
-@file: TencentMovieHotPlay
+@file: TencentMovieHotPlay_ListWidget
 @description: 
 '''
 import os
 import sys
 import webbrowser
 
-from PyQt5.QtCore import QSize, Qt, QUrl, QTimer, pyqtSignal
+from PyQt5.QtCore import QSize, Qt, QUrl, QTimer
 from PyQt5.QtGui import QPainter, QFont, QLinearGradient, QGradient, QColor,\
     QBrush, QPaintEvent, QPixmap
 from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
 from PyQt5.QtSvg import QSvgWidget
 from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel,\
-    QHBoxLayout, QSpacerItem, QSizePolicy, QScrollArea, QGridLayout,\
-    QAbstractSlider
+    QHBoxLayout, QSpacerItem, QSizePolicy, QAbstractSlider,\
+    QListWidget, QListWidgetItem
 
 from lxml.etree import HTML  # @UnresolvedImport
 
@@ -78,6 +78,8 @@ class CoverLabel(QLabel):
 
     def __init__(self, cover_path, cover_title, video_url, *args, **kwargs):
         super(CoverLabel, self).__init__(*args, **kwargs)
+#         super(CoverLabel, self).__init__(
+#             '<html><head/><body><img src="{0}"/></body></html>'.format(os.path.abspath(cover_path)), *args, **kwargs)
         self.setCursor(Qt.PointingHandCursor)
         self.setScaledContents(True)
         self.setMinimumSize(220, 308)
@@ -129,14 +131,15 @@ class CoverLabel(QLabel):
 class ItemWidget(QWidget):
 
     def __init__(self, cover_path, figure_info, figure_title,
-                 figure_score, figure_desc, figure_count, video_url, cover_url, img_path, *args, **kwargs):
+                 figure_score, figure_desc, figure_count, video_url, cover_url, img_path, manager, *args, **kwargs):
         super(ItemWidget, self).__init__(*args, **kwargs)
-        self.setMaximumSize(220, 380)
-        self.setMaximumSize(220, 380)
+        self.setMaximumSize(220, 420)
+        self.setMaximumSize(220, 420)
         self.img_path = img_path
         self.cover_url = cover_url
+        self._manager = manager
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setContentsMargins(10, 20, 10, 0)
         # 图片label
         self.clabel = CoverLabel(cover_path, figure_info, video_url, self)
         layout.addWidget(self.clabel)
@@ -170,7 +173,7 @@ class ItemWidget(QWidget):
 
     def sizeHint(self):
         # 每个item控件的大小
-        return QSize(220, 380)
+        return QSize(220, 420)
 
     def event(self, event):
         if isinstance(event, QPaintEvent):
@@ -181,19 +184,30 @@ class ItemWidget(QWidget):
                     # 设置两个自定义属性方便后期reply中处理
                     req.setAttribute(QNetworkRequest.User + 1, self)
                     req.setAttribute(QNetworkRequest.User + 2, self.img_path)
-                    self.parentWidget()._manager.get(req)  # 调用父窗口中的下载器下载
+                    self._manager.get(req)  # 调用父窗口中的下载器下载
         return super(ItemWidget, self).event(event)
 
 
-class GridWidget(QWidget):
+class Window(QListWidget):
 
     Page = 0
-    loadStarted = pyqtSignal(bool)
 
     def __init__(self, *args, **kwargs):
-        super(GridWidget, self).__init__(*args, **kwargs)
-        self._layout = QGridLayout(self, spacing=20)
-        self._layout.setContentsMargins(20, 20, 20, 20)
+        super(Window, self).__init__(*args, **kwargs)
+        self.resize(800, 600)
+        self.setFrameShape(self.NoFrame)  # 无边框
+        self.setFlow(self.LeftToRight)  # 从左到右
+        self.setWrapping(True)  # 这三个组合可以达到和FlowLayout一样的效果
+        self.setResizeMode(self.Adjust)
+
+        self._loadStart = False
+        # 连接竖着的滚动条滚动事件
+        self.verticalScrollBar().actionTriggered.connect(self.onActionTriggered)
+        # 进度条
+        self.loadWidget = QSvgWidget(
+            self, minimumHeight=120, minimumWidth=120, visible=False)
+        self.loadWidget.load(Svg_icon_loading)
+
         # 异步网络下载管理器
         self._manager = QNetworkAccessManager(self)
         self._manager.finished.connect(self.onFinished)
@@ -201,7 +215,8 @@ class GridWidget(QWidget):
     def load(self):
         if self.Page == -1:
             return
-        self.loadStarted.emit(True)
+        self._loadStart = True
+        self.loadWidget.setVisible(True)
         # 延迟一秒后调用目的在于显示进度条
         QTimer.singleShot(1000, self._load)
 
@@ -225,11 +240,8 @@ class GridWidget(QWidget):
             return
         # 解析网页
         self._parseHtml(html)
-        self.loadStarted.emit(False)
-
-    def splist(self, src, length):
-        # 等分列表
-        return (src[i:i + length] for i in range(len(src)) if i % length == 0)
+        self._loadStart = False
+        self.loadWidget.setVisible(False)
 
     def _parseHtml(self, html):
         #         encoding = chardet.detect(html) or {}
@@ -240,72 +252,36 @@ class GridWidget(QWidget):
         if not lis:
             self.Page = -1  # 后面没有页面了
             return
-        lack_count = self._layout.count() % 30  # 获取布局中上次还缺几个5行*6列的标准
-        row_count = int(self._layout.count() / 6)  # 行数
-        print("lack_count:", lack_count)
-        self.Page += 1  # 自增+1
-        if lack_count != 0:  # 上一次没有满足一行6个,需要补齐
-            lack_li = lis[:lack_count]
-            lis = lis[lack_count:]
-            self._makeItem(lack_li, row_count)  # 补齐
-            if lack_li and lis:
-                row_count += 1
-                self._makeItem(lis, row_count)  # 完成剩下的
-        else:
-            self._makeItem(lis, row_count)
+        self.Page += 1
+        self._makeItem(lis)
 
-    def _makeItem(self, li_s, row_count):
-        li_s = self.splist(li_s, 6)
-        for row, lis in enumerate(li_s):
-            for col, li in enumerate(lis):
-                a = li.find("a")
-                video_url = a.get("href")  # 视频播放地址
-                img = a.find("img")
-                cover_url = "http:" + img.get("r-lazyload")  # 封面图片
-                figure_title = img.get("alt")  # 电影名
-                figure_info = a.find("div/span")
-                figure_info = "" if figure_info is None else figure_info.text  # 影片信息
-                figure_score = "".join(li.xpath(".//em/text()"))  # 评分
-                # 主演
-                figure_desc = "<span style=\"font-size: 12px;\">主演：</span>" + \
-                    "".join([Actor.format(**dict(fd.items()))
-                             for fd in li.xpath(".//div[@class='figure_desc']/a")])
-                # 播放数
-                figure_count = (
-                    li.xpath(".//div[@class='figure_count']/span/text()") or [""])[0]
-                path = "cache/{0}.jpg".format(
-                    os.path.splitext(os.path.basename(video_url))[0])
-                cover_path = "pic_v.png"
-                if os.path.isfile(path):
-                    cover_path = path
-                iwidget = ItemWidget(cover_path, figure_info, figure_title,
-                                     figure_score, figure_desc, figure_count, video_url, cover_url, path, self)
-                self._layout.addWidget(iwidget, row_count + row, col)
-
-
-class Window(QScrollArea):
-
-    def __init__(self, *args, **kwargs):
-        super(Window, self).__init__(*args, **kwargs)
-        self.resize(800, 600)
-        self.setFrameShape(self.NoFrame)
-        self.setWidgetResizable(True)
-        self.setAlignment(Qt.AlignCenter)
-        self._loadStart = False
-        # 网格窗口
-        self._widget = GridWidget(self)
-        self._widget.loadStarted.connect(self.setLoadStarted)
-        self.setWidget(self._widget)
-        # 连接竖着的滚动条滚动事件
-        self.verticalScrollBar().actionTriggered.connect(self.onActionTriggered)
-        # 进度条
-        self.loadWidget = QSvgWidget(
-            self, minimumHeight=120, minimumWidth=120, visible=False)
-        self.loadWidget.load(Svg_icon_loading)
-
-    def setLoadStarted(self, started):
-        self._loadStart = started
-        self.loadWidget.setVisible(started)
+    def _makeItem(self, lis):
+        for li in lis:
+            a = li.find("a")
+            video_url = a.get("href")  # 视频播放地址
+            img = a.find("img")
+            cover_url = "http:" + img.get("r-lazyload")  # 封面图片
+            figure_title = img.get("alt")  # 电影名
+            figure_info = a.find("div/span")
+            figure_info = "" if figure_info is None else figure_info.text  # 影片信息
+            figure_score = "".join(li.xpath(".//em/text()"))  # 评分
+            # 主演
+            figure_desc = "<span style=\"font-size: 12px;\">主演：</span>" + \
+                "".join([Actor.format(**dict(fd.items()))
+                         for fd in li.xpath(".//div[@class='figure_desc']/a")])
+            # 播放数
+            figure_count = (
+                li.xpath(".//div[@class='figure_count']/span/text()") or [""])[0]
+            path = "cache/{0}.jpg".format(
+                os.path.splitext(os.path.basename(video_url))[0])
+            cover_path = "Data/pic_v.png"
+            if os.path.isfile(path):
+                cover_path = path
+            iwidget = ItemWidget(cover_path, figure_info, figure_title,
+                                 figure_score, figure_desc, figure_count, video_url, cover_url, path, self._manager, self)
+            item = QListWidgetItem(self)
+            item.setSizeHint(iwidget.sizeHint())
+            self.setItemWidget(item, iwidget)
 
     def onActionTriggered(self, action):
         # 这里要判断action=QAbstractSlider.SliderMove，可以避免窗口大小改变的问题
@@ -315,7 +291,7 @@ class Window(QScrollArea):
         # 使用sliderPosition获取值可以同时满足鼠标滑动和拖动判断
         if self.verticalScrollBar().sliderPosition() == self.verticalScrollBar().maximum():
             # 可以下一页了
-            self._widget.load()
+            self.load()
 
     def resizeEvent(self, event):
         super(Window, self).resizeEvent(event)
@@ -332,5 +308,5 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     w = Window()
     w.show()
-    w._widget.load()
+    w.load()
     sys.exit(app.exec_())
