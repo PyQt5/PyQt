@@ -44,7 +44,7 @@ class Window(QWidget):
             40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum))
 
         # 原始图片
-        self.srcImage = QImage('images/fg.png')
+        self.srcImage = QImage('Data/fg.png')
         self.imageLabel.setPixmap(QPixmap.fromImage(self.srcImage))
 
     def doHorFilp(self):

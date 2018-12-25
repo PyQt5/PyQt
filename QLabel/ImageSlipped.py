@@ -6,7 +6,7 @@ Created on 2018年10月18日
 @author: Irony
 @site: https://pyqt5.com https://github.com/892768447
 @email: 892768447@qq.com
-@file: SlippedImgWidget
+@file: ImageSlipped
 @description: 
 """
 from PyQt5.QtGui import QPixmap, QPainter
@@ -75,6 +75,6 @@ if __name__ == '__main__':
     import sys
     from PyQt5.QtWidgets import QApplication
     app = QApplication(sys.argv)
-    w = SlippedImgWidget('images/bg1.jpg', 'images/fg1.png')
+    w = SlippedImgWidget('Data/bg1.jpg', 'Data/fg1.png')
     w.show()
     sys.exit(app.exec_())

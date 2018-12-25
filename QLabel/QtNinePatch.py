@@ -19,10 +19,13 @@ __Version__ = "Version 1.0"
 
 import sys
 
+from ctypes import CDLL
 from PyQt5.QtGui import QImage
 from PyQt5.QtWidgets import QApplication, QLabel
 
-import QtNinePatch
+CDLL('Lib/QtNinePatch/sip/QtNinePatch.dll')
+
+from Lib.QtNinePatch.sip.QtNinePatch import QtNinePatch
 
 
 class Label(QLabel):
@@ -30,7 +33,7 @@ class Label(QLabel):
     def __init__(self, *args, **kwargs):
         super(Label, self).__init__(*args, **kwargs)
         #.9 格式的图片
-        self.image = QImage('skin_aio_friend_bubble_pressed.9.png')
+        self.image = QImage('Data/skin_aio_friend_bubble_pressed.9.png')
 
     def showEvent(self, event):
         super(Label, self).showEvent(event)

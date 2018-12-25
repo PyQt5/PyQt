@@ -6,7 +6,7 @@ Created on 2018年10月25日
 @author: Irony
 @site: https://pyqt5.com https://github.com/892768447
 @email: 892768447@qq.com
-@file: testNinePatch
+@file: NinePatch
 @description: 
 """
 
@@ -22,7 +22,7 @@ import sys
 from PyQt5.QtGui import QImage, QPainter
 from PyQt5.QtWidgets import QApplication, QLabel, QWidget
 
-from NinePatch import NinePatch
+from Lib.NinePatch import NinePatch
 
 
 class Label(QWidget):
@@ -30,7 +30,7 @@ class Label(QWidget):
     def __init__(self, *args, **kwargs):
         super(Label, self).__init__(*args, **kwargs)
         #.9 格式的图片
-        self.image = NinePatch('skin_aio_friend_bubble_pressed.9.png')
+        self.image = NinePatch('Data/skin_aio_friend_bubble_pressed.9.png')
 
     def paintEvent(self, event):
         super(Label, self).paintEvent(event)
