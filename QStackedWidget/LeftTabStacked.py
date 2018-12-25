@@ -50,7 +50,7 @@ class LeftTabWidget(QWidget):
         # 这里就用一般的文本配合图标模式了(也可以直接用Icon模式,setViewMode)
         for i in range(20):
             item = QListWidgetItem(
-                QIcon('images/0%d.ico' % randint(1, 8)), str('选 项 %s' % i), self.listWidget)
+                QIcon('Data/0%d.ico' % randint(1, 8)), str('选 项 %s' % i), self.listWidget)
             # 设置item的默认宽高(这里只有高度比较有用)
             item.setSizeHint(QSize(16777215, 60))
             # 文字居中
@@ -102,7 +102,7 @@ QLabel {
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+    from PyQt5.QtWidgets import QApplicationr
     app = QApplication(sys.argv)
     app.setStyleSheet(Stylesheet)
     w = LeftTabWidget()
