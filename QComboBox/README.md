@@ -1,7 +1,7 @@
 # QComboBox
 
 ## 1、下拉数据关联
-[运行](CityLinkage.py)
+[运行 CityLinkage.py](CityLinkage.py)
 
 一个省市区关联的三级联动，数据源在data.json中
 

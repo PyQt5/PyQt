@@ -1,7 +1,7 @@
 # QListView
 
 ## 1、删除自定义Item
-[运行](DeleteCustomItem.py)
+[运行 DeleteCustomItem.py](DeleteCustomItem.py)
 
 1. 删除item时先要通过`QListWidget.indexFromItem(item).row()`得到它的行数
 2. 通过`takeItem`函数取出该Item并删除掉,`item = self.listWidget.takeItem(row)`
@@ -11,12 +11,12 @@
 ![CustomWidgetItem](ScreenShot/DeleteCustomItem.gif)
 
 ## 2、自定义可拖拽Item
-[运行](DragDrop.py)
+[运行 DragDrop.py](DragDrop.py)
 
 ![CustomWidgetSortItem](ScreenShot/DragDrop.gif)
 
 ## 3、腾讯视频热播列表
-[运行](HotPlaylist.py)
+[运行 HotPlaylist.py](HotPlaylist.py)
 
 简单思路说明：
 

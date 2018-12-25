@@ -1,7 +1,7 @@
 # QListView
 
 ## 1、腾讯视频热播列表
-[运行](HotPlaylist.py)
+[运行 HotPlaylist.py](HotPlaylist.py)
 
 简单思路说明：
 

@@ -1,7 +1,7 @@
 # QComboBox
 
 ## 1、Data Linkage
-[Run](CityLinkage.py)
+[Run CityLinkage.py](CityLinkage.py)
 
 Three level linkage, data file is data.json
 

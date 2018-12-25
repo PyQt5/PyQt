@@ -6,7 +6,7 @@ Created on 2017年4月6日
 @author: Irony."[讽刺]
 @site: https://pyqt5.com, https://github.com/892768447
 @email: 892768447@qq.com
-@file: TableView
+@file: ViewOffice
 @description: 
 '''
 from PyQt5.QAxContainer import QAxWidget
