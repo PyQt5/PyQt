@@ -6,7 +6,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 
 ## 目录
 
-|        |        |
+|    分类    |   控件名    |
 |:-------|:-------|
 | ActiveX       |    [QAxWidget](QAxWidget)
 | 日历          |    [QCalendarWidget](QCalendarWidget)
@@ -36,6 +36,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 | OpenGL        |    [QOpenGLWidget](QOpenGLWidget)
 | 纯文本        |    [QPlainTextEdit](QPlainTextEdit)
 | 进度条        |    [QProgressBar](QProgressBar)
+| 代理样式      |    [QProxyStyle](QProxyStyle)
 | 按钮          |    [QPushButton](QPushButton)
 | 单选框        |    [QRadioButton](QRadioButton)
 | 滚动区        |    [QScrollArea](QScrollArea)
