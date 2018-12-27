@@ -14,7 +14,7 @@
 ![FadeInOut](ScreenShot/FadeInOut.gif)
    
 # 2、右键菜单动画
-[运行 MenuAnimation](MenuAnimation.py)
+[运行 MenuAnimation.py](MenuAnimation.py)
 
 1. 使用`QPropertyAnimation`对菜单控件的`geometry`属性进行修改
 1. 当菜单事件`contextMenuEvent`触发时调用动画启动，同时显示菜单
