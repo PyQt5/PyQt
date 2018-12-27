@@ -6,7 +6,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 
 ## 目录
 
-|    分类    |   控件名    |
+|    分类    |   控件    |
 |:-------|:-------|
 | ActiveX       |    [QAxWidget](QAxWidget)
 | 日历          |    [QCalendarWidget](QCalendarWidget)

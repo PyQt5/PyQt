@@ -11,7 +11,7 @@ Created on 2018年12月27日
 """
 from random import choice
 
-from PyQt5.QtCore import QSortFilterProxyModel, Qt, QTimer
+from PyQt5.QtCore import QSortFilterProxyModel, Qt
 from PyQt5.QtGui import QStandardItem, QStandardItemModel
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QListView, QPushButton
 
@@ -49,7 +49,7 @@ class SortFilterProxyModel(QSortFilterProxyModel):
                 # 保持在最前面
                 if leftIndex == self._topIndex:
                     leftIndex = -1
-                elif rightIndex == self._topIndex:
+                if rightIndex == self._topIndex:
                     rightIndex = -1
 
                 return leftIndex < rightIndex
@@ -71,7 +71,6 @@ IndexDict = {
     3: '明',
     4: '清',
 }
-BigIndex = 100
 
 IdRole = Qt.UserRole + 1            # 用于恢复排序
 ClassifyRole = Qt.UserRole + 2      # 用于按照分类序号排序
@@ -102,11 +101,12 @@ class Window(QWidget):
 
     def sortByClassify(self):
         self.fmodel.setSortIndex(NameDict.get(
-            self.sender().text(), ['', BigIndex])[1])
-        self.restoreSort()
+            self.sender().text(), ['', 100])[1])
+        # self.restoreSort()
+        self.fmodel.setSortRole(IdRole)
         # 按照给定的分类排序（这里注意还要按照把给定分类的放在最前面）
         self.fmodel.setSortRole(ClassifyRole)
-        QTimer.singleShot(100, lambda: self.fmodel.sort(0))
+        self.fmodel.sort(0)
 
     def _initItems(self):
         # 初始化Items
@@ -120,7 +120,7 @@ class Window(QWidget):
         classifies = [v[1] for v in NameDict.values()]
         for i in range(5):
             # 添加5个100, 用于模拟没有分类, 排序的时候就显示在最后面
-            classifies.append(BigIndex)
+            classifies.append(100)
         print(classifies)  # [4, 2, 0, 3, 1, 100, 100, 100, 100, 100]
 
         # 生成50个Item
