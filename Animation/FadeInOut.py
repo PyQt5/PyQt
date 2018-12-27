@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
 # author: Irony
 # site: https://pyqt5.com, https://github.com/892768447
 # email: 892768447@qq.com
-# file: 动画特效.淡入淡出
+# file: FadeInOut
 # description:
 __Author__ = """By: Irony
 QQ: 892768447

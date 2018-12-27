@@ -6,7 +6,7 @@ Created on 2018年8月22日
 @author: Irony
 @site: https://pyqt5.com, https://github.com/892768447
 @email: 892768447@qq.com
-@file: 动画特效.右键菜单动画
+@file: MenuAnimation
 @description: 
 """
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve, QRect

@@ -6,7 +6,7 @@ Created on 2018年10月30日
 @author: Irony
 @site: http://pyqt5.com https://github.com/892768447
 @email: 892768447@qq.com
-@file: 
+@file: ButtomZoom
 @description: 
 """
 from PyQt5.QtCore import QPropertyAnimation, QRect

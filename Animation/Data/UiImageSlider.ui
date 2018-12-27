@@ -129,7 +129,7 @@
   <customwidget>
    <class>SlidingStackedWidget</class>
    <extends>QStackedWidget</extends>
-   <header location="global">SlidingStackedWidget</header>
+   <header location="global">Lib.SlidingStackedWidget</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

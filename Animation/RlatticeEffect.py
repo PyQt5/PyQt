@@ -6,7 +6,7 @@ Created on 2018年11月22日
 @author: Irony
 @site: https://pyqt5.com, https://github.com/892768447
 @email: 892768447@qq.com
-@file: 
+@file: RlatticeEffect
 @description: 
 """
 from random import random
@@ -26,7 +26,7 @@ __Version__ = 1.0
 
 
 try:
-    import pointtool  # @UnusedImport @UnresolvedImport
+    from Lib import pointtool  # @UnusedImport @UnresolvedImport
     getDistance = pointtool.getDistance
     findClose = pointtool.findClose
 except:

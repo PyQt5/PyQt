@@ -6,7 +6,7 @@ Created on 2018年11月24日
 author: Irony
 site: https://pyqt5.com , https://github.com/892768447
 email: 892768447@qq.com
-file:
+file: PageSwitching
 description:
 """
 import os
@@ -15,7 +15,7 @@ from PyQt5.QtCore import QEasingCurve, Qt
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QLabel
 
-from UiImageSlider import Ui_Form  # @UnresolvedImport
+from Lib.UiImageSlider import Ui_Form  # @UnresolvedImport
 
 
 __Author__ = """By: Irony
@@ -48,10 +48,10 @@ class ImageSliderWidget(QWidget, Ui_Form):
         self.pushButtonStop.clicked.connect(self.autoStop)
 
         # 添加图片页面
-        for name in os.listdir('Images'):
+        for name in os.listdir('Data/Images'):
             label = QLabel(self.stackedWidget)
             label.setScaledContents(True)
-            label.setPixmap(QPixmap('Images/' + name))
+            label.setPixmap(QPixmap('Data/Images/' + name))
             self.stackedWidget.addWidget(label)
 
     def autoStart(self):
