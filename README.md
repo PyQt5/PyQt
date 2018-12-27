@@ -6,9 +6,10 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 
 ## 目录
 
-|    分类    |   控件    |
+|    分类    |   目录    |
 |:-------|:-------|
 | ActiveX       |    [QAxWidget](QAxWidget)
+| 动画          |    [Animation](Animation)
 | 日历          |    [QCalendarWidget](QCalendarWidget)
 | 复选框        |    [QCheckBox](QCheckBox)
 | 列视图        |    [QColumnView](QColumnView)
