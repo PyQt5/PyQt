@@ -4,7 +4,7 @@
 """
 Created on 2017年12月17日
 @author: Irony."[讽刺]
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt5.com , https://github.com/892768447
 @email: 892768447@qq.com
 @file: WorldMap
 @description: 

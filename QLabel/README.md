@@ -94,3 +94,10 @@ qt_path = 'D:/soft/Qt/Qt5.5.1/5.5/msvc2010'
 5、`python configure.py`
 
 ![NinePatchImage](ScreenShot/NinePatchImage.gif)
+
+### 5、圆形图片
+[运行 CircleImage.py](CircleImage.py)
+
+使用`QPainter`的`setClipPath`方法结合`QPainterPath`对图片进行裁剪从而实现圆形图片。
+
+![CircleImage](ScreenShot/CircleImage.png)

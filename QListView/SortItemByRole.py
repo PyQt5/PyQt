@@ -4,7 +4,7 @@
 """
 Created on 2018年12月27日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt5.com , https://github.com/892768447
 @email: 892768447@qq.com
 @file: QListView.SortItemByRole
 @description: 

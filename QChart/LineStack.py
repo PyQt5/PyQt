@@ -4,7 +4,7 @@
 '''
 Created on 2017年12月28日
 @author: Irony."[讽刺]
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt5.com , https://github.com/892768447
 @email: 892768447@qq.com
 @file: charts.line.LineStack
 @description: like http://echarts.baidu.com/demo.html#line-stack

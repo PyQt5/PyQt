@@ -10,7 +10,7 @@ from win32process import SuspendThread, ResumeThread
 
 # Created on 2018年3月13日
 # author: Irony
-# site: https://pyqt5.com, https://github.com/892768447
+# site: https://pyqt5.com , https://github.com/892768447
 # email: 892768447@qq.com
 # file: 多线程使用.a
 # description:

@@ -42,6 +42,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 | 单选框        |    [QRadioButton](QRadioButton)
 | 滚动区        |    [QScrollArea](QScrollArea)
 | 滑动条        |    [QScrollBar](QScrollBar)
+| 串口          |    [QSerialPort](QSerialPort)
 | 拉动条        |    [QSlider](QSlider)
 | 拉伸条        |    [QSpacerItem](QSpacerItem)
 | 单精度编辑    |    [QSpinBox](QSpinBox)
