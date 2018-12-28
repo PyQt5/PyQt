@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年12月23日
 @author: Irony."[讽刺]
-@site: http://alyl.vip, http://orzorz.vip, https://coding.net/u/892768447, https://github.com/892768447
+@site: https://pyqt5.com https://github.com/892768447
 @email: 892768447@qq.com
-@file: 添加QWidget
+@file: AddQWidget
 @description: 
-'''
+"""
 import sys
 
 from PyQt5.QtCore import Qt

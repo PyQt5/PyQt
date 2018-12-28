@@ -9,7 +9,6 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 |    分类    |   目录    |
 |:-------|:-------|
 | ActiveX       |    [QAxWidget](QAxWidget)
-| 动画          |    [Animation](Animation)
 | 日历          |    [QCalendarWidget](QCalendarWidget)
 | 复选框        |    [QCheckBox](QCheckBox)
 | 列视图        |    [QColumnView](QColumnView)
@@ -37,6 +36,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 | OpenGL        |    [QOpenGLWidget](QOpenGLWidget)
 | 纯文本        |    [QPlainTextEdit](QPlainTextEdit)
 | 进度条        |    [QProgressBar](QProgressBar)
+| 动画          |    [QPropertyAnimation](QPropertyAnimation)
 | 代理样式      |    [QProxyStyle](QProxyStyle)
 | 按钮          |    [QPushButton](QPushButton)
 | 单选框        |    [QRadioButton](QRadioButton)

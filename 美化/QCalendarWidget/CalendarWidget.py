@@ -1,7 +1,7 @@
 '''
 Created on 2018年1月30日
 @author: Irony."[讽刺]
-@site: http://alyl.vip, http://orzorz.vip, https://coding.net/u/892768447, https://github.com/892768447
+@site: https://pyqt5.com https://github.com/892768447
 @email: 892768447@qq.com
 @file: CalendarWidget
 @description: 日历

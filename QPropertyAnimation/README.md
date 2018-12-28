@@ -1,4 +1,4 @@
-# Animation
+# QPropertyAnimation
 
 # 1、窗口淡入淡出
 [运行 FadeInOut.py](FadeInOut.py)

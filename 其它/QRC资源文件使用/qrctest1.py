@@ -4,7 +4,7 @@
 '''
 Created on 2018年05月01日
 @author: Irony."[讽刺]
-@site: http://alyl.vip, http://orzorz.vip, https://coding.net/u/892768447, https://github.com/892768447
+@site: https://pyqt5.com https://github.com/892768447
 @email: 892768447@qq.com
 @file: qrctest1
 @description: 

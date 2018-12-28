@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年12月17日
 @author: Irony."[讽刺]
-@site: http://alyl.vip, http://orzorz.vip, https://coding.net/u/892768447, https://github.com/892768447
+@site: https://pyqt5.com https://github.com/892768447
 @email: 892768447@qq.com
 @file: WorldMap
 @description: 
-'''
+"""
 import json
 import math
 
@@ -128,7 +128,7 @@ class GraphicsView(QGraphicsView):
 
     def initMap(self):
         features = json.load(
-            open("world.json", encoding="utf8")).get("features")
+            open("Data/world.json", encoding="utf8")).get("features")
         for feature in features:
             geometry = feature.get("geometry")
             if not geometry:
