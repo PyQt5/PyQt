@@ -9,9 +9,6 @@ encoding//QTableView/CopyContent/__main__.py=utf-8
 encoding//QTableWidget/SqlQuery/SqlQuery.py=utf-8
 encoding//QTableWidget/SqlQuery/__main__.py=utf-8
 encoding//QThread/moveToThread.py=utf-8
-encoding//QThread/\u7EBF\u7A0B\u4F11\u7720\u5524\u9192.py=utf-8
-encoding//QThread/\u7EBF\u7A0B\u6302\u8D77\u6062\u590D.py=utf-8
-encoding//QThread/\u7EE7\u627FQThread.py=utf-8
 encoding//QTreeWidget/ParsingJson.py=utf-8
 encoding//\u5176\u5B83/C\u548CC++\u6269\u5C55/py\u8F6Cpyd/pydmod.py=utf-8
 encoding//\u5176\u5B83/QRC\u8D44\u6E90\u6587\u4EF6\u4F7F\u7528/qrctest1.py=utf-8
@@ -71,7 +68,6 @@ encoding//\u7A97\u53E3/\u65E0\u8FB9\u6846\u81EA\u5B9A\u4E49\u6807\u9898\u680F\u7
 encoding//\u7A97\u53E3/\u65E0\u8FB9\u6846\u81EA\u5B9A\u4E49\u6807\u9898\u680F\u7A97\u53E3/\u65E0\u8FB9\u6846\u81EA\u5B9A\u4E49\u6807\u9898\u680F\u7A97\u53E3.py=utf-8
 encoding//\u7A97\u53E3/\u6D88\u606F\u5BF9\u8BDD\u6846\u5012\u8BA1\u65F6\u5173\u95ED.py=utf-8
 encoding//\u7A97\u53E3/\u7A97\u53E3\u91CD\u542F.py=utf-8
-encoding//\u7F51\u7EDC/\u63A7\u5236\u5C0F\u8F66/\u63A7\u5236\u5C0F\u8F66.py=utf-8
 encoding//\u7F8E\u5316/Effect/AnimationShadowEffect.py=utf-8
 encoding//\u7F8E\u5316/Effect/\u56FE\u7247\u6309\u94AE\u8F93\u5165\u6846\u9634\u5F71.py=utf-8
 encoding//\u7F8E\u5316/QLabel/\u5706\u5F62\u56FE\u7247.py=utf-8
