@@ -1,0 +1,56 @@
+[
+    {
+        "name": "仪表盘",
+        "icon": "xxx.png"
+    },
+    {
+        "name": "微信管理",
+        "icon": "Data/weixin.png",
+        "badge": [
+            "火爆",
+            "#F8AC54"
+        ],
+        "items": [
+            {
+                "name": "爬虫项目管理",
+                "icon": "xxx.png",
+                "badge": [
+                    "推荐",
+                    "#23C6C9"
+                ],
+                "items": [
+                    {
+                        "name": "腾讯课堂"
+                    },
+                    {
+                        "name": "淘宝"
+                    },
+                    {
+                        "name": "京东"
+                    },
+                    {
+                        "name": "天猫"
+                    },
+                    {
+                        "name": "拉钩"
+                    },
+                    {
+                        "name": "BOSS直聘"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "爬虫部署管理",
+        "icon": "xxx.png"
+    },
+    {
+        "name": "爬虫监控管理",
+        "icon": "xxx.png"
+    },
+    {
+        "name": "PyQt",
+        "url": "https://github.com/892768447/PyQt"
+    }
+]

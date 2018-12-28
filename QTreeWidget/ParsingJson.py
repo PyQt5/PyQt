@@ -6,7 +6,7 @@ Created on 2018年4月8日
 @author: Irony
 @site: https://pyqt5.com, https://github.com/892768447
 @email: 892768447@qq.com
-@file: 
+@file: ParsingJson
 @description: 
 """
 import json
@@ -148,5 +148,5 @@ QTreeView:branch:selected {
     """)
     w = JsonTreeWidget()
     w.show()
-    w.loadData('data.json')
+    w.loadData('Data/data.json')
     sys.exit(app.exec_())
