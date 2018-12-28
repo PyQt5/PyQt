@@ -6,7 +6,7 @@ Created on 2018年3月9日
 @author: Irony
 @site: https://pyqt5.com, https://github.com/892768447
 @email: 892768447@qq.com
-@file: inheritQThread
+@file: InheritQThread
 @description: 继承QThread
 """
 from PyQt5.QtCore import QThread, pyqtSignal
