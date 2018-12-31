@@ -7,3 +7,8 @@
 1. `QTimer`定时器关闭窗口
 
 ![CountDownClose](ScreenShot/CountDownClose.gif)
+
+## 2、自定义图标等
+[运行 CustomColorIcon.py](CustomColorIcon.py)
+
+![CustomColorIcon](ScreenShot/CustomColorIcon.png)

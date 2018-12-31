@@ -34,3 +34,9 @@ def mousePressEvent(self, event):
 ```
 
 ![ClickJumpSlider](ScreenShot/ClickJumpSlider.gif)
+
+## 2、双层圆环样式
+[运行 QssQSlider.py](QssQSlider.py) | [运行 PaintQSlider.py](PaintQSlider.py)
+
+![QssQSlider](ScreenShot/QssQSlider.gif)
+![PaintQSlider](ScreenShot/PaintQSlider.gif)

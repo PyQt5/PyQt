@@ -8,8 +8,10 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 
 |    分类    |   目录    |
 |:-------|:-------|
+| Demo       |    [Demo](Demo)
 | ActiveX       |    [QAxWidget](QAxWidget)
 | 日历          |    [QCalendarWidget](QCalendarWidget)
+| 图标          |    [QChart](QChart)
 | 复选框        |    [QCheckBox](QCheckBox)
 | 列视图        |    [QColumnView](QColumnView)
 | 组合框        |    [QComboBox](QComboBox)
@@ -18,10 +20,12 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 | 刻度盘        |    [QDial](QDial)
 | 停靠窗口      |    [QDockWidget](QDockWidget)
 | 双精度编辑    |    [QDoubleSpinBox](QDoubleSpinBox)
+| 文件系统模型        |    [QFileSystemModel](QFileSystemModel)
 | 流布局        |    [QFlowLayout](QFlowLayout)
 | 字体选择      |    [QFontComboBox](QFontComboBox)
 | 表单布局      |    [QFormLayout](QFormLayout)
 | 边框容器      |    [QFrame](QFrame)
+| 边框阴影      |    [QGraphicsDropShadowEffect](QGraphicsDropShadowEffect)
 | 图形视图      |    [QGraphicsView](QGraphicsView)
 | 网格布局      |    [QGridLayout](QGridLayout)
 | 分组容器      |    [QGroupBox](QGroupBox)
@@ -33,10 +37,11 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 | 列表控件      |    [QListWidget](QListWidget)
 | 子区域        |    [QMdiArea](QMdiArea)
 | 菜单          |    [QMenu](QMenu)
+| 消息提示框          |    [QMessageBox](QMessageBox)
 | OpenGL        |    [QOpenGLWidget](QOpenGLWidget)
 | 纯文本        |    [QPlainTextEdit](QPlainTextEdit)
 | 进度条        |    [QProgressBar](QProgressBar)
-| 动画          |    [QPropertyAnimation](QPropertyAnimation)
+| 属性动画          |    [QPropertyAnimation](QPropertyAnimation)
 | 代理样式      |    [QProxyStyle](QProxyStyle)
 | 按钮          |    [QPushButton](QPushButton)
 | 单选框        |    [QRadioButton](QRadioButton)
@@ -46,6 +51,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 | 拉动条        |    [QSlider](QSlider)
 | 拉伸条        |    [QSpacerItem](QSpacerItem)
 | 单精度编辑    |    [QSpinBox](QSpinBox)
+| 拆分窗口    |    [QSplitter](QSplitter)
 | 堆叠布局      |    [QStackedLayout](QStackedLayout)
 | 堆叠控件      |    [QStackedWidget](QStackedWidget)
 | 表格视图      |    [QTableView](QTableView)
@@ -53,6 +59,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 | 多标签        |    [QTabWidget](QTabWidget)
 | 富文本        |    [QTextBrowser](QTextBrowser)
 | 多行富文本    |    [QTextEdit](QTextEdit)
+| 多线程    |    [QThread](QThread)
 | 时间编辑      |    [QTimeEdit](QTimeEdit)
 | 工具箱        |    [QToolBox](QToolBox)
 | 工具按钮      |    [QToolButton](QToolButton)
@@ -62,8 +69,6 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 | WebEngine     |    [QWebEngineView](QWebEngineView)
 | WebView       |    [QWebView](QWebView)
 | QWidget       |    [QWidget](QWidget)
-| 美化样式      |    [StyleSheets](StyleSheets)
-
 
 # QQ群
 
