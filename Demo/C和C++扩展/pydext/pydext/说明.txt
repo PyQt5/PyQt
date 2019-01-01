@@ -1,1 +1,0 @@
-该目录下的setup.py是在vs编译环境的cmd下调用build.bat进行编译生成build文件夹。然后执行python test.py 对build文件夹中的pyd进行测试

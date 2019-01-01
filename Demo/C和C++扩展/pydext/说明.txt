@@ -1,1 +1,0 @@
-该目录的test.py是用vs打开pydext.sln编译后生成的Release文件夹里的pyd进行测试
