@@ -133,9 +133,9 @@ PyQt 结合 Opencv 进行人脸检测；
 1. [opencv](https://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv)
 2. [numpy](https://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy)
 3. [dlib](http://dlib.net/)
-  1. [dlib-19.4.0.win32-py2.7.exe](dist/dlib-19.4.0.win32-py2.7.exe)
-  2. [dlib-19.4.0.win32-py3.4.exe](dist/dlib-19.4.0.win32-py3.4.exe)
-  3. [dlib-19.4.0.win32-py3.5.exe](dist/dlib-19.4.0.win32-py3.5.exe)
+  1. [dlib-19.4.0.win32-py2.7.exe](Data/dlib-19.4.0.win32-py2.7.exe)
+  2. [dlib-19.4.0.win32-py3.4.exe](Data/dlib-19.4.0.win32-py3.4.exe)
+  3. [dlib-19.4.0.win32-py3.5.exe](Data/dlib-19.4.0.win32-py3.5.exe)
 4. [shape-predictor-68-face-landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2)
 
 ![FacePoints](ScreenShot/FacePoints.png)
