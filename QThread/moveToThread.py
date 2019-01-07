@@ -9,7 +9,7 @@ Created on 2018年3月9日
 @file: moveToThread
 @description: moveToThread
 """
-from PyQt5.QtCore import QObject, pyqtSignal, QThread, QTimer
+from PyQt5.QtCore import QObject, pyqtSignal, QThread
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QProgressBar, QPushButton
 
 
@@ -52,8 +52,8 @@ class Window(QWidget):
 
     def onStart(self):
         print('main id', int(QThread.currentThreadId()))
+        self._thread.started.connect(self._worker.run)
         self._thread.start()  # 启动线程
-        QTimer.singleShot(1, self._worker.run)
 
     def closeEvent(self, event):
         if self._thread.isRunning():
