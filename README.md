@@ -72,12 +72,10 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 
 # QQ群
 
- - [PyQt & PySide](https://jq.qq.com/?_wv=1027&k=50LWvn9)
  - [PyQt 学习](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
- - [PyQt5小组](https://jq.qq.com/?_wv=1027&k=5cI3oRz)
 
 
 # [Donate-打赏](Donate)
-<a href="Donate/weixin.png" alt="微信"><img src="Donate/weixin.png" height="350" width="350"></a>or<a href="Donate/zhifubao.png" alt="支付宝"><img src="Donate/zhifubao.png" height="350" width="350"></a>
+<a href="javascript:;" alt="微信"><img src="Donate/weixin.png" height="350" width="350"></a>or<a href="javascript:;" alt="支付宝"><img src="Donate/zhifubao.png" height="350" width="350"></a>
 
 [一些Qt写的三方APP](https://github.com/892768447/PyQt/wiki/3rd-party-applications)
