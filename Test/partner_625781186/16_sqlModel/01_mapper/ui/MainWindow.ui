@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>486</width>
+    <height>313</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QListView::item:alternate {
+   
+	background-color: rgb(85, 255, 255);
+}</string>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="verticalLayout">
+    <item row="6" column="0">
+     <widget class="QLineEdit" name="l3"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLineEdit" name="l1"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLineEdit" name="l2"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pre_btn">
+      <property name="text">
+       <string>上一条</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QTableView" name="tableView"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="next_btn">
+      <property name="text">
+       <string>下一条</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QListView" name="listView"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="sub_btn">
+      <property name="text">
+       <string>提交</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLineEdit" name="l4"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLineEdit" name="l5"/>
+    </item>
+   </layout>
+  </widget>
+  <action name="saveaction">
+   <property name="text">
+    <string>保存</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="action12">
+   <property name="text">
+    <string>查看帮助文档</string>
+   </property>
+  </action>
+  <action name="actionas">
+   <property name="text">
+    <string>关于</string>
+   </property>
+  </action>
+  <action name="actiondz">
+   <property name="text">
+    <string>dz</string>
+   </property>
+  </action>
+  <action name="actiongc">
+   <property name="text">
+    <string>gc</string>
+   </property>
+  </action>
+  <action name="actiondb">
+   <property name="text">
+    <string>db</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>528</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="analyzed_csv_label">
+       <property name="text">
+        <string>选择待分析的数据表(*.csv)：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="choose_file">
+       <property name="text">
+        <string>选择文件</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="start_analysis">
+       <property name="text">
+        <string>开始分析</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="clear_data">
+       <property name="text">
+        <string>数据清理</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="download_excel">
+       <property name="text">
+        <string>导出Excel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="analyzed_csv">
+       <property name="text">
+        <string>当前文件：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="file_name"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="geographicAnalysis_table">
+     <column>
+      <property name="text">
+       <string>省份</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>城市</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>订单数（市）</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>百分比（市）</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>订单数（省）</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>百分比（省）</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

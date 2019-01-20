@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-6.0.dtd">
+<!-- eric project file for project Plugins -->
+<!-- Saved: 2018-10-01, 18:41:58 -->
+<!-- Copyright (C) 2018 ,  -->
+<Project version="6.0">
+  <Language></Language>
+  <Hash>521faa00902f06c5ea861a417d96b191df70fe7a</Hash>
+  <ProgLanguage mixed="0">Python3</ProgLanguage>
+  <ProjectType>PyQt5</ProjectType>
+  <Version>0.1</Version>
+  <Author></Author>
+  <Email></Email>
+  <Eol index="0"/>
+  <Sources>
+    <Source>PluginManager/PluginManager.py</Source>
+    <Source>PluginManager/PluginStore/PluginStore.py</Source>
+    <Source>PluginManager/PluginStore/StoreModel.py</Source>
+    <Source>PluginManager/PluginStore/Ui_PluginStore.py</Source>
+    <Source>PluginManager/PluginStore/__init__.py</Source>
+    <Source>PluginManager/__init__.py</Source>
+    <Source>Plugins/PluginPage0_inMainLayout.py</Source>
+    <Source>Plugins/PluginPage1_addTab3.py</Source>
+    <Source>Plugins/PluginPage1_addTab4.py</Source>
+    <Source>Plugins/PluginPage2_error.py</Source>
+    <Source>Plugins/PluginPage3_addAction1.py</Source>
+    <Source>Plugins/__init__.py</Source>
+    <Source>Plugins/page1/Ui_PluginPage1.py</Source>
+    <Source>Plugins/page1/__init__.py</Source>
+    <Source>Plugins/page2/Ui_PluginPage2.py</Source>
+    <Source>Plugins/page2/__init__.py</Source>
+    <Source>Tools/__init__.py</Source>
+    <Source>Tools/pmf_myjson.py</Source>
+    <Source>Ui_main.py</Source>
+    <Source>__init__.py</Source>
+    <Source>main.py</Source>
+  </Sources>
+  <Forms>
+    <Form>PluginManager/PluginStore/PluginStore.ui</Form>
+    <Form>Plugins/page1/PluginPage1.ui</Form>
+    <Form>Plugins/page2/PluginPage2.ui</Form>
+    <Form>main.ui</Form>
+  </Forms>
+  <Others>
+    <Other>Documentation</Other>
+  </Others>
+  <MainScript>main.py</MainScript>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.e4p" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES"/>
+    <FiletypeAssociation pattern="*.md" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.proto" type="PROTOCOLS"/>
+    <FiletypeAssociation pattern="*.py" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.py3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.qrc" type="RESOURCES"/>
+    <FiletypeAssociation pattern="*.rst" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.txt" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.ui" type="FORMS"/>
+    <FiletypeAssociation pattern="README" type="OTHERS"/>
+    <FiletypeAssociation pattern="README.*" type="OTHERS"/>
+  </FiletypeAssociations>
+  <Documentation>
+    <DocumentationParams>
+      <dict>
+        <key>
+          <string>ERIC4DOC</string>
+        </key>
+        <value>
+          <dict>
+            <key>
+              <string>cssFile</string>
+            </key>
+            <value>
+              <string>%PYTHON%/eric6/CSSs/default.css</string>
+            </value>
+            <key>
+              <string>ignoreDirectories</string>
+            </key>
+            <value>
+              <list>
+                <string>page1</string>
+                <string>page2</string>
+              </list>
+            </value>
+            <key>
+              <string>ignoreFilePatterns</string>
+            </key>
+            <value>
+              <list>
+                <string>Ui*.py</string>
+                <string>Plugins\\*Page*.py</string>
+              </list>
+            </value>
+            <key>
+              <string>outputDirectory</string>
+            </key>
+            <value>
+              <string>Documentation</string>
+            </value>
+            <key>
+              <string>qtHelpEnabled</string>
+            </key>
+            <value>
+              <bool>False</bool>
+            </value>
+            <key>
+              <string>useRecursion</string>
+            </key>
+            <value>
+              <bool>True</bool>
+            </value>
+          </dict>
+        </value>
+      </dict>
+    </DocumentationParams>
+  </Documentation>
+</Project>

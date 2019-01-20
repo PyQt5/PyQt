@@ -1,0 +1,37 @@
+{
+ "PluginPage0_inMainLayout": {
+  "Allow": true,
+  "CreateTime": "2018-09-18-18:44:18",
+  "ModifyTime": "2018-09-24-15:58:45"
+ },
+ "PluginPage1_addTab3": {
+  "Allow": true,
+  "CreateTime": "2018-09-24-17:48:29",
+  "ModifyTime": "2018-09-24-18:24:48"
+ },
+ "PluginPage1_addTab4": {
+  "Allow": true,
+  "CreateTime": "2018-09-24-18:17:19",
+  "ModifyTime": "2018-09-24-18:24:22"
+ },
+ "PluginPage2_error": {
+  "Allow": false,
+  "CreateTime": "2018-09-18-18:45:14",
+  "ModifyTime": "2018-09-19-18:16:08"
+ },
+ "PluginPage3_addAction1": {
+  "Allow": true,
+  "CreateTime": "2018-09-24-18:26:10",
+  "ModifyTime": "2018-09-24-20:50:02"
+ },
+ "PluginPage1": {
+  "Allow": true,
+  "CreateTime": "2018-09-27-16:46:40",
+  "ModifyTime": "2018-10-07-21:37:19"
+ },
+ "PluginPage2": {
+  "Allow": true,
+  "CreateTime": "2018-09-27-16:46:40",
+  "ModifyTime": "2018-09-27-16:47:19"
+ }
+}

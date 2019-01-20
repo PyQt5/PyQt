@@ -1,0 +1,77 @@
+/*左侧*/
+#listWidget {
+    outline: 0px;
+    max-width: 165px;
+    background-color: rgb(240, 240, 240);
+}
+
+#listWidget::item {
+    min-height: 45px;
+}
+
+#listWidget::item:hover {
+    background-color: rgb(225, 230, 235);
+}
+
+#listWidget::item:selected {
+    color: black;
+    background-color: rgb(255, 255, 255);
+}
+
+/*右侧*/
+#titleLabel1,#titleLabel2,#titleLabel3,#titleLabel4,#titleLabel5,#titleLabel6,#titleLabel7,#titleLabel8 {
+    min-width: 75px;
+    max-width: 75px;
+}
+
+#right1,#right2,#right3,#right4,#right5,#right6 {
+    margin-left: 25px;
+    color: rgb(128, 128, 128);
+}
+
+/*所有按钮*/
+QPushButton {
+    max-width: 80px;
+    max-height: 24px;
+    min-height: 24px;
+    border-radius: 3px;
+    background-color: rgb(244, 244, 244);
+    border: 1px solid rgb(167, 167, 167);
+}
+QPushButton:hover {
+    background-color: rgb(190, 231, 253);
+}
+QPushButton:pressed {
+    background-color: rgb(244, 244, 244);
+}
+
+QComboBox {
+    max-width: 80px;
+    max-height: 20px;
+    min-height: 20px;
+}
+
+QComboBox {
+    border: 1px solid rgb(167, 167, 167);
+    border-radius: 3px;
+}
+
+#listWidgetUser {
+    min-width: 290px;
+    max-width: 290px;
+    max-height: 120px;
+    min-height: 120px;
+    border-radius: 2px;
+    border: 1px solid rgb(227, 236, 242);
+    background-color: rgb(244, 250, 253);
+}
+
+QScrollBar::vertical {
+    background: rgb(178, 178, 178);
+    border: -5px solid grey;
+    margin: 0px 0px 0px 0px;
+    width: 10px;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: white;
+}

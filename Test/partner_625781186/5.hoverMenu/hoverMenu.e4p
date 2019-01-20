@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-6.0.dtd">
+<!-- eric project file for project hoverMenu -->
+<!-- Saved: 2018-09-09, 22:34:07 -->
+<!-- Copyright (C) 2018 ,  -->
+<Project version="6.0">
+  <Language></Language>
+  <Hash>873d0c0fade67dd54262d1b6954d5edfac966911</Hash>
+  <ProgLanguage mixed="0">Python3</ProgLanguage>
+  <ProjectType>PyQt5</ProjectType>
+  <Version>0.1</Version>
+  <Author></Author>
+  <Email></Email>
+  <Eol index="0"/>
+  <Sources>
+    <Source>Main.py</Source>
+    <Source>Tools/CommonHelper.py</Source>
+    <Source>Tools/__init__.py</Source>
+    <Source>Tools/qmf_showError.py</Source>
+    <Source>Tools/style.css</Source>
+    <Source>U_FuncWidget/BaseElement.py</Source>
+    <Source>U_FuncWidget/Menu.py</Source>
+    <Source>U_FuncWidget/UCompetitiveProduct2/SKU_Widget.py</Source>
+    <Source>U_FuncWidget/UCompetitiveProduct2/Ui_SKU_Widget.py</Source>
+    <Source>U_FuncWidget/UCompetitiveProduct2/__init__.py</Source>
+    <Source>U_FuncWidget/UStoreData1/Ui_L1.py</Source>
+    <Source>U_FuncWidget/UThroughTrain4/GeographicAnalysis_Widget.py</Source>
+    <Source>U_FuncWidget/UThroughTrain4/Ui_GeographicAnalysis_Widget.py</Source>
+    <Source>U_FuncWidget/UThroughTrain4/__init__.py</Source>
+    <Source>Ui_Main.py</Source>
+    <Source>tbqrc_rc.py</Source>
+  </Sources>
+  <Forms>
+    <Form>Main.ui</Form>
+    <Form>U_FuncWidget/UCompetitiveProduct2/SKU_Widget.ui</Form>
+    <Form>U_FuncWidget/UStoreData1/L1.ui</Form>
+    <Form>U_FuncWidget/UThroughTrain4/GeographicAnalysis_Widget.ui</Form>
+  </Forms>
+  <Resources>
+    <Resource>tbqrc.qrc</Resource>
+  </Resources>
+  <Others>
+    <Other>Documentation</Other>
+  </Others>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.e4p" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES"/>
+    <FiletypeAssociation pattern="*.md" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.py" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.py3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.qrc" type="RESOURCES"/>
+    <FiletypeAssociation pattern="*.rst" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.txt" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.ui" type="FORMS"/>
+    <FiletypeAssociation pattern="README" type="OTHERS"/>
+    <FiletypeAssociation pattern="README.*" type="OTHERS"/>
+  </FiletypeAssociations>
+  <Documentation>
+    <DocumentationParams>
+      <dict>
+        <key>
+          <string>ERIC4DOC</string>
+        </key>
+        <value>
+          <dict>
+            <key>
+              <string>cssFile</string>
+            </key>
+            <value>
+              <string>%PYTHON%/eric6/CSSs/default.css</string>
+            </value>
+            <key>
+              <string>ignoreFilePatterns</string>
+            </key>
+            <value>
+              <list>
+                <string>Ui_*.py</string>
+                <string>*_rc.py</string>
+              </list>
+            </value>
+            <key>
+              <string>outputDirectory</string>
+            </key>
+            <value>
+              <string>Documentation</string>
+            </value>
+            <key>
+              <string>qtHelpEnabled</string>
+            </key>
+            <value>
+              <bool>False</bool>
+            </value>
+            <key>
+              <string>useRecursion</string>
+            </key>
+            <value>
+              <bool>True</bool>
+            </value>
+          </dict>
+        </value>
+      </dict>
+    </DocumentationParams>
+  </Documentation>
+</Project>

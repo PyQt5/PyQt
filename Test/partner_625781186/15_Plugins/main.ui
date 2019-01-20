@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>510</width>
+    <height>378</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Tab 1</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>modulePath</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>replace</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Tab 2</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>510</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuOpen_Recent_Files">
+     <property name="title">
+      <string>Open Recent Files</string>
+     </property>
+     <widget class="QMenu" name="menufile1">
+      <property name="title">
+       <string>file1</string>
+      </property>
+      <widget class="QMenu" name="menufile11">
+       <property name="title">
+        <string>file11</string>
+       </property>
+       <addaction name="actionfile111"/>
+      </widget>
+      <addaction name="menufile11"/>
+      <addaction name="actionfile22"/>
+     </widget>
+     <addaction name="menufile1"/>
+     <addaction name="actionfile2"/>
+     <addaction name="actionfile3"/>
+    </widget>
+    <addaction name="actionadd1"/>
+    <addaction name="actionsave"/>
+    <addaction name="actionOpen"/>
+    <addaction name="separator"/>
+    <addaction name="menuOpen_Recent_Files"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+  </widget>
+  <action name="actionadd1">
+   <property name="text">
+    <string>New Window</string>
+   </property>
+  </action>
+  <action name="actionsave">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionfile2">
+   <property name="text">
+    <string>file2</string>
+   </property>
+  </action>
+  <action name="actionfile3">
+   <property name="text">
+    <string>file3</string>
+   </property>
+  </action>
+  <action name="actionfile11">
+   <property name="text">
+    <string>file11</string>
+   </property>
+  </action>
+  <action name="actionfile22">
+   <property name="text">
+    <string>file22</string>
+   </property>
+  </action>
+  <action name="actionfile111">
+   <property name="text">
+    <string>file111</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
