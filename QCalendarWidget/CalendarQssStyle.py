@@ -8,6 +8,8 @@ Created on 2018年1月30日
 """
 import sys
 
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QTextCharFormat, QBrush, QColor
 from PyQt5.QtWidgets import QApplication, QCalendarWidget
 
 
@@ -108,6 +110,17 @@ class CalendarWidget(QCalendarWidget):
         super(CalendarWidget, self).__init__(*args, **kwargs)
         # 隐藏左边的序号
         self.setVerticalHeaderFormat(self.NoVerticalHeader)
+
+        # 修改周六周日颜色
+
+        fmtGreen = QTextCharFormat()
+        fmtGreen.setForeground(QBrush(Qt.green))
+        self.setWeekdayTextFormat(Qt.Saturday, fmtGreen)
+
+        fmtOrange = QTextCharFormat()
+        fmtOrange.setForeground(QBrush(QColor(252, 140, 28)))
+        self.setWeekdayTextFormat(Qt.Sunday, fmtOrange)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
