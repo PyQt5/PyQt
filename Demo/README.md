@@ -81,7 +81,7 @@
 ## 8、程序重启
 [运行 AutoRestart.py](AutoRestart.py)
 
-![AutoRestart](ScreenShot/AutoRestart.png)
+![AutoRestart](ScreenShot/AutoRestart.gif)
 
 ## 9、自定义属性
 [运行 CustomProperties.py](CustomProperties.py)
