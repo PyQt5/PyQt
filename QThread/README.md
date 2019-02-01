@@ -1,7 +1,5 @@
 # QThread
 
-PyQt多线程的简单使用例子
-
 ## 1、继承QThread
 [运行 InheritQThread.py](InheritQThread.py)
 

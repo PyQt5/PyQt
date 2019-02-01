@@ -11,9 +11,9 @@ Created on 2017年12月10日
 '''
 import sys
 
-from PyQt5.QtCore import QUrl
+from PyQt5.QtCore import QUrl, QByteArray
 from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QTextEdit
 
 
 __Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
@@ -28,14 +28,41 @@ class WebEngineView(QWebEngineView):
 
     def __init__(self, *args, **kwargs):
         super(WebEngineView, self).__init__(*args, **kwargs)
+        self.cookieView = QTextEdit()
+        self.cookieView.resize(800, 400)
+        self.cookieView.move(400, 400)
+        self.cookieView.setWindowTitle('Cookies')
+        self.cookieView.show()
         # 绑定cookie被添加的信号槽
         QWebEngineProfile.defaultProfile().cookieStore(
         ).cookieAdded.connect(self.onCookieAdd)
         self.loadFinished.connect(self.onLoadFinished)
 
+    def closeEvent(self, event):
+        self.cookieView.close()
+        super(WebEngineView, self).closeEvent(event)
+
+    def bytestostr(self, data):
+        if isinstance(data, str):
+            return data
+        if isinstance(data, QByteArray):
+            data = data.data()
+        if isinstance(data, bytes):
+            data = data.decode(errors='ignore')
+        else:
+            data = str(data)
+        return data
+
     def onLoadFinished(self):
         print("*****AllDomainCookies:", self.getAllDomainCookies())
         print("*****AllPathCookies:", self.getAllPathCookies())
+        self.cookieView.append(
+            "AllDomainCookies: " + self.bytestostr(self.getAllDomainCookies()))
+        self.cookieView.append('')
+        self.cookieView.append(
+            "AllPathCookies: " + self.bytestostr(self.getAllPathCookies()))
+        self.cookieView.append('')
+
         print("*****pyqt5.com cookie:", self.getDomainCookies(".pyqt5.com"))
         print("*****pyqt5.com / path cookie:",
               self.getPathCookies(".pyqt5.com/"))

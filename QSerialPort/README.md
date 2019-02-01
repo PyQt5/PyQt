@@ -1,4 +1,4 @@
-# 
+# QSerialPort
 
 ## 1、串口调试小助手
 [运行 SerialDebugAssistant.py](SerialDebugAssistant.py)

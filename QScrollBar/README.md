@@ -1,6 +1,7 @@
 # QScrollBar
 
 ## 1、滚动条样式美化
+[运行 StyleScrollBar.py](StyleScrollBar.py)
 
 使用QSS和图片对滚动条进行美化（horizontal 横向、vertical 纵向）
 

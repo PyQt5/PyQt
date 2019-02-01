@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//Demo/AutoRestart.py=utf-8
 encoding//Demo/EmbedWindow.py=utf-8
 encoding//Demo/FacePoints.py=utf-8
 encoding//Demo/FollowWindow.py=utf-8
@@ -36,7 +37,9 @@ encoding//QSlider/QssQSlider.py=utf-8
 encoding//QSplitter/RewriteHandle.py=utf-8
 encoding//QThread/moveToThread.py=utf-8
 encoding//QTreeWidget/ParsingJson.py=utf-8
+encoding//QWebEngineView/GetCookie.py=utf-8
 encoding//QWebView/DreamTree.py=utf-8
+encoding//QWebView/GetCookie.py=utf-8
 encoding//QWidget/Lib/CustomPaintWidget.py=utf-8
 encoding//QWidget/Lib/CustomWidget.py=utf-8
 encoding//QWidget/WidgetStyle.py=utf-8
