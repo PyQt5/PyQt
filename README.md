@@ -4,6 +4,8 @@
 
 https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站，分享大家平时学习中记录的笔记和例子，以及对遇到的问题进行收集整理。
 
+[客户端下载](https://github.com/PyQt5/PyQtClient/releases)
+
 ## 目录
 
 |    分类    |   目录    |
