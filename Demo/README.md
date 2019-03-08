@@ -139,3 +139,10 @@ PyQt 结合 Opencv 进行人脸检测；
 4. [shape-predictor-68-face-landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2)
 
 ![FacePoints](ScreenShot/FacePoints.png)
+
+## 16、使用Threading
+[运行  QtThreading.py](QtThreading.py)
+
+在PyQt中使用Theading线程
+
+![QtThreading](ScreenShot/QtThreading.gif)

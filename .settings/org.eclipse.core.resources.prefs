@@ -9,6 +9,7 @@ encoding//Demo/Lib/FramelessWindow.py=utf-8
 encoding//Demo/NativeEvent.py=utf-8
 encoding//Demo/Notification.py=utf-8
 encoding//Demo/ProbeWindow.py=utf-8
+encoding//Demo/QtThreading.py=utf-8
 encoding//Demo/RestartWindow.py=utf-8
 encoding//Demo/SharedMemory.py=utf-8
 encoding//Demo/SingleApplication.py=utf-8
