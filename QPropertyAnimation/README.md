@@ -96,7 +96,7 @@ def findClose(points):
 
 ![RlatticeEffect](ScreenShot/RlatticeEffect.gif)
 
-## 5、页面切换/图片轮播动画
+## 4、页面切换/图片轮播动画
 [运行 PageSwitching.py](PageSwitching.py)
 
 1. 使用`QPropertyAnimation`对`QStackedWidget`中的子控件进行pos位移操作实现动画切换特效
