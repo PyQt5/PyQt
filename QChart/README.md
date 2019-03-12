@@ -1,5 +1,12 @@
 # QChart
 
+- 目录
+  - [折线图](#1、折线图)
+  - [折线堆叠图](#2、折线堆叠图)
+  - [柱状堆叠图](#3、柱状堆叠图)
+  - [LineChart自定义xy轴](#4、LineChart自定义xy轴)
+  - [ToolTip提示](#5、ToolTip提示)
+
 ## 1、折线图
 [运行 LineChart.py](LineChart.py)
 

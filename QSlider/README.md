@@ -1,5 +1,9 @@
 # QSlider
 
+- 目录
+  - [滑动条点击定位](#1、滑动条点击定位)
+  - [双层圆环样式](#2、双层圆环样式)
+
 ## 1、滑动条点击定位
 [运行 ClickJumpSlider.py](ClickJumpSlider.py)
 

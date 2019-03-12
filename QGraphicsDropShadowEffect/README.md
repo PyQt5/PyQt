@@ -1,5 +1,8 @@
 # QGraphicsDropShadowEffect
 
+- 目录
+  - [边框阴影动画](#1、边框阴影动画)
+
 ## 1、边框阴影动画
 [运行 ShadowEffect.py](ShadowEffect.py)
 

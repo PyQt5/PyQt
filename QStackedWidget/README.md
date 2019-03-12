@@ -1,5 +1,8 @@
 # QStackedWidget
 
+- 目录
+  - [左侧选项卡](#1、左侧选项卡)
+
 ## 1、左侧选项卡
 [运行 LeftTabStacked.py](LeftTabStacked.py)
 
