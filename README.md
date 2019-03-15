@@ -174,7 +174,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 
 # QQ群
 
- - [PyQt 学习](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
+[PyQt 学习](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
 
 
 # [Donate-打赏](Donate)
