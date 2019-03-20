@@ -171,6 +171,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [验证码控件](Demo/VerificationCode.py)
   - [人脸特征点](Demo/FacePoints.py)
   - [使用Threading](Demo/QtThreading.py)
+  - [背景连线动画](Demo/CircleLine.py)
 
 # QQ群
 

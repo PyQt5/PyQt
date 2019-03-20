@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//Demo/AutoRestart.py=utf-8
+encoding//Demo/CircleLine.py=utf-8
 encoding//Demo/EmbedWindow.py=utf-8
 encoding//Demo/FacePoints.py=utf-8
 encoding//Demo/FollowWindow.py=utf-8
@@ -20,6 +21,7 @@ encoding//QChart/LineChart.py=utf-8
 encoding//QFont/AwesomeFont.py=utf-8
 encoding//QFont/Lib/FontAwesome.py=utf-8
 encoding//QGraphicsDropShadowEffect/ShadowEffect.py=utf-8
+encoding//QGraphicsView/WorldMap.py=utf-8
 encoding//QListView/CustomWidgetSortItem.py=utf-8
 encoding//QListView/SortItemByRole.py=utf-8
 encoding//QMessageBox/CustomColorIcon.py=utf-8

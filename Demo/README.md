@@ -16,6 +16,7 @@
   - [验证码控件](#14、验证码控件)
   - [人脸特征点](#15、人脸特征点)
   - [使用Threading](#16、使用Threading)
+  - [背景连线动画](#17、背景连线动画)
 
 ## 1、重启窗口Widget
 [运行 RestartWindow.py](RestartWindow.py)
@@ -163,3 +164,10 @@ PyQt 结合 Opencv 进行人脸检测；
 在PyQt中使用Theading线程
 
 ![QtThreading](ScreenShot/QtThreading.gif)
+
+## 17、背景连线动画
+[运行 CircleLine.py](CircleLine.py)
+
+主要参考 [背景连线动画.html](Data/背景连线动画.html)
+
+![CircleLine](ScreenShot/CircleLine.gif)
