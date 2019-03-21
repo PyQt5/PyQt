@@ -107,6 +107,12 @@ class CircleLineWindow(QWidget):
 
     def __init__(self, *args, **kwargs):
         super(CircleLineWindow, self).__init__(*args, **kwargs)
+        # 设置背景颜色
+        palette = self.palette()
+        palette.setColor(palette.Background, backgroundColor)
+        self.setAutoFillBackground(True)
+        self.setPalette(palette)
+        # 获取屏幕大小
         geometry = QApplication.instance().desktop().availableGeometry()
         self.screenWidth = geometry.width()
         self.screenHeight = geometry.height()
@@ -143,9 +149,6 @@ class CircleLineWindow(QWidget):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
         painter.setRenderHint(QPainter.SmoothPixmapTransform)
-        painter.save()
-        painter.fillRect(self.rect(), backgroundColor)
-        painter.restore()
         self.draw(painter)
 
     def draw(self, painter):
@@ -162,9 +165,10 @@ class CircleLineWindow(QWidget):
         if self._firstDraw:
             self._firstDraw = False
             # 此处有个比例关系用于设置timer的时间，如果初始窗口很小，没有比例会导致动画很快
-            t = (time() - t) * 1000
+            t = (time() - t) * 1000 * 2
             # 比例最大不能超过1920/800
             t = int(min(2.4, self.screenHeight / self.height()) * t) - 1
+            t = t if t > 15 else 15  # 不能小于15s
             print('start timer(%d msec)' % t)
             # 开启定时器
             self._timer.start(t)
