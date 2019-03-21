@@ -119,6 +119,7 @@ class CircleLineWindow(QWidget):
         self._canDraw = True
         self._firstDraw = True
         self._timer = QTimer(self, timeout=self.update)
+        self.init()
 
     def init(self):
         points.clear()
@@ -128,10 +129,6 @@ class CircleLineWindow(QWidget):
         for _ in range(maxCircles * 3):
             points.append(Circle('', self.screenWidth, self.screenHeight))
         self.update()
-
-    def resizeEvent(self, event):
-        super(CircleLineWindow, self).resizeEvent(event)
-        self.init()
 
     def showEvent(self, event):
         super(CircleLineWindow, self).showEvent(event)
