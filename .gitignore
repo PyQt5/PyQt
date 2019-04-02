@@ -116,6 +116,8 @@ log.txt
 /tmp/*
 /Tmps
 /Tmps/*
+cache/*
+cache/
 /tmp/Material
 /tmp/Material/*
 *.pyc
