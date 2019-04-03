@@ -119,7 +119,7 @@ class SlidingStackedWidget(QStackedWidget):
         self._active = 1
         _now = self.currentIndex()
         _next = self.indexOf(widget)
-        if _now == next:
+        if _now == _next:
             self._active = 0
             return
 
