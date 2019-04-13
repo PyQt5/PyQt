@@ -46,8 +46,10 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
     - [删除自定义Item](QListWidget/DeleteCustomItem.py)
     - [自定义可拖拽Item](QListWidget/DragDrop.py)
     - [腾讯视频热播列表](QListWidget/HotPlaylist.py)
+    - [在item中添加图标](Test/partner_625781186/13.combo_listwidget)
   - [QTreeWidget](QTreeWidget)
     - [通过json数据生成树形结构](QTreeWidget/ParsingJson.py)
+    - [拖拽显示为图片](Test/partner_625781186/12.1拖拽显示为图片)
   - [QTableWidget](QTableWidget)
     - [Sqlalchemy动态拼接字段查询显示表格](QTableWidget/SqlQuery.py)
 
@@ -110,6 +112,8 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
     - [获取Cookie](QWebView/GetCookie.py)
   - [QWebEngineView](QWebEngineView)
     - [获取Cookie](QWebEngineView/GetCookie.py)
+    - [浏览器下载文件](Test/partner_625781186/6.QWebEngineView下载文件)
+    - [打印网页](Test/partner_625781186/17_打印预览qwebengineview)
 
 - [QThread](QThread)
   - [继承QThread](QThread/InheritQThread.py)
@@ -132,12 +136,14 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [右键菜单动画](QPropertyAnimation/MenuAnimation.py)
   - [点阵特效](QPropertyAnimation/RlatticeEffect.py)
   - [页面切换/图片轮播动画](QPropertyAnimation/PageSwitching.py)
+  - [折叠动画](Test/partner_625781186/2.折叠控件)
 
 - Others
   - [QFont](QFont)
     - [加载自定义字体](QFont/AwesomeFont.py)
   - [QMenu](QMenu)
     - [菜单设置多选并且不关闭](QMenu/MultiSelect.py)
+    - [悬停菜单](Test/partner_625781186/5.hoverMenu)
   - [QAxWidget](QAxWidget)
     - [显示Word、Excel、PDF文件](QAxWidget/ViewOffice.py)
   - [QSplitter](QSplitter)
