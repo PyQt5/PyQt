@@ -17,6 +17,7 @@ class graphAnalysis(QDialog,Ui_Form):
     def __init__(self):
         super(graphAnalysis, self).__init__()
         self.setupUi(self)
+        # 点击父节点
         self.treeWidget.itemChanged.connect(self.handleChanged)
     def handleChanged(self,item,column):
         count = item.childCount()
