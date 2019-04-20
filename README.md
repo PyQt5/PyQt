@@ -52,6 +52,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
     - [拖拽显示为图片](Test/partner_625781186/12.1拖拽显示为图片)
   - [QTableWidget](QTableWidget)
     - [Sqlalchemy动态拼接字段查询显示表格](QTableWidget/SqlQuery.py)
+    - [TableWidget嵌入部件](QTableWidget/TableWidget.py)
 
 - Containers
   - [QGroupBox](QGroupBox)

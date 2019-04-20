@@ -41,6 +41,7 @@ encoding//QScrollBar/StyleScrollBar.py=utf-8
 encoding//QSlider/PaintQSlider.py=utf-8
 encoding//QSlider/QssQSlider.py=utf-8
 encoding//QSplitter/RewriteHandle.py=utf-8
+encoding//QTableWidget/TableWidget.py=utf-8
 encoding//QThread/moveToThread.py=utf-8
 encoding//QTreeWidget/ParsingJson.py=utf-8
 encoding//QWebEngineView/GetCookie.py=utf-8
