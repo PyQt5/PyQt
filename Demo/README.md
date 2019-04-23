@@ -17,6 +17,7 @@
   - [人脸特征点](#15、人脸特征点)
   - [使用Threading](#16、使用Threading)
   - [背景连线动画](#17、背景连线动画)
+  - [无边框圆角对话框](#18、无边框圆角对话框)
 
 ## 1、重启窗口Widget
 [运行 RestartWindow.py](RestartWindow.py)
@@ -171,3 +172,13 @@ PyQt 结合 Opencv 进行人脸检测；
 主要参考 [背景连线动画.html](Data/背景连线动画.html)
 
 ![CircleLine](ScreenShot/CircleLine.gif)
+
+
+## 18、无边框圆角对话框
+[运行 FramelessDialog.py](FramelessDialog.py)
+
+1. 通过设置 `self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)` 和 `self.setAttribute(Qt.WA_TranslucentBackground, True)` 达到无边框和背景透明
+2. 在QDialog中放置一个QWidget作为背景和圆角
+3. 在QWidget中放置其他内容
+
+![FramelessDialog](ScreenShot/FramelessDialog.png)

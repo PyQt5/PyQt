@@ -168,6 +168,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [嵌入外部窗口](Demo/EmbedWindow.py)
   - [简单跟随其它窗口](Demo/FollowWindow.py)
   - [简单探测窗口和放大截图](Demo/ProbeWindow.py)
+  - [无边框圆角对话框](Demo/FramelessDialog.py)
   - [无边框自定义标题栏窗口](Demo/FramelessWindow.py)
   - [右下角弹出框](Demo/WindowNotify.py)
   - [程序重启](Demo/AutoRestart.py)
