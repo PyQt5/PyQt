@@ -18,6 +18,7 @@
   - [使用Threading](#16、使用Threading)
   - [背景连线动画](#17、背景连线动画)
   - [无边框圆角对话框](#18、无边框圆角对话框)
+  - [调整窗口显示边框](#19、调整窗口显示边框)
 
 ## 1、重启窗口Widget
 [运行 RestartWindow.py](RestartWindow.py)
@@ -182,3 +183,15 @@ PyQt 结合 Opencv 进行人脸检测；
 3. 在QWidget中放置其他内容
 
 ![FramelessDialog](ScreenShot/FramelessDialog.png)
+
+## 19、调整窗口显示边框
+[运行 ShowFrameWhenDrag.py](ShowFrameWhenDrag.py)
+
+1. 全局设置是【】在控制面板中->调整Windows的外观和性能->去掉勾选 拖动时显示窗口内容】
+2. 但是为了不影响其它应用,可以在窗口处理函数wndproc中对其进行判断处理
+3. 必须先要替换wndproc为自己的函数
+4. 当消息事件==WM_NCLBUTTONDOWN的时候, 先强制开启，然后处理完成后再还原
+
+好处在于可以减少窗口更新的次数（用途有频繁渲染的界面）
+
+![ShowFrameWhenDrag](ScreenShot/ShowFrameWhenDrag.gif)
