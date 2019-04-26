@@ -182,6 +182,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [人脸特征点](Demo/FacePoints.py)
   - [使用Threading](Demo/QtThreading.py)
   - [背景连线动画](Demo/CircleLine.py)
+  - [判断信号是否连接](Demo/IsSignalConnected.py)
 
 # QQ群
 

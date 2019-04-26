@@ -19,6 +19,7 @@
   - [背景连线动画](#17、背景连线动画)
   - [无边框圆角对话框](#18、无边框圆角对话框)
   - [调整窗口显示边框](#19、调整窗口显示边框)
+  - [判断信号是否连接](#20、判断信号是否连接)
 
 ## 1、重启窗口Widget
 [运行 RestartWindow.py](RestartWindow.py)
@@ -195,3 +196,10 @@ PyQt 结合 Opencv 进行人脸检测；
 好处在于可以减少窗口更新的次数（用途有频繁渲染的界面）
 
 ![ShowFrameWhenDrag](ScreenShot/ShowFrameWhenDrag.gif)
+
+## 20、判断信号是否连接
+[运行 IsSignalConnected.py](IsSignalConnected.py)
+
+通过 `isSignalConnected` 判断是否连接
+
+![IsSignalConnected](ScreenShot/IsSignalConnected.png)
