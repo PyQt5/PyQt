@@ -3,7 +3,7 @@
 '''
 Created on 2017年4月21日
 @author: weike32
-@site: https://pyqt5.com , https://github.com/weike32
+@site: https://pyqt5.com ,https://github.com/weike32
 @email: 394967319@qq.com
 @file: CopyContent
 @description:
