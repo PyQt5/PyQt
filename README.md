@@ -132,15 +132,8 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [柱状堆叠图](QChart/BarStack.py)
   - [LineChart自定义xy轴](QChart/CustomXYaxis.py)
   - [ToolTip提示](QChart/ToolTip.py)
-- [Qpyqtgraph](Qpyqtgraph)
-  - 正在汇总Demo中,Be continued
-  - 本章节预告，实际使用中的包pyqtgraph相关BUG，以及解决方案，如有精力会添加相应解决方案的作者
-  - 1、pyqtgraph右键保存图片功能异常，以及解决防范
-  - 2、依据pyqtgraph.examples例子的使用心得
-  - 3、pyqtgraph如何禁止左键，右键，滑轮事件功能
-  - 4、使用QScrollArea后添加pg.PlotWidget()不能选择图片尺寸问题。
-  - 5、多图共享轴（Difficult）
   
+- [Qpyqtgraph](Qpyqtgraph)
 
 - [Animation](QPropertyAnimation)
   - [窗口淡入淡出](QPropertyAnimation/FadeInOut.py)
