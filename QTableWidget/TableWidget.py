@@ -6,7 +6,7 @@ Created on 2017年4月21日
 @site: https://pyqt5.com ,https://github.com/weike32
 @email: 394967319@qq.com
 @file: CopyContent
-@description:
+@description: 查阅了很多博客，如果有异，可以联系作者邮箱。本Demo仅作学习参考用，保有后续相关权益。
 '''
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
@@ -31,7 +31,7 @@ class MyTable(QTableWidget):
         self.table()
 
     def table(self):
-        self.setItem(0,0,QTableWidgetItem("           你的名字"))
+        self.setItem(0,0,QTableWidgetItem("你的名字"))
         self.setItem(0,1,QTableWidgetItem("性别"))
         self.setItem(0,2,QTableWidgetItem("出生日期"))
         self.setItem(0,3, QTableWidgetItem("职业"))
