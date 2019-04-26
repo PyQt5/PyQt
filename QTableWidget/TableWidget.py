@@ -42,10 +42,10 @@ class MyTable(QTableWidget):
         self.setVerticalHeaderLabels(["第一列", "第二列"])
         #设置表头
         lbp = QLabel()
-        lbp.setPixmap(QPixmap("Male.png"))
+        lbp.setPixmap(QPixmap("youPicture.png"))
         self.setCellWidget(1,1,lbp)
         #在表中添加一张图片
-        twi = QTableWidgetItem("      新海诚")
+        twi = QTableWidgetItem("Graph")
         twi.setFont(QFont("Times", 10, ))
         self.setItem(1,0,twi)
 
