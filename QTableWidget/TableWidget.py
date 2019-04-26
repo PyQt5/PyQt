@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 # encoding: utf-8
 '''
-@author: wxj
-@license: (C) Hefei tongzhi electromechanical control technology co.LTD
-@contact: 
-@software: garner
-@file: table.py
-@time: 2019/4/11 21:26
-@desc:
+Created on 2017年4月21日
+@author: weike32
+@site: https://pyqt5.com , https://github.com/weike32
+@email: 394967319@qq.com
+@file: CopyContent
+@description:
 '''
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
