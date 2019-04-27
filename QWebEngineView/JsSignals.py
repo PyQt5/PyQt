@@ -36,6 +36,7 @@ class WebEngineView(QWebEngineView):
         self.page().setWebChannel(self.channel)
 
         # START #####以下代码可能是在5.6 QWebEngineView刚出来时的bug,必须在每次加载页面的时候手动注入
+        #### 也有可能是跳转页面后就失效了，需要手动注入，有没有修复具体未测试
 
 #         self.page().loadStarted.connect(self.onLoadStart)
 #         self._script = open('Data/qwebchannel.js', 'rb').read().decode()
