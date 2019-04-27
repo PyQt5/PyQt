@@ -114,6 +114,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
     - [获取Cookie](QWebView/GetCookie.py)
   - [QWebEngineView](QWebEngineView)
     - [获取Cookie](QWebEngineView/GetCookie.py)
+    - [和Js交互操作](QWebEngineView/JsSignals.py)
     - [浏览器下载文件](Test/partner_625781186/6.QWebEngineView下载文件)
     - [打印网页](Test/partner_625781186/17_打印预览qwebengineview)
 
