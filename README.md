@@ -6,6 +6,8 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 
 [客户端下载](https://github.com/PyQt5/PyQtClient/releases)
 
+[自定义控件](https://github.com/PyQt5/CustomWidgets)
+
 ## 目录
 
 - Layouts
@@ -195,4 +197,4 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 # [Donate-打赏](Donate)
 <a href="javascript:;" alt="微信"><img src="Donate/weixin.png" height="350" width="350"></a>or<a href="javascript:;" alt="支付宝"><img src="Donate/zhifubao.png" height="350" width="350"></a>
 
-[一些Qt写的三方APP](https://github.com/892768447/PyQt/wiki/3rd-party-applications)
+[一些Qt写的三方APP](https://github.com/PyQt5/3rd-Apps)
