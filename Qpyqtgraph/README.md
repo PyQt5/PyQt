@@ -7,5 +7,14 @@
 - 3、pyqtgraph如何禁止左键，右键，滑轮事件功能
 - 4、使用QScrollArea后添加pg.PlotWidget()不能选择图片尺寸问题。
 - 5、多图共享轴（Difficult）
+- 6、pg.PlotWidget()鼠标获取X轴坐标
 
 - 目录
+  - [pg.PlotWidget()鼠标获取X轴坐标](#1、pg.PlotWidget()鼠标获取X轴坐标)
+  
+ ## 1、Sqlalchemy动态拼接字段查询显示表格
+[运行 mouseFlow.py](mouseFlow.py)
+
+移动鼠标获取X轴坐标
+
+![mouseFlow](ScreenShot/mouseFlow.gif)
