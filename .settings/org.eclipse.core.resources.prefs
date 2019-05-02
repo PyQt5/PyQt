@@ -49,6 +49,7 @@ encoding//QTableWidget/TableWidget.py=utf-8
 encoding//QThread/moveToThread.py=utf-8
 encoding//QTreeWidget/ParsingJson.py=utf-8
 encoding//QWebEngineView/GetCookie.py=utf-8
+encoding//QWebEngineView/JsSignals.py=utf-8
 encoding//QWebView/DreamTree.py=utf-8
 encoding//QWebView/GetCookie.py=utf-8
 encoding//QWidget/Lib/CustomPaintWidget.py=utf-8
