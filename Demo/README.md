@@ -180,9 +180,10 @@ PyQt 结合 Opencv 进行人脸检测；
 [运行 FramelessDialog.py](FramelessDialog.py)
 
 1. 通过设置 `self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)` 和 `self.setAttribute(Qt.WA_TranslucentBackground, True)` 达到无边框和背景透明
-2. 在QDialog中放置一个QWidget作为背景和圆角
-3. 在QWidget中放置其他内容
+2. 在`QDialog`中放置一个`QWidget`作为背景和圆角
+3. 在`QWidget`中放置其他内容
 
+![FramelessDialog1](ScreenShot/FramelessDialog1.png)
 ![FramelessDialog](ScreenShot/FramelessDialog.png)
 
 ## 19、调整窗口显示边框
