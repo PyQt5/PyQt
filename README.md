@@ -137,7 +137,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [ToolTip提示](QChart/ToolTip.py)
   
 - [Qpyqtgraph](Qpyqtgraph)
-  - [鼠标获取X轴坐标](Qpyqtgraph/mouseFlow.py)
+  - [鼠标获取X轴坐标,](Qpyqtgraph/mouseFlow.py)
   
 - [Animation](QPropertyAnimation)
   - [窗口淡入淡出](QPropertyAnimation/FadeInOut.py)
