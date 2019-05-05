@@ -35,3 +35,8 @@
 [运行 ToolTip.py](ToolTip.py) | [运行 ToolTip2.py](ToolTip2.py) 
 
 ![ToolTip](ScreenShot/ToolTip.gif) ![ToolTip2](ScreenShot/ToolTip2.gif)
+
+## 6、动态曲线图
+[运行 DynamicSpline.py](DynamicSpline.py)
+
+![DynamicSpline](ScreenShot/DynamicSplineChart.gif)
