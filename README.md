@@ -135,6 +135,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [柱状堆叠图](QChart/BarStack.py)
   - [LineChart自定义xy轴](QChart/CustomXYaxis.py)
   - [ToolTip提示](QChart/ToolTip.py)
+  - [DynamicSpline动态曲线图](QChart/DynamicSpline.py)
   
 - [Qpyqtgraph](Qpyqtgraph)
   - [鼠标获取X轴坐标](Qpyqtgraph/mouseFlow.py)
