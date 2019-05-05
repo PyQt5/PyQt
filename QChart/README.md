@@ -39,4 +39,4 @@
 ## 6、动态曲线图
 [运行 DynamicSpline.py](DynamicSpline.py)
 
-![DynamicSpline](ScreenShot/DynamicSpline.gif)
+![DynamicSpline](ScreenShot/DynamicSplineChart.gif)
