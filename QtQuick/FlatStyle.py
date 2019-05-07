@@ -32,7 +32,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     engine = QQmlApplicationEngine()
     engine.objectCreated.connect(
-        lambda obj, _: (QMessageBox.critical(None, '错误', '运行失败，可能是当前PyQt版本不支持'), engine.quit()) if not obj else 0)
+        lambda obj, _: (QMessageBox.critical(None, '错误', '运行失败，可能是当前PyQt版本不支持'), engine.quit) if not obj else 0)
     engine.addImportPath('imports')
     engine.load(QUrl('flatstyle.qml'))
 
