@@ -5,8 +5,9 @@
   - [右键菜单动画](#2、右键菜单动画)
   - [点阵特效](#3、点阵特效)
   - [页面切换/图片轮播动画](#4、页面切换/图片轮播动画)
+  - [窗口抖动](#5、窗口抖动)
 
-# 1、窗口淡入淡出
+## 1、窗口淡入淡出
 [运行 FadeInOut.py](FadeInOut.py)
 
 1. 使用`QPropertyAnimation`对窗口的`windowOpacity`透明度属性进行修改
@@ -19,7 +20,7 @@
 
 ![FadeInOut](ScreenShot/FadeInOut.gif)
    
-# 2、右键菜单动画
+## 2、右键菜单动画
 [运行 MenuAnimation.py](MenuAnimation.py)
 
 1. 使用`QPropertyAnimation`对菜单控件的`geometry`属性进行修改
@@ -117,3 +118,10 @@ def findClose(points):
 1. `autoStart(msec)`  轮播模式, 默认是3000毫秒
 
 ![PageSwitching](ScreenShot/PageSwitching.gif)
+
+## 5、窗口抖动
+[运行 ShakeWindow.py](ShakeWindow.py)
+
+通过`QPropertyAnimation`对控件的pos属性进行死去活来的修改
+
+![ShakeWindow](ScreenShot/ShakeWindow.gif)

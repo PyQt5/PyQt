@@ -145,6 +145,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [右键菜单动画](QPropertyAnimation/MenuAnimation.py)
   - [点阵特效](QPropertyAnimation/RlatticeEffect.py)
   - [页面切换/图片轮播动画](QPropertyAnimation/PageSwitching.py)
+  - [窗口抖动](QPropertyAnimation/ShakeWindow.py)
   - [折叠动画](Test/partner_625781186/2.折叠控件)
 
 - Others
