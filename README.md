@@ -152,6 +152,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [点阵特效](QPropertyAnimation/RlatticeEffect.py)
   - [页面切换/图片轮播动画](QPropertyAnimation/PageSwitching.py)
   - [窗口抖动](QPropertyAnimation/ShakeWindow.py)
+  - [窗口翻转动画（仿QQ）](QPropertyAnimation/FlipWidgetAnimation.py)
   - [折叠动画](Test/partner_625781186/2.折叠控件)
 
 - Others

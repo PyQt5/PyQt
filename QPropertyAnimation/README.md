@@ -125,3 +125,14 @@ def findClose(points):
 通过`QPropertyAnimation`对控件的pos属性进行死去活来的修改
 
 ![ShakeWindow](ScreenShot/ShakeWindow.gif)
+
+## 6、窗口翻转动画（仿QQ）
+[运行 FlipWidgetAnimation.py](FlipWidgetAnimation.py)
+
+1. 用了两个`QLabel`来显示模拟的图片界面，并实现鼠标点击模拟真实的窗口对应位置点击
+2. 用了`QStackedWidget`来存放上面的两个界面`QLabel`
+3. 点击切换时主要是对上面的两个界面进行截图并传递给翻转动画窗口
+4. 通过`setWindowOpacity`控制主窗口的显示隐藏（保留任务栏），当然也可以用`hide`
+5. 动画窗口`FlipWidget.py`主要实现两张图片的翻转显示，考虑到0-90和90-180之前的情况，以及图片的缩放动画
+
+![FlipWidgetAnimation](ScreenShot/FlipWidgetAnimation.gif)
