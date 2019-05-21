@@ -145,6 +145,8 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   
 - [PyQtGraph](PyQtGraph)
   - [鼠标获取X轴坐标](PyQtGraph/mouseFlow.py)
+  - [禁止右键点击功能、鼠标滚轮，添加滚动条等功能](PyQtGraph/graph1.py)
+  - [工具类](PyQtGraph/tools.py)
   
 - [Animation](QPropertyAnimation)
   - [窗口淡入淡出](QPropertyAnimation/FadeInOut.py)
