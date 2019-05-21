@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 '''
-Created on 2017年5月2日
+Created on 2019年5月2日
 @author: weike32
 @site: https://pyqt5.com ,https://github.com/weike32
 @email: 394967319@qq.com

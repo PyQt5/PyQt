@@ -15,8 +15,17 @@
 
 ## 目录
 - [鼠标获取X轴坐标](#1、鼠标获取X轴坐标)
+- [禁止右键点击功能、鼠标滚轮，添加滚动条等功能](#2、禁止右键点击功能、鼠标滚轮，添加滚动条等功能)
 
 ## 1、鼠标获取X轴坐标
 [运行 mouseFlow.py](mouseFlow.py)
 
 ![mouseFlow](ScreenShot/mouseFlow.gif)
+
+## 2、禁止右键点击功能、鼠标滚轮，添加滚动条等功能
+[运行 graph1.py](graph1.py)
+
+![mouseFlow](ScreenShot/function.gif)
+
+## 2、不用修改源码，重加载，解决右键保存图片异常；解决自定义坐标轴密集显示；禁止鼠标事件；
+[加载 tools.py](tools.py)
