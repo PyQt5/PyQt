@@ -12,9 +12,7 @@ import sys
 from PyQt5.QtWidgets import QDialog, QApplication, QWidget
 from qtpy import QtWidgets
 import pyqtgraph as pg
-
-from PyQtGraph.Data.graphAnalysis import graph_Form
-
+from PyQtGraph.Data.graphTest import graph_Form
 
 class CustomViewBox(pg.ViewBox):
     def __init__(self, *args, **kwds):
