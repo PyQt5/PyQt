@@ -4,6 +4,12 @@
 
 https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站，分享大家平时学习中记录的笔记和例子，以及对遇到的问题进行收集整理。
 
+[![GitHub watchers](https://img.shields.io/github/watchers/PyQt5/PyQt.svg?style=social&label=Watch)](https://github.com/PyQt5/PyQt)
+[![GitHub stars](https://img.shields.io/github/stars/PyQt5/PyQt.svg?style=social)](https://github.com/PyQt5/PyQt)
+[![GitHub forks](https://img.shields.io/github/forks/PyQt5/PyQt.svg?style=social)](https://github.com/PyQt5/PyQt/fork)
+
+如果您觉得这里的东西对您有帮助，别忘了帮忙点一颗:star:小星星:star:
+
 [客户端下载](https://github.com/PyQt5/PyQtClient/releases)
 
 [自定义控件](https://github.com/PyQt5/CustomWidgets)
@@ -146,6 +152,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [点阵特效](QPropertyAnimation/RlatticeEffect.py)
   - [页面切换/图片轮播动画](QPropertyAnimation/PageSwitching.py)
   - [窗口抖动](QPropertyAnimation/ShakeWindow.py)
+  - [窗口翻转动画（仿QQ）](QPropertyAnimation/FlipWidgetAnimation.py)
   - [折叠动画](Test/partner_625781186/2.折叠控件)
 
 - Others

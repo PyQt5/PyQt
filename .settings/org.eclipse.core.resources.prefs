@@ -35,6 +35,7 @@ encoding//QProgressBar/MetroCircleProgress.py=utf-8
 encoding//QProgressBar/PercentProgressBar.py=utf-8
 encoding//QProgressBar/SimpleStyle.py=utf-8
 encoding//QProgressBar/WaterProgressBar.py=utf-8
+encoding//QPropertyAnimation/FlipWidgetAnimation.py=utf-8
 encoding//QPropertyAnimation/Lib/SlidingStackedWidget.py=utf-8
 encoding//QPropertyAnimation/MenuAnimation.py=utf-8
 encoding//QPropertyAnimation/ShakeWindow.py=utf-8
