@@ -1,8 +1,8 @@
 # QWebEngineView
 
 - 目录
-  - [获取Cookie](#1、获取Cookie)
-  - [和Js交互操作](#2、和Js交互操作)
+  - [获取Cookie](#1获取Cookie)
+  - [和Js交互操作](#2和Js交互操作)
 
 ## 1、获取Cookie
 [运行 GetCookie.py](GetCookie.py)

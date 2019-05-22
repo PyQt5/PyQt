@@ -1,7 +1,7 @@
 # QFileSystemModel
 
 - 目录
-  - [自定义图标](#1、自定义图标)
+  - [自定义图标](#1自定义图标)
 
 ## 1、自定义图标
 [运行 CustomIcon.py](CustomIcon.py)

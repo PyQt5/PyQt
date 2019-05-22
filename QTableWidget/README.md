@@ -1,8 +1,8 @@
 # QTableWidget
 
 - 目录
-  - [Sqlalchemy动态拼接字段查询显示表格](#1、Sqlalchemy动态拼接字段查询显示表格)
-  - [表格嵌入日历，下拉框，进度条，按钮](#2、表格嵌入)
+  - [Sqlalchemy动态拼接字段查询显示表格](#1Sqlalchemy动态拼接字段查询显示表格)
+  - [表格嵌入日历，下拉框，进度条，按钮](#2表格嵌入)
 
 ## 1、Sqlalchemy动态拼接字段查询显示表格
 [运行 SqlQuery.py](SqlQuery.py)

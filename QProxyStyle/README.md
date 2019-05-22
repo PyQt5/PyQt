@@ -1,7 +1,7 @@
 # QProxyStyle
 
 - 目录
-  - [QTabWidget Tab文字方向](#1、QTabWidget&nbsp;Tab文字方向)
+  - [QTabWidget Tab文字方向](#1qtabwidget-tab文字方向)
 
 ## 1、QTabWidget Tab文字方向
 [运行 TabTextDirection.py](TabTextDirection.py)

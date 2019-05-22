@@ -1,7 +1,7 @@
 # QWidget
 
 - 目录
-  - [样式表测试](#1、样式表测试)
+  - [样式表测试](#1样式表测试)
 
 ## 1、样式表测试
 [运行 WidgetStyle.py](WidgetStyle.py)

@@ -1,9 +1,9 @@
 # QListView
 
 - 目录
-  - [显示自定义Widget](#1、显示自定义Widget)
-  - [显示自定义Widget并排序](#2、显示自定义Widget并排序)
-  - [自定义角色排序](#3、自定义角色排序)
+  - [显示自定义Widget](#1显示自定义Widget)
+  - [显示自定义Widget并排序](#2显示自定义Widget并排序)
+  - [自定义角色排序](#3自定义角色排序)
 
 ## 1、显示自定义Widget
 [运行 CustomWidgetItem.py](CustomWidgetItem.py)

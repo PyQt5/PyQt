@@ -1,7 +1,7 @@
 # QtQuick
 
 - 目录
-  - [Flat样式](#1、Flat样式)
+  - [Flat样式](#1Flat样式)
 
 ## 1、Flat样式
 [运行 FlatStyle.py](FlatStyle.py)

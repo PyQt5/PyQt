@@ -1,7 +1,7 @@
 # QAxWidget
 
 - 目录
-  - [显示Word、Excel、PDF文件](#1、显示Word、Excel、PDF文件)
+  - [显示Word、Excel、PDF文件](#1显示WordExcelPDF文件)
 
 ## 1、显示Word、Excel、PDF文件
 [运行 ViewOffice.py](ViewOffice.py)
