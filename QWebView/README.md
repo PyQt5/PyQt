@@ -18,3 +18,12 @@
 最后得到cookie,当然也可以设置自己的`QNetworkCookieJar`
 
 ![GetCookie](ScreenShot/GetCookie.png)
+
+## 3、和Js交互操作
+[运行 JsSignals.py](JsSignals.py)
+
+通过`QWebFrame`的`addToJavaScriptWindowObject`函数提供进行Python对象和Javascript的交互
+
+具体看代码中的注释
+
+![JsSignals](ScreenShot/JsSignals.gif)

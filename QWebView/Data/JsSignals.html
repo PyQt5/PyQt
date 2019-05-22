@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>测试</title>
+        <script>
+            // 这里绑定窗口的标题变化信号（这个信号是由QWidget内部的）
+            Bridge.windowTitleChanged.connect({fun: function(title) {
+                showLog("标题被修改为：" + title);
+            }}, "fun");
+
+            // 绑定自定义的信号customSignal
+            Bridge.customSignal.connect({fun: function(text) {
+               showLog("收到自定义信号内容：" + text);
+            }}, "fun");
+
+            function showLog(text) {
+                var ele = document.getElementById("result");
+                ele.value = ele.value + text + "\n";
+            }
+        </script>
+    </head>
+    <body>
+        <h3>1、测试修改窗口属性</h3>
+        windowTitle 是Qt窗口本身的属性, 当标题被修改后会触发本身的windowTitleChanged信号<br>
+        <input type="text" id="title" placeholder="请输入标题" />
+        <p></p>
+        <button onclick="javascript:Bridge.windowTitle = document.getElementById('title').value;">测试修改标题</button>
+        
+        <h3>2、调用Python中的方法callFromJs</h3>
+        callFromJs(str) 函数是由Python代码中定义, 通过@pyqtSlot(str)装饰器暴露出来<br>
+        <button onclick="javascript:Bridge.callFromJs('test');">Bridge.callFromJs('test')</button>
+        
+        <h3>3、发送自定义信号</h3>
+        点击底部的按钮将会发送customSignal信号出来，网页中收到该信号将会在下面日志框输出内容<br>
+        
+        <p>日志</p>
+        <textarea id="result" rows="20" cols="100"></textarea>
+    </body>
+</html>
