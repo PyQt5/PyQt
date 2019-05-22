@@ -201,6 +201,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [使用Threading](Demo/QtThreading.py)
   - [背景连线动画](Demo/CircleLine.py)
   - [判断信号是否连接](Demo/IsSignalConnected.py)
+  - [调用虚拟键盘](Demo/CallVirtualKeyboard.py)
 
 # QQ群
 

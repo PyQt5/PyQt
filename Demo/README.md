@@ -21,6 +21,7 @@
   - [无边框圆角对话框](#18无边框圆角对话框)
   - [调整窗口显示边框](#19调整窗口显示边框)
   - [判断信号是否连接](#20判断信号是否连接)
+  - [调用虚拟键盘](#21调用虚拟键盘)
 
 ## 1、重启窗口Widget
 [运行 RestartWindow.py](RestartWindow.py)
@@ -205,3 +206,12 @@ PyQt 结合 Opencv 进行人脸检测；
 通过 `isSignalConnected` 判断是否连接
 
 ![IsSignalConnected](ScreenShot/IsSignalConnected.png)
+
+## 21、调用虚拟键盘
+[运行 CallVirtualKeyboard.py](CallVirtualKeyboard.py)
+
+1. Windows上调用的是`osk.exe`
+2. Linux上调用的是`florence`,`onboard`,`kvkbd`,这三种屏幕键盘需要自行安装
+
+![CallVirtualKeyboard1](ScreenShot/CallVirtualKeyboard1.png)
+![CallVirtualKeyboard2](ScreenShot/CallVirtualKeyboard2.png)
