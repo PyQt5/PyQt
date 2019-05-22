@@ -120,6 +120,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [QWebView](QWebView)
     - [梦幻树](QWebView/DreamTree.py)
     - [获取Cookie](QWebView/GetCookie.py)
+    - [和Js交互操作](QWebView/JsSignals.py)
   - [QWebEngineView](QWebEngineView)
     - [获取Cookie](QWebEngineView/GetCookie.py)
     - [和Js交互操作](QWebEngineView/JsSignals.py)
