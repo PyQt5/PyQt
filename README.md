@@ -54,6 +54,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
     - [删除自定义Item](QListWidget/DeleteCustomItem.py)
     - [自定义可拖拽Item](QListWidget/DragDrop.py)
     - [腾讯视频热播列表](QListWidget/HotPlaylist.py)
+    - [仿折叠控件效果](QListWidget/FoldWidget.py)
     - [在item中添加图标](Test/partner_625781186/13.combo_listwidget)
   - [QTreeWidget](QTreeWidget)
     - [通过json数据生成树形结构](QTreeWidget/ParsingJson.py)
