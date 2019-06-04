@@ -9,27 +9,31 @@ Created on 2017年4月20日
 @description:
 '''
 import sys
+
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QDialog, QApplication
-from QTreeWidget.testTree import Ui_Form
 
-class graphAnalysis(QDialog,Ui_Form):
+from Lib.testTree import Ui_Form  # @UnresolvedImport
+
+
+class graphAnalysis(QDialog, Ui_Form):
     def __init__(self):
         super(graphAnalysis, self).__init__()
         self.setupUi(self)
         # 点击父节点
         self.treeWidget.itemChanged.connect(self.handleChanged)
-    def handleChanged(self,item,column):
+
+    def handleChanged(self, item, column):
         count = item.childCount()
         if item.checkState(column) == Qt.Checked:
             for index in range(count):
-                item.child(index).setCheckState(0,Qt.Checked)
+                item.child(index).setCheckState(0, Qt.Checked)
         if item.checkState(column) == Qt.Unchecked:
             for index in range(count):
-                item.child(index).setCheckState(0,Qt.Unchecked)
+                item.child(index).setCheckState(0, Qt.Unchecked)
 
 
-if __name__ =="__main__":
+if __name__ == "__main__":
     app = QApplication(sys.argv)
     w = graphAnalysis()
     w.show()
