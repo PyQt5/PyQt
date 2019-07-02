@@ -34,6 +34,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
     - [普通样式](QPushButton/NormalStyle.py)
     - [按钮底部线条进度](QPushButton/BottomLineProgress.py)
     - [按钮文字旋转进度](QPushButton/FontRotate.py)
+    - [按钮常用信号](QPushButton/SignalsExample.py)
   - [QToolButton](QToolButton)
   - [QRadioButton](QRadioButton)
   - [QCheckBox](QCheckBox)
