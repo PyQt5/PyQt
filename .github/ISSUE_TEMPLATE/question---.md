@@ -20,5 +20,5 @@ If applicable, add screenshots to help explain your problem.
 Add any other context about the problem here.
 // 描述你的问题 , 描述程序正常运行你希望的结果 , 提供程序的错误信息 和 源代码 截图 .
 // 一次性把问题描述清楚 , 帮助者没时间一来一回地协助你描述清楚问题后再帮助你解决 ; 
-// 2个来回后帮助者还不清除你描述的问题 , 则会关闭提问.
+// 2个来回后帮助者还不清楚你描述的问题 , 则会关闭提问.
 // 如果代码过长 , 请创建一个仓库并附上链接.
