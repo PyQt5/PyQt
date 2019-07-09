@@ -33,7 +33,8 @@
 ## 4、网页整体截图
 [运行 ScreenShotPage.py](ScreenShotPage.py)
 
-原理是通过`QWebView.QWebPage.QWebFrame`得到内容的高度，然后设置`QWebPage.setViewportSize`的大小，
+1. 方式1：原理是通过`QWebView.QWebPage.QWebFrame`得到内容的高度，然后设置`QWebPage.setViewportSize`的大小，
 最后通过`QWebFrame.render`把图片截出来
+2. 方式2：通过js库`html2canvas`对指定元素截图,得到`base64`编码的数据并调用接口函数传递到py代码中
 
-![ScreenShotPage](ScreenShot/ScreenShotPage.png)
+![ScreenShotPage](ScreenShot/ScreenShotPage.gif)
