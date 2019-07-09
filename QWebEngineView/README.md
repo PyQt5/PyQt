@@ -3,6 +3,7 @@
 - 目录
   - [获取Cookie](#1获取Cookie)
   - [和Js交互操作](#2和Js交互操作)
+  - [网页整体截图](#3网页整体截图)
 
 ## 1、获取Cookie
 [运行 GetCookie.py](GetCookie.py)
@@ -19,3 +20,11 @@
 具体看代码中的注释
 
 ![JsSignals](ScreenShot/JsSignals.gif)
+
+## 3、网页整体截图
+[运行 ScreenShotPage.py](ScreenShotPage.py)
+
+1. 方式1：目前通过不完美方法（先调整`QWebEngineView`的大小为`QWebEnginePage`的内容大小，等待一定时间后截图再还原大小）
+2. 方式2：通过js库`html2canvas`对指定元素截图,得到`base64`编码的数据并调用接口函数传递到py代码中
+
+![ScreenShotPage](ScreenShot/ScreenShotPage.gif)
