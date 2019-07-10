@@ -184,6 +184,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [QMessageBox](QMessageBox)
     - [消息对话框倒计时关闭](QMessageBox/CountDownClose.py)
     - [自定义图标等](QMessageBox/CustomColorIcon.py)
+    - [消息框按钮文字汉化](QMessageBox/ChineseText.py)
   - [QFileSystemModel](QFileSystemModel)
     - [自定义图标](QFileSystemModel/CustomIcon.py)
   - [QGraphicsDropShadowEffect](QGraphicsDropShadowEffect)
