@@ -190,6 +190,8 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
     - [自定义图标](QFileSystemModel/CustomIcon.py)
   - [QGraphicsDropShadowEffect](QGraphicsDropShadowEffect)
     - [边框阴影动画](QGraphicsDropShadowEffect/ShadowEffect.py)
+  - [QSystemTrayIcon](QSystemTrayIcon)
+    - [最小化到系统托盘](QSystemTrayIcon/MinimizeToTray.py)
 
 - [Demo](Demo)
   - [重启窗口Widget](Demo/RestartWindow.py)
