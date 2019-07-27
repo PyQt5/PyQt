@@ -1,7 +1,7 @@
 ---
 name: Question/提问
 about: Describe this issue template's purpose here./创建报告供帮助者复现你的问题
-title: "[问题]"
+title: "[问题] (保留前面格式)"
 labels: ''
 assignees: ''
 
@@ -12,6 +12,7 @@ assignees: ''
  - Python [e.g. 3.6.4 X64]
  - PyQt5 [e.g. 5.10.1]
 
+( 读后删除以下段)
 **Describe the bug** or **Expected behavior** ,
 **Additional context** and **Screenshots**
 A clear and concise description of what the bug is.
@@ -22,4 +23,13 @@ Add any other context about the problem here.
 // 一次性把问题描述清楚 , 帮助者没时间一来一回地协助你描述清楚问题后再帮助你解决 ; 
 // 2个来回后帮助者还不清楚你描述的问题 , 则会关闭提问.
 // 如果代码过长 , 请创建一个仓库并附上链接.
+---
+如果需要贴代码
+格式:
+<details>
+<summary>标题</summary>
+```
+(代码段)
+```
+</details>
 ( 读后删除以上段)
