@@ -19,17 +19,22 @@ A clear and concise description of what the bug is.
 A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 Add any other context about the problem here.
+
 // 描述你的问题 , 描述程序正常运行你希望的结果 , 提供程序的错误信息 和 源代码 截图 .
 // 一次性把问题描述清楚 , 帮助者没时间一来一回地协助你描述清楚问题后再帮助你解决 ; 
 // 2个来回后帮助者还不清楚你描述的问题 , 则会关闭提问.
 // 如果代码过长 , 请创建一个仓库并附上链接.
 ---
-如果需要贴代码
-格式:
+如果需要贴代码 , 从下面2中格式 选一种
+格式 1:
 <details>
 <summary>标题</summary>
-```
+(代码段)
+</details>
+
+格式2 :
+```python
 (代码段)
 ```
-</details>
+
 ( 读后删除以上段)
