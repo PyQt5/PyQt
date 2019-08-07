@@ -55,7 +55,7 @@ import sys
 
 from PyQt5.QtCore import (pyqtProperty, pyqtSignal, pyqtSlot, QCoreApplication,
         QObject, QTimer, QUrl)
-from PyQt5.QtRemoteObjects import QRemoteObjectHost, QRemoteObjectRegistryHost
+from PyQt5.QtRemoteObjects import QRemoteObjectHost
 
 
 class SimpleSwitch(QObject):
@@ -121,13 +121,8 @@ if __name__ == '__main__':
     # Create the simple switch.
     srcSwitch = SimpleSwitch()
 
-    # Create the node that hosts the registry.  This could be in a separate
-    # process.
-    regNode = QRemoteObjectRegistryHost(QUrl('local:registry'))
-
-    # Create the host object node.  This will connect to the registry node
-    # rather than to a client.
-    srcNode = QRemoteObjectHost(QUrl('local:replica'), QUrl('local:registry'))
+    # Create the host object node.
+    srcNode = QRemoteObjectHost(QUrl('local:replica'))
 
     # Enable remoting.
     srcNode.enableRemoting(srcSwitch, 'SimpleSwitch')
