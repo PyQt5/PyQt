@@ -169,6 +169,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [折叠动画](Test/partner_625781186/2.折叠控件)
   
 - [RemoteObjects](QtRemoteObjects)
+  - [简单界面数据同步](QtRemoteObjects/SyncUi)
   - [modelview](QtRemoteObjects/modelview)
   - [simpleswitch](QtRemoteObjects/simpleswitch)
 
