@@ -167,6 +167,10 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [窗口抖动](QPropertyAnimation/ShakeWindow.py)
   - [窗口翻转动画（仿QQ）](QPropertyAnimation/FlipWidgetAnimation.py)
   - [折叠动画](Test/partner_625781186/2.折叠控件)
+  
+- [RemoteObjects](QtRemoteObjects)
+  - [modelview](QtRemoteObjects/modelview)
+  - [simpleswitch](QtRemoteObjects/simpleswitch)
 
 - Others
   - [QFont](QFont)
