@@ -27,5 +27,10 @@
 
 ![mouseFlow](ScreenShot/function.gif)
 
-## 2、不用修改源码，重加载，解决右键保存图片异常；解决自定义坐标轴密集显示；禁止鼠标事件；
+## 3、不用修改源码，重加载，解决右键保存图片异常；解决自定义坐标轴密集显示；禁止鼠标事件；
 [加载 tools.py](tools.py)
+
+## 4、QScrollArea添加和修改大小例子；
+[运行 testGraphAnalysis.py](testGraphAnalysis.py)
+
+![testGraphAnalysis](ScreenShot/GraphAnalysis.gif)
