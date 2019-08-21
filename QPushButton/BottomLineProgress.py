@@ -10,7 +10,7 @@ Created on 2018年2月1日
 @description: 
 '''
 from random import randint
-import sys
+import sys, time
 
 from PyQt5.QtCore import QTimer, QThread, pyqtSignal
 from PyQt5.QtGui import QPainter, QColor, QPen
@@ -82,6 +82,7 @@ class PushButtonLine(QPushButton):
         self.loadingThread.valueChanged.disconnect(self.setPercent)
         self.loadingThread.terminate()
         self.loadingThread.deleteLater()
+        time.sleep(1)   #延迟等待deleteLater执行完毕
         del self.loadingThread
         self._percent = 0
         self._timer.stop()
