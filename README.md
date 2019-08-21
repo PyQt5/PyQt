@@ -174,6 +174,8 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [modelview](QtRemoteObjects/modelview)
   - [simpleswitch](QtRemoteObjects/simpleswitch)
 
+- [QPainter](QPainter)
+
 - Others
   - [QFont](QFont)
     - [加载自定义字体](QFont/AwesomeFont.py)
