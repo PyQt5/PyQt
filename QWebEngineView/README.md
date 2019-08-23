@@ -4,6 +4,7 @@
   - [获取Cookie](#1获取Cookie)
   - [和Js交互操作](#2和Js交互操作)
   - [网页整体截图](#3网页整体截图)
+  - [同网站不同用户](#4同网站不同用户)
 
 ## 1、获取Cookie
 [运行 GetCookie.py](GetCookie.py)
@@ -28,3 +29,10 @@
 2. 方式2：通过js库`html2canvas`对指定元素截图,得到`base64`编码的数据并调用接口函数传递到py代码中
 
 ![ScreenShotPage](ScreenShot/ScreenShotPage.gif)
+
+## 4、同网站不同用户
+[运行 SiteDiffUser.py](SiteDiffUser.py)
+
+原理是为每个`QWebEngineView`创建一个`QWebEnginePage`,且使用独立的`QWebEngineProfile`,并配置`persistentStoragePath`不同路径
+
+![SiteDiffUser](ScreenShot/SiteDiffUser.gif)
