@@ -26,11 +26,6 @@ Add any other context about the problem here.
 // 如果代码过长 , 请创建一个仓库并附上链接.
 ---
 如果需要贴代码 , 从下面2中格式 选一种
-格式 1:
-<details>
-<summary>标题</summary>
-(代码段)
-</details>
 
 格式2 :
 ```python
