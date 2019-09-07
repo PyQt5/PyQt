@@ -231,6 +231,9 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 
 
 # [Donate-打赏](Donate)
+
+感谢所有捐助者的鼓励，[这里](https://github.com/PyQt5/thanks) 列出了捐助者名单（由于一些收款渠道无法知道对方是谁，如有遗漏请联系我修改）
+
 <a href="javascript:;" alt="微信"><img src="Donate/weixin.png" height="350" width="350"></a>or<a href="javascript:;" alt="支付宝"><img src="Donate/zhifubao.png" height="350" width="350"></a>
 
 [一些Qt写的三方APP](https://github.com/PyQt5/3rd-Apps)
