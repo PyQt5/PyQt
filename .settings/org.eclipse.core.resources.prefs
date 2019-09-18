@@ -70,6 +70,7 @@ encoding//QWidget/Lib/CustomPaintWidget.py=utf-8
 encoding//QWidget/Lib/CustomWidget.py=utf-8
 encoding//QWidget/WidgetStyle.py=utf-8
 encoding//QtQuick/FlatStyle.py=utf-8
+encoding//QtQuick/Signals.py=utf-8
 encoding//QtRemoteObjects/SyncUi/WindowMaster.py=utf-8
 encoding//QtRemoteObjects/SyncUi/WindowSlave.py=utf-8
 encoding//Test/\u5168\u5C40\u70ED\u952E/HotKey.py=utf-8
