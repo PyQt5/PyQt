@@ -147,6 +147,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 
 - [QtQuick](QtQuick)
   - [Flat样式](QtQuick/FlatStyle.py)
+  - [QML与Python交互](QtQuick/Signals.py)
 
 - [QChart](QChart)
   - [折线图](QChart/LineChart.py)

@@ -10,9 +10,10 @@ Created on 2019年9月18日
 @description: 信号槽
 """
 
+from time import time
 import sys
 
-from PyQt5.QtCore import QCoreApplication, Qt, pyqtSlot
+from PyQt5.QtCore import QCoreApplication, Qt, pyqtSlot, pyqtSignal, QTimer
 from PyQt5.QtQml import QQmlApplicationEngine
 from PyQt5.QtWidgets import QApplication, QMessageBox, QWidget, QVBoxLayout,\
     QPushButton, QTextBrowser
@@ -37,7 +38,9 @@ ApplicationWindow {
     
     Component.onCompleted: {
         // 绑定信号槽到python中的函数
-        valueChanged.connect(_Window.onValueChanged);
+        valueChanged.connect(_Window.onValueChanged)
+        // 绑定python中的信号到qml中的函数
+        _Window.timerSignal.connect(appendText)
     }
     
     function appendText(text) {
@@ -82,6 +85,9 @@ ApplicationWindow {
 
 class Window(QWidget):
 
+    # 定义一个时间信号
+    timerSignal = pyqtSignal(str)
+
     def __init__(self, *args, **kwargs):
         super(Window, self).__init__(*args, **kwargs)
         layout = QVBoxLayout(self)
@@ -89,6 +95,12 @@ class Window(QWidget):
                                      self, clicked=self.callQmlFunc))
         self.resultView = QTextBrowser(self)
         layout.addWidget(self.resultView)
+        self._timer = QTimer(self, timeout=self.onTimeout)
+        self._timer.start(2000)
+
+    def onTimeout(self):
+        # 定时器发送信号通知qml
+        self.timerSignal.emit('定时器发来:' + str(time()))
 
     def callQmlFunc(self):
         # 主动调用qml中的appendText函数
