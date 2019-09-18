@@ -5,6 +5,7 @@
   - [获取Cookie](#2获取Cookie)
   - [和Js交互操作](#3和Js交互操作)
   - [网页整体截图](#4网页整体截图)
+  - [播放Flash](#5播放Flash)
 
 ## 1、梦幻树
 [运行 DreamTree.py](DreamTree.py)
