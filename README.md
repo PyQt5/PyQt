@@ -130,6 +130,7 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
     - [获取Cookie](QWebView/GetCookie.py)
     - [和Js交互操作](QWebView/JsSignals.py)
     - [网页整体截图](QWebView/ScreenShotPage.py)
+    - [播放Flash](QWebView/PlayFlash.py)
   - [QWebEngineView](QWebEngineView)
     - [获取Cookie](QWebEngineView/GetCookie.py)
     - [和Js交互操作](QWebEngineView/JsSignals.py)

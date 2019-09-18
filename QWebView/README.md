@@ -38,3 +38,11 @@
 2. 方式2：通过js库`html2canvas`对指定元素截图,得到`base64`编码的数据并调用接口函数传递到py代码中
 
 ![ScreenShotPage](ScreenShot/ScreenShotPage.gif)
+
+## 5、播放Flash
+[运行 PlayFlash.py](PlayFlash.py)
+
+1. 重点在于设置 `os.environ['QTWEBKIT_PLUGIN_PATH'] = os.path.abspath('Data')` ，非常重要，设置为NPSWF32.dll文件所在目录
+2. 其次是xp下ssl问题,具体参考代码
+
+![PlayFlash](ScreenShot/PlayFlash.gif)
