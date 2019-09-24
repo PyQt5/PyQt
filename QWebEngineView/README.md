@@ -5,6 +5,7 @@
   - [和Js交互操作](#2和Js交互操作)
   - [网页整体截图](#3网页整体截图)
   - [同网站不同用户](#4同网站不同用户)
+  - [拦截请求](#5拦截请求)
 
 ## 1、获取Cookie
 [运行 GetCookie.py](GetCookie.py)
@@ -36,3 +37,10 @@
 原理是为每个`QWebEngineView`创建一个`QWebEnginePage`,且使用独立的`QWebEngineProfile`,并配置`persistentStoragePath`不同路径
 
 ![SiteDiffUser](ScreenShot/SiteDiffUser.gif)
+
+## 5、拦截请求
+[运行 BlockRequest.py](BlockRequest.py)
+
+通过`QWebEngineUrlRequestInterceptor`中的`interceptRequest`方法对每个请求做拦截过滤
+
+![BlockRequest](ScreenShot/BlockRequest.gif)
