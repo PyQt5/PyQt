@@ -54,4 +54,4 @@
 
 通过`QNetworkAccessManager`中的`createRequest`方法对每个请求做拦截过滤
 
-![BlockRequest](ScreenShot/BlockRequest.gif)
+![BlockRequest](ScreenShot/BlockRequest.png)
