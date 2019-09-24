@@ -6,6 +6,7 @@
   - [和Js交互操作](#3和Js交互操作)
   - [网页整体截图](#4网页整体截图)
   - [播放Flash](#5播放Flash)
+  - [拦截请求](#6拦截请求)
 
 ## 1、梦幻树
 [运行 DreamTree.py](DreamTree.py)
@@ -47,3 +48,10 @@
 2. 其次是xp下ssl问题,具体参考代码
 
 ![PlayFlash](ScreenShot/PlayFlash.gif)
+
+## 6、拦截请求
+[运行 BlockRequest.py](BlockRequest.py)
+
+通过`QNetworkAccessManager`中的`createRequest`方法对每个请求做拦截过滤
+
+![BlockRequest](ScreenShot/BlockRequest.gif)

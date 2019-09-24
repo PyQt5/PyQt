@@ -62,6 +62,7 @@ encoding//QWebEngineView/GetCookie.py=utf-8
 encoding//QWebEngineView/JsSignals.py=utf-8
 encoding//QWebEngineView/ScreenShotPage.py=utf-8
 encoding//QWebEngineView/SiteDiffUser.py=utf-8
+encoding//QWebView/BlockRequest.py=utf-8
 encoding//QWebView/DreamTree.py=utf-8
 encoding//QWebView/GetCookie.py=utf-8
 encoding//QWebView/JsSignals.py=utf-8
