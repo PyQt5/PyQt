@@ -9,7 +9,7 @@ Created on 2019年9月24日
 @file: QWebView.BlockAds
 @description: 拦截请求
 """
-from PyQt5.QtCore import QUrl
+from PyQt5.QtCore import QUrl, QBuffer, QByteArray
 from PyQt5.QtNetwork import QNetworkAccessManager
 from PyQt5.QtWebKitWidgets import QWebView
 
@@ -32,6 +32,14 @@ class RequestInterceptor(QNetworkAccessManager):
             # 拦截百度联盟的广告
             print('block:', url)
             originalReq.setUrl(QUrl())
+        if op == self.PostOperation and outgoingData:
+            # 拦截或者修改post数据
+            # 读取后要重新设置,不然网站接收不到请求
+            data = outgoingData.readAll().data()
+            print('post data:', data)
+            # 修改data后重新设置
+            outgoingData = QBuffer(self)
+            outgoingData.setData(data)
 
         return super(RequestInterceptor, self).createRequest(op, originalReq, outgoingData)
 
