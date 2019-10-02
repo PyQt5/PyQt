@@ -14,6 +14,8 @@
   - [百分比柱状图表](#11百分比柱状图表)
   - [横向柱状图表](#12横向柱状图表)
   - [横向百分比柱状图表](#13横向百分比柱状图表)
+  - [散点图表](#14散点图表)
+  - [图表主题动画](#15图表主题动画)
 
 ## 1、折线图
 [运行 LineChart.py](LineChart.py)
@@ -83,3 +85,13 @@
 [运行 HorizontalPercentBarChart.py](HorizontalPercentBarChart.py)
 
 ![HorizontalPercentBarChart](ScreenShot/HorizontalPercentBarChart.png)
+
+## 14、散点图表
+[运行 ScatterChart.py](ScatterChart.py)
+
+![ScatterChart](ScreenShot/ScatterChart.png)
+
+## 15、图表主题动画
+[运行 ChartThemes.py](ChartThemes.py)
+
+![ChartThemes](ScreenShot/ChartThemes.gif)
