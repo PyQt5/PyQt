@@ -158,6 +158,13 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [LineChart自定义xy轴](QChart/CustomXYaxis.py)
   - [ToolTip提示](QChart/ToolTip.py)
   - [DynamicSpline动态曲线图](QChart/DynamicSpline.py)
+  - [区域图表](QChart/AreaChart.py)
+  - [柱状图表](QChart/BarChart.py)
+  - [饼状图表](QChart/PieChart.py)
+  - [样条图表](QChart/SplineChart.py)
+  - [百分比柱状图表](QChart/PercentBarChart.py)
+  - [横向柱状图表](QChart/HorizontalBarChart.py)
+  - [横向百分比柱状图表](QChart/HorizontalPercentBarChart.py)
   
 - [PyQtGraph](PyQtGraph)
   - [鼠标获取X轴坐标](PyQtGraph/mouseFlow.py)

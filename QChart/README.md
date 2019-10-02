@@ -7,6 +7,13 @@
   - [LineChart自定义xy轴](#4LineChart自定义xy轴)
   - [ToolTip提示](#5ToolTip提示)
   - [动态曲线图](#6动态曲线图)
+  - [区域图表](#7区域图表)
+  - [柱状图表](#8柱状图表)
+  - [饼状图表](#9饼状图表)
+  - [样条图表](#10样条图表)
+  - [百分比柱状图表](#11百分比柱状图表)
+  - [横向柱状图表](#12横向柱状图表)
+  - [横向百分比柱状图表](#13横向百分比柱状图表)
 
 ## 1、折线图
 [运行 LineChart.py](LineChart.py)
@@ -41,3 +48,38 @@
 [运行 DynamicSpline.py](DynamicSpline.py)
 
 ![DynamicSpline](ScreenShot/DynamicSplineChart.gif)
+
+## 7、区域图表
+[运行 AreaChart.py](AreaChart.py)
+
+![AreaChart](ScreenShot/AreaChart.png)
+
+## 8、柱状图表
+[运行 BarChart.py](BarChart.py)
+
+![BarChart](ScreenShot/BarChart.png)
+
+## 9、饼状图表
+[运行 PieChart.py](PieChart.py)
+
+![PieChart](ScreenShot/PieChart.png)
+
+## 10、样条图表
+[运行 SplineChart.py](SplineChart.py)
+
+![SplineChart](ScreenShot/SplineChart.png)
+
+## 11、百分比柱状图表
+[运行 PercentBarChart.py](PercentBarChart.py)
+
+![PercentBarChart](ScreenShot/PercentBarChart.png)
+
+## 12、横向柱状图表
+[运行 HorizontalBarChart.py](HorizontalBarChart.py)
+
+![HorizontalBarChart](ScreenShot/HorizontalBarChart.png)
+
+## 13、横向百分比柱状图表
+[运行 HorizontalPercentBarChart.py](HorizontalPercentBarChart.py)
+
+![HorizontalPercentBarChart](ScreenShot/HorizontalPercentBarChart.png)
