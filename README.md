@@ -170,6 +170,8 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
 
 - [QtDataVisualization](QtDataVisualization)
   - [柱状图3D](QtDataVisualization/BarsVisualization.py)
+  - [太阳磁场线](QtDataVisualization/MagneticOfSun.py)
+  - [余弦波3D](QtDataVisualization/ScatterVisualization.py)
 
 - [PyQtGraph](PyQtGraph)
   - [鼠标获取X轴坐标](PyQtGraph/mouseFlow.py)
