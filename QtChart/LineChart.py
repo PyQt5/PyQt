@@ -15,7 +15,6 @@ from PyQt5.QtChart import QChartView, QLineSeries, QChart
 from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import QApplication
 
-
 __version__ = "0.0.1"
 
 

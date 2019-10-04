@@ -10,11 +10,10 @@ Created on 2019年5月5日
 """
 import sys
 
+from PyQt5.QtChart import QChartView, QChart, QSplineSeries, QValueAxis
 from PyQt5.QtCore import Qt, QTimer, QRandomGenerator
-from PyQt5.QtChart import QChartView, QLineSeries, QChart, QSplineSeries, QValueAxis
 from PyQt5.QtGui import QPainter, QPen
 from PyQt5.QtWidgets import QApplication
-
 
 __version__ = "0.0.1"
 
