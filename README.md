@@ -167,7 +167,10 @@ https://pyqt5.com 社区是专门针对PyQt5学习和提升开设的博客网站
   - [横向百分比柱状图表](QtChart/HorizontalPercentBarChart.py)
   - [散点图表](QtChart/ScatterChart.py)
   - [图表主题动画](QtChart/ChartThemes.py)
-  
+
+- [QtDataVisualization](QtDataVisualization)
+  - [柱状图3D](QtDataVisualization/BarsVisualization.py)
+
 - [PyQtGraph](PyQtGraph)
   - [鼠标获取X轴坐标](PyQtGraph/mouseFlow.py)
   - [禁止右键点击功能、鼠标滚轮，添加滚动条等功能](PyQtGraph/graph1.py)
