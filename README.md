@@ -67,6 +67,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
     - [通过json数据生成树形结构](QTreeWidget/ParsingJson.py)
     - [拖拽显示为图片](Test/partner_625781186/12.1拖拽显示为图片)
     - [点击父节点全选/取消全选子节点](QTreeWidget/testTreeWidget.py)
+    - [禁止父节点](QTreeWidget/ParentNodeForbid.py)
   - [QTableWidget](QTableWidget)
     - [Sqlalchemy动态拼接字段查询显示表格](QTableWidget/SqlQuery.py)
     - [TableWidget嵌入部件](QTableWidget/TableWidget.py)
