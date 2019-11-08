@@ -10,7 +10,8 @@ Created on 2019年11月8日
 @description: 父节点不可选中
 """
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem
+from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QStyledItemDelegate,\
+    QStyle
 
 
 __Author__ = 'Irony'
@@ -18,10 +19,23 @@ __Copyright__ = 'Copyright (c) 2019'
 __Version__ = 1.0
 
 
+class NoColorItemDelegate(QStyledItemDelegate):
+
+    def paint(self, painter, option, index):
+        if option.state & QStyle.State_HasFocus:
+            # 取消虚线框
+            option.state = option.state & ~ QStyle.State_HasFocus
+        if option.state & QStyle.State_MouseOver and index.data(Qt.UserRole + 1):
+            # 不显示鼠标悬停颜色
+            option.state = option.state & ~ QStyle.State_MouseOver
+        super(NoColorItemDelegate, self).paint(painter, option, index)
+
+
 class Window(QTreeWidget):
 
     def __init__(self, *args, **kwargs):
         super(Window, self).__init__(*args, **kwargs)
+        self.setItemDelegateForColumn(0, NoColorItemDelegate(self))
 
         # 父节点（不可选中）
         pitem1 = QTreeWidgetItem(self, ['parent item 1'])
