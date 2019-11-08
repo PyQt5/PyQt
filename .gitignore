@@ -106,6 +106,10 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+.idea
+.settings
+.project
+.pydevproject
 *.pyc
 Tmps/*
 logs/*
