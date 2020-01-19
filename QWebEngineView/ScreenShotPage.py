@@ -35,6 +35,7 @@ html2canvas(el[0], {
     windowWidth: el.outerWidth(true),
 }).then(function(canvas) {
     window._self.saveImage(canvas.toDataURL());
+    canvas = null;
 });
 """
 
@@ -96,7 +97,7 @@ class Window(QWidget):
         settings.setAttribute(QWebEngineSettings.ScreenCaptureEnabled, True)
         self.webView.loadStarted.connect(self.onLoadStarted)
         self.webView.loadFinished.connect(self.onLoadFinished)
-        self.webView.load(QUrl("https://pyqt5.com"))
+        self.webView.load(QUrl("https://pyqt.site"))
 
     def onLoadStarted(self):
         print('load started')
