@@ -139,6 +139,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
     - [网页整体截图](QWebEngineView/ScreenShotPage.py)
     - [同网站不同用户](QWebEngineView/SiteDiffUser.py)
     - [拦截请求](QWebEngineView/BlockRequest.py)
+    - [拦截请求内容](QWebEngineView/BlockRequestData.py)
     - [浏览器下载文件](Test/partner_625781186/6.QWebEngineView下载文件)
     - [打印网页](Test/partner_625781186/17_打印预览qwebengineview)
 

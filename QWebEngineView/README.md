@@ -6,6 +6,7 @@
   - [网页整体截图](#3网页整体截图)
   - [同网站不同用户](#4同网站不同用户)
   - [拦截请求](#5拦截请求)
+  - [拦截请求内容](#6拦截请求内容)
 
 ## 1、获取Cookie
 [运行 GetCookie.py](GetCookie.py)
@@ -44,3 +45,11 @@
 通过`QWebEngineUrlRequestInterceptor`中的`interceptRequest`方法对每个请求做拦截过滤
 
 ![BlockRequest](ScreenShot/BlockRequest.gif)
+
+## 6、拦截请求内容
+[运行 BlockRequestData.py](BlockRequestData.py)
+
+这里用了一个投巧的办法，原理是先通过`QWebEngineUrlRequestInterceptor`中的`interceptRequest`方法对每个请求做拦截过滤，
+发现目标url后重定向到`QWebEngineUrlSchemeHandler`实现的自定义协议头返回数据
+
+![BlockRequestData](ScreenShot/BlockRequestData.png)
