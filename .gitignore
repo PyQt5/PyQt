@@ -3,6 +3,13 @@ __pycache__/
 *.py[co]
 *$py.class
 
+debug
+release
+.qmake.stash
+Makefile
+Makefile.Debug
+Makefile.Release
+
 Tmp
 Tmp/*
 
