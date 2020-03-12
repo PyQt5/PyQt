@@ -244,6 +244,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
   - [背景连线动画](Demo/CircleLine.py)
   - [判断信号是否连接](Demo/IsSignalConnected.py)
   - [调用虚拟键盘](Demo/CallVirtualKeyboard.py)
+  - [动态忙碌光标](Demo/GifCursor.py)
 
 # QQ群
 

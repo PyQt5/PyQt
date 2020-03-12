@@ -22,6 +22,7 @@
   - [调整窗口显示边框](#19调整窗口显示边框)
   - [判断信号是否连接](#20判断信号是否连接)
   - [调用虚拟键盘](#21调用虚拟键盘)
+  - [动态忙碌光标](#22动态忙碌光标)
 
 ## 1、重启窗口Widget
 [运行 RestartWindow.py](RestartWindow.py)
@@ -215,3 +216,10 @@ PyQt 结合 Opencv 进行人脸检测；
 
 ![CallVirtualKeyboard1](ScreenShot/CallVirtualKeyboard1.png)
 ![CallVirtualKeyboard2](ScreenShot/CallVirtualKeyboard2.png)
+
+## 22、动态忙碌光标
+[运行 GifCursor.py](GifCursor.py)
+
+通过定时器不停的修改光标图片来实现动态效果
+
+![GifCursor](ScreenShot/GifCursor.gif)
