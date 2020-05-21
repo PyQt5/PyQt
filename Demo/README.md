@@ -204,7 +204,8 @@ PyQt 结合 Opencv 进行人脸检测；
 ## 20、判断信号是否连接
 [运行 IsSignalConnected.py](IsSignalConnected.py)
 
-通过 `isSignalConnected` 判断是否连接
+1. 通过 `isSignalConnected` 判断是否连接
+2. 通过对象的 `receivers` 获取连接的数量来判断
 
 ![IsSignalConnected](ScreenShot/IsSignalConnected.png)
 

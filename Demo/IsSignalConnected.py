@@ -34,11 +34,11 @@ class Window(QWidget):
 
     def doTest(self):
         self.retView.append("""
-        # button1 clicked 是否连接: %s
-        # button2 clicked 是否连接: %s
+        # button1 clicked 是否连接: %s, %s
+        # button2 clicked 是否连接: %s, %s
         """ % (
-            self.isSignalConnected(self.button1, 'clicked()'),
-            self.isSignalConnected(self.button2, 'clicked()')
+            self.isSignalConnected(self.button1, 'clicked()'), self.button1.receivers(self.button1.clicked) > 0,
+            self.isSignalConnected(self.button2, 'clicked()'), self.button2.receivers(self.button2.clicked) > 0,
         ))
 
     def isSignalConnected(self, obj, name):
