@@ -1,4 +1,5 @@
 import sys
+from PyQt5.QtCore import QRegExp
 from PyQt5.QtGui import QTextCharFormat, QTextDocument, QTextCursor
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QTextEdit,
                              QToolBar, QLineEdit, QPushButton, QColorDialog, QHBoxLayout, QWidget)
@@ -22,30 +23,46 @@ class TextEdit(QMainWindow):
 
         tb = QToolBar(self)
         tb.addWidget(widget)
+        self.addToolBar(tb)
 
     def setText(self, text):
         self.textEdit.setPlainText(text)
-
-    def mergeFormatOnWordOrSelection(self, format):
-        cursor = self.textEdit.textCursor()
-        if not cursor.hasSelection():
-            cursor.select(QTextCursor.WordUnderCursor)
-        cursor.mergeCharFormat(format)
-        self.textEdit.mergeCurrentCharFormat(format)
 
     def highlight(self):
         text = self.findText.text()  # 输入框中的文字
         if not text:
             return
+
         col = QColorDialog.getColor(self.textEdit.textColor(), self)
         if not col.isValid():
             return
+
+        # 恢复默认的颜色
+        cursor = self.textEdit.textCursor()
+        cursor.select(QTextCursor.Document)
+        cursor.setCharFormat(QTextCharFormat())
+        cursor.clearSelection()
+        self.textEdit.setTextCursor(cursor)
+
+        # 文字颜色
         fmt = QTextCharFormat()
         fmt.setForeground(col)
-        # 先把光标移动到开头
+
+        # 正则
+        expression = QRegExp(text)
         self.textEdit.moveCursor(QTextCursor.Start)
-        while self.textEdit.find(text, QTextDocument.FindWholeWords):  # 查找所有文字
-            self.mergeFormatOnWordOrSelection(fmt)
+        cursor = self.textEdit.textCursor()
+
+        # 循环查找设置颜色
+        pos = 0
+        index = expression.indexIn(self.textEdit.toPlainText(), pos)
+        while index >= 0:
+            cursor.setPosition(index)
+            cursor.movePosition(QTextCursor.Right,
+                                QTextCursor.KeepAnchor, len(text))
+            cursor.mergeCharFormat(fmt)
+            pos = index + expression.matchedLength()
+            index = expression.indexIn(self.textEdit.toPlainText(), pos)
 
 
 if __name__ == '__main__':
