@@ -113,6 +113,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
     - [显示.9格式图片（气泡）](QLabel/NinePatch.py)
     - [圆形图片](QLabel/CircleImage.py)
   - [QTextBrowser](QTextBrowser)
+    - [动态加载图片](QTextBrowser/DynamicRes.py)
   - [QGraphicsView](QGraphicsView)
     - [绘制世界地图](QGraphicsView/WorldMap.py)
     - [添加QWidget](QGraphicsView/AddQWidget.py)
