@@ -11,7 +11,7 @@ Created on 2020年3月13日
 """
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
 
-from Demo.Lib.QCursorGif import QCursorGif
+from Lib.QCursorGif import QCursorGif
 
 
 __Author__ = 'Irony'
