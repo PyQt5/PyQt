@@ -38,7 +38,7 @@ class Window(QWidget, QCursorGif):
 if __name__ == '__main__':
     import sys
     import cgitb
-    sys.excepthook = cgitb.enable(1, None, 5, '')
+    cgitb.enable(1, None, 5, '')
     from PyQt5.QtWidgets import QApplication
     app = QApplication(sys.argv)
     w = Window()

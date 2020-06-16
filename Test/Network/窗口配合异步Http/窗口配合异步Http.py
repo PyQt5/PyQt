@@ -132,7 +132,7 @@ if __name__ == '__main__':
     import cgitb
     import os
     os.makedirs('tmp', exist_ok=True)
-    sys.excepthook = cgitb.enable(1, None, 5, 'text')
+    cgitb.enable(1, None, 5, '')
     app = QApplication(sys.argv)
     loop = QEventLoop(app)
     asyncio.set_event_loop(loop)

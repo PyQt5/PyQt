@@ -68,7 +68,7 @@ class WebView(QWebView):
 
 
 if __name__ == "__main__":
-    sys.excepthook = cgitb.enable(1, None, 5, '')
+    cgitb.enable(1, None, 5, '')
     app = QApplication(sys.argv)
     w = WebView()
     w.show()
