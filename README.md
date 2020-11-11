@@ -200,6 +200,10 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
 
 - [QPainter](QPainter)
 
+- [QtWinExtras](QtWinExtras)
+  - [任务栏进度条](QtWinExtras/TaskbarProgress.py)
+  - [任务栏缩略图工具按钮](QtWinExtras/ThumbnailToolBar.py)
+
 - Others
   - [QFont](QFont)
     - [加载自定义字体](QFont/AwesomeFont.py)

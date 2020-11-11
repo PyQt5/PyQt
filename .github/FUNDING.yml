@@ -1,3 +1,7 @@
 # These are supported funding model platforms
 
-custom: https://github.com/PyQt5/PyQt#donate-打赏
+liberapay: Irony
+custom: 
+  - https://github.com/PyQt5/PyQt#donate-打赏
+  - https://github.com/PyQt5/PyQt/blob/master/Donate/zhifubao.png
+  - https://github.com/PyQt5/PyQt/blob/master/Donate/weixin.png
