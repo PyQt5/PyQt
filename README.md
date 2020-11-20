@@ -11,10 +11,6 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
 
 如果您觉得这里的东西对您有帮助，别忘了帮忙点一颗:star:小星星:star:
 
-## 微信博客小程序
-
-<img src="Donate/wxblog.jpg" height="250" width="250">
-
 [客户端下载](https://github.com/PyQt5/PyQtClient/releases)
 
 [自定义控件](https://github.com/PyQt5/CustomWidgets)
@@ -117,6 +113,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
   - [QGraphicsView](QGraphicsView)
     - [绘制世界地图](QGraphicsView/WorldMap.py)
     - [添加QWidget](QGraphicsView/AddQWidget.py)
+    - [图片查看器](QGraphicsView/ImageView.py)
   - [QCalendarWidget](QCalendarWidget)
     - [QSS美化日历样式](QCalendarWidget/CalendarQssStyle.py)
   - [QLCDNumber](QLCDNumber)
