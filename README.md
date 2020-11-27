@@ -148,6 +148,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
   - [moveToThread](QThread/moveToThread.py)
   - [线程挂起恢复](QThread/SuspendThread.py)
   - [线程休眠唤醒](QThread/WakeupThread.py)
+  - [线程退出](QThread/QuitThread.py)
 
 - [QtQuick](QtQuick)
   - [Flat样式](QtQuick/FlatStyle.py)
