@@ -6,6 +6,7 @@
   - [百分比进度条](#3百分比进度条)
   - [Metro进度条](#4Metro进度条)
   - [水波纹进度条](#5水波纹进度条)
+  - [圆形水位进度条](#6圆形水位进度条)
 
 ## 1、常规样式美化
 [运行 SimpleStyle.py](SimpleStyle.py)
@@ -37,3 +38,10 @@
 3. 用 `QPainterPath` 把y坐标用 `lineTo` 连接起来形成一个U字形+上方波浪的闭合区间
 
 ![WaterProgressBar](ScreenShot/WaterProgressBar.gif)
+
+## 6、圆形水位进度条
+[运行 WaterProgress.py](WaterProgress.py)
+
+参考 https://github.com/linuxdeepin/dtkwidget/blob/master/src/widgets/dwaterprogress.cpp
+
+![WaterProgressBar](ScreenShot/WaterProgress.gif)

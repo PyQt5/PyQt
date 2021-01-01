@@ -123,6 +123,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
     - [百分比进度条](QProgressBar/PercentProgressBar.py)
     - [Metro进度条](QProgressBar/MetroCircleProgress.py)
     - [水波纹进度条](QProgressBar/WaterProgressBar.py)
+    - [圆形水位进度条](QProgressBar/WaterProgress.py)
   - [QSplashScreen](QSplashScreen)
     - [启动画面动画](QSplashScreen/GifSplashScreen.py)
   - [QOpenGLWidget](QOpenGLWidget)
