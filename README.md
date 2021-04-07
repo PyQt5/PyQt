@@ -208,6 +208,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
     - [加载自定义字体](QFont/AwesomeFont.py)
   - [QMenu](QMenu)
     - [菜单设置多选并且不关闭](QMenu/MultiSelect.py)
+    - [仿QQ右键菜单](QMenu/QQMenu.py)
     - [悬停菜单](Test/partner_625781186/5.hoverMenu)
   - [QAxWidget](QAxWidget)
     - [显示Word、Excel、PDF文件](QAxWidget/ViewOffice.py)

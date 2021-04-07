@@ -2,6 +2,7 @@
 
 - 目录
   - [菜单设置多选并且不关闭](#1菜单设置多选并且不关闭)
+  - [仿QQ右键菜单](#2仿QQ右键菜单)
 
 ## 1、菜单设置多选并且不关闭
 [运行 MultiSelect.py](MultiSelect.py)
@@ -36,3 +37,8 @@ def _menu_mouseReleaseEvent(self, event):
 ```
 
 ![MultiSelect](ScreenShot/MultiSelect.gif)
+
+## 2、仿QQ右键菜单
+[运行 QQMenu.py](QQMenu.py)
+
+![QQMenu](ScreenShot/QQMenu.gif)
