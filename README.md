@@ -100,6 +100,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
   - [QSlider](QSlider)
     - [滑动条点击定位](QSlider/ClickJumpSlider.py)
     - [双层圆环样式](QSlider/QssQSlider.py)
+    - [低频率值变化](QSlider/LfSlider.py)
 
 - Display Widgets
   - [QLabel](QLabel)

@@ -3,6 +3,7 @@
 - 目录
   - [滑动条点击定位](#1滑动条点击定位)
   - [双层圆环样式](#2双层圆环样式)
+  - [低频率值变化](#3低频率值变化)
 
 ## 1、滑动条点击定位
 [运行 ClickJumpSlider.py](ClickJumpSlider.py)
@@ -44,3 +45,10 @@ def mousePressEvent(self, event):
 
 ![QssQSlider](ScreenShot/QssQSlider.gif)
 ![PaintQSlider](ScreenShot/PaintQSlider.gif)
+
+## 3、低频率值变化
+[运行 LfSlider.py](LfSlider.py) 
+
+覆盖了`valueChanged`信号，通过使用定时器来延迟发送值变化，如果无法覆盖信号则可以自定义一个新的信号
+
+![LfSlider](ScreenShot/LfSlider.gif)
