@@ -23,6 +23,7 @@
   - [判断信号是否连接](#20判断信号是否连接)
   - [调用虚拟键盘](#21调用虚拟键盘)
   - [动态忙碌光标](#22动态忙碌光标)
+  - [屏幕变动监听](#23屏幕变动监听)
 
 ## 1、重启窗口Widget
 [运行 RestartWindow.py](RestartWindow.py)
@@ -224,3 +225,10 @@ PyQt 结合 Opencv 进行人脸检测；
 通过定时器不停的修改光标图片来实现动态效果
 
 ![GifCursor](ScreenShot/GifCursor.gif)
+
+## 23、屏幕变动监听
+[运行 ScreenNotify.py](ScreenNotify.py)
+
+通过定时器减少不同的变化信号，尽量保证只调用一次槽函数来获取信息
+
+![ScreenNotify](ScreenShot/ScreenNotify.png)
