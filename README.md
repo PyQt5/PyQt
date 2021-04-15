@@ -1,7 +1,9 @@
 # 各种各样的PyQt测试和例子
 
-[![Blog](https://img.shields.io/badge/blog-pyqt5-green.svg)](https://pyqt5.com)
+[![Blog](https://img.shields.io/badge/blog-pyqt-green.svg)](https://pyqt.site)
 [![codebeat badge](https://codebeat.co/badges/d23d0dc8-aef3-43d2-96aa-e3215b2c9861)](https://codebeat.co/projects/github-com-pyqt5-pyqt-master)
+[![Badge](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg?style=flat-square)](https://996.icu/#/zh_CN)
+[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
 https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分享大家平时学习中记录的笔记和例子，以及对遇到的问题进行收集整理。
 
