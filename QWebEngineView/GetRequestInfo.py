@@ -45,8 +45,11 @@ class UrlSchemeHandler(QWebEngineUrlSchemeHandler):
         for headerName, headerValue in request.requestHeaders().items():
             req.setRawHeader(headerName, headerValue)
         method = request.requestMethod()
+
+        # TODO: 这里需要把浏览器内部的cookie获取出来重新设置
         if method == b'GET':
             self._manager.get(req)
+        # TODO: 这里貌似没法得到POST的数据，ajax的请求貌似也有问题
         elif method == b'POST':
             self._manager.post(req)
 
@@ -54,6 +57,8 @@ class UrlSchemeHandler(QWebEngineUrlSchemeHandler):
         req = reply.request()  # 获取请求
         o_req = req.attribute(self.AttrType, None)
         if o_req:
+            # Notice: 这里可以对数据做修改再返回
+            # TODO: 可能还存在 QNetworkAccessManager 与浏览器之间的 cookie 同步问题
             o_req.reply(req.header(QNetworkRequest.ContentTypeHeader) or b'text/html', reply)
             o_req.destroyed.connect(reply.deleteLater)
 
