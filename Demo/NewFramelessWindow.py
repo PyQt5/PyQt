@@ -12,89 +12,105 @@ Created on 2018年4月30日
 
 from Lib.ui_frameless import Ui_FormFrameless
 from PyQt5.QtCore import QTimer, Qt, QEvent, QObject
-from PyQt5.QtGui import QWindow, QPainter, QPen, QColor
+from PyQt5.QtGui import QWindow, QPainter, QColor, QMouseEvent
 from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox
 
 
 class FramelessObject(QObject):
+    Margins = 3  # 边缘边距
+    TitleHeight = 36  # 标题栏高度
+    Widgets = set()  # 无边框窗口集合
 
-    @staticmethod
-    def _get_edges(pos):
+    @classmethod
+    def set_margins(cls, margins):
+        cls.Margins = margins
+
+    @classmethod
+    def set_title_height(cls, height):
+        cls.TitleHeight = height
+
+    @classmethod
+    def add_widget(cls, widget):
+        cls.Widgets.add(widget)
+
+    @classmethod
+    def del_widget(cls, widget):
+        if widget in cls.Widgets:
+            cls.Widgets.remove(widget)
+
+    def _get_edges(self, pos, width, height):
         """根据坐标获取方向
         :param pos: QPoint
-        :return: Qt::Edges
+        :param width: int
+        :param height: int
+        :return: Qt.Edges
         """
         edge = 0
         x, y = pos.x(), pos.y()
-        widget = QApplication.instance().activeWindow()
-        if not widget:
-            return edge
-        left, top, right, bottom = widget.layout().getContentsMargins()
 
-        if y <= top:
+        if y <= self.Margins:
             edge |= Qt.TopEdge
-        if x <= left:
+        if x <= self.Margins:
             edge |= Qt.LeftEdge
-        if x >= widget.width() - right:
+        if x >= width - self.Margins:
             edge |= Qt.RightEdge
-        if y >= widget.height() - bottom:
+        if y >= height - self.Margins:
             edge |= Qt.BottomEdge
 
         return edge
 
-    @staticmethod
-    def _adjust_cursor(edges):
+    def _get_cursor(self, edges):
         """调整鼠标样式
         :param edges: int or None
+        :return: Qt.CursorShape
         """
-        # print('edges', edges)
-        widget = QApplication.instance().activeWindow()
-        if not widget:
-            return
         if edges == Qt.LeftEdge | Qt.TopEdge or edges == Qt.RightEdge | Qt.BottomEdge:
-            widget.setCursor(Qt.SizeFDiagCursor)
+            return Qt.SizeFDiagCursor
         elif edges == Qt.RightEdge | Qt.TopEdge or edges == Qt.LeftEdge | Qt.BottomEdge:
-            widget.setCursor(Qt.SizeBDiagCursor)
+            return Qt.SizeBDiagCursor
         elif edges == Qt.LeftEdge or edges == Qt.RightEdge:
-            widget.setCursor(Qt.SizeHorCursor)
+            return Qt.SizeHorCursor
         elif edges == Qt.TopEdge or edges == Qt.BottomEdge:
-            widget.setCursor(Qt.SizeVerCursor)
+            return Qt.SizeVerCursor
+
+        return Qt.ArrowCursor
+
+    def is_titlebar(self, pos):
+        """判断是否是标题栏
+        :param pos: QPoint
+        :return: bool
+        """
+        return pos.y() <= self.TitleHeight
+
+    def moveOrResize(self, window, pos, width, height):
+        edges = self._get_edges(pos, width, height)
+        if edges:
+            if window.windowState() == Qt.WindowNoState:
+                window.startSystemResize(edges)
         else:
-            widget.setCursor(Qt.ArrowCursor)
+            if self.is_titlebar(pos):
+                window.startSystemMove()
 
     def eventFilter(self, obj, event):
-        # 鼠标移动改变光标
-        if event.type() == QEvent.MouseMove:
-            widget = QApplication.instance().activeWindow()
-            if widget and event.buttons() == Qt.NoButton and not (
-                    widget.isMaximized() or widget.isFullScreen()):
-                # 鼠标移动变更光标样式
-                # print('MouseMove', event.pos())
-                self._adjust_cursor(self._get_edges(event.pos()))
+        if obj.isWindowType():
+            # top window 处理光标样式
+            if event.type() == QEvent.MouseMove and obj.windowState() == Qt.WindowNoState:
+                obj.setCursor(self._get_cursor(self._get_edges(event.pos(), obj.width(), obj.height())))
+            elif event.type() == QEvent.TouchUpdate:
+                self.moveOrResize(obj, event.pos(), obj.width(), obj.height())
+        elif obj in self.Widgets and isinstance(event, QMouseEvent) and event.button() == Qt.LeftButton:
+            if event.type() == QEvent.MouseButtonDblClick:
+                # 双击最大化还原
+                if self.is_titlebar(event.pos()):
+                    if obj.windowState() == Qt.WindowFullScreen:
+                        pass
+                    elif obj.windowState() == Qt.WindowMaximized:
+                        obj.showNormal()
+                    else:
+                        obj.showMaximized()
+            elif event.type() == QEvent.MouseButtonPress:
+                self.moveOrResize(obj.windowHandle(), event.pos(), obj.width(), obj.height())
 
-        if event.type() == QEvent.MouseButtonPress and obj.objectName() == 'FramelessWindow':
-            # 鼠标按下
-            edges = self._get_edges(event.pos())
-            # 标题栏高度
-            try:
-                height = obj.titleHeight()
-            except AttributeError:
-                height = 36
-            # 优先判断边缘
-            widget = QApplication.instance().activeWindow()
-            if edges != 0 and not (widget.isMaximized() or widget.isFullScreen()):
-                # 按下窗口边缘边距位置
-                self._adjust_cursor(edges)
-                # 交给系统去调整大小
-                print('startSystemResize')
-                obj.windowHandle().startSystemResize(edges)
-            elif event.y() <= height:
-                # 标题栏交给系统去移动
-                print('startSystemMove')
-                obj.windowHandle().startSystemMove()
-        elif event.type() == QEvent.MouseButtonRelease:
-            # 鼠标释放
-            self._adjust_cursor(None)
         return False
 
 
@@ -103,7 +119,6 @@ class FramelessWindow(QWidget, Ui_FormFrameless):
     def __init__(self, *args, **kwargs):
         super(FramelessWindow, self).__init__(*args, **kwargs)
         self.setupUi(self)
-        self.setObjectName('FramelessWindow')  # 过滤器中的名字一致
         # 无边框
         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
@@ -116,22 +131,6 @@ class FramelessWindow(QWidget, Ui_FormFrameless):
         self.buttonNormal.clicked.connect(self.showNormal)
         self.buttonClose.clicked.connect(self.close)
         self.setStyleSheet('#widgetTitleBar{background: rgb(232, 232, 232);}')
-
-    def titleHeight(self):
-        """标题栏高度
-        :return: int
-        """
-        return self.widgetTitleBar.height()
-
-    def mouseDoubleClickEvent(self, event):
-        """双击最大化还原
-        :param event: QMouseEvent
-        """
-        if self.isMaximized():
-            self.showNormal()
-        else:
-            self.showMaximized()
-        event.accept()
 
     def changeEvent(self, event):
         """窗口状态改变
@@ -146,7 +145,8 @@ class FramelessWindow(QWidget, Ui_FormFrameless):
             self.layout().setContentsMargins(0, 0, 0, 0)
         else:
             # TODO 与UI文件中的布局边距一致
-            self.layout().setContentsMargins(3, 3, 3, 3)
+            m = FramelessObject.Margins
+            self.layout().setContentsMargins(m, m, m, m)
 
     def paintEvent(self, event):
         # 透明背景但是需要留下一个透明度用于鼠标捕获
@@ -170,6 +170,12 @@ if __name__ == '__main__':
         # 安装全局事件过滤器
         fo = FramelessObject()
         app.installEventFilter(fo)
-        w = FramelessWindow()
-        w.show()
+
+        w1 = FramelessWindow()
+        fo.add_widget(w1)
+        w1.show()
+
+        w2 = FramelessWindow()
+        fo.add_widget(w2)
+        w2.show()
     sys.exit(app.exec_())

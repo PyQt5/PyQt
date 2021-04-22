@@ -256,6 +256,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
   - [调用虚拟键盘](Demo/CallVirtualKeyboard.py)
   - [动态忙碌光标](Demo/GifCursor.py)
   - [屏幕变动监听](Demo/ScreenNotify.py)
+  - [无边框窗口](Demo/NewFramelessWindow.py)
 
 # QQ群
 

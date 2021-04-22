@@ -24,6 +24,7 @@
   - [调用虚拟键盘](#21调用虚拟键盘)
   - [动态忙碌光标](#22动态忙碌光标)
   - [屏幕变动监听](#23屏幕变动监听)
+  - [无边框窗口](#24无边框窗口)
 
 ## 1、重启窗口Widget
 [运行 RestartWindow.py](RestartWindow.py)
@@ -232,3 +233,12 @@ PyQt 结合 Opencv 进行人脸检测；
 通过定时器减少不同的变化信号，尽量保证只调用一次槽函数来获取信息
 
 ![ScreenNotify](ScreenShot/ScreenNotify.png)
+
+## 24、无边框窗口
+[运行 NewFramelessWindow.py](NewFramelessWindow.py)
+
+1. 该方法只针对 `Qt5.15` 以上版本有效
+2. 通过事件过滤器判断边缘设置鼠标样式
+3. 处理点击事件交通过 `QWindow.startSystemMove` 和 `QWindow.startSystemResize` 传递给系统处理
+
+![NewFramelessWindow](ScreenShot/NewFramelessWindow.gif)
