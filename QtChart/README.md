@@ -16,6 +16,7 @@
   - [横向百分比柱状图表](#13横向百分比柱状图表)
   - [散点图表](#14散点图表)
   - [图表主题动画](#15图表主题动画)
+  - [CPU动态折线图](#16CPU动态折线图)
 
 ## 1、折线图
 [运行 LineChart.py](LineChart.py)
@@ -95,3 +96,10 @@
 [运行 ChartThemes.py](ChartThemes.py)
 
 ![ChartThemes](ScreenShot/ChartThemes.gif)
+
+## 16、CPU动态折线图
+[运行 CpuLineChart.py](CpuLineChart.py)
+
+通过设置x轴的时间范围并替换y点达到动态移动效果
+
+![CpuLineChart](ScreenShot/CpuLineChart.png)

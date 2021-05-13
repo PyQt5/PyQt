@@ -174,6 +174,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
   - [横向百分比柱状图表](QtChart/HorizontalPercentBarChart.py)
   - [散点图表](QtChart/ScatterChart.py)
   - [图表主题动画](QtChart/ChartThemes.py)
+  - [CPU动态折线图](QtChart/CpuLineChart.py)
 
 - [QtDataVisualization](QtDataVisualization)
   - [柱状图3D](QtDataVisualization/BarsVisualization.py)
