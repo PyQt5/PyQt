@@ -32,8 +32,8 @@ class WindowMaster(QTextBrowser):
     def __init__(self, *args, **kwargs):
         super(WindowMaster, self).__init__(*args, **kwargs)
         # 监听剪切板
-        # clipboard = QApplication.clipboard()
-        # clipboard.dataChanged.connect(self.on_data_changed)
+        clipboard = QApplication.clipboard()
+        clipboard.dataChanged.connect(self.on_data_changed)
         # 开启节点
         host = QRemoteObjectHost(QUrl('tcp://0.0.0.0:' + sys.argv[1]), parent=self)
         host.enableRemoting(self, 'WindowMaster')

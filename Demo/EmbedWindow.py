@@ -14,11 +14,12 @@ __Author__ = 'By: Irony\nQQ: 892768447\nEmail: 892768447@qq.com'
 __Copyright__ = 'Copyright (c) 2018 Irony'
 __Version__ = 1.0
 
-from PyQt5.QtGui import QWindow
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QListWidget,\
-    QLabel
 import win32con
 import win32gui
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QWindow
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QListWidget, \
+    QLabel
 
 
 class Window(QWidget):
@@ -32,16 +33,22 @@ class Window(QWidget):
 
         layout.addWidget(QPushButton('获取所有可用、可视窗口', self,
                                      clicked=self._getWindowList, maximumHeight=30))
+        layout.addWidget(QPushButton('释放窗口', clicked=self.releaseWidget, maximumHeight=30))
         layout.addWidget(
             QLabel('双击列表中的项目则进行嵌入目标窗口到下方\n格式为：句柄|父句柄|标题|类名', self, maximumHeight=30))
         self.windowList = QListWidget(
             self, itemDoubleClicked=self.onItemDoubleClicked, maximumHeight=200)
         layout.addWidget(self.windowList)
 
+    def releaseWidget(self):
+        """释放窗口"""
+        if self.layout().count() == 5:
+            self.restore()
+            self._getWindowList()
+
     def closeEvent(self, event):
         """窗口关闭"""
-        if self.layout().count() == 4:
-            self.restore()
+        self.releaseWidget()
         super(Window, self).closeEvent(event)
 
     def _getWindowList(self):
@@ -55,38 +62,40 @@ class Window(QWidget):
         self.windowList.takeItem(self.windowList.indexFromItem(item).row())
         hwnd, phwnd, _, _ = item.text().split('|')
         # 开始嵌入
-
-        if self.layout().count() == 4:
-            # 如果数量等于4说明之前已经嵌入了一个窗口，现在需要把它释放出来
-            self.restore()
+        self.releaseWidget()
         hwnd, phwnd = int(hwnd), int(phwnd)
         # 嵌入之前的属性
         style = win32gui.GetWindowLong(hwnd, win32con.GWL_STYLE)
         exstyle = win32gui.GetWindowLong(hwnd, win32con.GWL_EXSTYLE)
-        print('save', hwnd, style, exstyle)
+        wrect = win32gui.GetWindowRect(hwnd)[:2] + win32gui.GetClientRect(hwnd)[2:]
+        print('save', hwnd, style, exstyle, wrect)
 
         widget = QWidget.createWindowContainer(QWindow.fromWinId(hwnd))
         widget.hwnd = hwnd  # 窗口句柄
         widget.phwnd = phwnd  # 父窗口句柄
         widget.style = style  # 窗口样式
         widget.exstyle = exstyle  # 窗口额外样式
+        widget.wrect = wrect  # 窗口位置
         self.layout().addWidget(widget)
+
+        widget.setWindowFlags(Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
+        win32gui.SetParent(hwnd, int(self.winId()))
 
     def restore(self):
         """归还窗口"""
         # 有bug，归还后窗口没有了WS_VISIBLE样式，不可见
-        widget = self.layout().itemAt(3).widget()
-        print('restore', widget.hwnd, widget.style, widget.exstyle)
-        win32gui.SetParent(widget.hwnd, widget.phwnd)  # 让它返回它的父窗口
-        win32gui.SetWindowLong(
-            widget.hwnd, win32con.GWL_STYLE, widget.style | win32con.WS_VISIBLE)  # 恢复样式
-        win32gui.SetWindowLong(
-            widget.hwnd, win32con.GWL_EXSTYLE, widget.exstyle)  # 恢复样式
-        win32gui.ShowWindow(
-            widget.hwnd, win32con.SW_SHOW)  # 显示窗口
+        widget = self.layout().itemAt(4).widget()
+        hwnd, phwnd, style, exstyle, wrect = widget.hwnd, widget.phwnd, widget.style, widget.exstyle, widget.wrect
+        print('restore', hwnd, phwnd, style, exstyle, wrect)
         widget.close()
         self.layout().removeWidget(widget)  # 从布局中移出
         widget.deleteLater()
+
+        win32gui.SetParent(hwnd, phwnd)  # 让它返回它的父窗口
+        win32gui.SetWindowLong(hwnd, win32con.GWL_STYLE, style | win32con.WS_VISIBLE)  # 恢复样式
+        win32gui.SetWindowLong(hwnd, win32con.GWL_EXSTYLE, exstyle)  # 恢复样式
+        win32gui.ShowWindow(hwnd, win32con.SW_SHOW)  # 显示窗口
+        win32gui.SetWindowPos(hwnd, 0, wrect[0], wrect[1], wrect[2], wrect[3], win32con.SWP_NOACTIVATE)
 
     def _enumWindows(self, hwnd, _):
         """遍历回调函数"""
@@ -102,7 +111,11 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
+    import cgitb
+
+    cgitb.enable(format='txt')
     from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

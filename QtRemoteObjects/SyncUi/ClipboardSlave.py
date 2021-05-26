@@ -49,7 +49,7 @@ class WindowSlave(QTextBrowser):
 
     def onInitialized(self):
         self.SignalUpdateMimeData.connect(self.windowMaster.updateMimeData)
-        # self.windowMaster.SignalUpdateMimeData.connect(self.updateMimeData)
+        self.windowMaster.SignalUpdateMimeData.connect(self.updateMimeData)
         self.append('绑定信号槽完成')
 
     def on_data_changed(self):
