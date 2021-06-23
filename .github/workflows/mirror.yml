@@ -6,10 +6,8 @@ jobs:
   mirror_to_gitee:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v1
-      - name: 'Mirror to gitee'
-        uses: pixta-dev/repository-mirroring-action@v1
+      - uses: actions/checkout@v1
+      - uses: pixta-dev/repository-mirroring-action@v1
         with:
           target_repo_url:
             git@gitee.com:PyQt5/PyQt.git
