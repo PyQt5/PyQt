@@ -222,6 +222,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
     - [串口调试小助手](QSerialPort/SerialDebugAssistant.py)
   - [QProxyStyle](QProxyStyle)
     - [Tab文字方向](QProxyStyle/TabTextDirection.py)
+    - [Tab角落控件位置占满](QProxyStyle/TabCornerWidget.py)
   - [QMessageBox](QMessageBox)
     - [消息对话框倒计时关闭](QMessageBox/CountDownClose.py)
     - [自定义图标等](QMessageBox/CustomColorIcon.py)
