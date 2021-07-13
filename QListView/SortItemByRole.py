@@ -4,23 +4,21 @@
 """
 Created on 2018年12月27日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QListView.SortItemByRole
 @description: 
 """
 from random import choice
 
-from PyQt5.QtCore import QSortFilterProxyModel, Qt
-from PyQt5.QtGui import QStandardItem, QStandardItemModel
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QListView, QPushButton
-
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import QSortFilterProxyModel, Qt
+    from PyQt5.QtGui import QStandardItem, QStandardItemModel
+    from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QListView, QPushButton
+except ImportError:
+    from PySide2.QtCore import QSortFilterProxyModel, Qt
+    from PySide2.QtGui import QStandardItem, QStandardItemModel
+    from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout, QListView, QPushButton
 
 
 class SortFilterProxyModel(QSortFilterProxyModel):
@@ -72,8 +70,8 @@ IndexDict = {
     4: '清',
 }
 
-IdRole = Qt.UserRole + 1            # 用于恢复排序
-ClassifyRole = Qt.UserRole + 2      # 用于按照分类序号排序
+IdRole = Qt.UserRole + 1  # 用于恢复排序
+ClassifyRole = Qt.UserRole + 2  # 用于按照分类序号排序
 
 
 class Window(QWidget):
@@ -96,8 +94,8 @@ class Window(QWidget):
 
     def restoreSort(self):
         # 恢复默认排序
-        self.fmodel.setSortRole(IdRole)     # 必须设置排序角色为ID
-        self.fmodel.sort(0)                 # 排序第一列按照ID升序
+        self.fmodel.setSortRole(IdRole)  # 必须设置排序角色为ID
+        self.fmodel.sort(0)  # 排序第一列按照ID升序
 
     def sortByClassify(self):
         self.fmodel.setSortIndex(NameDict.get(
@@ -141,8 +139,9 @@ class Window(QWidget):
 if __name__ == '__main__':
     import sys
     import cgitb
-    cgitb.enable(1, None, 5, '')
-    from PyQt5.QtWidgets import QApplication
+
+    cgitb.enable(format='text')
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

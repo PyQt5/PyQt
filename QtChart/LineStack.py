@@ -1,27 +1,36 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年12月28日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: charts.line.LineStack
 @description: like http://echarts.baidu.com/demo.html#line-stack
-'''
+"""
 
 import sys
 
-from PyQt5.QtChart import QChartView, QChart, QLineSeries, QLegend, \
-    QCategoryAxis
-from PyQt5.QtCore import Qt, QPointF, QRectF, QPoint
-from PyQt5.QtGui import QPainter, QPen
-from PyQt5.QtWidgets import QApplication, QGraphicsLineItem, QWidget, \
-    QHBoxLayout, QLabel, QVBoxLayout, QGraphicsProxyWidget
+try:
+    from PyQt5.QtChart import QChartView, QChart, QLineSeries, QLegend, \
+        QCategoryAxis
+    from PyQt5.QtCore import Qt, QPointF, QRectF, QPoint
+    from PyQt5.QtGui import QPainter, QPen
+    from PyQt5.QtWidgets import QApplication, QGraphicsLineItem, QWidget, \
+        QHBoxLayout, QLabel, QVBoxLayout, QGraphicsProxyWidget
+except ImportError:
+    from PySide2.QtCore import Qt, QPointF, QRectF, QPoint
+    from PySide2.QtGui import QPainter, QPen
+    from PySide2.QtWidgets import QApplication, QGraphicsLineItem, QWidget, \
+        QHBoxLayout, QLabel, QVBoxLayout, QGraphicsProxyWidget
+    from PySide2.QtCharts import QtCharts
 
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2017 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
+    QChartView = QtCharts.QChartView
+    QChart = QtCharts.QChart
+    QLineSeries = QtCharts.QLineSeries
+    QLegend = QtCharts.QLegend
+    QCategoryAxis = QtCharts.QCategoryAxis
 
 
 class ToolTipItem(QWidget):
@@ -44,7 +53,6 @@ class ToolTipItem(QWidget):
 
 
 class ToolTipWidget(QWidget):
-
     Cache = {}
 
     def __init__(self, *args, **kwargs):
@@ -130,7 +138,7 @@ class ChartView(QChartView):
         self.point_bottom = self._chart.mapToPosition(
             QPointF(self.min_x, self.min_y))
         self.step_x = (self.max_x - self.min_x) / \
-            (self._chart.axisX().tickCount() - 1)
+                      (self._chart.axisX().tickCount() - 1)
 
     def mouseMoveEvent(self, event):
         super(ChartView, self).mouseMoveEvent(event)
@@ -158,10 +166,10 @@ class ChartView(QChartView):
             t_height = self.toolTipWidget.height()
             # 如果鼠标位置离右侧的距离小于tip宽度
             x = pos.x() - t_width if self.width() - \
-                pos.x() - 20 < t_width else pos.x()
+                                     pos.x() - 20 < t_width else pos.x()
             # 如果鼠标位置离底部的高度小于tip高度
             y = pos.y() - t_height if self.height() - \
-                pos.y() - 20 < t_height else pos.y()
+                                      pos.y() - 20 < t_height else pos.y()
             self.toolTipWidget.show(
                 title, points, QPoint(x, y))
         else:
@@ -173,7 +181,7 @@ class ChartView(QChartView):
         if not marker:
             return
         visible = not marker.series().isVisible()
-#         # 隐藏或显示series
+        #         # 隐藏或显示series
         marker.series().setVisible(visible)
         marker.setVisible(True)  # 要保证marker一直显示
         # 透明度

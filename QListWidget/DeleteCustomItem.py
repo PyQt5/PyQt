@@ -4,25 +4,23 @@
 """
 Created on 2018年11月4日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: 删除Item
 @description: 
 """
-from PyQt5.QtCore import QSize, pyqtSignal
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLineEdit, QPushButton,\
-    QListWidgetItem, QVBoxLayout, QListWidget
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import QSize, pyqtSignal
+    from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLineEdit, QPushButton, \
+        QListWidgetItem, QVBoxLayout, QListWidget, QApplication
+except ImportError:
+    from PySide2.QtCore import QSize, Signal as pyqtSignal
+    from PySide2.QtWidgets import QWidget, QHBoxLayout, QLineEdit, QPushButton, \
+        QListWidgetItem, QVBoxLayout, QListWidget, QApplication
 
 
 class ItemWidget(QWidget):
-
     itemDeleted = pyqtSignal(QListWidgetItem)
 
     def __init__(self, text, item, *args, **kwargs):
@@ -91,8 +89,9 @@ class Window(QWidget):
 if __name__ == '__main__':
     import sys
     import cgitb
-    cgitb.enable(1, None, 5, '')
-    from PyQt5.QtWidgets import QApplication
+
+    cgitb.enable(format='text')
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

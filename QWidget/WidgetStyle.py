@@ -1,26 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年12月10日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: test
 @description: 
-'''
+"""
+
 import sys
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget, QApplication, QHBoxLayout
+try:
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtWidgets import QWidget, QApplication, QHBoxLayout
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtWidgets import QWidget, QApplication, QHBoxLayout
 
 from Lib.CustomPaintWidget import CustomPaintWidget  # @UnresolvedImport
 from Lib.CustomWidget import CustomWidget  # @UnresolvedImport
-
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2017 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
 
 
 class Window(QWidget):
@@ -31,9 +31,9 @@ class Window(QWidget):
         layout.addWidget(CustomPaintWidget(self))
         layout.addWidget(CustomWidget(self))
         # 注意
-        w = CustomWidget(self)
-        w.setAttribute(Qt.WA_StyledBackground)  # 很重要
-        layout.addWidget(w)
+        wc = CustomWidget(self)
+        wc.setAttribute(Qt.WA_StyledBackground)  # 很重要
+        layout.addWidget(wc)
 
 
 if __name__ == "__main__":

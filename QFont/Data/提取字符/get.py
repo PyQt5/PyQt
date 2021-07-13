@@ -1,5 +1,6 @@
 # from bs4 import BeautifulSoup
 import re
+
 cheatsheet = open("cheatsheet.txt", "rb").read().decode()
 
 re_fa = re.compile("      fa(.*)")

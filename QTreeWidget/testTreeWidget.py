@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # encoding: utf-8
-'''
+"""
 Created on 2017年4月20日
 @author: weike32
-@site: https://pyqt5.com , https://github.com/weike32
+@site: https://pyqt.site , https://github.com/weike32
 @email: 394967319@qq.com
 @file: CopyContent
 @description:
-'''
+"""
 import sys
 
 from PyQt5.QtCore import Qt

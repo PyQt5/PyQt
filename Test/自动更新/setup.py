@@ -1,12 +1,10 @@
-from distutils.core import setup
 import glob
 import os
 import py_compile
 import site
 import sys
+from distutils.core import setup
 from zipfile import ZipFile, ZIP_DEFLATED
-
-import py2exe  # @UnusedImport
 
 sys.argv.append("py2exe")
 

@@ -4,13 +4,24 @@
 """
 Created on 2019/10/2
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: PieChart
 @description: 饼状图表
 """
-from PyQt5.QtChart import QChartView, QChart, QPieSeries
-from PyQt5.QtGui import QPainter, QColor
+
+try:
+    from PyQt5.QtChart import QChartView, QChart, QPieSeries
+    from PyQt5.QtGui import QPainter, QColor
+    from PyQt5.QtWidgets import QApplication
+except ImportError:
+    from PySide2.QtGui import QPainter, QColor
+    from PySide2.QtWidgets import QApplication
+    from PySide2.QtCharts import QtCharts
+
+    QChartView = QtCharts.QChartView
+    QChart = QtCharts.QChart
+    QPieSeries = QtCharts.QPieSeries
 
 
 class Window(QChartView):
@@ -47,7 +58,6 @@ class Window(QChartView):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
 
     app = QApplication(sys.argv)
     w = Window()

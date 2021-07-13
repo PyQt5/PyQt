@@ -4,7 +4,7 @@
 """
 Created on 2019/10/4
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ScatterVisualization
 @description:

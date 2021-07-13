@@ -1,27 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年12月23日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ShowImage
 @description: 
-'''
+"""
 import sys
 
-from PyQt5.QtCore import QResource
-from PyQt5.QtGui import QPixmap, QMovie
-from PyQt5.QtWidgets import QWidget, QApplication, QHBoxLayout, QLabel
+try:
+    from PyQt5.QtCore import QResource
+    from PyQt5.QtGui import QPixmap, QMovie
+    from PyQt5.QtWidgets import QWidget, QApplication, QHBoxLayout, QLabel
+except ImportError:
+    from PySide2.QtCore import QResource
+    from PySide2.QtGui import QPixmap, QMovie
+    from PySide2.QtWidgets import QWidget, QApplication, QHBoxLayout, QLabel
 
-from Lib import res_rc  # @UnresolvedImport @UnusedImport
 from Lib.xpmres import image_head  # @UnresolvedImport
-
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2017 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
 
 
 class ImageView(QWidget):

@@ -4,19 +4,22 @@
 """
 Created on 2019年9月24日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
-@file: QWebEngineView.BlockAds
+@file: BlockRequest
 @description: 拦截请求
 """
-from PyQt5.QtCore import QUrl
-from PyQt5.QtWebEngineCore import QWebEngineUrlRequestInterceptor
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
 
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019'
-__Version__ = 'Version 1.0'
+try:
+    from PyQt5.QtCore import QUrl
+    from PyQt5.QtWebEngineCore import QWebEngineUrlRequestInterceptor
+    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
+    from PyQt5.QtWidgets import QApplication
+except ImportError:
+    from PySide2.QtCore import QUrl
+    from PySide2.QtWebEngineCore import QWebEngineUrlRequestInterceptor
+    from PySide2.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
+    from PySide2.QtWidgets import QApplication
 
 
 class RequestInterceptor(QWebEngineUrlRequestInterceptor):
@@ -39,7 +42,7 @@ class Window(QWebEngineView):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

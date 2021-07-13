@@ -4,22 +4,25 @@
 """
 Created on 2018年3月1日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: EmbedWindow
 @description: 嵌入外部窗口
 """
 
-__Author__ = 'By: Irony\nQQ: 892768447\nEmail: 892768447@qq.com'
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
-
 import win32con
 import win32gui
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QWindow
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QListWidget, \
-    QLabel
+
+try:
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtGui import QWindow
+    from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QListWidget, \
+        QLabel, QApplication
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtGui import QWindow
+    from PySide2.QtWidgets import QWidget, QVBoxLayout, QPushButton, QListWidget, \
+        QLabel, QApplication
 
 
 class Window(QWidget):
@@ -113,8 +116,7 @@ if __name__ == '__main__':
     import sys
     import cgitb
 
-    cgitb.enable(format='txt')
-    from PyQt5.QtWidgets import QApplication
+    cgitb.enable(format='text')
 
     app = QApplication(sys.argv)
     w = Window()

@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年4月6日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: DreamTree
 @description: 
-'''
+"""
 
 import sys
 
@@ -17,12 +17,8 @@ from PyQt5.QtGui import QPalette
 from PyQt5.QtWebKitWidgets import QWebView
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
-from Lib import data_rc  # @UnusedImport @UnresolvedImport
 
 # from PyQt5.QtWebKit import QWebSettings
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2017 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
 
 
 # 要实现透明的webview,需要先用一个QWidget作为父控件

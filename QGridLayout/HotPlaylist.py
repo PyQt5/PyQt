@@ -1,33 +1,27 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2018年2月4日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: TencentMovieHotPlay
 @description: 
-'''
+"""
 import os
 import sys
 import webbrowser
 
 from PyQt5.QtCore import QSize, Qt, QUrl, QTimer, pyqtSignal
-from PyQt5.QtGui import QPainter, QFont, QLinearGradient, QGradient, QColor,\
+from PyQt5.QtGui import QPainter, QFont, QLinearGradient, QGradient, QColor, \
     QBrush, QPaintEvent, QPixmap
 from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
 from PyQt5.QtSvg import QSvgWidget
-from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel,\
-    QHBoxLayout, QSpacerItem, QSizePolicy, QScrollArea, QGridLayout,\
+from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QLabel, \
+    QHBoxLayout, QSpacerItem, QSizePolicy, QScrollArea, QGridLayout, \
     QAbstractSlider
-
 from lxml.etree import HTML  # @UnresolvedImport
-
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2018 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
 
 # offset=0,30,60,90
 Url = "http://v.qq.com/x/list/movie?pay=-1&offset={0}"
@@ -166,7 +160,8 @@ class ItemWidget(QWidget):
     def setCover(self, path):
         self.clabel.setCoverPath(path)
         self.clabel.setPixmap(QPixmap(path))
-#         self.clabel.setText('<img src="{0}"/>'.format(os.path.abspath(path)))
+
+    #         self.clabel.setText('<img src="{0}"/>'.format(os.path.abspath(path)))
 
     def sizeHint(self):
         # 每个item控件的大小
@@ -186,7 +181,6 @@ class ItemWidget(QWidget):
 
 
 class GridWidget(QWidget):
-
     Page = 0
     loadStarted = pyqtSignal(bool)
 
@@ -268,18 +262,19 @@ class GridWidget(QWidget):
                 figure_score = "".join(li.xpath(".//em/text()"))  # 评分
                 # 主演
                 figure_desc = "<span style=\"font-size: 12px;\">主演：</span>" + \
-                    "".join([Actor.format(**dict(fd.items()))
-                             for fd in li.xpath(".//div[@class='figure_desc']/a")])
+                              "".join([Actor.format(**dict(fd.items()))
+                                       for fd in li.xpath(".//div[@class='figure_desc']/a")])
                 # 播放数
                 figure_count = (
-                    li.xpath(".//div[@class='figure_count']/span/text()") or [""])[0]
+                        li.xpath(".//div[@class='figure_count']/span/text()") or [""])[0]
                 path = "cache/{0}.jpg".format(
                     os.path.splitext(os.path.basename(video_url))[0])
                 cover_path = "Data/pic_v.png"
                 if os.path.isfile(path):
                     cover_path = path
                 iwidget = ItemWidget(cover_path, figure_info, figure_title,
-                                     figure_score, figure_desc, figure_count, video_url, cover_url, path, self)
+                                     figure_score, figure_desc, figure_count, video_url, cover_url, path,
+                                     self)
                 self._layout.addWidget(iwidget, row_count + row, col)
 
 

@@ -4,20 +4,18 @@
 """
 Created on 2018年10月18日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ImageSlipped
 @description: 
 """
-from PyQt5.QtGui import QPixmap, QPainter
-from PyQt5.QtWidgets import QWidget
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtGui import QPixmap, QPainter
+    from PyQt5.QtWidgets import QWidget, QApplication
+except ImportError:
+    from PySide2.QtGui import QPixmap, QPainter
+    from PySide2.QtWidgets import QWidget, QApplication
 
 
 class SlippedImgWidget(QWidget):
@@ -73,7 +71,7 @@ class SlippedImgWidget(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = SlippedImgWidget('Data/bg1.jpg', 'Data/fg1.png')
     w.show()

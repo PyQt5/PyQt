@@ -54,7 +54,7 @@
 import sys
 
 from PyQt5.QtCore import (pyqtProperty, pyqtSignal, pyqtSlot, QCoreApplication,
-        QObject, QTimer, QUrl)
+                          QObject, QTimer, QUrl)
 from PyQt5.QtRemoteObjects import QRemoteObjectHost, QRemoteObjectRegistryHost
 
 
@@ -98,7 +98,7 @@ class SimpleSwitch(QObject):
 
     # The property exposed to a remote client.
     currState = pyqtProperty(bool, fget=_get_currState, fset=_set_currState,
-            notify=currStateChanged)
+                             notify=currStateChanged)
 
     # The slot exposed to a remote client.
     @pyqtSlot(bool)
@@ -115,7 +115,6 @@ class SimpleSwitch(QObject):
 
 
 if __name__ == '__main__':
-
     app = QCoreApplication(sys.argv)
 
     # Create the simple switch.

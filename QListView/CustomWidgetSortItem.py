@@ -1,26 +1,29 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from random import choice, randint
+
+
+"""
+Created on 2018年8月4日
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
+@email: 892768447@qq.com
+@file: QListView.显示自定义Widget并排序
+@description:
+"""
 import string
+from random import choice, randint
 from time import time
 
-from PyQt5.QtCore import QSortFilterProxyModel, Qt, QSize
-from PyQt5.QtGui import QStandardItem, QStandardItemModel
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QListView,\
-    QHBoxLayout, QLineEdit
-
-
-# Created on 2018年8月4日
-# author: Irony
-# site: https://pyqt5.com , https://github.com/892768447
-# email: 892768447@qq.com
-# file: QListView.显示自定义Widget并排序
-# description:
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import QSortFilterProxyModel, Qt, QSize
+    from PyQt5.QtGui import QStandardItem, QStandardItemModel
+    from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QListView, \
+        QHBoxLayout, QLineEdit, QApplication
+except ImportError:
+    from PySide2.QtCore import QSortFilterProxyModel, Qt, QSize
+    from PySide2.QtGui import QStandardItem, QStandardItemModel
+    from PySide2.QtWidgets import QWidget, QVBoxLayout, QPushButton, QListView, \
+        QHBoxLayout, QLineEdit, QApplication
 
 
 def randomChar(y):
@@ -55,11 +58,11 @@ class SortFilterProxyModel(QSortFilterProxyModel):
             leftData = leftData.split('-')[-1]
             rightData = rightData.split('-')[-1]
             return leftData < rightData
-#         elif self.sortOrder() == Qt.AscendingOrder:
-#             #按照名字升序排序
-#             leftData = leftData.split('-')[0]
-#             rightData = rightData.split('-')[0]
-#             return leftData < rightData
+        #         elif self.sortOrder() == Qt.AscendingOrder:
+        #             #按照名字升序排序
+        #             leftData = leftData.split('-')[0]
+        #             rightData = rightData.split('-')[0]
+        #             return leftData < rightData
         return super(SortFilterProxyModel, self).lessThan(source_left, source_right)
 
 
@@ -89,7 +92,7 @@ class Window(QWidget):
             times = time() + randint(0, 30)  # 当前时间随机+
             value = '{}-{}'.format(name, times)  # 内容用-分开
             item = QStandardItem(value)
-#             item.setData(value, Qt.UserRole + 2)
+            #             item.setData(value, Qt.UserRole + 2)
             self.dmodel.appendRow(item)
             # 索引
             index = self.fmodel.mapFromSource(item.index())
@@ -109,7 +112,7 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

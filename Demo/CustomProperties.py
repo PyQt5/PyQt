@@ -1,25 +1,25 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年4月12日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: 自定义属性测试
 @description: 
-'''
+"""
 from random import randint
 
-from PyQt5.QtCore import pyqtProperty, pyqtSignal
-from PyQt5.QtWidgets import QPushButton
-
-
-__version__ = "0.0.1"
+try:
+    from PyQt5.QtCore import pyqtProperty, pyqtSignal
+    from PyQt5.QtWidgets import QPushButton, QApplication
+except ImportError:
+    from PySide2.QtCore import Property as pyqtProperty, Signal as pyqtSignal
+    from PySide2.QtWidgets import QPushButton, QApplication
 
 
 class Window(QPushButton):
-
     bgChanged = pyqtSignal(str, str)
 
     def __init__(self):
@@ -56,7 +56,7 @@ class Window(QPushButton):
 
 if __name__ == "__main__":
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.setStyleSheet(

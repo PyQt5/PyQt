@@ -4,20 +4,15 @@
 """
 Created on 2019年5月27日
 @author: Irony
-@site: https://pyqt5.com https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: FoldWidget
 @description: 自定义item折叠控件仿QTreeWidget
 """
 
 from PyQt5.QtCore import QSize
-from PyQt5.QtWidgets import QWidget, QPushButton, QFormLayout,\
+from PyQt5.QtWidgets import QWidget, QPushButton, QFormLayout, \
     QLineEdit, QListWidget, QListWidgetItem, QCheckBox
-
-
-__Author__ = "Irony"
-__Copyright__ = "Copyright (c) 2019"
-__Version__ = "Version 1.0"
 
 
 class CustomWidget(QWidget):
@@ -79,8 +74,10 @@ class Window(QListWidget):
 if __name__ == '__main__':
     import sys
     import cgitb
-    cgitb.enable(1, None, 5, '')
+
+    cgitb.enable(format='text')
     from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     # 通过qss改变按钮的高度
     app.setStyleSheet('#testBtn{min-height:40px;}')

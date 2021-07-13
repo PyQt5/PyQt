@@ -4,7 +4,7 @@
 """
 Created on 2019/10/2
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ChartThemes
 @description: 图表主题动画等
@@ -29,13 +29,30 @@ Created on 2019/10/2
 
 import random
 
-from PyQt5.QtChart import (QAreaSeries, QBarSet, QChart, QChartView,
-                           QLineSeries, QPieSeries, QScatterSeries, QSplineSeries,
-                           QStackedBarSeries)
-from PyQt5.QtCore import pyqtSlot, QPointF, Qt
-from PyQt5.QtGui import QColor, QPainter, QPalette
-from PyQt5.QtWidgets import (QCheckBox, QComboBox, QGridLayout, QHBoxLayout,
-                             QLabel, QSizePolicy, QWidget)
+try:
+    from PyQt5.QtChart import (QAreaSeries, QBarSet, QChart, QChartView,
+                               QLineSeries, QPieSeries, QScatterSeries, QSplineSeries,
+                               QStackedBarSeries)
+    from PyQt5.QtCore import pyqtSlot, QPointF, Qt
+    from PyQt5.QtGui import QColor, QPainter, QPalette
+    from PyQt5.QtWidgets import QApplication, QMainWindow, QCheckBox, QComboBox, QGridLayout, QHBoxLayout, \
+        QLabel, QSizePolicy, QWidget
+except ImportError:
+    from PySide2.QtCore import Slot as pyqtSlot, QPointF, Qt
+    from PySide2.QtGui import QColor, QPainter, QPalette
+    from PySide2.QtWidgets import QApplication, QMainWindow, QCheckBox, QComboBox, QGridLayout, QHBoxLayout, \
+        QLabel, QSizePolicy, QWidget
+    from PySide2.QtCharts import QtCharts
+
+    QChartView = QtCharts.QChartView
+    QChart = QtCharts.QChart
+    QAreaSeries = QtCharts.QAreaSeries
+    QBarSet = QtCharts.QBarSet
+    QLineSeries = QtCharts.QLineSeries
+    QPieSeries = QtCharts.QPieSeries
+    QScatterSeries = QtCharts.QScatterSeries
+    QSplineSeries = QtCharts.QSplineSeries
+    QStackedBarSeries = QtCharts.QStackedBarSeries
 
 
 class ThemeWidget(QWidget):
@@ -238,7 +255,7 @@ class ThemeWidget(QWidget):
             series = QPieSeries(chart)
             for value, label in data_list:
                 slice = series.append(label, value.y())
-                if len(series) == 1:
+                if series.count() == 1:
                     slice.setLabelVisible()
                     slice.setExploded()
 
@@ -290,7 +307,7 @@ class ThemeWidget(QWidget):
 
         if self.m_charts[0].chart().theme() != theme:
             for chartView in self.m_charts:
-                chartView.chart().setTheme(theme)
+                chartView.chart().setTheme(QChart.ChartTheme(theme))
 
             pal = self.window().palette()
 
@@ -348,8 +365,6 @@ class ThemeWidget(QWidget):
 
 if __name__ == '__main__':
     import sys
-
-    from PyQt5.QtWidgets import QApplication, QMainWindow
 
     app = QApplication(sys.argv)
 

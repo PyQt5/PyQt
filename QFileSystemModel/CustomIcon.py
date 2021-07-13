@@ -3,28 +3,29 @@
 
 """
 Created on 2018年1月26日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
-@file: FileSystemModel
+@file: CustomIcon
 @description: 
 """
+
 import sys
 
-from PyQt5.QtCore import QFileInfo
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QFileSystemModel, QFileIconProvider, QApplication,\
-    QTreeView
-
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2018 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
-
-# 图标提供类
+try:
+    from PyQt5.QtCore import QFileInfo
+    from PyQt5.QtGui import QIcon
+    from PyQt5.QtWidgets import QFileSystemModel, QFileIconProvider, QApplication, \
+        QTreeView
+except ImportError:
+    from PySide2.QtCore import QFileInfo
+    from PySide2.QtGui import QIcon
+    from PySide2.QtWidgets import QFileSystemModel, QFileIconProvider, QApplication, \
+        QTreeView
 
 
 class FileIconProvider(QFileIconProvider):
+    """图标提供类"""
 
     def __init__(self, *args, **kwargs):
         super(FileIconProvider, self).__init__(*args, **kwargs)

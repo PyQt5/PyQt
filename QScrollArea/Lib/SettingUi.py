@@ -6,7 +6,11 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+try:
+    from PyQt5 import QtCore, QtWidgets
+except ImportError:
+    from PySide2 import QtCore, QtWidgets
+
 
 class Ui_Setting(object):
     def setupUi(self, Setting):
@@ -151,7 +155,8 @@ class Ui_Setting(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.horizontalLayout_2.addWidget(self.comboBox)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding,
+                                           QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.formLayout_9.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_2)
         self.checkBox_30 = QtWidgets.QCheckBox(self.widget_2)
@@ -171,7 +176,8 @@ class Ui_Setting(object):
         self.pushButton_4 = QtWidgets.QPushButton(self.widget_2)
         self.pushButton_4.setObjectName("pushButton_4")
         self.horizontalLayout_3.addWidget(self.pushButton_4)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding,
+                                            QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem1)
         self.formLayout_9.setLayout(4, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_3)
         self.verticalLayout.addWidget(self.widget_2)
@@ -469,7 +475,8 @@ class Ui_Setting(object):
         self.checkBox_23.setText(_translate("Setting", "启用一声问候消息"))
         self.checkBox_24.setText(_translate("Setting", "启用设备连接提醒"))
         self.right5.setText(_translate("Setting", "当插入安卓设备时，提示安装或者更新QQ手机版"))
-        self.label_3.setText(_translate("Setting", "<html><head/><body><p>您可以设置是否在屏幕右下角收到来自QQ空间的通知，<a href=\"#\"><span style=\" text-decoration: none; color:#00aaff;\">进入设置</span></a>。</p></body></html>"))
+        self.label_3.setText(_translate("Setting",
+                                        "<html><head/><body><p>您可以设置是否在屏幕右下角收到来自QQ空间的通知，<a href=\"#\"><span style=\" text-decoration: none; color:#00aaff;\">进入设置</span></a>。</p></body></html>"))
         self.label_4.setText(_translate("Setting", "好友上线提醒"))
         self.radioButton.setText(_translate("Setting", "关闭好友上线提醒"))
         self.radioButton_2.setText(_translate("Setting", "全部好友上线提醒"))
@@ -485,10 +492,10 @@ class Ui_Setting(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     Setting = QtWidgets.QWidget()
     ui = Ui_Setting()
     ui.setupUi(Setting)
     Setting.show()
     sys.exit(app.exec_())
-

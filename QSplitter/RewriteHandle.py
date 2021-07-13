@@ -4,25 +4,23 @@
 """
 Created on 2018年3月21日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: Splitter
 @description: 
 """
 import sys
 
-from PyQt5.QtCore import Qt, QPointF, pyqtSignal
-from PyQt5.QtGui import QPainter, QPolygonF
-from PyQt5.QtWidgets import QTextEdit, QListWidget,\
-    QTreeWidget, QSplitter, QApplication, QMainWindow, QSplitterHandle
-
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"\
-
+try:
+    from PyQt5.QtCore import Qt, QPointF, pyqtSignal
+    from PyQt5.QtGui import QPainter, QPolygonF
+    from PyQt5.QtWidgets import QTextEdit, QListWidget, \
+        QTreeWidget, QSplitter, QApplication, QMainWindow, QSplitterHandle
+except ImportError:
+    from PySide2.QtCore import Qt, QPointF, Signal as pyqtSignal
+    from PySide2.QtGui import QPainter, QPolygonF
+    from PySide2.QtWidgets import QTextEdit, QListWidget, \
+        QTreeWidget, QSplitter, QApplication, QMainWindow, QSplitterHandle
 
 
 class SplitterHandle(QSplitterHandle):
@@ -49,7 +47,7 @@ class SplitterHandle(QSplitterHandle):
         else:
             # 设置默认的鼠标样式并可以移动
             self.setCursor(Qt.SplitHCursor if self.orientation()
-                           == Qt.Horizontal else Qt.SplitVCursor)
+                                              == Qt.Horizontal else Qt.SplitVCursor)
             super(SplitterHandle, self).mouseMoveEvent(event)
 
     def paintEvent(self, event):

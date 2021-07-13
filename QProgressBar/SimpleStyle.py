@@ -1,26 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2018年1月30日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: SimpleStyle
 @description: 
-'''
-from random import randint
+"""
+
 import sys
+from random import randint
 
-from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QProgressBar
+try:
+    from PyQt5.QtCore import QTimer
+    from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QProgressBar
+except ImportError:
+    from PySide2.QtCore import QTimer
+    from PySide2.QtWidgets import QWidget, QApplication, QVBoxLayout, QProgressBar
 
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2018 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
-
-StyleSheet = '''
+StyleSheet = """
 /*设置红色进度条*/
 #RedProgressBar {
     text-align: center; /*进度值居中*/
@@ -50,7 +50,7 @@ StyleSheet = '''
     width: 10px; /*区块宽度*/
     margin: 0.5px;
 }
-'''
+"""
 
 
 class ProgressBar(QProgressBar):

@@ -4,22 +4,16 @@
 """
 Created on 2018年5月15日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: PaintQSlider
 @description: 
 """
+
 from PyQt5.QtCore import Qt, QRect, QPointF
 from PyQt5.QtGui import QPainter, QColor
-from PyQt5.QtWidgets import QSlider, QWidget, QVBoxLayout, QProxyStyle, QStyle,\
+from PyQt5.QtWidgets import QSlider, QWidget, QVBoxLayout, QProxyStyle, QStyle, \
     QStyleOptionSlider
-
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
 
 
 class SliderStyle(QProxyStyle):
@@ -124,6 +118,7 @@ class Window(QWidget):
 if __name__ == '__main__':
     import sys
     from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.setStyleSheet('QWidget {background: gray;}')

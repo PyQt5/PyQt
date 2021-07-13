@@ -4,25 +4,23 @@
 """
 Created on 2018年9月4日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: PercentProgressBar
 @description: 
 """
-from PyQt5.QtCore import pyqtProperty, QSize, Qt, QRectF, QTimer
-from PyQt5.QtGui import QColor, QPainter, QFont
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QSlider
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import pyqtProperty, QSize, Qt, QRectF, QTimer
+    from PyQt5.QtGui import QColor, QPainter, QFont
+    from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout, QSlider
+except ImportError:
+    from PySide2.QtCore import Property as pyqtProperty, QSize, Qt, QRectF, QTimer
+    from PySide2.QtGui import QColor, QPainter, QFont
+    from PySide2.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout, QSlider
 
 
 class PercentProgressBar(QWidget):
-
     MinValue = 0
     MaxValue = 100
     Value = 0
@@ -300,8 +298,10 @@ class Window(QWidget):
         self.staticPercentProgressBar.showFreeArea = True
         self.staticPercentProgressBar.ShowSmallCircle = True
         vlayout.addWidget(self.staticPercentProgressBar)
-        vlayout.addWidget(QSlider(self, minimum=0, maximum=100, orientation=Qt.Horizontal,
-                                  valueChanged=self.staticPercentProgressBar.setValue))
+
+        self.slider = QSlider(self, minimum=0, maximum=100, orientation=Qt.Horizontal)
+        self.slider.valueChanged.connect(self.staticPercentProgressBar.setValue)
+        vlayout.addWidget(self.slider)
 
         self._timer.start(100)
 
@@ -316,8 +316,9 @@ class Window(QWidget):
 if __name__ == '__main__':
     import sys
     import cgitb
-    sys.excepthook = cgitb.Hook(1, None, 5, sys.stderr, 'text')
-    from PyQt5.QtWidgets import QApplication
+
+    cgitb.enable(format='text')
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

@@ -4,20 +4,24 @@
 """
 Created on 2020年2月18日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
-@file: QWebEngineView.BlockRequestData
+@file: BlockRequestData
 @description: 拦截请求内容
 """
-from PyQt5.QtCore import QUrl, QFile, QIODevice
-from PyQt5.QtWebEngineCore import QWebEngineUrlSchemeHandler,\
-    QWebEngineUrlRequestInterceptor, QWebEngineUrlScheme  # @UnresolvedImport
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
 
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019'
-__Version__ = 'Version 1.0'
+try:
+    from PyQt5.QtCore import QUrl, QFile, QIODevice, QByteArray
+    from PyQt5.QtWidgets import QApplication
+    from PyQt5.QtWebEngineCore import QWebEngineUrlSchemeHandler, \
+        QWebEngineUrlRequestInterceptor, QWebEngineUrlScheme  # @UnresolvedImport
+    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
+except ImportError:
+    from PySide2.QtCore import QUrl, QFile, QIODevice, QByteArray
+    from PySide2.QtWidgets import QApplication
+    from PySide2.QtWebEngineCore import QWebEngineUrlSchemeHandler, \
+        QWebEngineUrlRequestInterceptor, QWebEngineUrlScheme  # @UnresolvedImport
+    from PySide2.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
 
 
 # 自定义url协议头
@@ -29,6 +33,7 @@ class UrlSchemeHandler(QWebEngineUrlSchemeHandler):
             file = QFile('Data/app.png', job)
             file.open(QIODevice.ReadOnly)
             job.reply(b'image/png', file)
+
 
 # 请求拦截器
 
@@ -50,8 +55,8 @@ class Window(QWebEngineView):
         self.resize(800, 600)
 
         # 首先获取默认的url协议
-        h1 = QWebEngineUrlScheme.schemeByName(b'http')
-        h2 = QWebEngineUrlScheme.schemeByName(b'https')
+        h1 = QWebEngineUrlScheme.schemeByName(QByteArray(b'http'))
+        h2 = QWebEngineUrlScheme.schemeByName(QByteArray(b'https'))
 
         # 这里需要修改增加本地文件和跨域支持
         CorsEnabled = 0x80  # 5.14才增加
@@ -69,12 +74,12 @@ class Window(QWebEngineView):
         # 安装url拦截器和自定义url协议处理
         de = QWebEngineProfile.defaultProfile()  # @UndefinedVariable
         de.setRequestInterceptor(RequestInterceptor(self))
-        de.installUrlSchemeHandler(b'myurl', UrlSchemeHandler(self))
+        de.installUrlSchemeHandler(QByteArray(b'myurl'), UrlSchemeHandler(self))
 
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

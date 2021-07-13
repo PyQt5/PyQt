@@ -4,14 +4,28 @@
 """
 Created on 2019/10/2
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: PercentBarChart
 @description: 百分比柱状图表
 """
-from PyQt5.QtChart import QChartView, QChart, QBarSet, QPercentBarSeries, QBarCategoryAxis
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPainter
+
+try:
+    from PyQt5.QtChart import QChartView, QChart, QBarSet, QPercentBarSeries, QBarCategoryAxis
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtGui import QPainter
+    from PyQt5.QtWidgets import QApplication
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtGui import QPainter
+    from PySide2.QtWidgets import QApplication
+    from PySide2.QtCharts import QtCharts
+
+    QChartView = QtCharts.QChartView
+    QChart = QtCharts.QChart
+    QBarSet = QtCharts.QBarSet
+    QPercentBarSeries = QtCharts.QPercentBarSeries
+    QBarCategoryAxis = QtCharts.QBarCategoryAxis
 
 
 class Window(QChartView):
@@ -72,7 +86,6 @@ class Window(QChartView):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
 
     app = QApplication(sys.argv)
     w = Window()

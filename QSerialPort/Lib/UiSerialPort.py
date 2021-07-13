@@ -6,19 +6,20 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
+
 
 class Ui_FormSerialPort(object):
     def setupUi(self, FormSerialPort):
         FormSerialPort.setObjectName("FormSerialPort")
         FormSerialPort.resize(721, 597)
         FormSerialPort.setStyleSheet("#labelStatus {\n"
-"    border-radius: 13px;\n"
-"    background-color: gray;\n"
-"}\n"
-"#labelStatus[isOn=\"true\"] {\n"
-"    background-color: green;\n"
-"}")
+                                     "    border-radius: 13px;\n"
+                                     "    background-color: gray;\n"
+                                     "}\n"
+                                     "#labelStatus[isOn=\"true\"] {\n"
+                                     "    background-color: green;\n"
+                                     "}")
         self.gridLayout = QtWidgets.QGridLayout(FormSerialPort)
         self.gridLayout.setObjectName("gridLayout")
         self.groupBox = QtWidgets.QGroupBox(FormSerialPort)
@@ -86,7 +87,8 @@ class Ui_FormSerialPort(object):
         self.labelStatus.setProperty("isOn", False)
         self.labelStatus.setObjectName("labelStatus")
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.labelStatus)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum,
+                                           QtWidgets.QSizePolicy.Expanding)
         self.formLayout.setItem(6, QtWidgets.QFormLayout.FieldRole, spacerItem)
         self.gridLayout.addWidget(self.groupBox, 0, 0, 1, 1)
         self.textBrowser = QtWidgets.QTextBrowser(FormSerialPort)
@@ -166,10 +168,10 @@ class Ui_FormSerialPort(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     FormSerialPort = QtWidgets.QWidget()
     ui = Ui_FormSerialPort()
     ui.setupUi(FormSerialPort)
     FormSerialPort.show()
     sys.exit(app.exec_())
-

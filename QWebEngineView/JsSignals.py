@@ -4,7 +4,7 @@
 """
 Created on 2019年4月27日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QWebEngineView.JsSignals
 @description: 
@@ -12,18 +12,19 @@ Created on 2019年4月27日
 import os
 from time import time
 
-from PyQt5.QtCore import QUrl, pyqtSlot, pyqtSignal
-from PyQt5.QtWebChannel import QWebChannel
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
-from PyQt5.QtWidgets import QMessageBox, QWidget, QVBoxLayout, QPushButton
-
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019'
+try:
+    from PyQt5.QtCore import QUrl, pyqtSlot, pyqtSignal
+    from PyQt5.QtWebChannel import QWebChannel
+    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
+    from PyQt5.QtWidgets import QMessageBox, QWidget, QVBoxLayout, QPushButton
+except ImportError:
+    from PySide2.QtCore import QUrl, Slot as pyqtSlot, Signal as pyqtSignal
+    from PySide2.QtWebChannel import QWebChannel
+    from PySide2.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
+    from PySide2.QtWidgets import QMessageBox, QWidget, QVBoxLayout, QPushButton
 
 
 class WebEngineView(QWebEngineView):
-
     customSignal = pyqtSignal(str)
 
     def __init__(self, *args, **kwargs):
@@ -38,13 +39,13 @@ class WebEngineView(QWebEngineView):
         # START #####以下代码可能是在5.6 QWebEngineView刚出来时的bug,必须在每次加载页面的时候手动注入
         #### 也有可能是跳转页面后就失效了，需要手动注入，有没有修复具体未测试
 
-#         self.page().loadStarted.connect(self.onLoadStart)
-#         self._script = open('Data/qwebchannel.js', 'rb').read().decode()
+    #         self.page().loadStarted.connect(self.onLoadStart)
+    #         self._script = open('Data/qwebchannel.js', 'rb').read().decode()
 
-#     def onLoadStart(self):
-#         self.page().runJavaScript(self._script)
+    #     def onLoadStart(self):
+    #         self.page().runJavaScript(self._script)
 
-        # END ###########################
+    # END ###########################
 
     # 注意pyqtSlot用于把该函数暴露给js可以调用
     @pyqtSlot(str)
@@ -58,16 +59,16 @@ class WebEngineView(QWebEngineView):
     @pyqtSlot(str)
     @pyqtSlot(QUrl)
     def load(self, url):
-        '''
-        eg: load("https://pyqt5.com")
+        """
+        eg: load("https://pyqt.site")
         :param url: 网址
-        '''
+        """
         return super(WebEngineView, self).load(QUrl(url))
 
     def initSettings(self):
-        '''
+        """
         eg: 初始化设置
-        '''
+        """
         # 获取浏览器默认设置
         settings = QWebEngineSettings.globalSettings()
         # 设置默认编码utf8
@@ -133,9 +134,10 @@ class Window(QWidget):
             os.path.abspath('Data/JsSignals.html')))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     from PyQt5.QtWidgets import QApplication
     import sys
+
     # 开启F12 控制台功能，需要单独通过浏览器打开这个页面
     # 这里可以做个保护, 发布软件,启动时把这个环境变量删掉。防止他人通过环境变量开启
     os.environ['QTWEBENGINE_REMOTE_DEBUGGING'] = '9966'

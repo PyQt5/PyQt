@@ -4,23 +4,21 @@
 """
 Created on 2018年10月22日
 @author: Irony
-@site: https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: FollowWindow
 @description: 跟随外部窗口
 """
 import os
 
-from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
 import win32gui
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import QTimer
+    from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QApplication
+except ImportError:
+    from PySide2.QtCore import QTimer
+    from PySide2.QtWidgets import QWidget, QVBoxLayout, QPushButton, QApplication
 
 
 class Window(QWidget):
@@ -53,7 +51,7 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     # 先检测是否已有记事本打开
     hwnd = win32gui.FindWindow('Notepad', None)
     print('hwnd', hwnd)

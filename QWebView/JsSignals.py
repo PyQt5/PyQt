@@ -4,7 +4,7 @@
 """
 Created on 2019年4月27日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QWebEngineView.JsSignals
 @description: 
@@ -18,12 +18,7 @@ from PyQt5.QtWebKitWidgets import QWebView
 from PyQt5.QtWidgets import QMessageBox, QWidget, QVBoxLayout, QPushButton
 
 
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019'
-
-
 class WebView(QWebView):
-
     customSignal = pyqtSignal(str)
 
     def __init__(self, *args, **kwargs):
@@ -50,7 +45,7 @@ class WebView(QWebView):
     @pyqtSlot(QUrl)
     def load(self, url):
         '''
-        eg: load("https://pyqt5.com")
+        eg: load("https://pyqt.site")
         :param url: 网址
         '''
         return super(WebView, self).load(QUrl(url))
@@ -85,6 +80,7 @@ class Window(QWidget):
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     import sys
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

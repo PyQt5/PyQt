@@ -4,26 +4,27 @@
 """
 Created on 2018年5月15日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: SqlQuery
 @description: 
 """
-from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtWidgets import QWidget, QMessageBox, QTableWidgetItem
+
+try:
+    from PyQt5.QtCore import pyqtSlot
+    from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox, QTableWidgetItem
+except ImportError:
+    from PySide2.QtCore import Slot as pyqtSlot
+    from PySide2.QtWidgets import QApplication, QWidget, QMessageBox, QTableWidgetItem
+
 from sqlalchemy.engine import create_engine
 from sqlalchemy.ext.declarative.api import declarative_base
 from sqlalchemy.orm.session import sessionmaker
 from sqlalchemy.sql.expression import and_
 from sqlalchemy.sql.schema import Column
 from sqlalchemy.sql.sqltypes import Integer, Text
-from Lib.mainui import Ui_Form
 
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+from Lib.mainui import Ui_Form
 
 # engine = create_engine('mysql+mysqldb://root@localhost:3306/tourist?charset=utf8')
 engine = create_engine('sqlite:///Data/data.sqlite3', echo=True)  # echo 表示开启命令显示
@@ -31,7 +32,6 @@ Base = declarative_base()
 
 
 class Tourist(Base):
-
     __tablename__ = 'tourist'
 
     id = Column(Integer, primary_key=True)
@@ -141,8 +141,9 @@ class Window(QWidget, Ui_Form):
 if __name__ == '__main__':
     import sys
     import cgitb
-    sys.excepthook = cgitb.Hook(1, None, 5, sys.stderr, 'text')
-    from PyQt5.QtWidgets import QApplication
+
+    cgitb.enable(format='text')
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

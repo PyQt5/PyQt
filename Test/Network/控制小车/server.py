@@ -10,25 +10,10 @@ from tornado.iostream import StreamClosedError
 from tornado.options import options, define
 from tornado.tcpserver import TCPServer
 
-
 try:
     import RPi.GPIO as GPIO  # @UnusedImport @UnresolvedImport
 except:
     pass
-
-
-# Created on 2018年4月18日
-# author: Irony
-# site: https://pyqt5.com , https://github.com/892768447
-# email: 892768447@qq.com
-# file: server
-# description:
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
-
 
 define("port", default=8888, help="TCP port to listen on")
 logger = logging.getLogger(__name__)
@@ -41,7 +26,6 @@ PARAM = [int(cv2.IMWRITE_JPEG_QUALITY), FPS]
 
 
 class EchoServer(TCPServer):
-
     IMAGE = None
 
     def __init__(self, cap, *args, **kwargs):
@@ -104,7 +88,7 @@ class EchoServer(TCPServer):
         while True:
             try:
                 data = yield stream.read_until(b"\n")
-#                 logger.info("Received bytes: %s", data)
+                #                 logger.info("Received bytes: %s", data)
                 if not data.endswith(b"\n"):
                     data = data + b"\n"
                 if data == b'getimage\n' and self.cap and self.cap.isOpened():

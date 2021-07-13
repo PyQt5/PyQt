@@ -4,26 +4,34 @@
 """
 Created on 2018年10月24日
 @author: Irony
-@site: https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: AsyncioUiClient
 @description: 
 """
 import asyncio
+import os
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPixmap, QMovie
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton,\
-    QApplication, QListWidget, QListWidgetItem, QLabel, QMessageBox
 import aiohttp
+
+try:
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtGui import QPixmap, QMovie
+    from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QApplication, QListWidget, QListWidgetItem, \
+        QLabel, QMessageBox
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtGui import QPixmap, QMovie
+    from PySide2.QtWidgets import QWidget, QVBoxLayout, QPushButton, QApplication, QListWidget, \
+        QListWidgetItem, \
+        QLabel, QMessageBox
+
+    os.environ['QUAMASH_QTIMPL'] = 'PySide2'
+    from PySide2 import QtGui
+
+    setattr(QtGui, 'QApplication', QApplication)
+
 from quamash import QEventLoop
-
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
 
 Url = 'https://www.doutula.com/api/search?keyword=%E6%9C%80%E6%96%B0%E8%A1%A8%E6%83%85&mime=0&page={}'
 Headers = {
@@ -67,6 +75,7 @@ class Window(QWidget):
             # 初始化session
             self.session = aiohttp.ClientSession(loop=loop)
             print(self.session)
+
         asyncio.ensure_future(_initSession(), loop=loop)
 
     async def _doDownloadImage(self, url):
@@ -131,8 +140,9 @@ if __name__ == '__main__':
     import sys
     import cgitb
     import os
+
     os.makedirs('tmp', exist_ok=True)
-    cgitb.enable(1, None, 5, '')
+    cgitb.enable(format='text')
     app = QApplication(sys.argv)
     loop = QEventLoop(app)
     asyncio.set_event_loop(loop)

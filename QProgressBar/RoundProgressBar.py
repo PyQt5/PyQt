@@ -4,25 +4,23 @@
 """
 Created on 2018年9月4日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: 界面美化.圆形进度条.CircleProgressBar
 @description: 
 """
-from PyQt5.QtCore import QSize, pyqtProperty, QTimer, Qt
-from PyQt5.QtGui import QColor, QPainter
-from PyQt5.QtWidgets import QWidget, QHBoxLayout
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import QSize, pyqtProperty, QTimer, Qt
+    from PyQt5.QtGui import QColor, QPainter
+    from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout
+except ImportError:
+    from PySide2.QtCore import QSize, Property as pyqtProperty, QTimer, Qt
+    from PySide2.QtGui import QColor, QPainter
+    from PySide2.QtWidgets import QApplication, QWidget, QHBoxLayout
 
 
 class CircleProgressBar(QWidget):
-
     Color = QColor(24, 189, 155)  # 圆圈颜色
     Clockwise = True  # 顺时针还是逆时针
     Delta = 36
@@ -105,7 +103,7 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

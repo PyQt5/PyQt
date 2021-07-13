@@ -1,22 +1,30 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年12月19日
-@author: Irony."[讽刺]
-@site: http://alyl.vip, http://orzorz.vip, http://coding.net/u/892768447, http://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: CustomXYaxis
 @description: 
-'''
+"""
 import random
 import sys
 
-from PyQt5.QtChart import QChartView, QLineSeries, QChart, QCategoryAxis
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout
+try:
+    from PyQt5.QtChart import QChartView, QLineSeries, QChart, QCategoryAxis
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtWidgets import QApplication, QWidget, QHBoxLayout
+    from PySide2.QtCharts import QtCharts
 
-__version__ = "0.0.1"
+    QChartView = QtCharts.QChartView
+    QChart = QtCharts.QChart
+    QLineSeries = QtCharts.QLineSeries
+    QCategoryAxis = QtCharts.QCategoryAxis
 
 m_listCount = 3
 m_valueMax = 10

@@ -4,16 +4,27 @@
 """
 Created on 2019/10/2
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ScatterChart
 @description: 散点图表
 """
 import random
 
-from PyQt5.QtChart import QChartView, QChart, QScatterSeries
-from PyQt5.QtCore import QPointF
-from PyQt5.QtGui import QPainter
+try:
+    from PyQt5.QtChart import QChartView, QChart, QScatterSeries
+    from PyQt5.QtCore import QPointF
+    from PyQt5.QtGui import QPainter
+    from PyQt5.QtWidgets import QApplication
+except ImportError:
+    from PySide2.QtCore import QPointF
+    from PySide2.QtGui import QPainter
+    from PySide2.QtWidgets import QApplication
+    from PySide2.QtCharts import QtCharts
+
+    QChartView = QtCharts.QChartView
+    QChart = QtCharts.QChart
+    QScatterSeries = QtCharts.QScatterSeries
 
 
 class Window(QChartView):
@@ -70,7 +81,6 @@ class Window(QChartView):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
 
     app = QApplication(sys.argv)
     w = Window()

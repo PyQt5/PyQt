@@ -3,8 +3,8 @@
 
 """
 Created on 2017年12月17日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: WorldMap
 @description: 
@@ -12,19 +12,19 @@ Created on 2017年12月17日
 import json
 import math
 
-from PyQt5.QtCore import Qt, QPointF, QRectF
-from PyQt5.QtGui import QColor, QPainter, QPolygonF, QPen, QBrush
-from PyQt5.QtOpenGL import QGLFormat
-from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsPolygonItem
-
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2017 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import Qt, QPointF, QRectF
+    from PyQt5.QtGui import QColor, QPainter, QPolygonF, QPen, QBrush
+    from PyQt5.QtOpenGL import QGLFormat
+    from PyQt5.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QGraphicsPolygonItem
+except ImportError:
+    from PySide2.QtCore import Qt, QPointF, QRectF
+    from PySide2.QtGui import QColor, QPainter, QPolygonF, QPen, QBrush
+    from PySide2.QtOpenGL import QGLFormat
+    from PySide2.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QGraphicsPolygonItem
 
 
 class GraphicsView(QGraphicsView):
-
     # 背景区域颜色
     backgroundColor = QColor(31, 31, 47)
     # 边框颜色
@@ -94,8 +94,8 @@ class GraphicsView(QGraphicsView):
         AnchorUnderMouse             鼠标当前位置被用作锚点
         '''
         self.setTransformationAnchor(self.AnchorUnderMouse)
-#         if QGLFormat.hasOpenGL():  # 如果开启了OpenGL则使用OpenGL Widget
-#             self.setViewport(QGLWidget(QGLFormat(QGL.SampleBuffers)))
+        #         if QGLFormat.hasOpenGL():  # 如果开启了OpenGL则使用OpenGL Widget
+        #             self.setViewport(QGLWidget(QGLFormat(QGL.SampleBuffers)))
         '''
         #参考 http://doc.qt.io/qt-5/qgraphicsview.html#ViewportUpdateMode-enum
         FullViewportUpdate           当场景的任何可见部分改变或重新显示时，QGraphicsView将更新整个视口。 当QGraphicsView花费更多的时间来计算绘制的内容（比如重复更新很多小项目）时，这种方法是最快的。 这是不支持部分更新（如QGLWidget）的视口以及需要禁用滚动优化的视口的首选更新模式。
@@ -157,7 +157,7 @@ class GraphicsView(QGraphicsView):
 
 if __name__ == "__main__":
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     print("OpenGL Status:", QGLFormat.hasOpenGL())
     view = GraphicsView()

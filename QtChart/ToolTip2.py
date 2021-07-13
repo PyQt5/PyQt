@@ -1,27 +1,34 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年12月23日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ToolTip2
 @description: 
-'''
+"""
 import sys
 
-from PyQt5.QtChart import QChartView, QChart, QLineSeries
-from PyQt5.QtCore import Qt, QRectF, QPoint, QPointF
-from PyQt5.QtGui import QPainter, QCursor
-from PyQt5.QtWidgets import QApplication, QGraphicsProxyWidget, QLabel, \
-    QWidget, QHBoxLayout, QVBoxLayout, QToolTip, QGraphicsLineItem
+try:
+    from PyQt5.QtChart import QChartView, QChart, QLineSeries
+    from PyQt5.QtCore import Qt, QRectF, QPoint, QPointF
+    from PyQt5.QtGui import QPainter, QCursor
+    from PyQt5.QtWidgets import QApplication, QGraphicsProxyWidget, QLabel, \
+        QWidget, QHBoxLayout, QVBoxLayout, QToolTip, QGraphicsLineItem
+except ImportError:
+    from PySide2.QtCore import Qt, QRectF, QPoint, QPointF
+    from PySide2.QtGui import QPainter, QCursor
+    from PySide2.QtWidgets import QApplication, QGraphicsProxyWidget, QLabel, \
+        QWidget, QHBoxLayout, QVBoxLayout, QToolTip, QGraphicsLineItem
+    from PySide2.QtCharts import QtCharts
 
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2017 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
+    QChartView = QtCharts.QChartView
+    QChart = QtCharts.QChart
+    QLineSeries = QtCharts.QLineSeries
 
-'''
+"""
 class CircleWidget(QGraphicsProxyWidget):
 
     def __init__(self, color, *args, **kwargs):
@@ -57,7 +64,7 @@ class GraphicsWidget(QGraphicsWidget):
         self.setGeometry(pos.x(), pos.y(), self.size().width(),
                          self.size().height())
         super(GraphicsWidget, self).show()
-'''
+"""
 
 
 class ToolTipItem(QWidget):
@@ -159,7 +166,8 @@ class ChartView(QChartView):
         #         print(x, pos_x, index, index * self.step_x + self.min_x)
         # 得到在坐标系中的所有series的类型和点
         points = [(serie, serie.at(index))
-                  for serie in self._chart.series() if self.min_x <= x <= self.max_x and self.min_y <= y <= self.max_y]
+                  for serie in self._chart.series() if
+                  self.min_x <= x <= self.max_x and self.min_y <= y <= self.max_y]
         if points:
             # 跟随鼠标的黑线条
             self.lineItem.setLine(event.pos().x(), self.point_top.y(),

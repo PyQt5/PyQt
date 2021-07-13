@@ -1,27 +1,33 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年12月19日
-@author: Irony."[讽刺]
-@site: http://alyl.vip, http://orzorz.vip, http://coding.net/u/892768447, http://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: LineChart
 @description: 
-'''
+"""
 import sys
 
-from PyQt5.QtChart import QChartView, QLineSeries, QChart
-from PyQt5.QtGui import QPainter
-from PyQt5.QtWidgets import QApplication
+try:
+    from PyQt5.QtChart import QChartView, QLineSeries, QChart
+    from PyQt5.QtGui import QPainter
+    from PyQt5.QtWidgets import QApplication
+except ImportError:
+    from PySide2.QtGui import QPainter
+    from PySide2.QtWidgets import QApplication
+    from PySide2.QtCharts import QtCharts
 
-__version__ = "0.0.1"
+    QChartView = QtCharts.QChartView
+    QChart = QtCharts.QChart
+    QLineSeries = QtCharts.QLineSeries
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app = QApplication(sys.argv)
     chart = QChart()
-    chart.setTitle("Line Chart 1")
+    chart.setTitle('Line Chart 1')
     series = QLineSeries(chart)
     series.append(0, 6)
     series.append(2, 4)

@@ -1,24 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年12月18日
-@author: Irony."[讽刺]
-@site: http://alyl.vip, http://orzorz.vip, http://coding.net/u/892768447, http://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ChartView
 @description: 
-'''
+"""
 import json
 import os
 
+import chardet
 from PyQt5.QtChart import QChart, QChartView, QLineSeries, QCategoryAxis
 from PyQt5.QtCore import QMargins, Qt, QEasingCurve
 from PyQt5.QtGui import QColor, QBrush, QFont, QPainter, QPen, QPixmap
-import chardet
-
-
-__version__ = "0.0.1"
 
 # QEasingCurve 类型枚举
 EasingCurve = dict(
@@ -55,8 +52,8 @@ class ChartView(QChartView):
                 data = data.decode(encoding.get("encoding") or "utf-8")
             self.__analysis(json.loads(data))
 
-#     def onSeriesHoverd(self, point, state):
-#         print(point, state)
+    #     def onSeriesHoverd(self, point, state):
+    #         print(point, state)
 
     def mouseMoveEvent(self, event):
         super(ChartView, self).mouseMoveEvent(event)
@@ -89,8 +86,8 @@ class ChartView(QChartView):
             return QColor(color)
 
     def __getPen(self, pen=None, default=QPen(
-            Qt.white, 1, Qt.SolidLine,
-            Qt.SquareCap, Qt.BevelJoin)):
+        Qt.white, 1, Qt.SolidLine,
+        Qt.SquareCap, Qt.BevelJoin)):
         '''
         :param pen: pen json
         '''
@@ -112,13 +109,14 @@ class ChartView(QChartView):
             return getattr(Qt, "Align" + alignment.capitalize())
         except:
             return Qt.AlignTop
-#         if alignment == "left":
-#             return Qt.AlignLeft
-#         if alignment == "right":
-#             return Qt.AlignRight
-#         if alignment == "bottom":
-#             return Qt.AlignBottom
-#         return Qt.AlignTop
+
+    #         if alignment == "left":
+    #             return Qt.AlignLeft
+    #         if alignment == "right":
+    #             return Qt.AlignRight
+    #         if alignment == "bottom":
+    #             return Qt.AlignBottom
+    #         return Qt.AlignTop
 
     def __setTitle(self, title=None):
         '''

@@ -4,22 +4,22 @@
 """
 Created on 2018年11月19日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: 
 @description: 
 """
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPixmap, QPainter, QImage
-from PyQt5.QtWidgets import QWidget, QLabel, QPushButton,\
-    QVBoxLayout, QHBoxLayout, QSpacerItem, QSizePolicy
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtGui import QPixmap, QPainter, QImage
+    from PyQt5.QtWidgets import QWidget, QLabel, QPushButton, \
+        QVBoxLayout, QHBoxLayout, QSpacerItem, QSizePolicy, QApplication
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtGui import QPixmap, QPainter, QImage
+    from PySide2.QtWidgets import QWidget, QLabel, QPushButton, \
+        QVBoxLayout, QHBoxLayout, QSpacerItem, QSizePolicy, QApplication
 
 
 class Window(QWidget):
@@ -73,12 +73,12 @@ class Window(QWidget):
         self.srcImage = image  # 替换
         self.imageLabel.setPixmap(QPixmap.fromImage(self.srcImage))
 
-#         # 下面这个旋转方法针对90度的倍数,否则图片会变大
-#         trans = QTransform()
-#         trans.rotate(90)
-#         self.srcImage = self.srcImage.transformed(
-#             trans, Qt.SmoothTransformation)
-#         self.imageLabel.setPixmap(QPixmap.fromImage(self.srcImage))
+    #         # 下面这个旋转方法针对90度的倍数,否则图片会变大
+    #         trans = QTransform()
+    #         trans.rotate(90)
+    #         self.srcImage = self.srcImage.transformed(
+    #             trans, Qt.SmoothTransformation)
+    #         self.imageLabel.setPixmap(QPixmap.fromImage(self.srcImage))
 
     def doAnticlockwise(self):
         # 逆时针45度
@@ -96,6 +96,7 @@ class Window(QWidget):
         self.srcImage = image  # 替换
         self.imageLabel.setPixmap(QPixmap.fromImage(self.srcImage))
 
+
 #         # 下面这个旋转方法针对90度的倍数,否则图片会变大
 #         trans = QTransform()
 #         trans.rotate(90)
@@ -106,7 +107,7 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

@@ -4,15 +4,19 @@
 """
 Created on 2021/4/13
 @author: Irony
-@site: https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ScreenNotify
 @description: 屏幕、分辨率、DPI变化通知
 """
 import sys
 
-from PyQt5.QtCore import QTimer, QRect
-from PyQt5.QtWidgets import QApplication, QPlainTextEdit, qApp
+try:
+    from PyQt5.QtCore import QTimer, QRect
+    from PyQt5.QtWidgets import QApplication, QPlainTextEdit
+except ImportError:
+    from PySide2.QtCore import QTimer, QRect
+    from PySide2.QtWidgets import QApplication, QPlainTextEdit
 
 
 class Window(QPlainTextEdit):
@@ -27,22 +31,24 @@ class Window(QPlainTextEdit):
         self.m_timer.setSingleShot(True)  # **重要** 保证多次信号尽量少的调用函数
 
         # 主要是多屏幕->无屏幕->有屏幕
-        qApp.primaryScreenChanged.connect(lambda _: self.m_timer.start(1000))
+        QApplication.instance().primaryScreenChanged.connect(lambda _: self.m_timer.start(1000))
         # 其它信号最终基本上都会调用该信号
-        qApp.primaryScreen().virtualGeometryChanged.connect(lambda _: self.m_timer.start(1000))
+        QApplication.instance().primaryScreen().virtualGeometryChanged.connect(
+            lambda _: self.m_timer.start(1000))
         # DPI变化
-        qApp.primaryScreen().logicalDotsPerInchChanged.connect(lambda _: self.m_timer.start(1000))
+        QApplication.instance().primaryScreen().logicalDotsPerInchChanged.connect(
+            lambda _: self.m_timer.start(1000))
 
     def onSolutionChanged(self):
         # 获取主屏幕
-        screen = qApp.primaryScreen()
+        screen = QApplication.instance().primaryScreen()
         if self.m_rect == screen.availableVirtualGeometry():
             return
         self.m_rect = screen.availableVirtualGeometry()
         # 所有屏幕可用大小
         self.appendPlainText('\navailableVirtualGeometry: {0}'.format(str(screen.availableVirtualGeometry())))
         # 获取所有屏幕
-        screens = qApp.screens()
+        screens = QApplication.instance().screens()
         for screen in screens:
             self.appendPlainText(
                 'screen: {0}, geometry({1}), availableGeometry({2}), logicalDotsPerInch({3}), '

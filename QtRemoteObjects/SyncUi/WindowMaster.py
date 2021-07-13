@@ -4,24 +4,18 @@
 """
 Created on 2019年8月7日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QtRemoteObjects.SyncUi.WindowMaster
 @description: 主窗口
 """
 from PyQt5.QtCore import QUrl, QTimer, pyqtSignal, pyqtSlot
 from PyQt5.QtRemoteObjects import QRemoteObjectHost
-from PyQt5.QtWidgets import QWidget, QLineEdit, QVBoxLayout, QCheckBox,\
+from PyQt5.QtWidgets import QWidget, QLineEdit, QVBoxLayout, QCheckBox, \
     QProgressBar
 
 
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
-
-
 class WindowMaster(QWidget):
-
     # 输入框内容变化信号
     editValueChanged = pyqtSignal(str)
     # 勾选框变化信号
@@ -84,6 +78,7 @@ class WindowMaster(QWidget):
 if __name__ == '__main__':
     import sys
     from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = WindowMaster()
     w.show()

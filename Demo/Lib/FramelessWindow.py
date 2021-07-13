@@ -1,26 +1,29 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from PyQt5.QtCore import Qt, pyqtSignal, QPoint
-from PyQt5.QtGui import QFont, QEnterEvent, QPainter, QColor, QPen
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel,\
-    QSpacerItem, QSizePolicy, QPushButton
 
 
-# Created on 2018年4月30日
-# author: Irony
-# site: https://pyqt5.com , https://github.com/892768447
-# email: 892768447@qq.com
-# file: FramelessWindow
-# description:
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
+"""
+Created on 2018年4月30日
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
+@email: 892768447@qq.com
+@file: FramelessWindow
+@description:
+"""
+
+try:
+    from PyQt5.QtCore import Qt, pyqtSignal, QPoint
+    from PyQt5.QtGui import QFont, QEnterEvent, QPainter, QColor, QPen
+    from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, \
+        QSpacerItem, QSizePolicy, QPushButton
+except ImportError:
+    from PySide2.QtCore import Qt, Signal as pyqtSignal, QPoint
+    from PySide2.QtGui import QFont, QEnterEvent, QPainter, QColor, QPen
+    from PySide2.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, \
+        QSpacerItem, QSizePolicy, QPushButton
 
 
 class TitleBar(QWidget):
-
     # 窗口最小化信号
     windowMinimumed = pyqtSignal()
     # 窗口最大化信号
@@ -48,7 +51,7 @@ class TitleBar(QWidget):
         layout.setContentsMargins(0, 0, 0, 0)
         # 窗口图标
         self.iconLabel = QLabel(self)
-#         self.iconLabel.setScaledContents(True)
+        #         self.iconLabel.setScaledContents(True)
         layout.addWidget(self.iconLabel)
         # 窗口标题
         self.titleLabel = QLabel(self)
@@ -138,7 +141,6 @@ Left, Top, Right, Bottom, LeftTop, RightTop, LeftBottom, RightBottom = range(8)
 
 
 class FramelessWindow(QWidget):
-
     # 四周边距
     Margins = 5
 

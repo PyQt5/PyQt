@@ -4,21 +4,20 @@
 """
 Created on 2018年9月14日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: DragListWidget
 @description: 
 """
-from PyQt5.QtCore import Qt, QSize, QRect, QPoint
-from PyQt5.QtGui import QColor, QPixmap, QDrag, QPainter, QCursor
-from PyQt5.QtWidgets import QListWidget, QListWidgetItem, QLabel, QRubberBand
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import Qt, QSize, QRect, QPoint
+    from PyQt5.QtGui import QColor, QPixmap, QDrag, QPainter, QCursor
+    from PyQt5.QtWidgets import QListWidget, QListWidgetItem, QLabel, QRubberBand, QApplication
+except ImportError:
+    from PySide2.QtCore import Qt, QSize, QRect, QPoint
+    from PySide2.QtGui import QColor, QPixmap, QDrag, QPainter, QCursor
+    from PySide2.QtWidgets import QListWidget, QListWidgetItem, QLabel, QRubberBand, QApplication
 
 
 class DropListWidget(QListWidget):
@@ -162,7 +161,7 @@ class DragListWidget(QListWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     app.setStyleSheet("""QListWidget {
         outline: 0px;

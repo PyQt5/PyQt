@@ -4,25 +4,23 @@
 """
 Created on 2018年11月24日
 author: Irony
-site: https://pyqt5.com , https://github.com/892768447
+site: https://pyqt.site , https://github.com/PyQt5
 email: 892768447@qq.com
 file: PageSwitching
 description:
 """
 import os
 
-from PyQt5.QtCore import QEasingCurve, Qt
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QWidget, QLabel
+try:
+    from PyQt5.QtCore import QEasingCurve, Qt
+    from PyQt5.QtGui import QPixmap
+    from PyQt5.QtWidgets import QWidget, QLabel, QApplication
+except ImportError:
+    from PySide2.QtCore import QEasingCurve, Qt
+    from PySide2.QtGui import QPixmap
+    from PySide2.QtWidgets import QWidget, QLabel, QApplication
 
 from Lib.UiImageSlider import Ui_Form  # @UnresolvedImport
-
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
 
 
 class ImageSliderWidget(QWidget, Ui_Form):
@@ -76,7 +74,7 @@ class ImageSliderWidget(QWidget, Ui_Form):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = ImageSliderWidget()
     w.show()

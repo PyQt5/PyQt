@@ -4,19 +4,18 @@
 """
 Created on 2020年3月13日
 @author: Irony
-@site: https://pyqt.site https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: Demo.GifCursor
 @description: 
 """
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
+
+try:
+    from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QApplication
+except ImportError:
+    from PySide2.QtWidgets import QWidget, QVBoxLayout, QPushButton, QApplication
 
 from Lib.QCursorGif import QCursorGif
-
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2020'
-__Version__ = 1.0
 
 
 class Window(QWidget, QCursorGif):
@@ -38,8 +37,9 @@ class Window(QWidget, QCursorGif):
 if __name__ == '__main__':
     import sys
     import cgitb
-    cgitb.enable(1, None, 5, '')
-    from PyQt5.QtWidgets import QApplication
+
+    cgitb.enable(format='text')
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

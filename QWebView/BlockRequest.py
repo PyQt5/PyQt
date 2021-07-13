@@ -4,19 +4,14 @@
 """
 Created on 2019年9月24日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QWebView.BlockAds
 @description: 拦截请求
 """
-from PyQt5.QtCore import QUrl, QBuffer, QByteArray
+from PyQt5.QtCore import QUrl, QBuffer
 from PyQt5.QtNetwork import QNetworkAccessManager
 from PyQt5.QtWebKitWidgets import QWebView
-
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019'
-__Version__ = 'Version 1.0'
 
 
 class RequestInterceptor(QNetworkAccessManager):
@@ -55,6 +50,7 @@ class Window(QWebView):
 if __name__ == '__main__':
     import sys
     from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

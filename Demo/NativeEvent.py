@@ -2,42 +2,40 @@
 # -*- coding: utf-8 -*-
 """Created on 2018年8月2日
 author: Irony
-site: https://pyqt5.com , https://github.com/892768447
+site: https://pyqt.site , https://github.com/PyQt5
 email: 892768447@qq.com
 file: win无边框调整大小
 description:
 """
 
-from ctypes.wintypes import POINT
 import ctypes.wintypes
+from ctypes.wintypes import POINT
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget, QPushButton
-from PyQt5.QtWinExtras import QtWin
 import win32api
 import win32con
 import win32gui
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtWidgets import QWidget, QPushButton, QApplication
+    from PyQt5.QtWinExtras import QtWin
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtWidgets import QWidget, QPushButton, QApplication
+    from PySide2.QtWinExtras import QtWin
 
 
 class MINMAXINFO(ctypes.Structure):
     _fields_ = [
-        ("ptReserved",      POINT),
-        ("ptMaxSize",       POINT),
-        ("ptMaxPosition",   POINT),
-        ("ptMinTrackSize",  POINT),
-        ("ptMaxTrackSize",  POINT),
+        ("ptReserved", POINT),
+        ("ptMaxSize", POINT),
+        ("ptMaxPosition", POINT),
+        ("ptMinTrackSize", POINT),
+        ("ptMaxTrackSize", POINT),
     ]
 
 
 class Window(QWidget):
-
     BorderWidth = 5
 
     def __init__(self, *args, **kwargs):
@@ -121,7 +119,7 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     btn = QPushButton('exit', w, clicked=app.quit)

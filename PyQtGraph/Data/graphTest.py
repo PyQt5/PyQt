@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class graph_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -51,4 +52,3 @@ class graph_Form(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Form", "折线图"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Form", "Tab 2"))
         self.pushButton_7.setText(_translate("Form", "分析"))
-

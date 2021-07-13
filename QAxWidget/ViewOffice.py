@@ -1,22 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年4月6日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ViewOffice
 @description: 
-'''
+"""
+
 from PyQt5.QAxContainer import QAxWidget
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QFileDialog,\
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QFileDialog, \
     QMessageBox
-
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2017 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
 
 
 class AxWidget(QWidget):
@@ -68,6 +64,7 @@ class AxWidget(QWidget):
 if __name__ == '__main__':
     import sys
     from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = AxWidget()
     w.show()

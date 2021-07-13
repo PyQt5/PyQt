@@ -1,22 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QTextEdit
+
+
+"""
+Created on 2018年4月30日
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
+@email: 892768447@qq.com
+@file: Test
+@description:
+"""
+
+try:
+    from PyQt5.QtGui import QIcon
+    from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QTextEdit, QApplication
+except ImportError:
+    from PySide2.QtGui import QIcon
+    from PySide2.QtWidgets import QWidget, QVBoxLayout, QPushButton, QTextEdit, QApplication
 
 from Lib.FramelessWindow import FramelessWindow  # @UnresolvedImport
-
-
-# Created on 2018年4月30日
-# author: Irony
-# site: https://pyqt5.com , https://github.com/892768447
-# email: 892768447@qq.com
-# file: Test
-# description:
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
 
 
 class MainWindow(QWidget):
@@ -63,7 +65,7 @@ TitleBar {
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     app.setStyleSheet(StyleSheet)
     w = FramelessWindow()

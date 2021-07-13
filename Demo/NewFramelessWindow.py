@@ -10,10 +10,16 @@ Created on 2018年4月30日
 @description:
 """
 
+try:
+    from PyQt5.QtCore import QTimer, Qt, QEvent, QObject
+    from PyQt5.QtGui import QWindow, QPainter, QColor, QMouseEvent
+    from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox
+except ImportError:
+    from PySide2.QtCore import QTimer, Qt, QEvent, QObject
+    from PySide2.QtGui import QWindow, QPainter, QColor, QMouseEvent
+    from PySide2.QtWidgets import QApplication, QWidget, QMessageBox
+
 from Lib.ui_frameless import Ui_FormFrameless
-from PyQt5.QtCore import QTimer, Qt, QEvent, QObject
-from PyQt5.QtGui import QWindow, QPainter, QColor, QMouseEvent
-from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox
 
 
 class FramelessObject(QObject):

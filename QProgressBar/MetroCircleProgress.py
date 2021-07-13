@@ -4,27 +4,25 @@
 """
 Created on 2018年9月日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: MetroCircleProgress
 @description: 
 """
-from PyQt5.QtCore import QSequentialAnimationGroup, pyqtProperty,\
-    QPauseAnimation, QPropertyAnimation, QParallelAnimationGroup,\
-    QObject, QSize, Qt, pyqtSignal, QRectF
-from PyQt5.QtGui import QPainter, QColor
-from PyQt5.QtWidgets import QWidget, QVBoxLayout
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import QSequentialAnimationGroup, QPauseAnimation, QPropertyAnimation, \
+        QParallelAnimationGroup, QObject, QSize, Qt, QRectF, pyqtSignal, pyqtProperty
+    from PyQt5.QtGui import QPainter, QColor
+    from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
+except ImportError:
+    from PySide2.QtCore import QSequentialAnimationGroup, QPauseAnimation, QPropertyAnimation, \
+        QParallelAnimationGroup, QObject, QSize, Qt, QRectF, Signal as pyqtSignal, Property as pyqtProperty
+    from PySide2.QtGui import QPainter, QColor
+    from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout
 
 
 class CircleItem(QObject):
-
     X = 0  # x坐标
     Opacity = 1  # 透明度0~1
     valueChanged = pyqtSignal()
@@ -52,7 +50,6 @@ def qBound(miv, cv, mxv):
 
 
 class MetroCircleProgress(QWidget):
-
     Radius = 5  # 半径
     Color = QColor(24, 189, 155)  # 圆圈颜色
     BackgroundColor = QColor(Qt.transparent)  # 背景颜色
@@ -189,7 +186,7 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

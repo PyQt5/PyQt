@@ -52,15 +52,22 @@
 
 import sys
 
-from PyQt5.QtCore import QLoggingCategory, QUrl
-from PyQt5.QtRemoteObjects import QRemoteObjectNode
-from PyQt5.QtWidgets import QApplication, QTreeView
+try:
+    from PyQt5.QtCore import QLoggingCategory, QUrl
+    from PyQt5.QtRemoteObjects import QRemoteObjectNode
+    from PyQt5.QtWidgets import QApplication, QTreeView
+except ImportError:
+    from PySide2.QtCore import QUrl
+    from PySide2.QtRemoteObjects import QRemoteObjectNode
+    from PySide2.QtWidgets import QApplication, QTreeView
 
-
-QLoggingCategory.setFilterRules('qt.remoteobjects.debug=false\n'
-                                'qt.remoteobjects.warning=false\n'
-                                'qt.remoteobjects.models.debug=false\n'
-                                'qt.remoteobjects.models.debug=false')
+try:
+    QLoggingCategory.setFilterRules('qt.remoteobjects.debug=false\n'
+                                    'qt.remoteobjects.warning=false\n'
+                                    'qt.remoteobjects.models.debug=false\n'
+                                    'qt.remoteobjects.models.debug=false')
+except NameError:
+    pass
 
 app = QApplication(sys.argv)
 
@@ -73,6 +80,6 @@ view.resize(640, 480)
 
 model = node.acquireModel('RemoteModel')
 view.setModel(model)
-view.show();
+view.show()
 
 sys.exit(app.exec_())

@@ -4,14 +4,26 @@
 """
 Created on 2019/10/2
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: HorizontalPercentBarChart
 @description: 横向百分比柱状图表
 """
-from PyQt5.QtChart import QChartView, QChart, QBarSet, QHorizontalPercentBarSeries, QBarCategoryAxis
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPainter
+
+try:
+    from PyQt5.QtChart import QChartView, QChart, QBarSet, QHorizontalPercentBarSeries, QBarCategoryAxis
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtGui import QPainter
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtGui import QPainter
+    from PySide2.QtCharts import QtCharts
+
+    QChartView = QtCharts.QChartView
+    QChart = QtCharts.QChart
+    QBarSet = QtCharts.QBarSet
+    QHorizontalPercentBarSeries = QtCharts.QHorizontalPercentBarSeries
+    QBarCategoryAxis = QtCharts.QBarCategoryAxis
 
 
 class Window(QChartView):

@@ -4,7 +4,7 @@
 """
 Created on 2021/5/13
 @author: Irony
-@site: https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: CpuLineChart
 @description: 

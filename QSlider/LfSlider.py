@@ -4,15 +4,21 @@
 """
 Created on 2021/4/9
 @author: Irony
-@site: https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: LfSlider
 @description: 降低值变化频率
 """
 from datetime import datetime
 
-from PyQt5.QtCore import pyqtSignal, QTimer, Qt
-from PyQt5.QtWidgets import QSlider, QWidget, QVBoxLayout, QPlainTextEdit, QHBoxLayout, QGroupBox
+try:
+    from PyQt5.QtCore import pyqtSignal, QTimer, Qt
+    from PyQt5.QtWidgets import QApplication, QSlider, QWidget, QVBoxLayout, QPlainTextEdit, QHBoxLayout, \
+        QGroupBox
+except ImportError:
+    from PySide2.QtCore import Signal as pyqtSignal, QTimer, Qt
+    from PySide2.QtWidgets import QApplication, QSlider, QWidget, QVBoxLayout, QPlainTextEdit, QHBoxLayout, \
+        QGroupBox
 
 
 class LfSlider(QSlider):
@@ -32,10 +38,10 @@ class LfSlider(QSlider):
             self.valueChanged.emit(self.lastValue)
 
 
-class TestWindow(QWidget):
+class Window(QWidget):
 
     def __init__(self, *args, **kwargs):
-        super(TestWindow, self).__init__(*args, **kwargs)
+        super(Window, self).__init__(*args, **kwargs)
         layout = QHBoxLayout(self)
 
         # 左侧原始
@@ -74,9 +80,8 @@ if __name__ == '__main__':
     import cgitb
 
     cgitb.enable(format='text')
-    from PyQt5.QtWidgets import QApplication
 
     app = QApplication(sys.argv)
-    w = TestWindow()
+    w = Window()
     w.show()
     sys.exit(app.exec_())

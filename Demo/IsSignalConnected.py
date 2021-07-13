@@ -4,20 +4,13 @@
 """
 Created on 2019年2月24日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: IsSignalConnected
 @description: 判断信号是否连接
 """
 
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QTextBrowser
-
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
 
 
 class Window(QWidget):
@@ -37,8 +30,10 @@ class Window(QWidget):
         # button1 clicked 是否连接: %s, %s
         # button2 clicked 是否连接: %s, %s
         """ % (
-            self.isSignalConnected(self.button1, 'clicked()'), self.button1.receivers(self.button1.clicked) > 0,
-            self.isSignalConnected(self.button2, 'clicked()'), self.button2.receivers(self.button2.clicked) > 0,
+            self.isSignalConnected(self.button1, 'clicked()'),
+            self.button1.receivers(self.button1.clicked) > 0,
+            self.isSignalConnected(self.button2, 'clicked()'),
+            self.button2.receivers(self.button2.clicked) > 0,
         ))
 
     def isSignalConnected(self, obj, name):
@@ -57,6 +52,7 @@ class Window(QWidget):
 if __name__ == '__main__':
     import sys
     from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

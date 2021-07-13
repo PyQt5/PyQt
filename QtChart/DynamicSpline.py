@@ -10,12 +10,21 @@ Created on 2019年5月5日
 """
 import sys
 
-from PyQt5.QtChart import QChartView, QChart, QSplineSeries, QValueAxis
-from PyQt5.QtCore import Qt, QTimer, QRandomGenerator
-from PyQt5.QtGui import QPainter, QPen
-from PyQt5.QtWidgets import QApplication
+try:
+    from PyQt5.QtChart import QChartView, QChart, QSplineSeries, QValueAxis
+    from PyQt5.QtCore import Qt, QTimer, QRandomGenerator
+    from PyQt5.QtGui import QPainter, QPen
+    from PyQt5.QtWidgets import QApplication
+except ImportError:
+    from PySide2.QtCore import Qt, QTimer, QRandomGenerator
+    from PySide2.QtGui import QPainter, QPen
+    from PySide2.QtWidgets import QApplication
+    from PySide2.QtCharts import QtCharts
 
-__version__ = "0.0.1"
+    QChartView = QtCharts.QChartView
+    QChart = QtCharts.QChart
+    QSplineSeries = QtCharts.QSplineSeries
+    QValueAxis = QtCharts.QValueAxis
 
 
 class DynamicSpline(QChart):

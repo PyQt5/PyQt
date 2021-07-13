@@ -20,8 +20,8 @@ def calspecaccel(np.ndarray[double, ndim=1, mode="c"] acc, int length, double dt
     cdef np.ndarray[double, ndim=1] Period = np.arange(0.0, maxPeriod + periodStep, periodStep) # 10.0 + 0.02, 0.02
     Period[0] = 0.001
     # 调用CalSpecSpeaLib.cpp定义的函数对数组进行处理
-    cal_spec_accel(<double*> np.PyArray_DATA(acc), length, dt, maxPeriod, periodStep, dampRatio, 
-        <double*> np.PyArray_DATA(Period), <double*> np.PyArray_DATA(Fre), 
-        <double*> np.PyArray_DATA(MAcc), <double*> np.PyArray_DATA(MVel), 
+    cal_spec_accel(<double*> np.PyArray_DATA(acc), length, dt, maxPeriod, periodStep, dampRatio,
+        <double*> np.PyArray_DATA(Period), <double*> np.PyArray_DATA(Fre),
+        <double*> np.PyArray_DATA(MAcc), <double*> np.PyArray_DATA(MVel),
         <double*> np.PyArray_DATA(MDis), numt)
     return Period, Fre, MAcc, MVel, MDis

@@ -4,7 +4,7 @@
 """
 Created on 2019年3月8日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: Threading.QtThreading
 @description: 
@@ -12,19 +12,15 @@ Created on 2019年3月8日
 from threading import Thread
 from time import sleep
 
-from PyQt5.QtCore import QObject, pyqtSignal, QTimer, Qt
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QProgressBar
-
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import QObject, pyqtSignal, QTimer, Qt
+    from PyQt5.QtWidgets import QWidget, QVBoxLayout, QProgressBar, QApplication
+except ImportError:
+    from PySide2.QtCore import QObject, Signal as pyqtSignal, QTimer, Qt
+    from PySide2.QtWidgets import QWidget, QVBoxLayout, QProgressBar, QApplication
 
 
 class _Signals(QObject):
-
     updateProgress = pyqtSignal(int)
 
 
@@ -63,7 +59,7 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

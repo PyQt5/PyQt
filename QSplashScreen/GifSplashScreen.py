@@ -4,21 +4,22 @@
 """
 Created on 2020/6/11
 @author: Irony
-@site: https://pyqt.site https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file:
 @description: 
 """
 
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2020'
-__Version__ = 'Version 1.0'
-
 from time import sleep
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QMovie
-from PyQt5.QtWidgets import QApplication, QSplashScreen, QWidget
+try:
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtGui import QMovie
+    from PyQt5.QtWidgets import QApplication, QSplashScreen, QWidget
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtGui import QMovie
+    from PySide2.QtWidgets import QApplication, QSplashScreen, QWidget
 
 
 class GifSplashScreen(QSplashScreen):
@@ -55,7 +56,7 @@ if __name__ == '__main__':
     import sys
     import cgitb
 
-    cgitb.enable(1, None, 5, '')
+    cgitb.enable(format='text')
 
     app = QApplication(sys.argv)
 

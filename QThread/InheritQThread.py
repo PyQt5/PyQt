@@ -4,27 +4,28 @@
 """
 Created on 2018年3月9日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: InheritQThread
 @description: 继承QThread
 """
-from PyQt5.QtCore import QThread, pyqtSignal
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QProgressBar, QPushButton
 
-
-__Author__ = 'By: Irony\nQQ: 892768447\nEmail: 892768447@qq.com'
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import QThread, pyqtSignal
+    from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QProgressBar, QPushButton
+except ImportError:
+    from PySide2.QtCore import QThread, Signal as pyqtSignal
+    from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout, QProgressBar, QPushButton
 
 
 class Worker(QThread):
-
     valueChanged = pyqtSignal(int)  # 值变化信号
 
     def run(self):
-        print('thread id', int(QThread.currentThreadId()))
+        print('thread id', QThread.currentThread())
         for i in range(1, 101):
+            if self.isInterruptionRequested():
+                break
             print('value', i)
             self.valueChanged.emit(i)
             QThread.sleep(1)
@@ -41,7 +42,7 @@ class Window(QWidget):
         layout.addWidget(QPushButton('开启线程', self, clicked=self.onStart))
 
         # 当前线程id
-        print('main id', int(QThread.currentThreadId()))
+        print('main id', QThread.currentThread())
 
         # 子线程
         self._thread = Worker(self)
@@ -49,21 +50,26 @@ class Window(QWidget):
         self._thread.valueChanged.connect(self.progressBar.setValue)
 
     def onStart(self):
-        print('main id', int(QThread.currentThreadId()))
-        self._thread.start()  # 启动线程
+        if not self._thread.isRunning():
+            print('main id', QThread.currentThread())
+            self._thread.start()  # 启动线程
 
     def closeEvent(self, event):
         if self._thread.isRunning():
+            self._thread.requestInterruption()
             self._thread.quit()
+            self._thread.wait()
             # 强制
             # self._thread.terminate()
-        del self._thread
+        self._thread.deleteLater()
         super(Window, self).closeEvent(event)
 
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+    import cgitb
+
+    cgitb.enable(format='text')
     app = QApplication(sys.argv)
     w = Window()
     w.show()

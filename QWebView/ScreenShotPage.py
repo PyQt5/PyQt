@@ -4,7 +4,7 @@
 """
 Created on 2019年7月8日
 @author: Irony
-@site: https://pyqt5.com https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ScreenShotPage
 @description: 网页整体截图
@@ -17,14 +17,9 @@ from PyQt5.QtCore import QUrl, Qt, pyqtSlot, QSize
 from PyQt5.QtGui import QImage, QPainter, QIcon, QPixmap
 from PyQt5.QtWebKit import QWebSettings
 from PyQt5.QtWebKitWidgets import QWebView
-from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QPushButton,\
-    QGroupBox, QLineEdit, QHBoxLayout, QListWidget, QListWidgetItem,\
+from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QPushButton, \
+    QGroupBox, QLineEdit, QHBoxLayout, QListWidget, QListWidgetItem, \
     QProgressDialog
-
-
-__Author__ = "Irony"
-__Copyright__ = "Copyright (c) 2019"
-__Version__ = "Version 1.0"
 
 # 对部分内容进行截图
 CODE = """
@@ -80,7 +75,7 @@ class Window(QWidget):
             QWebSettings.DeveloperExtrasEnabled, True)
         self.webView.loadStarted.connect(self.onLoadStarted)
         self.webView.loadFinished.connect(self.onLoadFinished)
-        self.webView.load(QUrl("https://pyqt5.com"))
+        self.webView.load(QUrl("https://pyqt.site"))
 
         # 暴露接口和加载完成后执行jquery等一些库文件
         self.webView.page().mainFrame().javaScriptWindowObjectCleared.connect(
@@ -165,7 +160,7 @@ class Window(QWidget):
 
 
 if __name__ == "__main__":
-    cgitb.enable(1, None, 5, '')
+    cgitb.enable(format='text')
     app = QApplication(sys.argv)
     w = Window()
     w.show()

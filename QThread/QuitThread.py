@@ -4,26 +4,25 @@
 """
 Created on 2020/11/27
 @author: Irony
-@site: https://pyqt.site https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QuitThread
 @description: 
 """
 
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2020'
-__Version__ = 'Version 1.0'
-
 import sys
 from time import time
 
-from PyQt5.QtCore import QThread, QCoreApplication, QTimer
+try:
+    from PyQt5.QtCore import QThread, QCoreApplication, QTimer
+except ImportError:
+    from PySide2.QtCore import QThread, QCoreApplication, QTimer
 
 
 class Thread(QThread):
 
     def run(self):
-        print('thread id', int(QThread.currentThreadId()))
+        print('thread id', QThread.currentThread())
         i = 0
         while i < 101 and not self.isInterruptionRequested():
             print('value', i, time())

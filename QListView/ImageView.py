@@ -4,16 +4,21 @@
 """
 Created on 2021/4/15
 @author: Irony
-@site: https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ImageView
 @description: 
 """
 import os
 
-from PyQt5.QtCore import QPointF, Qt, QRectF, QSizeF
-from PyQt5.QtGui import QStandardItem, QStandardItemModel, QPainter, QColor, QImage, QPixmap
-from PyQt5.QtWidgets import QListView, QGraphicsView, QGraphicsPixmapItem, QGraphicsScene
+try:
+    from PyQt5.QtCore import QPointF, Qt, QRectF, QSizeF
+    from PyQt5.QtGui import QStandardItem, QStandardItemModel, QPainter, QColor, QImage, QPixmap
+    from PyQt5.QtWidgets import QApplication, QListView, QGraphicsView, QGraphicsPixmapItem, QGraphicsScene
+except ImportError:
+    from PySide2.QtCore import QPointF, Qt, QRectF, QSizeF
+    from PySide2.QtGui import QStandardItem, QStandardItemModel, QPainter, QColor, QImage, QPixmap
+    from PySide2.QtWidgets import QApplication, QListView, QGraphicsView, QGraphicsPixmapItem, QGraphicsScene
 
 ScrollPixel = 40
 
@@ -223,7 +228,6 @@ if __name__ == '__main__':
     import cgitb
 
     cgitb.enable(format='text')
-    from PyQt5.QtWidgets import QApplication
 
     app = QApplication(sys.argv)
     w = ImageView()

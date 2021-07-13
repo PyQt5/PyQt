@@ -1,11 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import sys
 
-from PyQt5.QtWidgets import (
-    QApplication, QMainWindow,
-    QLabel, QGridLayout, QWidget,
-    QCheckBox, QSystemTrayIcon,
-    QSpacerItem, QSizePolicy, QMenu, QAction, QStyle, qApp)
-from PyQt5.QtCore import QSize
+try:
+    from PyQt5.QtCore import QSize
+    from PyQt5.QtWidgets import (
+        QApplication, QMainWindow,
+        QLabel, QGridLayout, QWidget,
+        QCheckBox, QSystemTrayIcon,
+        QSpacerItem, QSizePolicy, QMenu, QAction, QStyle)
+except ImportError:
+    from PySide2.QtCore import QSize
+    from PySide2.QtWidgets import (
+        QApplication, QMainWindow,
+        QLabel, QGridLayout, QWidget,
+        QCheckBox, QSystemTrayIcon,
+        QSpacerItem, QSizePolicy, QMenu, QAction, QStyle)
 
 
 class MainWindow(QMainWindow):
@@ -21,14 +32,14 @@ class MainWindow(QMainWindow):
         # Be sure to call the super class method
         QMainWindow.__init__(self)
 
-        self.setMinimumSize(QSize(480, 80))             # Set sizes
+        self.setMinimumSize(QSize(480, 80))  # Set sizes
         self.setWindowTitle("System Tray Application")  # Set a title
         # Create a central widget
         central_widget = QWidget(self)
         # Set the central widget
         self.setCentralWidget(central_widget)
 
-        grid_layout = QGridLayout(self)         # Create a QGridLayout
+        grid_layout = QGridLayout(self)  # Create a QGridLayout
         # Set the layout into the central widget
         central_widget.setLayout(grid_layout)
         grid_layout.addWidget(
@@ -56,7 +67,7 @@ class MainWindow(QMainWindow):
         hide_action = QAction("Hide", self)
         show_action.triggered.connect(self.show)
         hide_action.triggered.connect(self.hide)
-        quit_action.triggered.connect(qApp.quit)
+        quit_action.triggered.connect(QApplication.instance().quit)
         tray_menu = QMenu()
         tray_menu.addAction(show_action)
         tray_menu.addAction(hide_action)
@@ -82,4 +93,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     mw = MainWindow()
     mw.show()
-    sys.exit(app.exec())
+    sys.exit(app.exec_())

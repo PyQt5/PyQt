@@ -4,18 +4,18 @@
 """
 Created on 2019年5月8日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ShakeWindow
 @description: 抖动动画
 """
-from PyQt5.QtCore import QPropertyAnimation, QPoint
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
 
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import QPropertyAnimation, QPoint
+    from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton
+except ImportError:
+    from PySide2.QtCore import QPropertyAnimation, QPoint
+    from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton
 
 
 class Window(QWidget):
@@ -66,7 +66,7 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

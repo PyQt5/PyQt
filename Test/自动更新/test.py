@@ -1,24 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年5月7日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: 自动更新.test
 @description: 
-'''
+"""
 import sys
+
 sys.path.append("mylibs")
 import os
 from time import sleep
 from zipfile import ZipFile
-
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2017 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
 
 
 def update():
@@ -49,6 +45,7 @@ def main():
         sleep(0.5)
         os.startfile(sys.executable)  # 重启
         sys.exit()  # 退出本身
+
 
 if __name__ == "__main__":
     main()

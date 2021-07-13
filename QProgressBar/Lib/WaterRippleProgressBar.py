@@ -1,28 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Created on 2018年4月1日
-# author: Irony
-# site: https://pyqt5.com , https://github.com/892768447
-# email: 892768447@qq.com
-# file: WaterRippleProgressBar
-# description:
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
+"""
+Created on 2018年4月1日
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
+@email: 892768447@qq.com
+@file: WaterRippleProgressBar
+@description:
+"""
 
 import math
 
-from PyQt5.QtCore import QTimer, Qt, QRectF, QSize
-from PyQt5.QtGui import QPainter, QPainterPath, QColor, QFont
-from PyQt5.QtWidgets import QProgressBar
+try:
+    from PyQt5.QtCore import QTimer, Qt, QRectF, QSize
+    from PyQt5.QtGui import QPainter, QPainterPath, QColor, QFont
+    from PyQt5.QtWidgets import QProgressBar
+except ImportError:
+    from PySide2.QtCore import QTimer, Qt, QRectF, QSize
+    from PySide2.QtGui import QPainter, QPainterPath, QColor, QFont
+    from PySide2.QtWidgets import QProgressBar
 
 
 class WaterRippleProgressBar(QProgressBar):
-
     # 浪高百分比
     waterHeight = 1
     # 密度
@@ -84,7 +84,7 @@ class WaterRippleProgressBar(QProgressBar):
         # 正弦曲线公式 y = A * sin(ωx + φ) + k
         # 当前值所占百分比
         percent = 1 - (self.value() - self.minimum()) / \
-            (self.maximum() - self.minimum())
+                  (self.maximum() - self.minimum())
         # w表示周期，6为人为定义
         w = 6 * self.waterDensity * math.pi / self.width()
         # A振幅 高度百分比，1/26为人为定义

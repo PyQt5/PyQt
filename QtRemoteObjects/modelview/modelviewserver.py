@@ -53,11 +53,16 @@
 
 import sys
 
-from PyQt5.QtCore import (pyqtSlot, QLoggingCategory, QModelIndex, QObject, Qt,
-        QTimer, QUrl)
-from PyQt5.QtGui import QColor, QStandardItem, QStandardItemModel
-from PyQt5.QtRemoteObjects import QRemoteObjectHost, QRemoteObjectRegistryHost
-from PyQt5.QtWidgets import QApplication, QTreeView
+try:
+    from PyQt5.QtCore import pyqtSlot, QLoggingCategory, QModelIndex, QObject, Qt, QTimer, QUrl
+    from PyQt5.QtGui import QColor, QStandardItem, QStandardItemModel
+    from PyQt5.QtRemoteObjects import QRemoteObjectHost, QRemoteObjectRegistryHost
+    from PyQt5.QtWidgets import QApplication, QTreeView
+except ImportError:
+    from PySide2.QtCore import Slot as pyqtSlot, QModelIndex, QObject, Qt, QTimer, QUrl
+    from PySide2.QtGui import QColor, QStandardItem, QStandardItemModel
+    from PySide2.QtRemoteObjects import QRemoteObjectHost, QRemoteObjectRegistryHost
+    from PySide2.QtWidgets import QApplication, QTreeView
 
 
 class TimerHandler(QObject):
@@ -71,7 +76,7 @@ class TimerHandler(QObject):
     def changeData(self):
         for i in range(10, 50):
             self._model.setData(self._model.index(i, 1), QColor(Qt.blue),
-                    Qt.BackgroundRole)
+                                Qt.BackgroundRole)
 
     @pyqtSlot()
     def insertData(self):
@@ -79,9 +84,9 @@ class TimerHandler(QObject):
 
         for i in range(2, 11):
             self._model.setData(self._model.index(i, 1), QColor(Qt.green),
-                    Qt.BackgroundRole)
+                                Qt.BackgroundRole)
             self._model.setData(self._model.index(i, 1), "InsertedRow",
-                    Qt.DisplayRole)
+                                Qt.DisplayRole)
 
     @pyqtSlot()
     def removeData(self):
@@ -108,7 +113,7 @@ def addChild(numChildren, nestingLevel):
 
     for i in range(numChildren):
         child = QStandardItem(
-                "Child num {}, nesting level {}".format(i + 1, nestingLevel))
+            "Child num {}, nesting level {}".format(i + 1, nestingLevel))
 
         if i == 0:
             child.appendRow(addChild(numChildren, nestingLevel - 1))
@@ -120,14 +125,17 @@ def addChild(numChildren, nestingLevel):
 
 if __name__ == '__main__':
 
-    QLoggingCategory.setFilterRules('qt.remoteobjects.debug=false\n'
-                                    'qt.remoteobjects.warning=false')
+    try:
+        QLoggingCategory.setFilterRules('qt.remoteobjects.debug=false\n'
+                                        'qt.remoteobjects.warning=false')
+    except NameError:
+        pass
 
     app = QApplication(sys.argv)
 
     sourceModel = QStandardItemModel()
     sourceModel.setHorizontalHeaderLabels(
-            ["First Column with spacing", "Second Column with spacing"])
+        ["First Column with spacing", "Second Column with spacing"])
 
     for i in range(10000):
         firstItem = QStandardItem("FancyTextNumber {}".format(i))

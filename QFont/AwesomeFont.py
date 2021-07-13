@@ -1,24 +1,25 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年3月30日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: AwesomeFont
 @description: 
-'''
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2017 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
+"""
 
 import sys
 
-from PyQt5.QtGui import QFontDatabase, QFont
-from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout,\
-    QScrollArea, QPushButton
+try:
+    from PyQt5.QtGui import QFontDatabase, QFont
+    from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout, \
+        QScrollArea, QPushButton
+except ImportError:
+    from PySide2.QtGui import QFontDatabase, QFont
+    from PySide2.QtWidgets import QApplication, QWidget, QGridLayout, \
+        QScrollArea, QPushButton
 
 from Lib.FontAwesome import FontAwesomes  # @UnresolvedImport
 
@@ -44,7 +45,7 @@ class ScrollArea(QScrollArea):
                     minimumHeight=33,
                     font=QFont("FontAwesome", 14)),
                     row, col, 1, 1)
-        
+
         self.showMaximized()
 
     def resizeEvent(self, event):

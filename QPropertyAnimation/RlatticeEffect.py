@@ -4,7 +4,7 @@
 """
 Created on 2018年11月22日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: RlatticeEffect
 @description: 
@@ -12,28 +12,28 @@ Created on 2018年11月22日
 from random import random
 from time import time
 
-from PyQt5.QtCore import QPropertyAnimation, QObject, pyqtProperty, QEasingCurve,\
-    Qt, QRectF, pyqtSignal
-from PyQt5.QtGui import QColor, QPainterPath, QPainter
-from PyQt5.QtWidgets import QWidget
-
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
-
+try:
+    from PyQt5.QtCore import QPropertyAnimation, QObject, QEasingCurve, Qt, QRectF, pyqtSignal, pyqtProperty
+    from PyQt5.QtGui import QColor, QPainterPath, QPainter
+    from PyQt5.QtWidgets import QApplication, QWidget
+except ImportError:
+    from PySide2.QtCore import QPropertyAnimation, QObject, QEasingCurve, Qt, QRectF, Signal as pyqtSignal, \
+        Property as pyqtProperty
+    from PySide2.QtGui import QColor, QPainterPath, QPainter
+    from PySide2.QtWidgets import QApplication, QWidget
 
 try:
     from Lib import pointtool  # @UnusedImport @UnresolvedImport
+
     getDistance = pointtool.getDistance
     findClose = pointtool.findClose
 except:
     import math
 
+
     def getDistance(p1, p2):
         return math.pow(p1.x - p2.x, 2) + math.pow(p1.y - p2.y, 2)
+
 
     def findClose(points):
         plen = len(points)
@@ -66,8 +66,7 @@ class Target:
 
 
 class Point(QObject):
-
-    valueChanged = pyqtSignal()
+    valueChanged = pyqtSignal(int)
 
     def __init__(self, x, ox, y, oy, *args, **kwargs):
         super(Point, self).__init__(*args, **kwargs)
@@ -90,12 +89,12 @@ class Point(QObject):
         # 属性动画
         if not hasattr(self, 'xanimation'):
             self.xanimation = QPropertyAnimation(
-                self, b'x', self, valueChanged=self.valueChanged.emit,
-                easingCurve=QEasingCurve.InOutSine)
+                self, b'x', self, easingCurve=QEasingCurve.InOutSine)
+            self.xanimation.valueChanged.connect(self.valueChanged.emit)
             self.yanimation = QPropertyAnimation(
-                self, b'y', self, valueChanged=self.valueChanged.emit,
-                easingCurve=QEasingCurve.InOutSine,
-                finished=self.updateAnimation)
+                self, b'y', self, easingCurve=QEasingCurve.InOutSine)
+            self.yanimation.valueChanged.connect(self.valueChanged.emit)
+            self.yanimation.finished.connect(self.updateAnimation)
             self.updateAnimation()
 
     def updateAnimation(self):
@@ -137,6 +136,9 @@ class Window(QWidget):
         self.points = []
         self.target = Target(self.width() / 2, self.height() / 2)
         self.initPoints()
+
+    def update(self, *args):
+        super(Window, self).update()
 
     def paintEvent(self, event):
         super(Window, self).paintEvent(event)
@@ -220,8 +222,9 @@ class Window(QWidget):
 if __name__ == '__main__':
     import sys
     import cgitb
-    cgitb.enable(1, None, 5, '')
-    from PyQt5.QtWidgets import QApplication
+
+    cgitb.enable(format='text')
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

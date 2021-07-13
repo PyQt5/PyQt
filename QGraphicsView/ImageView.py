@@ -4,21 +4,22 @@
 """
 Created on 2020/11/12
 @author: Irony
-@site: https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ImageView
 @description: 图片查看控件，支持移动、放大、缩小
 """
 
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2020 Irony'
-__Version__ = 1.0
-
 import os
 
-from PyQt5.QtCore import QPointF, Qt, QRectF, QSizeF
-from PyQt5.QtGui import QPainter, QColor, QImage, QPixmap
-from PyQt5.QtWidgets import QGraphicsView, QGraphicsPixmapItem, QGraphicsScene
+try:
+    from PyQt5.QtCore import QPointF, Qt, QRectF, QSizeF
+    from PyQt5.QtGui import QPainter, QColor, QImage, QPixmap
+    from PyQt5.QtWidgets import QApplication, QGraphicsView, QGraphicsPixmapItem, QGraphicsScene
+except ImportError:
+    from PySide2.QtCore import QPointF, Qt, QRectF, QSizeF
+    from PySide2.QtGui import QPainter, QColor, QImage, QPixmap
+    from PySide2.QtWidgets import QApplication, QGraphicsView, QGraphicsPixmapItem, QGraphicsScene
 
 
 class ImageView(QGraphicsView):
@@ -141,7 +142,6 @@ if __name__ == '__main__':
     import cgitb
 
     cgitb.enable(format='text')
-    from PyQt5.QtWidgets import QApplication
 
     app = QApplication(sys.argv)
     w = ImageView(image='Data/bg.jpg', background=Qt.black)

@@ -4,7 +4,7 @@
 """
 Created on 2019年9月18日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QWebView.PlayFlash
 @description: 播放Flash
@@ -17,11 +17,6 @@ from PyQt5.QtNetwork import QSslConfiguration, QSslCertificate, QSsl
 from PyQt5.QtWebKit import QWebSettings
 from PyQt5.QtWebKitWidgets import QWebView
 from PyQt5.QtWidgets import QApplication
-
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
 
 
 class Window(QWebView):
@@ -53,5 +48,6 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = Window()
     w.show()
-    w.load(QUrl('https://www.17sucai.com/preview/8825/2013-07-07/%E4%B8%80%E6%AC%BE%E4%BA%BA%E5%BD%A2%E5%8A%A8%E4%BD%9C%E6%98%BE%E7%A4%BA%E7%9A%84flash%E6%97%B6%E9%97%B4/index.html'))
+    w.load(QUrl(
+        'https://www.17sucai.com/preview/8825/2013-07-07/%E4%B8%80%E6%AC%BE%E4%BA%BA%E5%BD%A2%E5%8A%A8%E4%BD%9C%E6%98%BE%E7%A4%BA%E7%9A%84flash%E6%97%B6%E9%97%B4/index.html'))
     sys.exit(app.exec_())

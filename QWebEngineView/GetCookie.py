@@ -1,28 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年12月10日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: GetCookie
 @description: 
-'''
+"""
+
 import sys
 
-from PyQt5.QtCore import QUrl, QByteArray
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
-from PyQt5.QtWidgets import QApplication, QTextEdit
-
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2017 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import QUrl, QByteArray
+    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
+    from PyQt5.QtWidgets import QApplication, QTextEdit
+except ImportError:
+    from PySide2.QtCore import QUrl, QByteArray
+    from PySide2.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
+    from PySide2.QtWidgets import QApplication, QTextEdit
 
 
 class WebEngineView(QWebEngineView):
-
     DomainCookies = {}  # 存放domain的key-value
     PathCookies = {}  # 存放domain+path的key-value
 
@@ -63,9 +63,9 @@ class WebEngineView(QWebEngineView):
             "AllPathCookies: " + self.bytestostr(self.getAllPathCookies()))
         self.cookieView.append('')
 
-        print("*****pyqt5.com cookie:", self.getDomainCookies(".pyqt5.com"))
-        print("*****pyqt5.com / path cookie:",
-              self.getPathCookies(".pyqt5.com/"))
+        print("*****pyqt.site cookie:", self.getDomainCookies(".pyqt.site"))
+        print("*****pyqt.site / path cookie:",
+              self.getPathCookies(".pyqt.site/"))
 
     def getAllDomainCookies(self):
         return self.DomainCookies
@@ -80,9 +80,9 @@ class WebEngineView(QWebEngineView):
         return self.PathCookies.get(dpath, {})
 
     def onCookieAdd(self, cookie):
-        '''
+        """
         :param cookie: QNetworkCookie
-        '''
+        """
         domain = cookie.domain()
         path = cookie.path()
         name = cookie.name().data()
@@ -98,6 +98,8 @@ class WebEngineView(QWebEngineView):
             _cookie[name] = value
         else:
             self.PathCookies[domain_path] = {name: value}
+
+
 #         print("add cookie:", cookie.domain(),
 #               cookie.path(), cookie.name(), cookie.value())
 
@@ -106,5 +108,5 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     w = WebEngineView()
     w.show()
-    w.load(QUrl("https://pyqt5.com"))
+    w.load(QUrl("https://pyqt.site"))
     sys.exit(app.exec_())

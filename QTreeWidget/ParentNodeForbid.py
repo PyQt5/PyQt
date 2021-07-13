@@ -4,19 +4,20 @@
 """
 Created on 2019年11月8日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QTreeWidget.ParentNodeForbid
 @description: 父节点不可选中
 """
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QStyledItemDelegate,\
-    QStyle
 
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtWidgets import QApplication, QTreeWidget, QTreeWidgetItem, QStyledItemDelegate, \
+        QStyle
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtWidgets import QApplication, QTreeWidget, QTreeWidgetItem, QStyledItemDelegate, \
+        QStyle
 
 
 class NoColorItemDelegate(QStyledItemDelegate):
@@ -84,8 +85,9 @@ class Window(QTreeWidget):
 if __name__ == '__main__':
     import sys
     import cgitb
-    cgitb.enable(1, None, 5, '')
-    from PyQt5.QtWidgets import QApplication
+
+    cgitb.enable(format='text')
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

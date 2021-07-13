@@ -1,26 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+"""
+Created on 2018年3月13日
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
+@email: 892768447@qq.com
+@file:
+@description:
+"""
+
 import ctypes
 
+import win32con
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QProgressBar, QPushButton
-import win32con
 from win32process import SuspendThread, ResumeThread
 
 
-# Created on 2018年3月13日
-# author: Irony
-# site: https://pyqt5.com , https://github.com/892768447
-# email: 892768447@qq.com
-# file: 多线程使用.a
-# description:
-__Author__ = 'By: Irony\nQQ: 892768447\nEmail: 892768447@qq.com'
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
-
-
 class Worker(QThread):
-
     valueChanged = pyqtSignal(int)  # 值变化信号
     handle = -1
 
@@ -109,8 +107,10 @@ class Window(QWidget):
 if __name__ == '__main__':
     import sys
     import os
+
     print('pid', os.getpid())
     from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

@@ -4,20 +4,18 @@
 """
 Created on 2019年4月23日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ShowFrameWhenDrag
 @description: 调整窗口显示边框
 """
-from ctypes import sizeof, windll, c_int, byref, c_long, c_void_p, c_ulong, c_longlong,\
+from ctypes import sizeof, windll, c_int, byref, c_long, c_void_p, c_ulong, c_longlong, \
     c_ulonglong, WINFUNCTYPE, c_uint
 
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel
-
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QApplication
+except ImportError:
+    from PySide2.QtWidgets import QWidget, QVBoxLayout, QLabel, QApplication
 
 if sizeof(c_long) == sizeof(c_void_p):
     WPARAM = c_ulong
@@ -82,7 +80,7 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

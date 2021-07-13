@@ -4,21 +4,20 @@
 """
 Created on 2018年11月5日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ClickJumpSlider
 @description: 
 """
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QSlider, QStyleOptionSlider, QStyle, QWidget,\
-    QFormLayout, QLabel
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtWidgets import QApplication, QSlider, QStyleOptionSlider, QStyle, QWidget, QFormLayout, \
+        QLabel
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtWidgets import QApplication, QSlider, QStyleOptionSlider, QStyle, QWidget, QFormLayout, \
+        QLabel
 
 
 class ClickJumpSlider(QSlider):
@@ -55,31 +54,34 @@ class DemoWindow(QWidget):
         layout = QFormLayout(self)
 
         self.label1 = QLabel('0', self)
-        layout.addRow(self.label1, ClickJumpSlider(
-            Qt.Horizontal, valueChanged=lambda v: self.label1.setText(str(v))))
+        self.slider1 = ClickJumpSlider(Qt.Horizontal)
+        self.slider1.valueChanged.connect(lambda v: self.label1.setText(str(v)))
+        layout.addRow(self.label1, self.slider1)
 
         # 横向-反向显示
         self.label2 = QLabel('0', self)
-        layout.addRow(self.label2, ClickJumpSlider(
-            Qt.Horizontal, invertedAppearance=True,
-            valueChanged=lambda v: self.label2.setText(str(v))))
+        self.slider2 = ClickJumpSlider(Qt.Horizontal, invertedAppearance=True)
+        self.slider2.valueChanged.connect(lambda v: self.label2.setText(str(v)))
+        layout.addRow(self.label2, self.slider2)
 
         self.label3 = QLabel('0', self)
-        layout.addRow(self.label3, ClickJumpSlider(
-            Qt.Vertical, minimumHeight=200, valueChanged=lambda v: self.label3.setText(str(v))))
+        self.slider3 = ClickJumpSlider(Qt.Vertical, minimumHeight=200)
+        self.slider3.valueChanged.connect(lambda v: self.label3.setText(str(v)))
+        layout.addRow(self.label3, self.slider3)
 
         # 纵向反向显示
         self.label4 = QLabel('0', self)
-        layout.addRow(self.label4, ClickJumpSlider(
-            Qt.Vertical, invertedAppearance=True,
-            minimumHeight=200, valueChanged=lambda v: self.label4.setText(str(v))))
+        self.slider4 = ClickJumpSlider(Qt.Vertical, invertedAppearance=True, minimumHeight=200)
+        self.slider4.valueChanged.connect(lambda v: self.label4.setText(str(v)))
+        layout.addRow(self.label4, self.slider4)
 
 
 if __name__ == '__main__':
     import sys
     import cgitb
-    cgitb.enable(1, None, 5, '')
-    from PyQt5.QtWidgets import QApplication
+
+    cgitb.enable(format='text')
+
     app = QApplication(sys.argv)
     w = DemoWindow()
     w.show()

@@ -4,25 +4,23 @@
 """
 Created on 2018年11月24日
 author: Irony
-site: https://pyqt5.com , https://github.com/892768447
+site: https://pyqt.site , https://github.com/PyQt5
 email: 892768447@qq.com
 file:
 description: 参考 http://qt.shoutwiki.com/wiki/Extending_QStackedWidget_for_sliding_page_animations_in_Qt
 """
-from PyQt5.QtCore import Qt, pyqtProperty, QEasingCurve, QPoint, \
-    QPropertyAnimation, QParallelAnimationGroup, QTimer
-from PyQt5.QtWidgets import QStackedWidget
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import Qt, pyqtProperty, QEasingCurve, QPoint, QPropertyAnimation, \
+        QParallelAnimationGroup, QTimer
+    from PyQt5.QtWidgets import QStackedWidget
+except ImportError:
+    from PySide2.QtCore import Qt, Property as pyqtProperty, QEasingCurve, QPoint, QPropertyAnimation, \
+        QParallelAnimationGroup, QTimer
+    from PySide2.QtWidgets import QStackedWidget
 
 
 class SlidingStackedWidget(QStackedWidget):
-
     LEFT2RIGHT, RIGHT2LEFT, TOP2BOTTOM, BOTTOM2TOP, AUTOMATIC = range(5)
 
     def __init__(self, *args, **kwargs):
@@ -210,7 +208,7 @@ class SlidingStackedWidget(QStackedWidget):
     def animationDoneSlot(self):
         """动画结束处理函数"""
         # 由于重写了setCurrentIndex方法所以这里要用父类本身的方法
-#         self.setCurrentIndex(self._next)
+        #         self.setCurrentIndex(self._next)
         QStackedWidget.setCurrentIndex(self, self._next)
         w = self.widget(self._now)
         w.hide()

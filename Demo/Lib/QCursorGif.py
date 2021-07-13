@@ -4,19 +4,20 @@
 """
 Created on 2020年3月13日
 @author: Irony
-@site: https://pyqt.site https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: Demo.Lib.QCursorGif
 @description: 
 """
-from PyQt5.QtCore import QTimer, Qt
-from PyQt5.QtGui import QCursor, QPixmap
-from PyQt5.QtWidgets import QApplication
 
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2020'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import QTimer, Qt
+    from PyQt5.QtGui import QCursor, QPixmap
+    from PyQt5.QtWidgets import QApplication
+except ImportError:
+    from PySide2.QtCore import QTimer, Qt
+    from PySide2.QtGui import QCursor, QPixmap
+    from PySide2.QtWidgets import QApplication
 
 
 class QCursorGif:
@@ -55,4 +56,4 @@ class QCursorGif:
 
     def setOldCursor(self, parent=None):
         self._oldCursor = (parent.cursor() or Qt.ArrowCursor) if parent else (
-            QApplication.instance().overrideCursor() or Qt.ArrowCursor)
+                QApplication.instance().overrideCursor() or Qt.ArrowCursor)

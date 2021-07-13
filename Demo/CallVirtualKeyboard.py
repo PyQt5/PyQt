@@ -4,20 +4,19 @@
 """
 Created on 2019年5月22日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: Demo.CallVirtualKeyboard
 @description: 调用系统虚拟键盘
 """
 import glob
 
-from PyQt5.QtCore import QProcess, QSysInfo
-from PyQt5.QtWidgets import QWidget, QTextEdit, QVBoxLayout, QPushButton
-
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import QProcess, QSysInfo
+    from PyQt5.QtWidgets import QApplication, QWidget, QTextEdit, QVBoxLayout, QPushButton
+except ImportError:
+    from PySide2.QtCore import QProcess, QSysInfo
+    from PySide2.QtWidgets import QApplication, QWidget, QTextEdit, QVBoxLayout, QPushButton
 
 
 class Window(QWidget):
@@ -50,7 +49,7 @@ class Window(QWidget):
                 self.resultEdit.append('start osk error: %s' % e)
         elif kernelType == 'darwin':
             pass
-#         elif kernelType=='linux':
+        #         elif kernelType=='linux':
         else:
             ret = QProcess.startDetached('florence')
             self.resultEdit.append('start florence: %s' % ret)
@@ -62,7 +61,7 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

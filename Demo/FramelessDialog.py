@@ -4,20 +4,22 @@
 """
 Created on 2019年4月19日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: FramelessDialog
 @description: 无边框圆角对话框 
 """
-from PyQt5.QtCore import Qt, QSize, QTimer
-from PyQt5.QtWidgets import QDialog, QVBoxLayout, QWidget,\
-    QGraphicsDropShadowEffect, QPushButton, QGridLayout, QSpacerItem,\
-    QSizePolicy
 
-
-__Author__ = "Irony"
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import Qt, QSize, QTimer
+    from PyQt5.QtWidgets import QDialog, QVBoxLayout, QWidget, \
+        QGraphicsDropShadowEffect, QPushButton, QGridLayout, QSpacerItem, \
+        QSizePolicy, QApplication
+except ImportError:
+    from PySide2.QtCore import Qt, QSize, QTimer
+    from PySide2.QtWidgets import QDialog, QVBoxLayout, QWidget, \
+        QGraphicsDropShadowEffect, QPushButton, QGridLayout, QSpacerItem, \
+        QSizePolicy, QApplication
 
 Stylesheet = """
 #Custom_Widget {
@@ -77,7 +79,7 @@ class Dialog(QDialog):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Dialog()
     w.exec_()

@@ -4,26 +4,27 @@
 """
 Created on 2019年5月15日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: FlipWidget
 @description: 动画翻转窗口
 """
-from PyQt5.QtCore import pyqtSignal, Qt, QPropertyAnimation, QEasingCurve,\
-    pyqtProperty, QPointF
-from PyQt5.QtGui import QPainter, QTransform
-from PyQt5.QtWidgets import QWidget
 
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019'
+try:
+    from PyQt5.QtCore import pyqtSignal, pyqtProperty, Qt, QPropertyAnimation, QEasingCurve, QPointF
+    from PyQt5.QtGui import QPainter, QTransform
+    from PyQt5.QtWidgets import QWidget
+except ImportError:
+    from PySide2.QtCore import Signal as pyqtSignal, Property as pyqtProperty, Qt, QPropertyAnimation, \
+        QEasingCurve, QPointF
+    from PySide2.QtGui import QPainter, QTransform
+    from PySide2.QtWidgets import QWidget
 
 
 class FlipWidget(QWidget):
-
-    Left = 0                        # 从右往左
-    Right = 1                       # 从左往右
-    Scale = 3                       # 图片缩放比例
+    Left = 0  # 从右往左
+    Right = 1  # 从左往右
+    Scale = 3  # 图片缩放比例
     finished = pyqtSignal()
 
     def __init__(self, *args, **kwargs):

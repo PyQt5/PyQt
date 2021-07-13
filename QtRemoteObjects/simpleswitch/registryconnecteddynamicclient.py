@@ -58,7 +58,6 @@ from PyQt5.QtRemoteObjects import QRemoteObjectNode
 
 
 class DynamicClient(QObject):
-
     # This signal is connected with server_slot() slot of the source object and
     # echoes back the switch state received from the source.
     echoSwitchState = pyqtSignal(bool)
@@ -92,7 +91,6 @@ class DynamicClient(QObject):
 
 
 if __name__ == '__main__':
-
     app = QCoreApplication(sys.argv)
 
     # Create the remote object node.

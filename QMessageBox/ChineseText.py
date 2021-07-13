@@ -4,19 +4,17 @@
 """
 Created on 2019年7月10日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ChineseText
 @description: 修改消息对话框文字汉化
 """
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMessageBox
-
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtWidgets import QApplication, QMessageBox
+except ImportError:
+    from PySide2.QtWidgets import QApplication, QMessageBox
 
 TextStyle = """
 QMessageBox QPushButton[text="OK"] {

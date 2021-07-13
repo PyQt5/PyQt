@@ -4,7 +4,7 @@
 """
 Created on 2021/4/7
 @author: Irony
-@site: https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QQMenu
 @description: 
@@ -12,9 +12,14 @@ Created on 2021/4/7
 import string
 from random import choice, randint
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPixmap, QPainter, QFont, QIcon
-from PyQt5.QtWidgets import QLabel, QMenu, QApplication
+try:
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtGui import QPixmap, QPainter, QFont, QIcon
+    from PyQt5.QtWidgets import QLabel, QMenu, QApplication
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtGui import QPixmap, QPainter, QFont, QIcon
+    from PySide2.QtWidgets import QLabel, QMenu, QApplication
 
 Style = """
 QMenu {
@@ -121,7 +126,7 @@ if __name__ == '__main__':
     import sys
     import cgitb
 
-    cgitb.enable(1, None, 5, '')
+    cgitb.enable(format='text')
     app = QApplication(sys.argv)
     app.setStyleSheet(Style)
     w = Window()

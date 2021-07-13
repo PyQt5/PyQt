@@ -1,21 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年3月30日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: FontAwesome
 @description: 
-'''
+"""
+
+
 # FontAwesome 版本: 4.7.0
 # 字体图标地址: http://fontawesome.io/icons/
 # 字体字符地址: http://fontawesome.io/cheatsheet/
 
 
 class FontAwesomes:
-
     FA = None
 
     @classmethod

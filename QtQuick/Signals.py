@@ -4,23 +4,25 @@
 """
 Created on 2019年9月18日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QtQuick.Signals
 @description: 信号槽
 """
 
-from time import time
 import sys
+from time import time
 
-from PyQt5.QtCore import QCoreApplication, Qt, pyqtSlot, pyqtSignal, QTimer
-from PyQt5.QtQml import QQmlApplicationEngine
-from PyQt5.QtWidgets import QApplication, QMessageBox, QWidget, QVBoxLayout,\
-    QPushButton, QTextBrowser
-
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019'
+try:
+    from PyQt5.QtCore import QCoreApplication, Qt, pyqtSlot, pyqtSignal, QTimer
+    from PyQt5.QtQml import QQmlApplicationEngine
+    from PyQt5.QtWidgets import QApplication, QMessageBox, QWidget, QVBoxLayout, \
+        QPushButton, QTextBrowser
+except ImportError:
+    from PySide2.QtCore import QCoreApplication, Qt, Slot as pyqtSlot, Signal as pyqtSignal, QTimer
+    from PySide2.QtQml import QQmlApplicationEngine
+    from PySide2.QtWidgets import QApplication, QMessageBox, QWidget, QVBoxLayout, \
+        QPushButton, QTextBrowser
 
 QML = """import QtQuick 2.0
 import QtQuick.Controls 1.6
@@ -84,7 +86,6 @@ ApplicationWindow {
 
 
 class Window(QWidget):
-
     # 定义一个时间信号
     timerSignal = pyqtSignal(str)
 

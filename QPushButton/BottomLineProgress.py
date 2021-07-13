@@ -1,25 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2018年2月1日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: PushButtonLine
 @description: 
-'''
-from random import randint
+"""
+
 import sys
+from random import randint
 
-from PyQt5.QtCore import QTimer, QThread, pyqtSignal
-from PyQt5.QtGui import QPainter, QColor, QPen
-from PyQt5.QtWidgets import QPushButton, QApplication, QWidget, QVBoxLayout
-
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2018 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import QTimer, QThread, pyqtSignal
+    from PyQt5.QtGui import QPainter, QColor, QPen
+    from PyQt5.QtWidgets import QPushButton, QApplication, QWidget, QVBoxLayout
+except ImportError:
+    from PySide2.QtCore import QTimer, QThread, Signal as pyqtSignal
+    from PySide2.QtGui import QPainter, QColor, QPen
+    from PySide2.QtWidgets import QPushButton, QApplication, QWidget, QVBoxLayout
 
 StyleSheet = '''
 PushButtonLine {
@@ -32,7 +33,6 @@ PushButtonLine {
 
 
 class LoadingThread(QThread):
-
     valueChanged = pyqtSignal(float)  # 当前值/最大值
 
     def __init__(self, *args, **kwargs):
@@ -41,12 +41,13 @@ class LoadingThread(QThread):
 
     def run(self):
         for i in range(self.totalValue + 1):
+            if self.isInterruptionRequested():
+                break
             self.valueChanged.emit(i / self.totalValue)
             QThread.msleep(randint(50, 100))
 
 
 class PushButtonLine(QPushButton):
-
     lineColor = QColor(0, 150, 136)
 
     def __init__(self, *args, **kwargs):
@@ -56,6 +57,9 @@ class PushButtonLine(QPushButton):
         self._percent = 0
         self._timer = QTimer(self, timeout=self.update)
         self.clicked.connect(self.start)
+
+    def __del__(self):
+        self.stop()
 
     def paintEvent(self, event):
         super(PushButtonLine, self).paintEvent(event)
@@ -79,14 +83,21 @@ class PushButtonLine(QPushButton):
         self.setText(self._waitText)
 
     def stop(self):
-        self.loadingThread.valueChanged.disconnect(self.setPercent)
-        self.loadingThread.terminate()
-        self.loadingThread.deleteLater()
-        QThread.msleep(100)  # 延迟等待deleteLater执行完毕
-        del self.loadingThread
-        self._percent = 0
-        self._timer.stop()
-        self.setText(self._text)
+        try:
+            if hasattr(self, "loadingThread"):
+                if self.loadingThread.isRunning():
+                    self.loadingThread.requestInterruption()
+                    self.loadingThread.quit()
+                    self.loadingThread.wait(2000)
+                del self.loadingThread
+        except RuntimeError:
+            pass
+        try:
+            self._percent = 0
+            self._timer.stop()
+            self.setText(self._text)
+        except RuntimeError:
+            pass
 
     def setPercent(self, v):
         self._percent = v

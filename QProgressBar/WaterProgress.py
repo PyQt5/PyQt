@@ -4,16 +4,21 @@
 """
 Created on 2021/1/1
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: WaterProgress
 @description: 
 """
 import sys
 
+try:
+    from PyQt5.QtCore import QTimer
+    from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
+except ImportError:
+    from PySide2.QtCore import QTimer
+    from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout
+
 from Lib.DWaterProgress import DWaterProgress
-from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
 
 
 class WaterProgressWindow(QWidget):

@@ -1,23 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2018年1月29日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: NormalStyle
 @description: 
-'''
+"""
+
 import sys
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QPushButton, QApplication
 
+try:
+    from PyQt5.QtWidgets import QWidget, QHBoxLayout, QPushButton, QApplication
+except ImportError:
+    from PySide2.QtWidgets import QWidget, QHBoxLayout, QPushButton, QApplication
 
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2018 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
-
-StyleSheet = '''
+StyleSheet = """
 /*这里是通用设置，所有按钮都有效，不过后面的可以覆盖这个*/
 QPushButton {
     border: none; /*去掉边框*/
@@ -85,7 +85,7 @@ QPushButton[text="purple button"] {
     color: white; /*文字颜色*/
     background-color: #9c27b0;
 }
-'''
+"""
 
 
 class Window(QWidget):

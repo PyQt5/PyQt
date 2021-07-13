@@ -4,20 +4,18 @@
 """
 Created on 2018年9月25日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: AnimationShadowEffect
 @description: 边框动画阴影动画
 """
-from PyQt5.QtCore import QPropertyAnimation, pyqtProperty
-from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import QPropertyAnimation, pyqtProperty
+    from PyQt5.QtWidgets import QGraphicsDropShadowEffect
+except ImportError:
+    from PySide2.QtCore import QPropertyAnimation, Property as pyqtProperty
+    from PySide2.QtWidgets import QGraphicsDropShadowEffect
 
 
 class AnimationShadowEffect(QGraphicsDropShadowEffect):

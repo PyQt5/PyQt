@@ -4,21 +4,21 @@
 """
 Created on 2020/7/3
 @author: Irony
-@site: https://pyqt.site https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ThumbnailToolBar
 @description: 
 """
 
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2020'
-__Version__ = 'Version 1.0'
-
 import cgitb
 import sys
 
-from PyQt5.QtWidgets import QWidget, QApplication, QLabel, QStyle, QVBoxLayout
-from PyQt5.QtWinExtras import QWinThumbnailToolBar, QWinThumbnailToolButton
+try:
+    from PyQt5.QtWidgets import QWidget, QApplication, QLabel, QStyle, QVBoxLayout
+    from PyQt5.QtWinExtras import QWinThumbnailToolBar, QWinThumbnailToolButton
+except ImportError:
+    from PySide2.QtWidgets import QWidget, QApplication, QLabel, QStyle, QVBoxLayout
+    from PySide2.QtWinExtras import QWinThumbnailToolBar, QWinThumbnailToolButton
 
 
 class Window(QWidget):
@@ -86,7 +86,7 @@ class Window(QWidget):
 
 
 if __name__ == '__main__':
-    cgitb.enable(1, None, 5, '')
+    cgitb.enable(format='text')
     app = QApplication(sys.argv)
     w = Window()
     w.show()

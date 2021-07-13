@@ -4,17 +4,18 @@
 """
 Created on 2020/9/14
 @author: Irony
-@site: https://pyqt.site https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ColumnView
 @description: 
 """
 
-from PyQt5.QtWidgets import QComboBox, QFileSystemModel, QHBoxLayout, QSpacerItem, QSizePolicy
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2020'
-__Version__ = 'Version 1.0'
+try:
+    from PyQt5.QtWidgets import QApplication, QComboBox, QFileSystemModel, QHBoxLayout, QSpacerItem, \
+        QSizePolicy
+except ImportError:
+    from PyQt5.QtWidgets import QApplication, QComboBox, QFileSystemModel, QHBoxLayout, QSpacerItem, \
+        QSizePolicy
 
 
 class PathComboBox(QComboBox):
@@ -34,12 +35,11 @@ class PathComboBox(QComboBox):
             self.setModel(self.f_model)
 
     def addWidget(self, widget):
-        self.layout().insertWidget(self.layout().count()-1, widget)
+        self.layout().insertWidget(self.layout().count() - 1, widget)
 
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
 
     app = QApplication(sys.argv)
     w = PathComboBox()

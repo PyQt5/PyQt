@@ -4,21 +4,22 @@
 """
 Created on 2019年5月15日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: 翻转动画
 @description: 
 """
-from PyQt5.QtCore import Qt, pyqtSignal, QTimer
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QStackedWidget, QLabel
+
+try:
+    from PyQt5.QtCore import Qt, pyqtSignal, QTimer
+    from PyQt5.QtGui import QPixmap
+    from PyQt5.QtWidgets import QApplication, QStackedWidget, QLabel
+except ImportError:
+    from PySide2.QtCore import Qt, Signal as pyqtSignal, QTimer
+    from PySide2.QtGui import QPixmap
+    from PySide2.QtWidgets import QApplication, QStackedWidget, QLabel
 
 from Lib.FlipWidget import FlipWidget
-
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
 
 
 class LoginWidget(QLabel):
@@ -97,22 +98,22 @@ class Window(QStackedWidget):
 
     def jumpLoginWidget(self):
         # 翻转到登录界面
-        self.setWindowOpacity(0)                 # 类似隐藏，但是保留了任务栏
+        self.setWindowOpacity(0)  # 类似隐藏，但是保留了任务栏
         self.setCurrentWidget(self.loginWidget)  # 很重要，一定要先切换过去，不然会导致第一次截图有误
-        image1 = self.loginWidget.grab()       # 截图1
-        image2 = self.settingWidget.grab()     # 截图2
-        padding = 100                          # 扩大边距 @UnusedVariable
+        image1 = self.loginWidget.grab()  # 截图1
+        image2 = self.settingWidget.grab()  # 截图2
+        padding = 100  # 扩大边距 @UnusedVariable
         self.flipWidget.setGeometry(self.geometry())
         # .adjusted(-padding, -padding, padding, padding))
         self.flipWidget.updateImages(FlipWidget.Right, image2, image1)
 
     def jumpSettingWidget(self):
         # 翻转到设置界面
-        self.setWindowOpacity(0)                  # 类似隐藏，但是保留了任务栏
+        self.setWindowOpacity(0)  # 类似隐藏，但是保留了任务栏
         self.setCurrentWidget(self.settingWidget)  # 很重要，一定要先切换过去，不然会导致第一次截图有误
-        image1 = self.loginWidget.grab()       # 截图1
-        image2 = self.settingWidget.grab()     # 截图2
-        padding = 100                          # 扩大边距 @UnusedVariable
+        image1 = self.loginWidget.grab()  # 截图1
+        image2 = self.settingWidget.grab()  # 截图2
+        padding = 100  # 扩大边距 @UnusedVariable
         self.flipWidget.setGeometry(self.geometry())
         # .adjusted(-padding, -padding, padding, padding))
         self.flipWidget.updateImages(FlipWidget.Left, image1, image2)
@@ -120,7 +121,7 @@ class Window(QStackedWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

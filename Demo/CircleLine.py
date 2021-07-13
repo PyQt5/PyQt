@@ -4,7 +4,7 @@
 """
 Created on 2019年3月19日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: CircleLine
 @description: 
@@ -14,13 +14,14 @@ from math import floor, pi, cos, sin
 from random import random, randint
 from time import time
 
-from PyQt5.QtCore import QTimer, Qt
-from PyQt5.QtGui import QColor, QPainter, QPainterPath, QPen
-from PyQt5.QtWidgets import QWidget
-
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019'
+try:
+    from PyQt5.QtCore import QTimer, Qt
+    from PyQt5.QtGui import QColor, QPainter, QPainterPath, QPen
+    from PyQt5.QtWidgets import QWidget, QApplication
+except ImportError:
+    from PySide2.QtCore import QTimer, Qt
+    from PySide2.QtGui import QColor, QPainter, QPainterPath, QPen
+    from PySide2.QtWidgets import QWidget, QApplication
 
 # 最小和最大半径、半径阈值和填充圆的百分比
 radMin = 10
@@ -60,17 +61,20 @@ circleExpMin = 0.997
 circleExpSp = 0.00004
 circlePulse = False
 
+
 # 生成随机整数 a<=x<=b
 
 
 def randint(a, b):
     return floor(random() * (b - a + 1) + a)
 
+
 # 生成随机小数
 
 
 def randRange(a, b):
     return random() * (b - a) + a
+
 
 # 生成接近a的随机小数
 
@@ -88,7 +92,7 @@ class Circle:
         self.radius = hyperRange(radMin, radMax)
         self.filled = (False if randint(
             0, 100) > concentricCircle else 'full') if self.radius < radThreshold else (
-                False if randint(0, 100) > concentricCircle else 'concentric')
+            False if randint(0, 100) > concentricCircle else 'concentric')
         self.color = colors[randint(0, len(colors) - 1)]
         self.borderColor = colors[randint(0, len(colors) - 1)]
         self.opacity = 0.05
@@ -233,29 +237,29 @@ class CircleLineWindow(QWidget):
                 # otherwise we connect them only if the dist is < linkDist
                 if dist < self.linkDist:
                     xi = (1 if circles[i].x < circles[j].x else -
-                          1) * abs(circles[i].radius * deltax / dist)
+                    1) * abs(circles[i].radius * deltax / dist)
                     yi = (1 if circles[i].y < circles[j].y else -
-                          1) * abs(circles[i].radius * deltay / dist)
+                    1) * abs(circles[i].radius * deltay / dist)
                     xj = (-1 if circles[i].x < circles[j].x else 1) * \
-                        abs(circles[j].radius * deltax / dist)
+                         abs(circles[j].radius * deltax / dist)
                     yj = (-1 if circles[i].y < circles[j].y else 1) * \
-                        abs(circles[j].radius * deltay / dist)
+                         abs(circles[j].radius * deltay / dist)
                     path = QPainterPath()
                     path.moveTo(circles[i].x + xi, circles[i].y + yi)
                     path.lineTo(circles[j].x + xj, circles[j].y + yj)
-#                     samecolor = circles[i].color == circles[j].color
+                    #                     samecolor = circles[i].color == circles[j].color
                     c = QColor(circles[i].borderColor)
                     c.setAlphaF(min(circles[i].opacity, circles[j].opacity)
                                 * ((self.linkDist - dist) / self.linkDist))
                     painter.setPen(QPen(c, (
                         lineBorder * backgroundMlt if circles[i].background else lineBorder) * (
-                        (self.linkDist - dist) / self.linkDist)))
+                                                (self.linkDist - dist) / self.linkDist)))
                     painter.drawPath(path)
 
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = CircleLineWindow()
     w.resize(800, 600)

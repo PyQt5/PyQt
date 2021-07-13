@@ -1,19 +1,23 @@
 """
 Created on 2018年1月30日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: CalendarQssStyle
 @description: 日历美化样式
 """
 import sys
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTextCharFormat, QBrush, QColor
-from PyQt5.QtWidgets import QApplication, QCalendarWidget
+try:
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtGui import QTextCharFormat, QBrush, QColor
+    from PyQt5.QtWidgets import QApplication, QCalendarWidget
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtGui import QTextCharFormat, QBrush, QColor
+    from PySide2.QtWidgets import QApplication, QCalendarWidget
 
-
-StyleSheet = '''
+StyleSheet = """
 /*顶部导航区域*/
 #qt_calendar_navigationbar {
     background-color: rgb(0, 188, 212);
@@ -101,7 +105,7 @@ CalendarWidget QToolButton::menu-indicator {
     outline: 0px;/*去掉选中后的虚线框*/
     selection-background-color: rgb(0, 188, 212); /*选中背景颜色*/
 }
-'''
+"""
 
 
 class CalendarWidget(QCalendarWidget):

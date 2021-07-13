@@ -1,31 +1,33 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2018年1月29日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: FacePoints
 @description: 人脸特征点
-'''
-from bz2 import BZ2Decompressor
+"""
 import cgitb
 import os
 import sys
+from bz2 import BZ2Decompressor
 
-from PyQt5.QtCore import QTimer, QUrl, QFile, QIODevice
-from PyQt5.QtGui import QImage, QPixmap
-from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
-from PyQt5.QtWidgets import QLabel, QMessageBox, QApplication
 import cv2  # @UnresolvedImport
 import dlib
 import numpy
 
-
-__Author__ = "By: Irony.\"[讽刺]\nQQ: 892768447\nEmail: 892768447@qq.com"
-__Copyright__ = "Copyright (c) 2018 Irony.\"[讽刺]"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import QTimer, QUrl, QFile, QIODevice
+    from PyQt5.QtGui import QImage, QPixmap
+    from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
+    from PyQt5.QtWidgets import QLabel, QMessageBox, QApplication
+except ImportError:
+    from PySide2.QtCore import QTimer, QUrl, QFile, QIODevice
+    from PySide2.QtGui import QImage, QPixmap
+    from PySide2.QtNetwork import QNetworkAccessManager, QNetworkRequest
+    from PySide2.QtWidgets import QLabel, QMessageBox, QApplication
 
 DOWNSCALE = 4
 URL = 'http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2'
@@ -163,7 +165,7 @@ class OpencvWidget(QLabel):
 
 
 if __name__ == "__main__":
-    cgitb.enable(1, None, 5, '')
+    cgitb.enable(format='text')
     app = QApplication(sys.argv)
     w = OpencvWidget()
     w.show()

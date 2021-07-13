@@ -4,20 +4,16 @@
 """
 Created on 2020/7/31
 @author: Irony
-@site: https://pyqt.site https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ClipboardMaster
 @description: 
 """
+import sys
+
 from PyQt5.QtCore import QUrl, pyqtSlot, pyqtSignal, QLoggingCategory, QVariant, QMimeData
 from PyQt5.QtRemoteObjects import QRemoteObjectHost
 from PyQt5.QtWidgets import QTextBrowser
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
-
-import sys
 
 
 class WindowMaster(QTextBrowser):
@@ -93,7 +89,7 @@ class WindowMaster(QTextBrowser):
 if __name__ == '__main__':
     import cgitb
 
-    cgitb.enable(1, None, 5, '')
+    cgitb.enable(format='text')
     from PyQt5.QtWidgets import QApplication
 
     QLoggingCategory.setFilterRules('qt.remoteobjects.debug=true\n'

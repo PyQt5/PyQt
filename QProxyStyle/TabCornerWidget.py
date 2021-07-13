@@ -9,9 +9,15 @@ Created on 2021年06月23日
 @file: TabCornerWidget
 @description: 
 """
-from PyQt5.QtCore import pyqtSignal, Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QHBoxLayout, QSpacerItem, QSizePolicy, \
-    QTabWidget
+
+try:
+    from PyQt5.QtCore import pyqtSignal, Qt
+    from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QHBoxLayout, QSpacerItem, QSizePolicy, \
+        QTabWidget
+except ImportError:
+    from PySide2.QtCore import Signal as pyqtSignal, Qt
+    from PySide2.QtWidgets import QApplication, QWidget, QPushButton, QHBoxLayout, QSpacerItem, QSizePolicy, \
+        QTabWidget
 
 from QProxyStyle.Lib.TabCornerStyle import TabCornerStyle
 

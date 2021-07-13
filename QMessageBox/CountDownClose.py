@@ -4,22 +4,19 @@
 """
 Created on 2018年6月22日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: MessageBox
 @description: 
 """
 from random import randrange
 
-from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QMessageBox
-
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import QTimer
+    from PyQt5.QtWidgets import QApplication, QMessageBox, QPushButton
+except ImportError:
+    from PySide2.QtCore import QTimer
+    from PySide2.QtWidgets import QApplication, QMessageBox, QPushButton
 
 
 class MessageBox(QMessageBox):
@@ -53,7 +50,7 @@ class MessageBox(QMessageBox):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication, QPushButton
+
     app = QApplication(sys.argv)
     w = QPushButton('点击弹出对话框')
     w.resize(200, 200)

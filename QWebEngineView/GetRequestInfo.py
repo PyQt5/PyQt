@@ -4,20 +4,26 @@
 """
 Created on 2019年9月24日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QWebEngineView.BlockAds
 @description: 拦截请求
 """
-from PyQt5.QtCore import QUrl
-from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
-from PyQt5.QtWebEngineCore import QWebEngineUrlSchemeHandler, QWebEngineUrlScheme, \
-    QWebEngineUrlRequestInterceptor
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
 
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019'
-__Version__ = 'Version 1.0'
+try:
+    from PyQt5.QtCore import QUrl, QByteArray
+    from PyQt5.QtWidgets import QApplication
+    from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
+    from PyQt5.QtWebEngineCore import QWebEngineUrlSchemeHandler, QWebEngineUrlScheme, \
+        QWebEngineUrlRequestInterceptor
+    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
+except ImportError:
+    from PySide2.QtCore import QUrl, QByteArray
+    from PySide2.QtWidgets import QApplication
+    from PySide2.QtNetwork import QNetworkAccessManager, QNetworkRequest
+    from PySide2.QtWebEngineCore import QWebEngineUrlSchemeHandler, QWebEngineUrlScheme, \
+        QWebEngineUrlRequestInterceptor
+    from PySide2.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile
 
 
 class UrlSchemeHandler(QWebEngineUrlSchemeHandler):
@@ -86,23 +92,29 @@ class Window(QWebEngineView):
         profile = QWebEngineProfile.defaultProfile()
 
         # 首先获取默认的url协议
-        o_http = QWebEngineUrlScheme.schemeByName(b'http')
-        o_https = QWebEngineUrlScheme.schemeByName(b'https')
+        o_http = QWebEngineUrlScheme.schemeByName(QByteArray(b'http'))
+        o_https = QWebEngineUrlScheme.schemeByName(QByteArray(b'https'))
         print('scheme:', o_http, o_https)
 
         # 这里需要修改增加本地文件和跨域支持
         CorsEnabled = 0x80  # 5.14才增加
-        o_http.setFlags(
-            o_http.flags() | QWebEngineUrlScheme.SecureScheme | QWebEngineUrlScheme.LocalScheme | QWebEngineUrlScheme.LocalAccessAllowed | CorsEnabled)
-        o_https.setFlags(
-            o_https.flags() | QWebEngineUrlScheme.SecureScheme | QWebEngineUrlScheme.LocalScheme | QWebEngineUrlScheme.LocalAccessAllowed | CorsEnabled)
+        o_http.setFlags(o_http.flags() |
+                        QWebEngineUrlScheme.SecureScheme |
+                        QWebEngineUrlScheme.LocalScheme |
+                        QWebEngineUrlScheme.LocalAccessAllowed |
+                        CorsEnabled)
+        o_https.setFlags(o_https.flags() |
+                         QWebEngineUrlScheme.SecureScheme |
+                         QWebEngineUrlScheme.LocalScheme |
+                         QWebEngineUrlScheme.LocalAccessAllowed |
+                         CorsEnabled)
 
         # 安装url拦截器和自定义url协议处理
         de = QWebEngineProfile.defaultProfile()  # @UndefinedVariable
         de.setRequestInterceptor(RequestInterceptor(self))
         self.urlSchemeHandler = UrlSchemeHandler(self)
-        de.installUrlSchemeHandler(b'myurl', self.urlSchemeHandler)  # for http
-        de.installUrlSchemeHandler(b'myurls', self.urlSchemeHandler)  # for https
+        de.installUrlSchemeHandler(QByteArray(b'myurl'), self.urlSchemeHandler)  # for http
+        de.installUrlSchemeHandler(QByteArray(b'myurls'), self.urlSchemeHandler)  # for https
 
 
 if __name__ == '__main__':
@@ -112,7 +124,6 @@ if __name__ == '__main__':
     import cgitb
 
     cgitb.enable(format='text')
-    from PyQt5.QtWidgets import QApplication
 
     app = QApplication(sys.argv)
     # 开启F12 控制台功能，需要单独通过浏览器打开这个页面

@@ -4,20 +4,16 @@
 """
 Created on 2018年10月24日
 @author: Irony
-@site: https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: MultiSelect
 @description: 
 """
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QMenu,\
-    QAction
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QMenu, QAction
+except ImportError:
+    from PySide2.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton, QMenu, QAction
 
 
 class Window(QWidget):
@@ -70,8 +66,9 @@ class Window(QWidget):
 if __name__ == '__main__':
     import sys
     import cgitb
-    cgitb.enable(1, None, 5, '')
-    from PyQt5.QtWidgets import QApplication
+
+    cgitb.enable(format='text')
+
     app = QApplication(sys.argv)
     w = Window()
     w.resize(400, 400)

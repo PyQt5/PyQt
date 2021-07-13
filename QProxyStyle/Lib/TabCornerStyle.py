@@ -9,8 +9,13 @@ Created on 2021年06月23日
 @file: TabCornerStyle
 @description: 
 """
-from PyQt5.QtCore import QRect
-from PyQt5.QtWidgets import QProxyStyle, QStyle
+
+try:
+    from PyQt5.QtCore import QRect
+    from PyQt5.QtWidgets import QProxyStyle, QStyle
+except ImportError:
+    from PySide2.QtCore import QRect
+    from PySide2.QtWidgets import QProxyStyle, QStyle
 
 
 class TabCornerStyle(QProxyStyle):

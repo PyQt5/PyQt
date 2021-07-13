@@ -4,7 +4,7 @@
 """
 Created on 2019年7月8日
 @author: Irony
-@site: https://pyqt5.com https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ScreenShotPage
 @description: 网页整体截图
@@ -14,18 +14,22 @@ import cgitb
 import os
 import sys
 
-from PyQt5.QtCore import QUrl, Qt, pyqtSlot, QSize, QTimer
-from PyQt5.QtGui import QImage, QPainter, QIcon, QPixmap
-from PyQt5.QtWebChannel import QWebChannel
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
-from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QPushButton,\
-    QGroupBox, QLineEdit, QHBoxLayout, QListWidget, QListWidgetItem,\
-    QProgressDialog
-
-
-__Author__ = "Irony"
-__Copyright__ = "Copyright (c) 2019"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import QUrl, Qt, pyqtSlot, QSize, QTimer, QPoint
+    from PyQt5.QtGui import QImage, QPainter, QIcon, QPixmap
+    from PyQt5.QtWebChannel import QWebChannel
+    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
+    from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QPushButton, \
+        QGroupBox, QLineEdit, QHBoxLayout, QListWidget, QListWidgetItem, \
+        QProgressDialog
+except ImportError:
+    from PySide2.QtCore import QUrl, Qt, Slot as pyqtSlot, QSize, QTimer, QPoint
+    from PySide2.QtGui import QImage, QPainter, QIcon, QPixmap
+    from PySide2.QtWebChannel import QWebChannel
+    from PySide2.QtWebEngineWidgets import QWebEngineView, QWebEngineSettings
+    from PySide2.QtWidgets import QWidget, QApplication, QVBoxLayout, QPushButton, \
+        QGroupBox, QLineEdit, QHBoxLayout, QListWidget, QListWidgetItem, \
+        QProgressDialog
 
 # 对部分内容进行截图
 CODE = """
@@ -116,8 +120,8 @@ class Window(QWidget):
             open('Data/qwebchannel.js', 'rb').read().decode())
         page.runJavaScript(
             open('Data/jquery.js', 'rb').read().decode())
-#         page.runJavaScript(
-#             open('Data/promise-7.0.4.min.js', 'rb').read().decode())
+        #         page.runJavaScript(
+        #             open('Data/promise-7.0.4.min.js', 'rb').read().decode())
         page.runJavaScript(
             open('Data/html2canvas.min.js', 'rb').read().decode())
         page.runJavaScript(CreateBridge)
@@ -143,7 +147,7 @@ class Window(QWidget):
             painter.setRenderHint(QPainter.TextAntialiasing, True)
             painter.setRenderHint(QPainter.SmoothPixmapTransform, True)
 
-            self.webView.render(painter)
+            self.webView.render(painter, QPoint())
             painter.end()
             self.webView.resize(oldSize)
 
@@ -181,11 +185,11 @@ class Window(QWidget):
         item.setData(Qt.UserRole + 1, image)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     # 开启F12 控制台功能，需要单独通过浏览器打开这个页面
     # 这里可以做个保护, 发布软件,启动时把这个环境变量删掉。防止他人通过环境变量开启
     os.environ['QTWEBENGINE_REMOTE_DEBUGGING'] = '9966'
-    cgitb.enable(1, None, 5, '')
+    cgitb.enable(format='text')
     app = QApplication(sys.argv)
     w = Window()
     w.show()

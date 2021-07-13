@@ -5,9 +5,8 @@ import os
 import shutil
 
 import PyQt5
-from PyQt5.QtCore import PYQT_CONFIGURATION
 import sipconfig
-
+from PyQt5.QtCore import PYQT_CONFIGURATION
 
 # 模块名
 moduleName = 'QtNinePatch'
@@ -35,13 +34,12 @@ sip_cmd = ' '.join([
     '-b', "build/" + build_file,
     '-I', config.default_sip_dir + '/PyQt5',
     PYQT_CONFIGURATION.get('sip_flags', ''),
-    '%s.sip' % moduleName,
+          '%s.sip' % moduleName,
 ])
 
 os.makedirs('build', exist_ok=True)
 print(sip_cmd)
 os.system(sip_cmd)
-
 
 # Create the Makefile.
 makefile = sipconfig.SIPModuleMakefile(

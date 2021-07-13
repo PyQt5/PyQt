@@ -4,21 +4,17 @@
 """
 Created on 2018年10月30日
 @author: Irony
-@site: http://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ButtomZoom
 @description: 
 """
-from PyQt5.QtCore import QPropertyAnimation, QRect
-from PyQt5.QtWidgets import QPushButton, QWidget, QHBoxLayout, QSpacerItem,\
-    QSizePolicy
-
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import QPropertyAnimation, QRect
+    from PyQt5.QtWidgets import QApplication, QPushButton, QWidget, QHBoxLayout, QSpacerItem, QSizePolicy
+except ImportError:
+    from PySide2.QtCore import QPropertyAnimation, QRect
+    from PySide2.QtWidgets import QApplication, QPushButton, QWidget, QHBoxLayout, QSpacerItem, QSizePolicy
 
 
 class ZoomButton(QPushButton):
@@ -70,11 +66,11 @@ class ZoomButton(QPushButton):
         super(ZoomButton, self).mousePressEvent(event)
 
 
-class TestWindow(QWidget):
+class Window(QWidget):
     # 测试窗口
 
     def __init__(self, *args, **kwargs):
-        super(TestWindow, self).__init__(*args, **kwargs)
+        super(Window, self).__init__(*args, **kwargs)
         # 1. 加入布局中
         layout = QHBoxLayout(self)
         layout.addSpacerItem(QSpacerItem(
@@ -89,7 +85,7 @@ class TestWindow(QWidget):
     # 以下两个方法需要重写
 
     def showEvent(self, event):
-        super(TestWindow, self).showEvent(event)
+        super(Window, self).showEvent(event)
         # 更新按钮的位置
         self.button1.updatePos()
         # 针对不在控件中的按钮
@@ -98,7 +94,7 @@ class TestWindow(QWidget):
         self.button2.updatePos()
 
     def resizeEvent(self, event):
-        super(TestWindow, self).resizeEvent(event)
+        super(Window, self).resizeEvent(event)
         # 更新按钮的位置
         self.button1.updatePos()
         # 针对不在控件中的按钮
@@ -109,7 +105,7 @@ class TestWindow(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     app.setStyleSheet("""QPushButton {
     border: none;
@@ -120,6 +116,6 @@ if __name__ == '__main__':
     min-height: 40px;
     background-color: white;
     }""")
-    w = TestWindow()
+    w = Window()
     w.show()
     sys.exit(app.exec_())

@@ -1,21 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年3月31日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: AutoRestart
 @description: 
-'''
+"""
 
-from optparse import OptionParser
 import os
 import sys
+from optparse import OptionParser
 
-from PyQt5.QtWidgets import QApplication, QPushButton, QWidget, QHBoxLayout
-
+try:
+    from PyQt5.QtWidgets import QApplication, QPushButton, QWidget, QHBoxLayout
+except ImportError:
+    from PySide2.QtWidgets import QApplication, QPushButton, QWidget, QHBoxLayout
 
 canRestart = True
 

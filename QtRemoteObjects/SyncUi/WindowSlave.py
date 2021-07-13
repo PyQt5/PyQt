@@ -4,20 +4,15 @@
 """
 Created on 2019年8月7日
 @author: Irony
-@site: https://pyqt5.com https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QtRemoteObjects.SyncUi.WindowSlave
 @description: 备窗口
 """
 from PyQt5.QtCore import QUrl
 from PyQt5.QtRemoteObjects import QRemoteObjectNode, QRemoteObjectReplica
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QCheckBox,\
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QCheckBox, \
     QProgressBar, QMessageBox
-
-
-__Author__ = 'Irony'
-__Copyright__ = 'Copyright (c) 2019 Irony'
-__Version__ = 1.0
 
 
 class WindowSlave(QWidget):
@@ -65,13 +60,14 @@ class WindowSlave(QWidget):
         # Master进度条同步到Slave
         self.windowMaster.progressValueChanged.connect(
             self.progressBar.setValue)
-        
+
         print('绑定信号槽完成')
 
 
 if __name__ == '__main__':
     import sys
     from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = WindowSlave()
     w.show()

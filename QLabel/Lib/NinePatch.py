@@ -4,22 +4,19 @@
 """
 Created on 2018年10月25日
 @author: Irony
-@site: https://pyqt5.com , https://github.com/892768447
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: NinePatch
 @description: 
 """
 from math import fabs
 
-from PyQt5.QtCore import QRect
-from PyQt5.QtGui import QImage, QColor, QPainter, qRed, qGreen, qBlue, qAlpha
-
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = "Copyright (c) 2018 Irony"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import QRect
+    from PyQt5.QtGui import QImage, QColor, QPainter, qRed, qGreen, qBlue, qAlpha
+except ImportError:
+    from PySide2.QtCore import QRect
+    from PySide2.QtGui import QImage, QColor, QPainter, qRed, qGreen, qBlue, qAlpha
 
 
 class _Exception(Exception):
@@ -44,7 +41,8 @@ class ExceptionIncorrectWidth(_Exception):
 class ExceptionIncorrectWidthAndHeight(_Exception):
 
     def __str__(self):
-        return "Input incorrect width width and height. Minimum width = :{imgW} . Minimum height = :{imgH}".format(imgW=self.imgW, imgH=self.imgH)
+        return "Input incorrect width width and height. Minimum width = :{imgW} . Minimum height = :{imgH}".format(
+            imgW=self.imgW, imgH=self.imgH)
 
 
 class ExceptionIncorrectHeight(_Exception):
@@ -62,11 +60,11 @@ class ExceptionNot9Patch(Exception):
 class NinePatch:
 
     def __init__(self, fileName):
-        self.CachedImage = None    # 缓存图片
+        self.CachedImage = None  # 缓存图片
         self.OldWidth = -1
         self.OldHeight = -1
         self.ResizeDistancesX = []
-        self.ResizeDistancesY = []    # [(int,int)]数组
+        self.ResizeDistancesY = []  # [(int,int)]数组
         self.setImage(fileName)
 
     def width(self):
@@ -103,7 +101,8 @@ class NinePatch:
         for i in range(len(self.ResizeDistancesY)):
             resizeHeight += self.ResizeDistancesY[i][1]
 
-        if (width < (self.Image.width() - 2 - resizeWidth) and height < (self.Image.height() - 2 - resizeHeight)):
+        if (width < (self.Image.width() - 2 - resizeWidth) and height < (
+                self.Image.height() - 2 - resizeHeight)):
             raise ExceptionIncorrectWidthAndHeight(
                 self.Image.width() - 2, self.Image.height() - 2)
 
@@ -123,7 +122,8 @@ class NinePatch:
     @classmethod
     def GetContentAreaRect(self, width, height):
         # print("GetContentAreaRect :  width:%d height:%d" % (width, height))
-        return (QRect(self.ContentArea.x(), self.ContentArea.y(), (width - (self.Image.width() - 2 - self.ContentArea.width())),
+        return (QRect(self.ContentArea.x(), self.ContentArea.y(),
+                      (width - (self.Image.width() - 2 - self.ContentArea.width())),
                       (height - (self.Image.height() - 2 - self.ContentArea.height()))))
 
     def DrawScaledPart(self, oldRect, newRect, painter):
@@ -189,7 +189,8 @@ class NinePatch:
         for i in range(self.Image.width()):
             if (self.IsColorBlack(self.Image.pixel(i, j)) and left == 0):
                 left = i
-            if (left and self.IsColorBlack(self.Image.pixel(i, j)) and not self.IsColorBlack(self.Image.pixel(i + 1, j))):
+            if (left and self.IsColorBlack(self.Image.pixel(i, j)) and not self.IsColorBlack(
+                    self.Image.pixel(i + 1, j))):
                 right = i
                 left -= 1
                 # print("ResizeDistancesX.append ", left, " ", right - left)
@@ -204,7 +205,8 @@ class NinePatch:
             if (self.IsColorBlack(self.Image.pixel(i, j)) and top == 0):
                 top = j
 
-            if (top and self.IsColorBlack(self.Image.pixel(i, j)) and not self.IsColorBlack(self.Image.pixel(i, j + 1))):
+            if (top and self.IsColorBlack(self.Image.pixel(i, j)) and not self.IsColorBlack(
+                    self.Image.pixel(i, j + 1))):
                 bot = j
                 top -= 1
                 # print("ResizeDistancesY.append ", top, " ", bot - top)
@@ -241,10 +243,10 @@ class NinePatch:
         # print("after GetFactor: ", width, height, factorX, factorY)
         lostX = 0.0
         lostY = 0.0
-        x1 = 0    # for image parts X
-        y1 = 0    # for image parts Y
-#         widthResize    # width for image parts
-#         heightResize    # height for image parts
+        x1 = 0  # for image parts X
+        y1 = 0  # for image parts Y
+        #         widthResize    # width for image parts
+        #         heightResize    # height for image parts
         resizeX = 0
         resizeY = 0
         offsetX = 0
@@ -310,7 +312,8 @@ class NinePatch:
         offsetY = 0
         for i in range(len(self.ResizeDistancesY)):
             self.DrawConstPart(QRect(x1 + 1, y1 + 1, widthResize, self.ResizeDistancesY[i][0] - y1),
-                               QRect(x1 + offsetX, y1 + offsetY, widthResize, self.ResizeDistancesY[i][0] - y1), painter)
+                               QRect(x1 + offsetX, y1 + offsetY, widthResize,
+                                     self.ResizeDistancesY[i][0] - y1), painter)
             y1 = self.ResizeDistancesY[i][0]
             resizeY = round(float(self.ResizeDistancesY[i][1]) * factorY)
             lostY += resizeY - (float(self.ResizeDistancesY[i][1]) * factorY)
@@ -334,7 +337,8 @@ class NinePatch:
         offsetX = 0
         for i in range(len(self.ResizeDistancesX)):
             self.DrawConstPart(QRect(x1 + 1, y1 + 1, self.ResizeDistancesX[i][0] - x1, heightResize),
-                               QRect(x1 + offsetX, y1 + offsetY, self.ResizeDistancesX[i][0] - x1, heightResize), painter)
+                               QRect(x1 + offsetX, y1 + offsetY, self.ResizeDistancesX[i][0] - x1,
+                                     heightResize), painter)
             x1 = self.ResizeDistancesX[i][0]
             resizeX = round(float(self.ResizeDistancesX[i][1]) * factorX)
             lostX += resizeX - (float(self.ResizeDistancesX[i][1]) * factorX)

@@ -4,20 +4,22 @@
 """
 Created on 2019年7月3日
 @author: Irony
-@site: https://pyqt5.com https://github.com/PyQt5
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: QListWidget.SignalsExample
 @description: 
 """
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListWidget, QPlainTextEdit,\
-    QListWidgetItem, QAbstractItemView, QListView
 
-
-__Author__ = "Irony"
-__Copyright__ = "Copyright (c) 2019"
-__Version__ = "Version 1.0"
+try:
+    from PyQt5.QtCore import Qt
+    from PyQt5.QtGui import QColor
+    from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListWidget, QPlainTextEdit, \
+        QListWidgetItem, QAbstractItemView, QListView, QApplication
+except ImportError:
+    from PySide2.QtCore import Qt
+    from PySide2.QtGui import QColor
+    from PySide2.QtWidgets import QWidget, QHBoxLayout, QListWidget, QPlainTextEdit, \
+        QListWidgetItem, QAbstractItemView, QListView, QApplication
 
 
 def formatColor(text, color):
@@ -118,7 +120,7 @@ class Window(QWidget):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     w = Window()
     w.show()

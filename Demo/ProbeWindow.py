@@ -3,23 +3,22 @@
 """
 Created on 2018年6月8日
 author: Irony
-site: https://pyqt5.com , https://github.com/892768447
+site: https://pyqt.site , https://github.com/PyQt5
 email: 892768447@qq.com
 file: ProbeWindow
 description: 简单探测窗口和放大截图
 """
 
-from PyQt5.QtCore import Qt, QRect
-from PyQt5.QtGui import QPainter, QPen, QCursor, QColor
-from PyQt5.QtWidgets import QLabel, QWidget, QApplication
 import win32gui
 
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
+try:
+    from PyQt5.QtCore import Qt, QRect
+    from PyQt5.QtGui import QPainter, QPen, QCursor, QColor
+    from PyQt5.QtWidgets import QLabel, QWidget, QApplication
+except ImportError:
+    from PySide2.QtCore import Qt, QRect
+    from PySide2.QtGui import QPainter, QPen, QCursor, QColor
+    from PySide2.QtWidgets import QLabel, QWidget, QApplication
 
 
 class FrameWidget(QWidget):
@@ -111,11 +110,12 @@ class Label(QLabel):
             painter.setPen(Qt.white)
             painter.drawText(self.rect(), Qt.AlignLeft |
                              Qt.AlignBottom, '({}, {})\nRGB: ({}, {}, {})\n{}'.format(
-                                 pos.x(), pos.y(), r, g, b, QColor(r, g, b).name()))
+                pos.x(), pos.y(), r, g, b, QColor(r, g, b).name()))
 
 
 if __name__ == '__main__':
     import sys
+
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(True)
     w = Label()

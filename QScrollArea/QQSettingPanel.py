@@ -1,22 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from PyQt5.QtWidgets import QWidget
+
+"""
+Created on 2018年3月28日
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
+@email: 892768447@qq.com
+@file: QQSettingPanel
+@description:
+"""
+
+try:
+    from PyQt5.QtWidgets import QApplication, QWidget
+except ImportError:
+    from PySide2.QtWidgets import QApplication, QWidget
 
 from Lib.SettingUi import Ui_Setting  # @UnresolvedImport
-
-
-# Created on 2018年3月28日
-# author: Irony
-# site: https://pyqt5.com , https://github.com/892768447
-# email: 892768447@qq.com
-# file: QQSettingPanel
-# description:
-
-__Author__ = """By: Irony
-QQ: 892768447
-Email: 892768447@qq.com"""
-__Copyright__ = 'Copyright (c) 2018 Irony'
-__Version__ = 1.0
 
 
 class Window(QWidget, Ui_Setting):
@@ -59,9 +58,9 @@ class Window(QWidget, Ui_Setting):
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
-    app.setStyleSheet(open("Data/style.qss", "rb").read().decode("utf-8"))
+    app.setStyleSheet(open('Data/style.qss', 'rb').read().decode('utf-8'))
     w = Window()
     w.show()
     sys.exit(app.exec_())

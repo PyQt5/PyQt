@@ -1,8 +1,27 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Created on 2019年5月22日
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
+@email: 892768447@qq.com
+@file:
+@description:
+"""
+
 import sys
-from PyQt5.QtCore import QRegExp
-from PyQt5.QtGui import QTextCharFormat, QTextDocument, QTextCursor
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QTextEdit,
-                             QToolBar, QLineEdit, QPushButton, QColorDialog, QHBoxLayout, QWidget)
+
+try:
+    from PyQt5.QtCore import QRegExp
+    from PyQt5.QtGui import QTextCharFormat, QTextCursor
+    from PyQt5.QtWidgets import (QApplication, QMainWindow, QTextEdit,
+                                 QToolBar, QLineEdit, QPushButton, QColorDialog, QHBoxLayout, QWidget)
+except ImportError:
+    from PySide2.QtCore import QRegExp
+    from PySide2.QtGui import QTextCharFormat, QTextCursor
+    from PySide2.QtWidgets import (QApplication, QMainWindow, QTextEdit,
+                                   QToolBar, QLineEdit, QPushButton, QColorDialog, QHBoxLayout, QWidget)
 
 
 class TextEdit(QMainWindow):

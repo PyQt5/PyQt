@@ -1,31 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年12月20日
-@author: Irony."[讽刺]
-@site: http://alyl.vip, http://orzorz.vip, http://coding.net/u/892768447, http://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: ChatWidget
 @description: 
-'''
-from collections import OrderedDict
+"""
 import json
 import os
 import sys
+from collections import OrderedDict
 
+import chardet
 from PyQt5.Qsci import QsciScintilla, QsciLexerJSON
 from PyQt5.QtChart import QChartView
 from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtGui import QColor, QFont, QFontMetrics, QKeySequence, QMovie
-from PyQt5.QtWidgets import QSplitter, QTreeWidget, QApplication, QWidget,\
+from PyQt5.QtWidgets import QSplitter, QTreeWidget, QApplication, QWidget, \
     QVBoxLayout, QPushButton, QTreeWidgetItem, QMessageBox, QShortcut, QLabel
-import chardet
 
 from ChartView import ChartView  # @UnresolvedImport
-
-
-__version__ = "0.0.1"
 
 
 class LoadingWidget(QLabel):
@@ -54,7 +51,6 @@ class LoadingWidget(QLabel):
 
 
 class ClassifyWidget(QTreeWidget):
-
     fileSelected = pyqtSignal(str)
 
     def __init__(self, *args, **kwargs):
@@ -135,7 +131,6 @@ class CodeScintilla(QsciScintilla):
 
 
 class CodeWidget(QWidget):
-
     runSignal = pyqtSignal(str)
 
     def __init__(self, *args, **kwargs):

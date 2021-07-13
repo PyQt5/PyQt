@@ -4,7 +4,6 @@ import time
 sys.path.append(
     './build/lib.{0}-{1}.{2}'.format(sys.platform, sys.version_info.major, sys.version_info.minor))
 
-
 from CalSpecSpea import calspecaccel
 import matplotlib.pyplot as plt
 import numpy as np

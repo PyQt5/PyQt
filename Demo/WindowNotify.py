@@ -1,27 +1,27 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Created on 2017年3月30日
-@author: Irony."[讽刺]
-@site: https://pyqt5.com , https://github.com/892768447
+@author: Irony
+@site: https://pyqt.site , https://github.com/PyQt5
 @email: 892768447@qq.com
 @file: WindowNotify
 @description: 右下角弹窗
-'''
+"""
 import webbrowser
 
-from PyQt5.QtCore import Qt, QPropertyAnimation, QPoint, QTimer, pyqtSignal
-from PyQt5.QtWidgets import QWidget, QPushButton
+try:
+    from PyQt5.QtCore import Qt, QPropertyAnimation, QPoint, QTimer, pyqtSignal
+    from PyQt5.QtWidgets import QWidget, QPushButton, QApplication, QHBoxLayout
+except ImportError:
+    from PySide2.QtCore import Qt, QPropertyAnimation, QPoint, QTimer, Signal as pyqtSignal
+    from PySide2.QtWidgets import QWidget, QPushButton, QApplication, QHBoxLayout
 
 from Lib.UiNotify import Ui_NotifyForm  # @UnresolvedImport
 
 
-__version__ = "0.0.1"
-
-
 class WindowNotify(QWidget, Ui_NotifyForm):
-
     SignalClosed = pyqtSignal()  # 弹窗关闭信号
 
     def __init__(self, title="", content="", timeout=5000, *args, **kwargs):
@@ -60,10 +60,10 @@ class WindowNotify(QWidget, Ui_NotifyForm):
         webbrowser.open_new_tab("http://alyl.vip")
 
     def onClose(self):
-        #点击关闭按钮时
+        # 点击关闭按钮时
         print("onClose")
         self.isShow = False
-        QTimer.singleShot(100, self.closeAnimation)#启动弹回动画
+        QTimer.singleShot(100, self.closeAnimation)  # 启动弹回动画
 
     def _init(self):
         # 隐藏任务栏|去掉边框|顶层显示
@@ -112,13 +112,14 @@ class WindowNotify(QWidget, Ui_NotifyForm):
         print("showAnimation isShow = True")
         # 显示动画
         self.isShow = True
-        self.animation.stop()#先停止之前的动画,重新开始
+        self.animation.stop()  # 先停止之前的动画,重新开始
         self.animation.setStartValue(self.pos())
         self.animation.setEndValue(self._endPos)
         self.animation.start()
         # 弹出5秒后,如果没有焦点则弹回去
         self._timer.start(self._timeout)
-#         QTimer.singleShot(self._timeout, self.closeAnimation)
+
+    #         QTimer.singleShot(self._timeout, self.closeAnimation)
 
     def closeAnimation(self):
         print("closeAnimation hasFocus", self.hasFocus())
@@ -158,9 +159,10 @@ class WindowNotify(QWidget, Ui_NotifyForm):
         if self._timeouted:
             QTimer.singleShot(1000, self.closeAnimation)
 
+
 if __name__ == "__main__":
     import sys
-    from PyQt5.QtWidgets import QApplication, QHBoxLayout
+
     app = QApplication(sys.argv)
 
     window = QWidget()
