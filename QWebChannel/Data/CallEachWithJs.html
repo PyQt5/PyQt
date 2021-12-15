@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="./qwebchannel.js"></script>
+
+    <script type="text/javascript">
+        function appendText(message) {
+            // 添加输出到页面
+            var textArea = document.getElementById("textArea");
+            output.innerHTML = output.innerHTML + message + "\n";
+        }
+        window.onload = function () {
+            // 创建websocket
+            var socket = new WebSocket("ws://localhost:12345");
+            socket.onclose = function () {
+                appendText("WebSocket连接关闭");
+            };
+            socket.onerror = function () {
+                appendText("WebSocket连接发生错误");
+            };
+            socket.onopen = function () {
+                appendText("WebSocket连接成功");
+                // 创建webchannel
+                window.channel = new QWebChannel(socket, function (channel) {
+                    // 重点：把注册的对象全部设为全局,注册了多少个就设置多少个
+                    window.WebChannelObject = channel.objects.WebChannelObject;
+                    window.qtwindow = channel.objects.qtwindow;
+                    // 绑定窗口标题变化信号
+                    window.qtwindow.windowTitleChanged.connect(function (title) {
+                        appendText('标题变化：' + title);
+                    });
+                });
+            };
+
+        }
+    </script>
+</head>
+
+<body>
+    <span>输出：</span><br /><textarea id="output" style="width:400px;height:200px;"></textarea><br /><br />
+
+    <input type="button" value="设置属性（int）= 100" onclick="javascript: window.WebChannelObject.intValue = 100;" />
+    <input type="button" value="获取属性（int）"
+        onclick="javascript: appendText('intValue:' + window.WebChannelObject.intValue);" /><br /><br />
+
+    <input type="button" value="设置属性（float）= 99.9" onclick="javascript: window.WebChannelObject.floatValue = 99.9;" />
+    <input type="button" value="获取属性（float）"
+        onclick="javascript: appendText('floatValue:' + window.WebChannelObject.floatValue);" /><br /><br />
+
+    <input type="button" value="设置属性（str）= Irony" onclick="javascript: window.WebChannelObject.strValue = 'Irony';" />
+    <input type="button" value="获取属性（str）"
+        onclick="javascript: appendText('strValue:' + window.WebChannelObject.strValue);" /><br /><br />
+
+    <input type="button" value="设置属性（bool）= true" onclick="javascript: window.WebChannelObject.boolValue = true;" />
+    <input type="button" value="获取属性（bool）"
+        onclick="javascript: appendText('boolValue:' + window.WebChannelObject.boolValue);" /><br /><br />
+
+    <!-- <input type="button" value="设置属性（list）= [1, '2', false]"
+        onclick="javascript: window.WebChannelObject.listValue = [1, '2', false];" />
+    <input type="button" value="获取属性（list）"
+        onclick="javascript: appendText('listValue:' + window.WebChannelObject.listValue);" /><br /><br />
+
+    <input type="button" value="设置属性（map）= {'key1': 1, 'key2': '2', 'key3': false}"
+        onclick="javascript: window.WebChannelObject.mapValue = {'key1': 1, 'key2': '2', 'key3': false};" />
+    <input type="button" value="获取属性（map）"
+        onclick="javascript: appendText('mapValue:' + window.WebChannelObject.mapValue);" /><br /><br /> -->
+
+    <input type="button" value="调用加法（testAdd(1, 2)）"
+        onclick="javascript: window.WebChannelObject.testAdd(1, 2, function(result) { appendText('testAdd ret:' + result); });" /><br /><br />
+
+    <input type="button" value="设置窗口大小（resize(400, 400)）" onclick="javascript: window.qtwindow.resize(400, 400);" />
+</body>
+
+</html>
