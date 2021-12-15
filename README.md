@@ -235,6 +235,8 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
     - [边框阴影动画](QGraphicsDropShadowEffect/ShadowEffect.py)
   - [QSystemTrayIcon](QSystemTrayIcon)
     - [最小化到系统托盘](QSystemTrayIcon/MinimizeToTray.py)
+  - [QSystemTrayIcon](QSystemTrayIcon)
+    - [系统托盘闪烁](QSystemTrayIcon/TrayNotify.py)
 
 - [Demo](Demo)
   - [重启窗口Widget](Demo/RestartWindow.py)

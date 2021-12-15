@@ -2,6 +2,7 @@
 
 - 目录
   - [最小化到系统托盘](#1最小化到系统托盘)
+  - [系统托盘闪烁](#2系统托盘闪烁)
 
 ## 1、最小化到系统托盘
 
@@ -13,5 +14,8 @@
 
 ![MinimizeToTray](ScreenShot/MinimizeToTray.gif)
 
+## 2、系统托盘闪烁
 
+[运行 TrayNotify.py](TrayNotify.py)
 
+通过定时器设置不同图标来实现闪烁。
