@@ -65,7 +65,7 @@ class QStyleAnimation(QAbstractAnimation):
         self._fps = fps
 
     def updateTarget(self):
-        event = QEvent(StyleAnimationUpdate)
+        event = QEvent(QEvent.Type(StyleAnimationUpdate))
         event.setAccepted(False)
         QCoreApplication.sendEvent(self.target(), event)
         if not event.isAccepted():
