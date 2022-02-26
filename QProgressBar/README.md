@@ -7,6 +7,7 @@
   - [Metro进度条](#4Metro进度条)
   - [水波纹进度条](#5水波纹进度条)
   - [圆形水位进度条](#6圆形水位进度条)
+  - [多彩动画进度条](#7多彩动画进度条)
 
 ## 1、常规样式美化
 [运行 SimpleStyle.py](SimpleStyle.py)
@@ -45,3 +46,10 @@
 参考 https://github.com/linuxdeepin/dtkwidget/blob/master/src/widgets/dwaterprogress.cpp
 
 ![WaterProgressBar](ScreenShot/WaterProgress.gif)
+
+## 7、多彩动画进度条
+[运行 ColourfulProgress.py](ColourfulProgress.py)
+
+动画实现参考 qfusionstyle.cpp 中的 CE_ProgressBarContents 绘制方法，存在一点角落地方动画连贯性小问题
+
+![ColourfulProgress](ScreenShot/ColourfulProgress.gif)
