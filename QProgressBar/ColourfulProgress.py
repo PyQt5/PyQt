@@ -144,19 +144,20 @@ class ColourfulProgress(QProgressBar):
                 self._animation.start()
 
             # 动画斜线绘制
-            if (vertical and inverted) or (not vertical and not inverted):
+            startX = int(progressBar.left() - rect.height() - self._lineWidth)
+            endX = int(rect.right() + self._lineWidth)
+
+            if (not inverted and not vertical) or (inverted and vertical):
                 lines = [
                     QLineF(x + step, progressBar.bottom(),
                            x + rect.height() + step, progressBar.top())
-                    for x in range(int(progressBar.left() - rect.height()),
-                                   int(rect.right()), self._lineWidth)
+                    for x in range(startX, endX, self._lineWidth)
                 ]
             else:
                 lines = [
-                    QLineF(x - step, progressBar.top(),
-                           x + rect.height() - step, progressBar.bottom())
-                    for x in range(int(progressBar.left() - rect.height()),
-                                   int(rect.right()), self._lineWidth)
+                    QLineF(x - step, progressBar.bottom(),
+                           x + rect.height() - step, progressBar.top())
+                    for x in range(startX, endX, self._lineWidth)
                 ]
             painter.drawLines(lines)
 

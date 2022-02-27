@@ -50,6 +50,6 @@
 ## 7、多彩动画进度条
 [运行 ColourfulProgress.py](ColourfulProgress.py)
 
-动画实现参考 qfusionstyle.cpp 中的 CE_ProgressBarContents 绘制方法，存在一点角落地方动画连贯性小问题
+动画实现参考 qfusionstyle.cpp 中的 CE_ProgressBarContents 绘制方法
 
 ![ColourfulProgress](ScreenShot/ColourfulProgress.gif)
