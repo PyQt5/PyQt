@@ -4,7 +4,7 @@
   - [串口调试小助手](#1串口调试小助手)
 
 ## 1、串口调试小助手
-[运行 SerialDebugAssistant.py](SerialDebugAssistant.py)
+[运行 SerialDebugAssistant.py](SerialDebugAssistant.py) | [查看 UiSerialPort.ui](Data/UiSerialPort.ui)
 
 用`QSerialPort`写了个类似串口调试小助手的工具, 这个类的官方资料: http://doc.qt.io/qt-5/qserialport.html
 

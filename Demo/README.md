@@ -100,7 +100,7 @@
 ![FramelessWindow](ScreenShot/FramelessWindow.gif)
 
 ## 7、右下角弹出框
-[运行 WindowNotify.py](WindowNotify.py)
+[运行 WindowNotify.py](WindowNotify.py) | [查看 notify.ui](Data/notify.ui)
 
 ![WindowNotify](ScreenShot/WindowNotify.gif)
 

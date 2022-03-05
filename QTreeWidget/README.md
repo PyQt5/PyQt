@@ -14,7 +14,7 @@
 ![ParsingJson](ScreenShot/ParsingJson.png)
 
 ## 2、点击父节点全选/取消全选子节点
-[运行 testTreeWidget.py](testTreeWidget.py)
+[运行 testTreeWidget.py](testTreeWidget.py) | [查看 testTree.ui](Data/testTree.ui)
 
 点击父节点全选/取消全选子节点
 

@@ -23,7 +23,7 @@
 ![mouseFlow](ScreenShot/mouseFlow.gif)
 
 ## 2、禁止右键点击功能、鼠标滚轮，添加滚动条等功能
-[运行 graph1.py](graph1.py)
+[运行 graph1.py](graph1.py) | [查看 graphTest.ui](Data/graphTest.ui)
 
 ![mouseFlow](ScreenShot/function.gif)
 
@@ -31,6 +31,6 @@
 [加载 tools.py](tools.py)
 
 ## 4、QScrollArea添加和修改大小例子；
-[运行 testGraphAnalysis.py](testGraphAnalysis.py)
+[运行 testGraphAnalysis.py](testGraphAnalysis.py) | [查看 graphAnalysis.ui](Data/graphAnalysis.ui)
 
 ![testGraphAnalysis](ScreenShot/GraphAnalysis.gif)

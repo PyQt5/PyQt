@@ -4,7 +4,7 @@
   - [仿QQ设置面板](#1仿QQ设置面板)
 
 ## 1、仿QQ设置面板
-[运行 QQSettingPanel.py](QQSettingPanel.py)
+[运行 QQSettingPanel.py](QQSettingPanel.py) | [查看 setting.ui](Data/setting.ui)
 
 1. 左侧为`QListWidget`，右侧使用`QScrollArea`设置`QVBoxLayout`，然后依次往里面添加QWidget
 2. 右侧添加`QWidget`的时候有两种方案
