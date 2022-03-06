@@ -3,6 +3,7 @@
 - 目录
   - [垂直布局](#1垂直布局)
   - [边距和间隔](#2边距和间隔)
+  - [比例分配](#3比例分配)
 
 ## 1、垂直布局
 [查看 BaseVerticalLayout.ui](Data/BaseVerticalLayout.ui)
@@ -16,3 +17,16 @@
 2. 通过`setSpacing`的`subControlRect`设置控件之间的间隔
 
 ![VerticalLayoutMargin](ScreenShot/VerticalLayoutMargin.png)
+
+## 3、比例分配
+[查看 VerticalLayoutStretch.ui](Data/VerticalLayoutStretch.ui)
+
+通过`setStretch`设置各个部分的占比 分别为：1/6 2/6 3/6
+
+```python
+self.verticalLayout.setStretch(0, 1)
+self.verticalLayout.setStretch(1, 2)
+self.verticalLayout.setStretch(2, 3)
+```
+
+![VerticalLayoutStretch](ScreenShot/VerticalLayoutStretch.png)
