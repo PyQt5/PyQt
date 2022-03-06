@@ -14,7 +14,7 @@
 [查看 VerticalLayoutMargin.ui](Data/VerticalLayoutMargin.ui)
 
 1. 通过`setContentsMargins(20, 20, -1, -1)`设置左上右下的边距，-1表示默认值
-2. 通过`setSpacing`的`subControlRect`设置控件之间的间隔
+2. 通过`setSpacing`设置控件之间的间隔
 
 ![VerticalLayoutMargin](ScreenShot/VerticalLayoutMargin.png)
 
