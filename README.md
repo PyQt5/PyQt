@@ -21,6 +21,8 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
 
 - Layouts
   - [QVBoxLayout](QVBoxLayout)
+    - [垂直布局](QVBoxLayout#1垂直布局)
+    - [边距和间隔](QVBoxLayout#2边距和间隔)
   - [QHBoxLayout](QHBoxLayout)
   - [QGridLayout](QGridLayout)
     - [腾讯视频热播列表](QGridLayout/HotPlaylist.py)
