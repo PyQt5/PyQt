@@ -7,6 +7,7 @@
   - [同网站不同用户](#4同网站不同用户)
   - [拦截请求](#5拦截请求)
   - [拦截请求内容](#6拦截请求内容)
+  - [设置Cookie](#7设置Cookie)
 
 ## 1、获取Cookie
 [运行 GetCookie.py](GetCookie.py)
@@ -53,3 +54,11 @@
 发现目标url后重定向到`QWebEngineUrlSchemeHandler`实现的自定义协议头返回数据
 
 ![BlockRequestData](ScreenShot/BlockRequestData.png)
+
+## 7、设置Cookie
+[运行 SetCookies.py](SetCookies.py)
+
+通过`QWebEngineProfile`中得到的`cookieStore`来添加`QNetworkCookie`对象实现，
+需要注意的是httpOnly=true时，通过js无法获取
+
+![SetCookies](ScreenShot/SetCookies.png)
