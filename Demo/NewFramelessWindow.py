@@ -10,6 +10,8 @@ Created on 2018年4月30日
 @description:
 """
 
+import sys
+
 try:
     from PyQt5.QtCore import QTimer, Qt, QEvent, QObject
     from PyQt5.QtGui import QWindow, QPainter, QColor, QMouseEvent
@@ -138,6 +140,18 @@ class FramelessWindow(QWidget, Ui_FormFrameless):
         self.buttonClose.clicked.connect(self.close)
         self.setStyleSheet('#widgetTitleBar{background: rgb(232, 232, 232);}')
 
+    def showMinimized(self):
+        flags = self.windowFlags()
+        if sys.platform == 'darwin':
+            # fix mac 最小化失效问题
+            self.setWindowFlags((self.windowFlags() | Qt.CustomizeWindowHint) &
+                                (~Qt.WindowTitleHint))
+        super(FramelessWindow, self).showMinimized()
+        if sys.platform == 'darwin':
+            # fix mac 最小化失效问题
+            self.setWindowFlags(flags)
+            self.show()
+
     def changeEvent(self, event):
         """窗口状态改变
         :param event:
@@ -161,7 +175,6 @@ class FramelessWindow(QWidget, Ui_FormFrameless):
 
 
 if __name__ == '__main__':
-    import sys
     import cgitb
 
     cgitb.enable(format='text')
