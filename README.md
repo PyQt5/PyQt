@@ -21,6 +21,9 @@
 
 [PyQt 学习](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
 
+## 状态
+![Alt](https://repobeats.axiom.co/api/embed/12e69289ec9d9a7037d2c31aaaadd228dd99638f.svg "Repobeats analytics image")
+
 ## 目录
 
 - Layouts
