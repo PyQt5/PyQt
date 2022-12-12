@@ -220,6 +220,8 @@
   - [simpleswitch](QtRemoteObjects/simpleswitch)
 
 - [QPainter](QPainter)
+  - [QPainter绘制各种图形](QPainter/StockDialog.py)
+  - [简易画板](QPainter/Draw.py)
 
 - [QtWinExtras](QtWinExtras)
   - [任务栏进度条](QtWinExtras/TaskbarProgress.py)
