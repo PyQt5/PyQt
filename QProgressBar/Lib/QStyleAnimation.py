@@ -24,7 +24,6 @@ StyleAnimationUpdate = 213
 
 
 class QStyleAnimation(QAbstractAnimation):
-
     FrameRate = IntEnum(
         'FrameRate',
         ['DefaultFps', 'SixtyFps', 'ThirtyFps', 'TwentyFps', 'FifteenFps'])
@@ -73,7 +72,7 @@ class QStyleAnimation(QAbstractAnimation):
 
     def start(self):
         self._skip = 0
-        super(QStyleAnimation, self).start(QAbstractAnimation.DeleteWhenStopped)
+        super(QStyleAnimation, self).start(QAbstractAnimation.KeepWhenStopped)
 
     def isUpdateNeeded(self):
         return self.currentTime() > self._delay
@@ -99,7 +98,7 @@ class QProgressStyleAnimation(QStyleAnimation):
     def progressStep(self, width):
         step = self.animationStep()
         progress = (step * width / self._speed) % width
-        if (((step * width / self._speed) % (2 * width)) >= width):
+        if ((step * width / self._speed) % (2 * width)) >= width:
             progress = width - progress
         return progress
 

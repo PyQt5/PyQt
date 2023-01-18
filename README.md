@@ -5,7 +5,7 @@
 [![Badge](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg?style=flat-square)](https://996.icu/#/zh_CN)
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 
-https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分享大家平时学习中记录的笔记和例子，以及对遇到的问题进行收集整理。
+[https://pyqt.site](https://pyqt.site) 论坛是专门针对PyQt5学习和提升开设的网站，分享大家平时学习中记录的笔记和例子，以及对遇到的问题进行收集整理。
 
 [![GitHub watchers](https://img.shields.io/github/watchers/PyQt5/PyQt.svg?style=social&label=Watch)](https://github.com/PyQt5/PyQt)
 [![GitHub stars](https://img.shields.io/github/stars/PyQt5/PyQt.svg?style=social)](https://github.com/PyQt5/PyQt)
@@ -17,9 +17,12 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
 
 [自定义控件](https://github.com/PyQt5/CustomWidgets)
 
-# QQ群
+## QQ群
 
 [PyQt 学习](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
+
+## 状态
+![Alt](https://repobeats.axiom.co/api/embed/12e69289ec9d9a7037d2c31aaaadd228dd99638f.svg "Repobeats analytics image")
 
 ## 目录
 
@@ -97,6 +100,7 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
 - Input Widgets
   - [QComboBox](QComboBox)
     - [下拉数据关联](QComboBox/CityLinkage.py)
+    - [文本居中显示](QComboBox/CenterText.py)
   - [QFontComboBox](QFontComboBox)
   - [QLineEdit](QLineEdit)
   - [QTextEdit](QTextEdit)
@@ -216,6 +220,8 @@ https://pyqt.site 论坛是专门针对PyQt5学习和提升开设的网站，分
   - [simpleswitch](QtRemoteObjects/simpleswitch)
 
 - [QPainter](QPainter)
+  - [QPainter绘制各种图形](QPainter/StockDialog.py)
+  - [简易画板](QPainter/Draw.py)
 
 - [QtWinExtras](QtWinExtras)
   - [任务栏进度条](QtWinExtras/TaskbarProgress.py)

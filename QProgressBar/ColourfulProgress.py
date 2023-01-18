@@ -137,6 +137,9 @@ class ColourfulProgress(QProgressBar):
             painter.setPen(QPen(color, self._lineWidth))
 
             if self._animation:
+                if self._animation.state() == QProgressStyleAnimation.Stopped:
+                    # FIXME: 最小化后动画会停止
+                    self._animation.start()
                 step = int(self._animation.animationStep() % self._lineWidth)
             else:
                 step = 0
