@@ -17,11 +17,13 @@ import win32gui
 
 try:
     from PyQt5.QtCore import Qt
-    from PyQt5.QtWidgets import QWidget, QPushButton, QApplication
+    from PyQt5.QtGui import QCursor
+    from PyQt5.QtWidgets import QApplication, QPushButton, QWidget
     from PyQt5.QtWinExtras import QtWin
 except ImportError:
     from PySide2.QtCore import Qt
-    from PySide2.QtWidgets import QWidget, QPushButton, QApplication
+    from PySide2.QtGui import QCursor
+    from PySide2.QtWidgets import QApplication, QPushButton, QWidget
     from PySide2.QtWinExtras import QtWin
 
 
@@ -43,16 +45,15 @@ class Window(QWidget):
         # 主屏幕的可用大小（去掉任务栏）
         self._rect = QApplication.instance().desktop().availableGeometry(self)
         self.resize(800, 600)
-        self.setWindowFlags(Qt.Window
-                            | Qt.FramelessWindowHint
-                            | Qt.WindowSystemMenuHint
-                            | Qt.WindowMinimizeButtonHint
-                            | Qt.WindowMaximizeButtonHint
-                            | Qt.WindowCloseButtonHint)
+        self.setWindowFlags(Qt.Window | Qt.FramelessWindowHint |
+                            Qt.WindowSystemMenuHint |
+                            Qt.WindowMinimizeButtonHint |
+                            Qt.WindowMaximizeButtonHint |
+                            Qt.WindowCloseButtonHint)
         # 增加薄边框
         style = win32gui.GetWindowLong(int(self.winId()), win32con.GWL_STYLE)
-        win32gui.SetWindowLong(
-            int(self.winId()), win32con.GWL_STYLE, style | win32con.WS_THICKFRAME)
+        win32gui.SetWindowLong(int(self.winId()), win32con.GWL_STYLE,
+                               style | win32con.WS_THICKFRAME)
 
         if QtWin.isCompositionEnabled():
             # 加上 Aero 边框阴影
@@ -65,8 +66,9 @@ class Window(QWidget):
         if eventType == "windows_generic_MSG":
             msg = ctypes.wintypes.MSG.from_address(message.__int__())
             # 获取鼠标移动经过时的坐标
-            x = win32api.LOWORD(msg.lParam) - self.frameGeometry().x()
-            y = win32api.HIWORD(msg.lParam) - self.frameGeometry().y()
+            pos = QCursor.pos()
+            x = pos.x() - self.frameGeometry().x()
+            y = pos.y() - self.frameGeometry().y()
             # 判断鼠标位置是否有其它控件
             if self.childAt(x, y) != None:
                 return retval, result
@@ -75,8 +77,8 @@ class Window(QWidget):
                 return True, 0
             if msg.message == win32con.WM_GETMINMAXINFO:
                 # 当窗口位置改变或者大小改变时会触发该消息
-                info = ctypes.cast(
-                    msg.lParam, ctypes.POINTER(MINMAXINFO)).contents
+                info = ctypes.cast(msg.lParam,
+                                   ctypes.POINTER(MINMAXINFO)).contents
                 # 修改最大化的窗口大小为主屏幕的可用大小
                 info.ptMaxSize.x = self._rect.width()
                 info.ptMaxSize.y = self._rect.height()
