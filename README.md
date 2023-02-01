@@ -240,6 +240,8 @@
     - [分割窗口的分割条重绘](QSplitter/RewriteHandle.py)
   - [QSerialPort](QSerialPort)
     - [串口调试小助手](QSerialPort/SerialDebugAssistant.py)
+  - [QProcess](QProcess)
+    - [执行命令得到结果](QProcess/GetCmdResult.py)
   - [QProxyStyle](QProxyStyle)
     - [Tab文字方向](QProxyStyle/TabTextDirection.py)
     - [Tab角落控件位置占满](QProxyStyle/TabCornerWidget.py)
