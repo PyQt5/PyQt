@@ -2,6 +2,7 @@
 
 - 目录
   - [执行命令得到结果](#1执行命令得到结果)
+  - [交互执行命令](#2交互执行命令)
 
 ## 1、执行命令得到结果
 [运行 GetCmdResult.py](GetCmdResult.py)
@@ -18,3 +19,15 @@
 3. 也可以绑定`finished`信号，然后通过`readAll`读取所有输出
 
 ![GetCmdResult](ScreenShot/GetCmdResult.gif)
+
+## 2、交互执行命令
+[运行 InteractiveRun.py](InteractiveRun.py)
+
+`QProcess` 也可以用于交互式执行命令，具体需要如下几步：
+
+1. 通过`setProcessChannelMode(QProcess.MergedChannels)`合并标准输出和错误输出
+2. 通过`start`启动进程
+3. 通过`readyReadStandardOutput`信号读取进程输出
+4. 通过`writeData`向进程写入数据
+
+![InteractiveRun](ScreenShot/InteractiveRun.gif)

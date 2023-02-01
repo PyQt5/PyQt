@@ -242,6 +242,7 @@
     - [串口调试小助手](QSerialPort/SerialDebugAssistant.py)
   - [QProcess](QProcess)
     - [执行命令得到结果](QProcess/GetCmdResult.py)
+    - [交互执行命令](QProcess/InteractiveRun.py)
   - [QProxyStyle](QProxyStyle)
     - [Tab文字方向](QProxyStyle/TabTextDirection.py)
     - [Tab角落控件位置占满](QProxyStyle/TabCornerWidget.py)
