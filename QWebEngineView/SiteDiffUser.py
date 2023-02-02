@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 """
 Created on 2019年8月23日
 @author: Irony
@@ -10,15 +9,17 @@ Created on 2019年8月23日
 @description: 同个网站不同用户
 """
 
+import os
+
 try:
     from PyQt5.QtCore import QUrl
-    from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage, \
-        QWebEngineProfile
+    from PyQt5.QtWebEngineWidgets import (QWebEnginePage, QWebEngineProfile,
+                                          QWebEngineView)
     from PyQt5.QtWidgets import QApplication, QTabWidget
 except ImportError:
     from PySide2.QtCore import QUrl
-    from PySide2.QtWebEngineWidgets import QWebEngineView, QWebEnginePage, \
-        QWebEngineProfile
+    from PySide2.QtWebEngineWidgets import (QWebEnginePage, QWebEngineProfile,
+                                            QWebEngineView)
     from PySide2.QtWidgets import QApplication, QTabWidget
 
 
@@ -30,7 +31,9 @@ class Window(QTabWidget):
         # 用户1
         self.webView1 = QWebEngineView(self)
         profile1 = QWebEngineProfile('storage1', self.webView1)
-        profile1.setPersistentStoragePath('Tmp/Storage1')
+        # 要设置绝对路径，否则会出现部分问题
+        # 比如 reCaptcha 不能加载，见 https://github.com/PyQt5/PyQt/issues/125
+        profile1.setPersistentStoragePath(os.path.abspath('Tmp/Storage1'))
         print(profile1.cookieStore())
         # 如果要清除cookie
         # cookieStore = profile1.cookieStore()
@@ -43,7 +46,7 @@ class Window(QTabWidget):
         # 用户2
         self.webView2 = QWebEngineView(self)
         profile2 = QWebEngineProfile('storage2', self.webView2)
-        profile2.setPersistentStoragePath('Tmp/Storage2')
+        profile2.setPersistentStoragePath(os.path.abspath('Tmp/Storage2'))
         print(profile2.cookieStore())
         page2 = QWebEnginePage(profile2, self.webView2)
         self.webView2.setPage(page2)
