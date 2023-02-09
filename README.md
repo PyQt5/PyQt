@@ -131,6 +131,7 @@
     - [绘制世界地图](QGraphicsView/WorldMap.py)
     - [添加QWidget](QGraphicsView/AddQWidget.py)
     - [图片查看器](QGraphicsView/ImageView.py)
+    - [图标拖拽](QGraphicsView/DragGraphics.py)
   - [QCalendarWidget](QCalendarWidget)
     - [QSS美化日历样式](QCalendarWidget/CalendarQssStyle.py)
   - [QLCDNumber](QLCDNumber)
