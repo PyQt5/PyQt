@@ -36,10 +36,10 @@
     - [边距和间隔](QHBoxLayout#2边距和间隔)
     - [比例分配](QHBoxLayout#3比例分配)
   - [QGridLayout](QGridLayout)
-    - [腾讯视频热播列表](QGridLayout/HotPlaylist.py)
+    - [音乐热歌列表](QGridLayout/HotPlaylist.py)
   - [QFormLayout](QFormLayout)
   - [QFlowLayout](QFlowLayout)
-    - [腾讯视频热播列表](QFlowLayout/HotPlaylist.py)
+    - [音乐热歌列表](QFlowLayout/HotPlaylist.py)
 
 - Spacers
   - [Horizontal Spacer](QSpacerItem)
@@ -70,7 +70,7 @@
   - [QListWidget](QListWidget)
     - [删除自定义Item](QListWidget/DeleteCustomItem.py)
     - [自定义可拖拽Item](QListWidget/DragDrop.py)
-    - [腾讯视频热播列表](QListWidget/HotPlaylist.py)
+    - [音乐热歌列表](QListWidget/HotPlaylist.py)
     - [仿折叠控件效果](QListWidget/FoldWidget.py)
     - [列表常用信号](QListWidget/SignalsExample.py)
     - [在item中添加图标](Test/partner_625781186/13.combo_listwidget)

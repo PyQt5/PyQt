@@ -41,10 +41,14 @@
 ##
 #############################################################################
 
-
-from PyQt5.QtCore import QPoint, QRect, QSize, Qt
-from PyQt5.QtWidgets import (QApplication, QLayout, QPushButton, QSizePolicy,
-                             QWidget)
+try:
+    from PyQt5.QtCore import QPoint, QRect, QSize, Qt
+    from PyQt5.QtWidgets import (QApplication, QLayout, QPushButton,
+                                 QSizePolicy, QWidget)
+except ImportError:
+    from PySide2.QtCore import QPoint, QRect, QSize, Qt
+    from PySide2.QtWidgets import (QApplication, QLayout, QPushButton,
+                                   QSizePolicy, QWidget)
 
 
 class Window(QWidget):
