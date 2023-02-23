@@ -259,6 +259,8 @@
     - [最小化到系统托盘](QSystemTrayIcon/MinimizeToTray.py)
   - [QSystemTrayIcon](QSystemTrayIcon)
     - [系统托盘闪烁](QSystemTrayIcon/TrayNotify.py)
+  - [QMetaObject](QMetaObject)
+    - [在线程中操作UI](QMetaObject/CallInThread.py)
 
 - [Demo](Demo)
   - [重启窗口Widget](Demo/RestartWindow.py)
