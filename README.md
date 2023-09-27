@@ -13,13 +13,15 @@
 
 如果您觉得这里的东西对您有帮助，别忘了帮忙点一颗:star:小星星:star:
 
-[客户端下载](https://github.com/PyQt5/PyQtClient/releases)
-
-[自定义控件](https://github.com/PyQt5/CustomWidgets)
+[客户端下载](https://github.com/PyQt5/PyQtClient/releases) | [自定义控件](https://github.com/PyQt5/CustomWidgets)
 
 ## QQ群
 
-[PyQt 学习](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
+<a href="javascript:;" alt="微信"><img src="Donate/PyQt_Group.png" height="360" width="300"></a> or <a href="javascript:;" alt="支付宝"><img src="Donate/PyQt_Guild.png" height="360" width="300"></a>
+
+　　　　　　　[PyQt 学习](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
+　　　　　　　　
+　　　　　　　[PyQt 频道](https://pd.qq.com/s/157c1hiay)
 
 ## 状态
 ![Alt](https://repobeats.axiom.co/api/embed/12e69289ec9d9a7037d2c31aaaadd228dd99638f.svg "Repobeats analytics image")
@@ -289,10 +291,12 @@
   - [无边框窗口](Demo/NewFramelessWindow.py)
 
 
-# [Donate-打赏](Donate)
+## 其它项目
+[一些Qt写的三方APP](https://github.com/PyQt5/3rd-Apps)
+
+
+## [Donate-打赏](Donate)
 
 感谢所有捐助者的鼓励，[这里](https://github.com/PyQt5/thanks) 列出了捐助者名单（由于一些收款渠道无法知道对方是谁，如有遗漏请联系我修改）
 
 <a href="javascript:;" alt="微信"><img src="Donate/weixin.png" height="350" width="350"></a>or<a href="javascript:;" alt="支付宝"><img src="Donate/zhifubao.png" height="350" width="350"></a>
-
-[一些Qt写的三方APP](https://github.com/PyQt5/3rd-Apps)
