@@ -17,7 +17,7 @@
 
 ## QQ群
 
-<a href="javascript:;" alt="微信"><img src="Donate/PyQt_Group.png" height="360" width="300"></a> or <a href="javascript:;" alt="支付宝"><img src="Donate/PyQt_Guild.png" height="360" width="300"></a>
+<a href="javascript:;" alt="PyQt 学习"><img src="Donate/PyQt_Group.png" height="360" width="300"></a> or <a href="javascript:;" alt="PyQt 频道"><img src="Donate/PyQt_Guild.png" height="360" width="300"></a>
 
 　　　　　　　[PyQt 学习](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
 　　　　　　　　
