@@ -1,0 +1,13 @@
+[generator-project]
+generator-set = shiboken
+header-file = ${BINDINGS_HEADER_FILE}
+typesystem-file = ${BINDINGS_TYPESYSTEM_FILE}
+output-directory = ${BINDINGS_OUTPUT_DIR}
+include-path = ${BINDINGS_INCLUDE_PATH}
+framework-include-paths =
+typesystem-paths = ${BINDINGS_TYPESYSTEM_PATH}
+
+enable-parent-ctor-heuristic
+enable-pyside-extensions
+enable-return-value-heuristic
+use-isnull-as-nb_nonzero

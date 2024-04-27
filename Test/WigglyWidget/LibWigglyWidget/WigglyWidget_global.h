@@ -1,0 +1,12 @@
+#ifndef WIGGLYWIDGET_GLOBAL_H
+#define WIGGLYWIDGET_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(WIGGLYWIDGET_LIBRARY)
+#define WIGGLYWIDGET_EXPORT Q_DECL_EXPORT
+#else
+#define WIGGLYWIDGET_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif  // WIGGLYWIDGET_GLOBAL_H

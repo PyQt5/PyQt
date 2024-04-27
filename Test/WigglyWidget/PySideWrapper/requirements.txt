@@ -1,0 +1,9 @@
+PySide2
+
+https://download.qt.io/official_releases/QtForPython/shiboken2-generator/shiboken2_generator-5.15.2.1-5.15.2-cp35.cp36.cp37.cp38.cp39.cp310-none-win_amd64.whl; platform_machine == "x86_64" and platform_system == "Windows"
+
+https://download.qt.io/official_releases/QtForPython/shiboken2-generator/shiboken2_generator-5.15.2.1-5.15.2-cp35.cp36.cp37.cp38.cp39.cp310-none-win32.whl; platform_machine == "i686" and platform_system == "Windows"
+
+https://download.qt.io/official_releases/QtForPython/shiboken2-generator/shiboken2_generator-5.15.2.1-5.15.2-cp35.cp36.cp37.cp38.cp39.cp310-abi3-manylinux1_x86_64.whl; platform_machine == "x86_64" and platform_system == "Linux"
+
+https://download.qt.io/official_releases/QtForPython/shiboken2-generator/shiboken2_generator-5.15.2.1-5.15.2-cp35.cp36.cp37.cp38.cp39.cp310-abi3-macosx_10_13_intel.whl; platform_machine == "x86_64" and platform_system == "Darwin"
