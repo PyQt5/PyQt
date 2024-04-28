@@ -11,14 +11,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # 配置安装目录
 set(CMAKE_INSTALL_DIR "${CMAKE_SOURCE_DIR}/dist")
 
+# 静态库
+set(BUILD_SHARED_LIBS OFF)
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
-add_library(LibWigglyWidget STATIC wigglywidget.cpp wigglywidget.h)
+add_library(LibWigglyWidget wigglywidget.cpp wigglywidget.h)
 
 target_link_libraries(LibWigglyWidget PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-target_compile_definitions(LibWigglyWidget PRIVATE LIBWIGGLYWIDGET_LIBRARY)
+if(BUILD_SHARED_LIBS)
+  target_compile_definitions(LibWigglyWidget PRIVATE LIBWIGGLYWIDGET_LIBRARY)
+endif()
 
 # 配置生成的文件安装目录
 install(

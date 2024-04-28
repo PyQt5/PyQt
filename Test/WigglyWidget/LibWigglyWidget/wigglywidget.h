@@ -10,31 +10,27 @@
 #if defined(WIGGLYWIDGET_LIBRARY)
 #define WIGGLYWIDGET_EXPORT Q_DECL_EXPORT
 #else
-#define WIGGLYWIDGET_EXPORT Q_DECL_IMPORT
+#define WIGGLYWIDGET_EXPORT
 #endif
 #endif
 
-#ifdef Q_OS_WIN
 class WIGGLYWIDGET_EXPORT WigglyWidget : public QWidget {
-#else
-class WigglyWidget : public QWidget {
-#endif
   Q_OBJECT
 
- public:
+public:
   WigglyWidget(QWidget *parent = nullptr);
 
- public slots:
+public slots:
   void setText(const QString &newText);
 
- protected:
+protected:
   virtual void paintEvent(QPaintEvent *event) override;
   virtual void timerEvent(QTimerEvent *event) override;
 
- private:
+private:
   QBasicTimer timer;
   QString text;
   int step;
 };
 
-#endif  // WIGGLYWIDGET_H
+#endif // WIGGLYWIDGET_H

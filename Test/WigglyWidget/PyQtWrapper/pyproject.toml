@@ -35,6 +35,7 @@ sip-include-dirs = [
     "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/PyQt5/bindings",
     "/usr/local/lib64/python3.6/site-packages/PyQt5/bindings",
     "C:/soft/Python311/Lib/site-packages/PyQt5/bindings",
+    "C:/soft/Python/lib/site-packages/PyQt6/bindings"
 ]
 
 # Configure the building of the fib bindings.

@@ -42,4 +42,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     w = TestWigglyWidget()
     w.show()
+    w.resize(800, 600)
+    if not hasattr(app, "exec_"):
+        app.exec_ = app.exec
     sys.exit(app.exec_())

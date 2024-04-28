@@ -1,4 +1,6 @@
 PyQt5
+PyQt6
 sip
 PyQt5-sip
+PyQt6-sip
 PyQt-builder
