@@ -1,0 +1,46 @@
+# Specify sip v6 as the build system for the package.
+[build-system]
+requires = ["sip >=5.3, <7", "PyQt-builder >=1.9, <2"]
+build-backend = "sipbuild.api"
+
+# Specify the PEP 621 metadata for the project.
+[project]
+name = "WigglyWidget"
+version = "0.1.0"
+description = "Python bindings for the WigglyWidget library"
+urls.homepage = "https://github.com/PyQt5/PyQt"
+dependencies = ["PyQt5 (>=5.15.0, <6.0.0)"]
+
+[[project.authors]]
+name = "Irony"
+email = "892768447@qq.com"
+
+# Specify a PyQt-based project.
+[tool.sip]
+project-factory = "pyqtbuild:PyQtProject"
+
+# Specify the PEP 566 metadata for the project.
+[tool.sip.metadata]
+name = "WigglyWidget"
+summary = "Python bindings for the WigglyWidget library"
+home-page = "https://github.com/PyQt5/PyQt"
+author = "Irony"
+author-email = "892768447@qq.com"
+requires-dist = "PyQt5 (>=5.15.0, <6.0.0)"
+
+# Configure the project.
+[tool.sip.project]
+tag-prefix = "WigglyWidget"
+sip-include-dirs = [
+    "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/PyQt5/bindings",
+    "/usr/local/lib64/python3.6/site-packages/PyQt5/bindings",
+    "C:/soft/Python311/Lib/site-packages/PyQt5/bindings",
+]
+
+# Configure the building of the fib bindings.
+[tool.sip.bindings.WigglyWidget]
+qmake-QT = ["core", "gui", "widgets"]
+headers = ["wigglywidget.h"]
+include-dirs = ["../dist/include"]
+libraries = ["LibWigglyWidget"]
+library-dirs = ["../dist/lib"]

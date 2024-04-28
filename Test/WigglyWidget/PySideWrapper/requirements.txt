@@ -1,4 +1,4 @@
-PySide2
+PySide2==5.15.2.1
 
 https://download.qt.io/official_releases/QtForPython/shiboken2-generator/shiboken2_generator-5.15.2.1-5.15.2-cp35.cp36.cp37.cp38.cp39.cp310-none-win_amd64.whl; platform_machine == "x86_64" and platform_system == "Windows"
 

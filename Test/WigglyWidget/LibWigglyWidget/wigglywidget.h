@@ -4,9 +4,21 @@
 #include <QBasicTimer>
 #include <QWidget>
 
-#include "WigglyWidget_global.h"
+#ifdef Q_OS_WIN
+#include <QtCore/qglobal.h>
 
+#if defined(WIGGLYWIDGET_LIBRARY)
+#define WIGGLYWIDGET_EXPORT Q_DECL_EXPORT
+#else
+#define WIGGLYWIDGET_EXPORT Q_DECL_IMPORT
+#endif
+#endif
+
+#ifdef Q_OS_WIN
 class WIGGLYWIDGET_EXPORT WigglyWidget : public QWidget {
+#else
+class WigglyWidget : public QWidget {
+#endif
   Q_OBJECT
 
  public:

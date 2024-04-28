@@ -10,9 +10,14 @@ Created on 2024/04/26
 @description:
 """
 
+import os
 import sys
 
-from PySide2.QtWidgets import QApplication, QLineEdit, QVBoxLayout, QWidget
+sys.path.append(
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "build/WigglyWidget")
+)
+
+from PyQt5.QtWidgets import QApplication, QLineEdit, QVBoxLayout, QWidget
 from WigglyWidget import WigglyWidget
 
 

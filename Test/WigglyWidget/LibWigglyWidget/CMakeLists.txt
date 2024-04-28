@@ -14,8 +14,7 @@ set(CMAKE_INSTALL_DIR "${CMAKE_SOURCE_DIR}/dist")
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
-add_library(LibWigglyWidget SHARED WigglyWidget_global.h wigglywidget.cpp
-                                   wigglywidget.h)
+add_library(LibWigglyWidget STATIC wigglywidget.cpp wigglywidget.h)
 
 target_link_libraries(LibWigglyWidget PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
@@ -29,8 +28,3 @@ install(
   ARCHIVE DESTINATION "${CMAKE_INSTALL_DIR}/lib")
 
 install(FILES wigglywidget.h DESTINATION "${CMAKE_INSTALL_DIR}/include")
-
-message(
-  NOTICE
-  "****${Qt5Core_INCLUDE_DIRS} ${Qt5Widgets_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS}"
-)

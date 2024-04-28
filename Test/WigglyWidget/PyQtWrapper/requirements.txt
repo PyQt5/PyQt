@@ -1,0 +1,4 @@
+PyQt5
+sip
+PyQt5-sip
+PyQt-builder
