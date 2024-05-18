@@ -53,6 +53,8 @@
     - [按钮底部线条进度](QPushButton/BottomLineProgress.py)
     - [按钮文字旋转进度](QPushButton/FontRotate.py)
     - [按钮常用信号](QPushButton/SignalsExample.py)
+    - [旋转动画按钮](QPushButton/RotateButton.py)
+    - [弹性动画按钮](QPushButton/RubberBandButton.py)
   - [QToolButton](QToolButton)
   - [QRadioButton](QRadioButton)
   - [QCheckBox](QCheckBox)

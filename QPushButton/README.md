@@ -5,6 +5,8 @@
   - [按钮底部线条进度](#2按钮底部线条进度)
   - [按钮文字旋转进度](#3按钮文字旋转进度)
   - [按钮常用信号](#4按钮常用信号)
+  - [旋转动画按钮](#5旋转动画按钮)
+  - [弹性动画按钮](#6弹性动画按钮)
 
 ## 1、普通样式
 [运行 NormalStyle.py](NormalStyle.py)
@@ -34,3 +36,13 @@
 按钮的点击、按下、释放、选中信号演示
 
 ![SignalsExample](ScreenShot/SignalsExample.gif)
+
+## 5、旋转动画按钮
+[运行 RotateButton.py](RotateButton.py)
+
+![RotateButton](ScreenShot/RotateButton.gif)
+
+## 6、弹性动画按钮
+[运行 RubberBandButton.py](RubberBandButton.py)
+
+![RubberBandButton](ScreenShot/RubberBandButton.gif)
