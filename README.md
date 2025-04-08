@@ -68,6 +68,7 @@
   - [QTableView](QTableView)
     - [表格内容复制](QTableView/CopyContent.py)
   - [QColumnView](QColumnView)
+    - [文件系统浏览器](QColumnView/FileManager.py)
   - [QUndoView](QUndoView)
 
 - Item Widgets
