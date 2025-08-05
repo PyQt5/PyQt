@@ -1,0 +1,12 @@
+[project]
+name = "PyQt"
+
+[tool.ruff.lint]
+ignore = ["E402", "E501"]
+
+[tool.pyright]
+reportArgumentType = false
+reportOperatorIssue = false
+reportAttributeAccessIssue = false
+reportCallIssue = false
+reportIncompatibleMethodOverride = false
