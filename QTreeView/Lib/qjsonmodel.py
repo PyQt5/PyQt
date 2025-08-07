@@ -11,6 +11,7 @@ Created on 2025/08/05
 """
 
 import json
+from functools import reduce
 from typing import Any, List, Union
 
 try:
@@ -55,27 +56,30 @@ class QJsonItem(QStandardItem):
     ):
         self.setEditable(editAble)
         self._role = role
-        self.key = key
-        self.value = value
+        self.keyItem = key
+        self.valueItem = value
         self.edit = edit
         self.datas = datas
 
     @property
-    def key(self) -> Any:
+    def keyItem(self) -> Union["QJsonItem", None]:
         # 上一级key item
-        return self.data(self.KeyRole)
+        item = self.data(self.KeyRole)
+        if not isinstance(item, QJsonItem):
+            return None
+        return item
 
-    @key.setter
-    def key(self, value: "QJsonItem") -> None:
+    @keyItem.setter
+    def keyItem(self, value: "QJsonItem") -> None:
         self.setData(value, self.KeyRole)
 
     @property
-    def value(self) -> Any:
+    def valueItem(self) -> "QJsonItem":
         # 当前value item
         return self.data(self.ValueRole)
 
-    @value.setter
-    def value(self, value: "QJsonItem") -> None:
+    @valueItem.setter
+    def valueItem(self, value: "QJsonItem") -> None:
         self.setData(value, self.ValueRole)
 
     @property
@@ -97,13 +101,11 @@ class QJsonItem(QStandardItem):
     def datas(self, value: Any) -> None:
         # key item中的原始数据设置
         self.clear()
+        self.setData(value, self.DatasRole)
         if self._role == QJsonItem.ValueRole:
-            self.setText(f"\t[{type(value).__name__}]")
             if not isinstance(value, (list, tuple, dict)):
-                self.setText(str(value))
                 self.edit = value
             return
-        self.setData(value, self.DatasRole)
         self.__loadData(value)
 
     @property
@@ -111,13 +113,17 @@ class QJsonItem(QStandardItem):
         return type(self.edit)
 
     @property
+    def role(self) -> int:
+        return self._role
+
+    @property
     def path(self) -> str:
-        item = self.key if self._role == self.ValueRole else self
+        item = self.keyItem if self._role == self.ValueRole else self
         paths = []
 
         while item:
             paths.append(item.text())
-            item = item.key
+            item = item.keyItem
 
         paths.reverse()
         return QJsonItem.Sep.join(paths)
@@ -127,6 +133,9 @@ class QJsonItem(QStandardItem):
             return self.path
 
         return super().data(role)
+
+    def setData(self, data: Any, role: int = Qt.EditRole):
+        super().setData(data, role)
 
     def __loadData(self, data: Any) -> None:
         # 数组类型的key是索引, 不允许修改
@@ -153,9 +162,11 @@ class QJsonItem(QStandardItem):
             itemValue.setInfo(itemKey, None, value, valueEditAble, QJsonItem.ValueRole)
 
     def updateValue(self, value: Any) -> bool:
-        itemValue: Union[QJsonItem, None] = self.value
+        itemValue: Union[QJsonItem, None] = self.valueItem
         if itemValue is None:
             return False
+        if itemValue.datas == value:
+            return True
 
         self.datas = value
         # key对应的后面的空列不允许修改
@@ -175,8 +186,8 @@ class QJsonItem(QStandardItem):
             }
         elif typ is list:
             return [self.child(i, 0).toObject() for i in range(self.rowCount())]
-        elif self.value:
-            return self.value.toObject()
+        elif self.valueItem:
+            return self.valueItem.toObject()
 
         return self.edit
 
@@ -200,31 +211,14 @@ class QJsonModel(QStandardItemModel):
     def loadJson(self, string: str) -> bool:
         return self.loadData(json.loads(string))
 
-    def loadData(self, data: dict) -> bool:
+    def loadData(self, data: dict, force: bool = False) -> bool:
         if isinstance(data, dict):
+            if force:
+                self.clear()
             self.__loadData(data)
             return True
 
         return False
-
-    def findPath(
-        self,
-        path: str,
-        flags=Qt.MatchFixedString
-        | Qt.MatchCaseSensitive
-        | Qt.MatchWrap
-        | Qt.MatchRecursive,
-    ):
-        indexes = self.match(self.index(0, 0), QJsonItem.PathRole, path, -1, flags)
-        indexes = [index for index in indexes if index.isValid()]
-        return self.itemFromIndex(indexes[0]) if indexes else None
-
-    def updateValue(self, path: str, value: Any) -> bool:
-        item = self.findPath(path)
-        if item is None:
-            return False
-
-        return item.updateValue(value)
 
     def horizontalHeaderLabels(self) -> List[str]:
         return [self.horizontalHeaderItem(i).text() for i in range(self.columnCount())]
@@ -234,27 +228,68 @@ class QJsonModel(QStandardItemModel):
         super().clear()
         self.setHorizontalHeaderLabels(headers)
 
-    def __loadData(self, data: Any):
-        if not isinstance(data, dict):
+    def findPath(
+        self,
+        path: str,
+        flags=Qt.MatchFixedString
+        | Qt.MatchCaseSensitive
+        | Qt.MatchWrap
+        | Qt.MatchRecursive,
+    ) -> Union[QJsonItem, None]:
+        indexes = self.match(self.index(0, 0), QJsonItem.PathRole, path, -1, flags)
+        indexes = [index for index in indexes if index.isValid()]
+        return self.itemFromIndex(indexes[0]) if indexes else None  # type: ignore
+
+    def updateValue(
+        self, path: str, value: Any, item: Union[QJsonItem, None] = None
+    ) -> bool:
+        item = item or self.findPath(path)
+        if item is None:
+            keys = path.split(QJsonItem.Sep)
+            self.__loadData(reduce(lambda val, key: {key: val}, reversed(keys), value))
+            return True
+
+        return item.updateValue(value)
+
+    def __findItem(
+        self, key: str, parent=None
+    ) -> Union[QStandardItem, "QJsonItem", None]:
+        parent = parent or self.invisibleRootItem()
+        for row in range(parent.rowCount()):
+            item = parent.child(row)
+            if item.text() == key:
+                return item
+
+        return None
+
+    def __createItem(self, key: str, value: Any, parent=None):
+        parent = parent or self.invisibleRootItem()
+
+        itemKey = QJsonItem(str(key))
+        itemValue = QJsonItem()
+        parent.appendRow([itemKey, itemValue])
+
+        itemKey.setInfo(parent, itemValue, value, edit=key)
+        # key对应的后面的空列不允许修改
+        valueEditAble = not isinstance(value, (list, tuple, dict))
+        itemValue.setInfo(itemKey, None, value, valueEditAble, QJsonItem.ValueRole)
+
+    def __loadData(self, data: Any, parent=None):
+        if not isinstance(data, dict):  # 更新值
+            itemKey = parent
+            if itemKey:
+                itemKey.updateValue(data)
             return
 
-        for key, value in data.items():
-            items = self.findItems(str(key))
-            if items:
-                itemKey: Union[QJsonItem, QStandardItem] = items[0]
-                itemValue: Union[QJsonItem, None] = getattr(itemKey, "value", None)
-                if itemValue is None:
-                    continue
-                itemKey.setText(str(key))
-            else:
-                itemKey = QJsonItem(str(key))
-                itemValue = QJsonItem()
-                self.appendRow([itemKey, itemValue])
+        parent = parent or self.invisibleRootItem()
 
-            itemKey.setInfo(None, itemValue, value, edit=key)
-            # key对应的后面的空列不允许修改
-            valueEditAble = not isinstance(value, (list, tuple, dict))
-            itemValue.setInfo(itemKey, None, value, valueEditAble, QJsonItem.ValueRole)
+        for key, value in data.items():
+            key = str(key)
+            itemKey = self.__findItem(key, parent)
+            if not itemKey:
+                self.__createItem(key, value, parent)
+            else:
+                self.__loadData(value, itemKey)
 
     def toDict(self) -> dict:
         item = self.invisibleRootItem()
@@ -264,7 +299,7 @@ class QJsonModel(QStandardItemModel):
             for i in range(item.rowCount())
         }
 
-    def toJson(self, ensure_ascii=True, indent=None, **kwargs) -> str:
+    def toJson(self, ensure_ascii=False, indent=None, **kwargs) -> str:
         return json.dumps(
             self.toDict(), ensure_ascii=ensure_ascii, indent=indent, **kwargs
         )

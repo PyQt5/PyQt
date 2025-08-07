@@ -138,10 +138,8 @@ class TestWindow(QWidget):
         if not item:
             return
         keyInfo = ""
-        if item.key:
-            keyInfo = (
-                f"row={item.key.row()}, col={item.key.column()}, text={item.key.text()}"
-            )
+        if item.keyItem:
+            keyInfo = f"row={item.keyItem.row()}, col={item.keyItem.column()}, text={item.keyItem.text()}"
         print(
             f"row={item.row()}, col={item.column()}, text={item.text()}, value={str(item.data(Qt.EditRole))}, key=({keyInfo})\n\trowCount={item.rowCount()}\n\tpath={item.path}"
         )

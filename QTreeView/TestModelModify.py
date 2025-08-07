@@ -94,7 +94,7 @@ class TestWindow(QWidget):
                     {
                         "path": item.path,
                         "text": item.text(),
-                        "value": item.value.edit,
+                        "value": item.valueItem.edit,
                     }
                 )
             )
