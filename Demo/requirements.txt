@@ -1,3 +1,4 @@
 pywin32
 numpy
 dlib
+python-box
