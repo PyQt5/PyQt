@@ -2,22 +2,25 @@
 
 - 目录
   - [继承QThread](#1继承QThread)
-  - [moveToThread](#2moveToThread)
+  - [moveToThread](#2movetothread)
   - [线程挂起恢复](#3线程挂起恢复)
   - [线程休眠唤醒](#4线程休眠唤醒)
   - [线程退出](#5线程退出)
 
 ## 1、继承QThread
+
 [运行 InheritQThread.py](InheritQThread.py)
 
 ![InheritQThread](ScreenShot/InheritQThread.png)
 
 ## 2、moveToThread
+
 [运行 moveToThread.py](moveToThread.py)
 
 ![moveToThread](ScreenShot/InheritQThread.png)
 
 ## 3、线程挂起恢复
+
 [运行 SuspendThread.py](SuspendThread.py)
 
 注意，这里只是简单演示，在应用这些代码时要小心
@@ -31,6 +34,7 @@
 ![SuspendThread](ScreenShot/SuspendThread.gif)
 
 ## 4、线程休眠唤醒
+
 [运行 WakeupThread.py](WakeupThread.py)
 
 使用 `QWaitCondition` 的 `wait` 和 `wakeAll` 方法
@@ -38,6 +42,7 @@
 ![WakeupThread](ScreenShot/WakeupThread.gif)
 
 ## 5、线程退出
+
 [运行 QuitThread.py](QuitThread.py)
 
 `isInterruptionRequested` 和 `requestInterruption` 函数作为退出标识调用

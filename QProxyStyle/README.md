@@ -5,6 +5,7 @@
   - [QTabWidget 角落控件位置](#2qtabwidget-角落控件位置)
 
 ## 1、QTabWidget Tab文字方向
+
 [运行 TabTextDirection.py](TabTextDirection.py)
 
 1. 通过 `app.setStyle(TabBarStyle())` 设置代理样式
@@ -14,6 +15,7 @@
 ![TabTextDirection](ScreenShot/TabTextDirection.png)
 
 ## 2、QTabWidget 角落控件位置
+
 [运行 TabCornerWidget.py](TabCornerWidget.py)
 
 1. 通过 `app.setStyle(TabCornerStyle())` 设置代理样式

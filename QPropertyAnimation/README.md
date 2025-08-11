@@ -9,6 +9,7 @@
   - [窗口翻转动画（仿QQ）](#6窗口翻转动画仿QQ)
 
 ## 1、窗口淡入淡出
+
 [运行 FadeInOut.py](FadeInOut.py)
 
 1. 使用`QPropertyAnimation`对窗口的`windowOpacity`透明度属性进行修改
@@ -20,8 +21,9 @@
     1. 绑定动画完成后`finished`信号连接到`close`关闭窗口函数
 
 ![FadeInOut](ScreenShot/FadeInOut.gif)
-   
+
 ## 2、右键菜单动画
+
 [运行 MenuAnimation.py](MenuAnimation.py)
 
 1. 使用`QPropertyAnimation`对菜单控件的`geometry`属性进行修改
@@ -30,6 +32,7 @@
 ![MenuAnimation](ScreenShot/MenuAnimation.gif)
 
 ## 3、点阵特效
+
 [运行 RlatticeEffect.py](RlatticeEffect.py)
 
 1. emmm,我也不知道这个动画叫啥名字,反正就是仿照网页做的
@@ -45,6 +48,7 @@
 1. PS: pyd是python3.4生成的,删掉pyd也能运行
 
 这部分是js的核心
+
 ```js
 // for each point find the 5 closest points
 for(var i = 0; i < points.length; i++) {
@@ -78,6 +82,7 @@ for(var i = 0; i < points.length; i++) {
 ```
 
 这部分是py的核心
+
 ```python
 def findClose(points):
     plen = len(points)
@@ -105,10 +110,11 @@ def findClose(points):
 ![RlatticeEffect](ScreenShot/RlatticeEffect.gif)
 
 ## 4、页面切换/图片轮播动画
+
 [运行 PageSwitching.py](PageSwitching.py) | [查看 UiImageSlider.ui](Data/UiImageSlider.ui)
 
 1. 使用`QPropertyAnimation`对`QStackedWidget`中的子控件进行pos位移操作实现动画切换特效
-1. 主要代码参考http://qt.shoutwiki.com/wiki/Extending_QStackedWidget_for_sliding_page_animations_in_Qt
+1. 主要代码参考<http://qt.shoutwiki.com/wiki/Extending_QStackedWidget_for_sliding_page_animations_in_Qt>
 1. 增加了自动切换函数
 
 函数调用:
@@ -121,6 +127,7 @@ def findClose(points):
 ![PageSwitching](ScreenShot/PageSwitching.gif)
 
 ## 5、窗口抖动
+
 [运行 ShakeWindow.py](ShakeWindow.py)
 
 通过`QPropertyAnimation`对控件的pos属性进行死去活来的修改
@@ -128,6 +135,7 @@ def findClose(points):
 ![ShakeWindow](ScreenShot/ShakeWindow.gif)
 
 ## 6、窗口翻转动画（仿QQ）
+
 [运行 FlipWidgetAnimation.py](FlipWidgetAnimation.py)
 
 1. 用了两个`QLabel`来显示模拟的图片界面，并实现鼠标点击模拟真实的窗口对应位置点击

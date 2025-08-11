@@ -4,6 +4,7 @@
   - [边框阴影动画](#1边框阴影动画)
 
 ## 1、边框阴影动画
+
 [运行 ShadowEffect.py](ShadowEffect.py)
 
 1. 通过`setGraphicsEffect`设置控件的边框阴影

@@ -2,12 +2,13 @@
 
 pip install keyboard
 
-https://github.com/892768447/keyboard
+<https://github.com/892768447/keyboard>
 
 * keyboard
-    * 该模块使用全局低级钩子的方式hook键盘来处理,对系统有一定的影响
-    * 有反映说弹出对话框假死,这里粗略解决下使用信号槽的方式来弹出对话框
-    * 该模块里使用了每次产生一个子线程来回调函数
+  * 该模块使用全局低级钩子的方式hook键盘来处理,对系统有一定的影响
+  * 有反映说弹出对话框假死,这里粗略解决下使用信号槽的方式来弹出对话框
+  * 该模块里使用了每次产生一个子线程来回调函数
+
 ```
 def call_later(fn, args=(), delay=0.001):
     """
@@ -20,4 +21,5 @@ def call_later(fn, args=(), delay=0.001):
 ```
 
 # 截图
+
 ![截图](ScreenShot/1.gif)

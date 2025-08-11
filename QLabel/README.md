@@ -8,6 +8,7 @@
   - [圆形图片](#5圆形图片)
 
 ## 1、图片加载显示
+
 [运行 ShowImage.py](ShowImage.py)
 
 通过3种方式加载图片文件和显示gif图片
@@ -32,6 +33,7 @@
 ![ShowImage](ScreenShot/ShowImage.gif)
 
 ## 2、图片旋转
+
 [运行 ImageRotate.py](ImageRotate.py)
 
 1. 水平翻转 `QImage.mirrored(True, False)`
@@ -42,6 +44,7 @@
 ![ImageRotate](ScreenShot/ImageRotate.gif)
 
 ## 3、仿网页图片错位显示
+
 [运行 ImageSlipped.py](ImageSlipped.py)
 
 1. 设置`setMouseTracking(True)`开启鼠标跟踪
@@ -51,6 +54,7 @@
 ![ImageSlipped](ScreenShot/ImageSlipped.gif)
 
 ## 4、显示.9格式图片（气泡）
+
 [运行 NinePatch.py](NinePatch.py) | [运行 QtNinePatch.py](QtNinePatch.py) | [运行 QtNinePatch2.py](QtNinePatch2.py)
 
 什么叫.9.PNG呢，这是安卓开发里面的一种特殊的图片
@@ -64,16 +68,18 @@
 
 在Github开源库中搜索到两个C++版本的
 
-1.一个是NinePatchQt https://github.com/Roninsc2/NinePatchQt
+1.一个是NinePatchQt <https://github.com/Roninsc2/NinePatchQt>
 
-2.一个是QtNinePatch https://github.com/soramimi/QtNinePatch
+2.一个是QtNinePatch <https://github.com/soramimi/QtNinePatch>
 
 ### For PyQt
+
 1、目前针对第一个库在2年前用Python参考源码重新写一个见 `Lib/NinePatch.py`
 
 2、这次针对第二个库用Python编写的见`Lib/QtNinePatch2.py`。用C++编写的pyd版本见`Lib/QtNinePatch`目录
 
 ### 说明
+
 1、建议优先使用pyd版本的（后续提供Python3.4 3.5 3.6 3.7 编译好的32为库文件），也可以自行编译，编译步骤见下文。
 
 2、其次可以使用Python写的第二个版本`Lib/QtNinePatch2.py`（个人觉得方便调用）
@@ -103,6 +109,7 @@ qt_path = 'D:/soft/Qt/Qt5.5.1/5.5/msvc2010'
 ![NinePatchImage](ScreenShot/NinePatchImage.gif)
 
 ### 5、圆形图片
+
 [运行 CircleImage.py](CircleImage.py)
 
 使用`QPainter`的`setClipPath`方法结合`QPainterPath`对图片进行裁剪从而实现圆形图片。

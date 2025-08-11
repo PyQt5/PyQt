@@ -4,6 +4,7 @@
   - [分割窗口的分割条重绘](#1分割窗口的分割条重绘)
 
 ## 1、分割窗口的分割条重绘
+
 [运行 RewriteHandle.py](RewriteHandle.py)
 
 1. 原理在于`QSplitter`在创建分割条的时候会调用`createHandle`函数

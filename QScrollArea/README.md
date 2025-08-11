@@ -4,6 +4,7 @@
   - [仿QQ设置面板](#1仿QQ设置面板)
 
 ## 1、仿QQ设置面板
+
 [运行 QQSettingPanel.py](QQSettingPanel.py) | [查看 setting.ui](Data/setting.ui)
 
 1. 左侧为`QListWidget`，右侧使用`QScrollArea`设置`QVBoxLayout`，然后依次往里面添加QWidget
@@ -12,6 +13,7 @@
     2. 左侧list添加item时给定右侧对应的widget变量值
 
 相关事件：
+
 1. 绑定左侧`QListWidget`的`itemClicked`的到该item的索引
 2. 绑定右侧滚动条的`valueChanged`事件得到pos
 

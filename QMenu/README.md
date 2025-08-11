@@ -5,6 +5,7 @@
   - [仿QQ右键菜单](#2仿QQ右键菜单)
 
 ## 1、菜单设置多选并且不关闭
+
 [运行 MultiSelect.py](MultiSelect.py)
 
 有时候会遇到这种需求：在界面某个位置弹出一个菜单，其中里面的菜单项可以多选（类似配置选项），
@@ -39,6 +40,7 @@ def _menu_mouseReleaseEvent(self, event):
 ![MultiSelect](ScreenShot/MultiSelect.gif)
 
 ## 2、仿QQ右键菜单
+
 [运行 QQMenu.py](QQMenu.py)
 
 ![QQMenu](ScreenShot/QQMenu.gif)

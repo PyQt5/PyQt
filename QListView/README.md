@@ -6,6 +6,7 @@
   - [自定义角色排序](#3自定义角色排序)
 
 ## 1、显示自定义Widget
+
 [运行 CustomWidgetItem.py](CustomWidgetItem.py)
 
 通过设置 `setIndexWidget(QModelIndex, QWidget)` 可以设置自定义 `QWidget`
@@ -13,6 +14,7 @@
 ![CustomWidgetItem](ScreenShot/CustomWidgetItem.png)
 
 ## 2、显示自定义Widget并排序
+
 [运行 CustomWidgetSortItem.py](CustomWidgetSortItem.py)
 
 1. 对QListView设置代理 `QSortFilterProxyModel`
@@ -21,9 +23,11 @@
 ![CustomWidgetSortItem](ScreenShot/CustomWidgetSortItem.gif)
 
 ## 3、自定义角色排序
+
 [运行 SortItemByRole.py](SortItemByRole.py)
 
 需求：
+
 1. 5种分类（唐、宋、元、明、清） 和 未分类
 2. 选中唐则按照 唐、宋、元、明、清、未分类排序
 3. 选中宋则按照 宋、唐、元、明、清、未分类排序
@@ -31,9 +35,11 @@
 5. 取消排序则恢复到加载时候顺序，如：未分类、唐、唐、明、清、未分类、宋、元、未分类
 
 思路：
+
 1. 定义`IdRole = Qt.UserRole + 1`            用于恢复默认排序
 2. 定义`ClassifyRole = Qt.UserRole + 2`      用于按照分类序号排序
 3. 定义5种分类的id
+
     ```python
     NameDict = {
         '唐': ['Tang', 0],
@@ -50,14 +56,18 @@
         4: '清',
     }
     ```
+
 4. item设置 `setData(id, IdRole)` 用于恢复默认排序
 5. item设置 `setData(cid, ClassifyRole)` 用于标识该item的分类
 6. 继承 `QSortFilterProxyModel` 增加 `setSortIndex(self, index)` 方法, 目的在于记录要置顶（不参与排序）的分类ID
+
     ```python
     def setSortIndex(self, index):
         self._topIndex = index
     ```
+
 7. 继承 `QSortFilterProxyModel` 重写 `lessThan` 方法, 判断分类ID是否等于要置顶的ID, 如果是则修改为-1, 这样就永远在最前面
+
     ```python
     if self.sortRole() == ClassifyRole and \
             source_left.column() == self.sortColumn() and \
@@ -76,12 +86,16 @@
     
             return leftIndex < rightIndex
     ```
+
 8. 恢复默认排序
+
     ```python
     self.fmodel.setSortRole(IdRole)     # 必须设置排序角色为ID
     self.fmodel.sort(0)                 # 排序第一列按照ID升序
     ```
+
 9. 根据分类排序, 这里要注意要先通过 `setSortRole` 设置其它角色再设置目标角色
+
     ```python
     self.fmodel.setSortIndex(1)
     self.fmodel.setSortRole(IdRole)

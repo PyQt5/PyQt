@@ -4,6 +4,7 @@
   - [样式表测试](#1样式表测试)
 
 ## 1、样式表测试
+
 [运行 WidgetStyle.py](WidgetStyle.py)
 
 1. 一种是重写 `paintEvent`

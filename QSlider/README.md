@@ -6,6 +6,7 @@
   - [低频率值变化](#3低频率值变化)
 
 ## 1、滑动条点击定位
+
 [运行 ClickJumpSlider.py](ClickJumpSlider.py)
 
 1. `QSlider`对鼠标点击然后跳转到该位置的支持不是很好，通过重写鼠标点击事件`mousePressEvent`来达到效果
@@ -41,13 +42,15 @@ def mousePressEvent(self, event):
 ![ClickJumpSlider](ScreenShot/ClickJumpSlider.gif)
 
 ## 2、双层圆环样式
+
 [运行 QssQSlider.py](QssQSlider.py) | [运行 PaintQSlider.py](PaintQSlider.py)
 
 ![QssQSlider](ScreenShot/QssQSlider.gif)
 ![PaintQSlider](ScreenShot/PaintQSlider.gif)
 
 ## 3、低频率值变化
-[运行 LfSlider.py](LfSlider.py) 
+
+[运行 LfSlider.py](LfSlider.py)
 
 覆盖了`valueChanged`信号，通过使用定时器来延迟发送值变化，如果无法覆盖信号则可以自定义一个新的信号
 

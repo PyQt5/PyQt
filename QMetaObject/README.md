@@ -4,6 +4,7 @@
   - [在线程中操作UI](#1在线程中操作UI)
 
 ## 1、在线程中操作UI
+
 [运行 CallInThread.py](CallInThread.py)
 
 如果想在`QThread`或者`threading.Thread`中不通过信号直接操作UI，则可以使用`QMetaObject.invokeMethod`调用。
