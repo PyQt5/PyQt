@@ -25,8 +25,10 @@
   - [动态忙碌光标](#22动态忙碌光标)
   - [屏幕变动监听](#23屏幕变动监听)
   - [无边框窗口](#24无边框窗口)
+  - [属性绑定](#25属性绑定)
 
 ## 1、重启窗口Widget
+
 [运行 RestartWindow.py](RestartWindow.py)
 
 利用类变量对窗口的变量进行引用，防止被回收（导致窗口一闪而过），重启时先显示新窗口后关闭自己
@@ -34,6 +36,7 @@
 ![RestartWindow](ScreenShot/RestartWindow.gif)
 
 ## 2、简单的窗口贴边隐藏
+
 [运行 WeltHideWindow.py](WeltHideWindow.py)
 
 1. 大概思路
@@ -52,6 +55,7 @@
 ![WeltHideWindow](ScreenShot/WeltHideWindow.gif)
 
 ## 3、嵌入外部窗口
+
 [运行 EmbedWindow.py](EmbedWindow.py)
 
 1. 使用`SetParent`函数设置外部窗口的`parent`为Qt的窗口
@@ -61,8 +65,8 @@
 
 ![EmbedWindow](ScreenShot/EmbedWindow.gif)
 
-
 ## 4、简单跟随其它窗口
+
 [运行 FollowWindow.py](FollowWindow.py)
 
 1. 利用win32gui模块获取目标窗口的句柄
@@ -72,8 +76,8 @@
 
 ![FollowWindow](ScreenShot/FollowWindow.gif)
 
-
 ## 5、简单探测窗口和放大截图
+
 [运行 ProbeWindow.py](ProbeWindow.py)
 
 1. 利用`win32gui`模块获取鼠标所在位置的窗口大小(未去掉边框)和rgb颜色
@@ -81,8 +85,8 @@
 
 ![ProbeWindow](ScreenShot/ProbeWindow.gif)
 
-
 ## 6、无边框自定义标题栏窗口
+
 [运行 FramelessWindow.py](FramelessWindow.py) | [运行 NativeEvent.py](NativeEvent.py)
 
 1. 重写鼠标事件
@@ -100,32 +104,38 @@
 ![FramelessWindow](ScreenShot/FramelessWindow.gif)
 
 ## 7、右下角弹出框
+
 [运行 WindowNotify.py](WindowNotify.py) | [查看 notify.ui](Data/notify.ui)
 
 ![WindowNotify](ScreenShot/WindowNotify.gif)
 
 ## 8、程序重启
+
 [运行 AutoRestart.py](AutoRestart.py)
 
 ![AutoRestart](ScreenShot/AutoRestart.gif)
 
 ## 9、自定义属性
+
 [运行 CustomProperties.py](CustomProperties.py)
 
 ![CustomProperties](ScreenShot/CustomProperties.png)
 
 ## 10、调用截图DLL
+
 [运行 ScreenShotDll.py](ScreenShotDll.py)
 
 ![ScreenShotDll](ScreenShot/ScreenShotDll.gif)
 
 ## 11、单实例应用
+
 [运行 SingleApplication.py](SingleApplication.py) | [运行 SharedMemory.py](SharedMemory.py)
 
 1. QSharedMemory
 2. QLocalSocket, QLocalServer
 
 ## 12、简单的右下角气泡提示
+
 [运行 BubbleTips.py](BubbleTips.py)
 
 1. 使用 `QWidget` 包含一个 `QLabel`, 其中 `QWidget` 通过 `paintEvent` 绘制气泡形状
@@ -135,11 +145,13 @@
 ![BubbleTips](ScreenShot/BubbleTips.gif)
 
 ## 13、右侧消息通知栏
+
 [运行 Notification.py](Notification.py)
 
 ![Notification](ScreenShot/Notification.gif)
 
 ## 14、验证码控件
+
 [运行 VerificationCode.py](VerificationCode.py)
 
 1. 更新为paintEvent方式,采用上下跳动
@@ -149,24 +161,26 @@
 ![VerificationCode](ScreenShot/VerificationCode.gif)
 
 ## 15、人脸特征点
+
 [运行 FacePoints.py](FacePoints.py)
 
 PyQt 结合 Opencv 进行人脸检测；
 由于直接在主线程中进行特征点获取，效率比较低
 
  依赖文件
- 
+
 1. [opencv](https://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv)
 2. [numpy](https://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy)
 3. [dlib](http://dlib.net/)
-  1. [dlib-19.4.0.win32-py2.7.exe](Data/dlib-19.4.0.win32-py2.7.exe)
-  2. [dlib-19.4.0.win32-py3.4.exe](Data/dlib-19.4.0.win32-py3.4.exe)
-  3. [dlib-19.4.0.win32-py3.5.exe](Data/dlib-19.4.0.win32-py3.5.exe)
+1. [dlib-19.4.0.win32-py2.7.exe](Data/dlib-19.4.0.win32-py2.7.exe)
+2. [dlib-19.4.0.win32-py3.4.exe](Data/dlib-19.4.0.win32-py3.4.exe)
+3. [dlib-19.4.0.win32-py3.5.exe](Data/dlib-19.4.0.win32-py3.5.exe)
 4. [shape-predictor-68-face-landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2)
 
 ![FacePoints](ScreenShot/FacePoints.png)
 
 ## 16、使用Threading
+
 [运行  QtThreading.py](QtThreading.py)
 
 在PyQt中使用Theading线程
@@ -174,14 +188,15 @@ PyQt 结合 Opencv 进行人脸检测；
 ![QtThreading](ScreenShot/QtThreading.gif)
 
 ## 17、背景连线动画
+
 [运行 CircleLine.py](CircleLine.py)
 
 主要参考 [背景连线动画.html](Data/背景连线动画.html)
 
 ![CircleLine](ScreenShot/CircleLine.gif)
 
-
 ## 18、无边框圆角对话框
+
 [运行 FramelessDialog.py](FramelessDialog.py)
 
 1. 通过设置 `self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)` 和 `self.setAttribute(Qt.WA_TranslucentBackground, True)` 达到无边框和背景透明
@@ -192,6 +207,7 @@ PyQt 结合 Opencv 进行人脸检测；
 ![FramelessDialog](ScreenShot/FramelessDialog.png)
 
 ## 19、调整窗口显示边框
+
 [运行 ShowFrameWhenDrag.py](ShowFrameWhenDrag.py)
 
 1. 全局设置是【】在控制面板中->调整Windows的外观和性能->去掉勾选 拖动时显示窗口内容】
@@ -204,6 +220,7 @@ PyQt 结合 Opencv 进行人脸检测；
 ![ShowFrameWhenDrag](ScreenShot/ShowFrameWhenDrag.gif)
 
 ## 20、判断信号是否连接
+
 [运行 IsSignalConnected.py](IsSignalConnected.py)
 
 1. 通过 `isSignalConnected` 判断是否连接
@@ -212,6 +229,7 @@ PyQt 结合 Opencv 进行人脸检测；
 ![IsSignalConnected](ScreenShot/IsSignalConnected.png)
 
 ## 21、调用虚拟键盘
+
 [运行 CallVirtualKeyboard.py](CallVirtualKeyboard.py)
 
 1. Windows上调用的是`osk.exe`
@@ -221,6 +239,7 @@ PyQt 结合 Opencv 进行人脸检测；
 ![CallVirtualKeyboard2](ScreenShot/CallVirtualKeyboard2.png)
 
 ## 22、动态忙碌光标
+
 [运行 GifCursor.py](GifCursor.py)
 
 通过定时器不停的修改光标图片来实现动态效果
@@ -228,6 +247,7 @@ PyQt 结合 Opencv 进行人脸检测；
 ![GifCursor](ScreenShot/GifCursor.gif)
 
 ## 23、屏幕变动监听
+
 [运行 ScreenNotify.py](ScreenNotify.py)
 
 通过定时器减少不同的变化信号，尽量保证只调用一次槽函数来获取信息
@@ -235,6 +255,7 @@ PyQt 结合 Opencv 进行人脸检测；
 ![ScreenNotify](ScreenShot/ScreenNotify.png)
 
 ## 24、无边框窗口
+
 [运行 NewFramelessWindow.py](NewFramelessWindow.py)
 
 1. 该方法只针对 `Qt5.15` 以上版本有效
@@ -242,3 +263,11 @@ PyQt 结合 Opencv 进行人脸检测；
 3. 处理点击事件交通过 `QWindow.startSystemMove` 和 `QWindow.startSystemResize` 传递给系统处理
 
 ![NewFramelessWindow](ScreenShot/NewFramelessWindow.gif)
+
+## 25、属性绑定
+
+[运行 TestSerializeModel.py](TestSerializeModel.py)
+
+类似：[json数据绑定](../QTreeView#3json数据绑定)
+
+![TestSerializeModel](ScreenShot/TestSerializeModel.gif)

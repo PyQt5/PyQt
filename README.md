@@ -20,10 +20,11 @@
 <a href="javascript:;" alt="PyQt 学习"><img src="Donate/PyQt_Group.png" height="360" width="300"></a> or <a href="javascript:;" alt="PyQt 频道"><img src="Donate/PyQt_Guild.png" height="360" width="300"></a>
 
 　　　　　　　[PyQt 学习](https://jq.qq.com/?_wv=1027&k=5QVVEdF)
-　　　　　　　　
+
 　　　　　　　[PyQt 频道](https://pd.qq.com/s/157c1hiay)
 
 ## 状态
+
 ![Alt](https://repobeats.axiom.co/api/embed/12e69289ec9d9a7037d2c31aaaadd228dd99638f.svg "Repobeats analytics image")
 
 ## 目录
@@ -295,11 +296,11 @@
   - [动态忙碌光标](Demo/GifCursor.py)
   - [屏幕变动监听](Demo/ScreenNotify.py)
   - [无边框窗口](Demo/NewFramelessWindow.py)
-
+  - [属性绑定](Demo/TestSerializeModel.py)
 
 ## 其它项目
-[一些Qt写的三方APP](https://github.com/PyQt5/3rd-Apps)
 
+[一些Qt写的三方APP](https://github.com/PyQt5/3rd-Apps)
 
 ## [Donate-打赏](Donate)
 

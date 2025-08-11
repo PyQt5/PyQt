@@ -102,6 +102,9 @@ class TestWindow(QWidget, Ui_SerializeWidget):
         self.mapper.bind(self.progressBar, "correlation.progress")
         self.mapper.bind(self.verticalSlider, "correlation.progress")
 
+        # get new dict
+        self.onPropertyChanged()
+
     def onPropertyChanged(self, *args, **kwargs):
         data = self.mapper.toJson(indent=2)
         self.editJsonView.blockSignals(True)

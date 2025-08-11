@@ -24,12 +24,12 @@ try:
     from PyQt5.QtWidgets import QWidget
 except ImportError:
     from PySide2.QtCore import (
-    QDateTime,
-    QMetaProperty,
-    QObject,
-    Qt,
-    Signal,
-)
+        QDateTime,
+        QMetaProperty,
+        QObject,
+        Qt,
+        Signal,
+    )
     from PySide2.QtWidgets import QWidget
 
 
@@ -242,7 +242,6 @@ class QPropertyMapper(QObject):
                 f"[__setValue]: setProperty key: {key}, value: {value} of widget: {self.__widgetInfo(widget)}"
             )
             self.setProperty(key, value)
-            return
 
         if value is None:
             return
@@ -313,42 +312,3 @@ class QPropertyMapper(QObject):
                 self.__setValue(widget, key, value, updated=True)
             except Exception as e:
                 self.__log(f"[onPropertyChanged]: __setValue failed: {e}")
-
-
-from PySide2.QtWidgets import QApplication, QLineEdit, QPushButton, QVBoxLayout
-
-
-class TestWindow(QWidget):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        layout = QVBoxLayout(self)
-        self.edit1 = QLineEdit("1", self)
-        self.edit2 = QLineEdit("2", self)
-        self.btn = QPushButton("test", self)
-        self.edit1.setObjectName("edit1")
-        self.edit2.setObjectName("edit2")
-        layout.addWidget(self.edit1)
-        layout.addWidget(self.edit2)
-        layout.addWidget(self.btn)
-        self.btn.clicked.connect(self.doTest)
-
-        QPropertyMapper.Verbose = 1
-        self.mapper = QPropertyMapper(self)
-        self.mapper.bind(self.edit1, "inputs.name")
-        self.mapper.bind(self.edit2, "inputs.name")
-
-        self.mapper.loadData({"inputs": {"name": "hello"}})
-
-    def doTest(self):
-        print(self.mapper.toDict())
-
-
-if __name__ == "__main__":
-    import cgitb
-    import sys
-
-    cgitb.enable(format="text")
-    app = QApplication(sys.argv)
-    w = TestWindow()
-    w.show()
-    sys.exit(app.exec_())
